@@ -18,27 +18,35 @@
 \graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
 \logofile{logo}				% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
 \bibliography{references}  	% Biblatex-Literaturdatei (references.bib)
-
+\usepackage{acronym}
+\usepackage{amsthm}
 %%%----------------------------------------------------------
 % Angaben für die Titelei (Titelseite, Erklärung etc.)
 %%%----------------------------------------------------------
 
 %%% Einträge für ALLE Arbeiten: -----------------------------
-\title{Partielle Lösungen zur allgemeinen Problematik}
-\author{Peter A.\ Schlaumeier}
-\programname{Universal Computing}
-\placeofstudy{Hagenberg}
+\title{Elliptische Randwertprobleme mit gewichteter Kernkollokation}
+\author{Daniel Koch}
+\programname{Mathematik}
+\placeofstudy{Stuttgart}
 \dateofsubmission{2017}{02}{28}	% {YYYY}{MM}{DD}
 
 %%% Zusätzlich für eine Bachelorarbeit: ---------------------
 \thesisnumber{XXXXXXXXXX-A}   % Stud-ID, z.B. 1310238045-A  
 % (A = 1. Bachelorarbeit)
-\semester{Sommersemester 2016} 
+\semester{Sommersemester 2018} 
 \coursetitle{Einführung in die Tiefere Problematik 1} 
-\advisor{Alois B.~Treuer, Päd.\ Phil.}
+\advisor{Prof. Dr. Bernard Haasdonk}
 
 %%% Restriktive Lizenformel anstatt CC (nur für Typ master) -
 %\strictlicense
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Satz}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Beispiel}
 
 %%%----------------------------------------------------------
 \begin{document}

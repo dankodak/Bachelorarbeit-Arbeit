@@ -1,3 +1,143 @@
 \chapter{Einleitung}
 \label{cha:Einleitung}
 
+
+Unser Ziel ist es Lösungen von \acp{PDE} zu approximieren. Diese sind allgemein gegeben durch:
+\begin{align*}
+L u(x) &= f(x), x \in \Omega \\
+B u(x) &= g(x), x \in \partial \Omega
+\end{align*}
+, wobei $\Omega \subset \mathbb{R}^n$, $L$ ein linearer, beschränkter Differentialoperator und $B$ ein linearer, beschränkter Auswertungsoperator ist.\\
+Für den größten Teil dieser Arbeit werden wir folgende \ac{PDE} im $\mathbb{R}^2$ betrachten:
+\begin{align*}
+\Delta u(x) &= f(x), x \in \Omega \\
+u(x) &= 0 , x \in \partial \Omega
+\end{align*}
+
+Es genügt die Nullrandbedingung zu betrachten, da jede \ac{PDE} auf eine mit Nullrandbedingung umgeformt werden kann.\\
+HIER KOMMT DIE BEGRÜNDUNG!!
+
+Wir wollen zur Approximation der \ac{PDE} einen interpolierenden Ansatz wählen. Dazu müssen wir die Interpolation zunächst verallgemeinern.
+
+\begin{definition}
+Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ der gesuchte Interpolant, wenn gilt, dass
+\begin{align*}
+\lambda_i(s) = \lambda_i(s_u) , 1\le i \le N
+\end{align*}
+\end{definition}
+
+\begin{example}
+\begin{itemize}
+\item
+Sei $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$ die Punktauswertungsfunktionale $\delta_{x_i}(f) = f(x_i), 1\le i \le N$. (STETIG?!) Dann bekommen wir die Standardinterpolation mit
+\begin{align*}
+s(x_i) = \delta_{x_i}(s) = \delta_{x_i}(s_u) = s_u(x_i), 1\le i \le N
+\end{align*}
+\item
+Mit $\lambda_i := \delta_{x_i} \circ D^a$ für einen Multiindex $a \in \mathbb{N}_0^d$ erhält man noch zusätzliche Informationen über die Ableitung der Funktion.
+\item
+Sei eine \ac{PDE} gegeben:
+\begin{align*}
+L u(x) &= f(x), x \in \Omega \\
+B u(x) &= g(x), x \in \partial \Omega
+\end{align*}
+Sei $X_N \subset \Omega$ eine Menge an Kollokationspunkten. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
+\begin{align*}
+L s_u(x_i) &= L u(x_i) = f(x_i), x_i \in \Omega \\
+B s_u(x_i) &= B u(x_i) = g(x_i), x_i \in \partial \Omega
+\end{align*}
+\end{itemize}
+\end{example}
+
+Wir müssen einen geeigneten Ansatz wählen um das Interpolationsproblem zu lösen, also einen $N$-dimensionalen Unterraum $V_N := \text{span}\{\nu_1, \dots, \nu_N\} \subset \mathcal{H}$ und fordern, dass $s_u \in V_N$, also 
+\begin{align*}
+s_u(x) := \sum_{j=1}^N \alpha_j \nu_j(x), x \in \Omega
+\end{align*}
+Also lassen sich die Interpolationsbedingungen schreiben als:
+\begin{align*}
+\lambda_i(u) = \lambda_i(s_u) = \sum_{j=1}^N \alpha_j \lambda_i(\nu_j)
+\end{align*}
+Diese Bedingungen lassen sich umschreiben als lineares Gleichungssystem $A_\Lambda \alpha = b$ mit $(A_\Lambda)_{i,j} := \lambda_i(\nu_j), b_i := \lambda_i(u)$.
+
+\section{Standardkollokation}
+Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, in dem die Auswertungs- und Differentialfunktionale stetig sind. Dies führt uns zur Definition von Kern Funktionen mit denen wir einen Hilbertraum konstruieren werden, der uns das Geforderte liefern wird.
+
+\begin{definition}
+Sei $\Omega$ eine nicht leere Menge. Ein reeller Kern auf $\Omega$ ist eine symmetrische Funktion $K: \Omega \times \Omega \rightarrow \mathbb{R}$.\\
+Für alle $N \in \mathbb{N}$ und für eine Menge $X_N = \{x_i\}_{i=1}^N$ ist die Kern Matrix (oder Gram'sche Matrix) $A:= A_{K,X_N} \in \mathbb{R}^{N \times N}$  definiert als $A:=[K(x_i, x_j)]_{i,j=1}^N$.\\
+Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und alle Mengen $X_N$ mit paarweise verschiedenen Elementen $x_{i=1}^N$ gilt, dass die Kern Matrix positiv definit ist. Der Kern $K$ heißt \ac{SPD}, falls die Kern Matrix strikt positiv definit ist.
+\end{definition}
+
+\begin{example} Sei $\Omega \subset \mathbb{R}^n$. Dann sind folgende Funktionen Kerne auf $\Omega$:\\
+\begin{itemize}
+\item $K(x,y) := \exp(-\gamma \|x-y\|),\gamma > 0$
+\item $K(x,y) := (x,y)$
+\end{itemize}
+\end{example}
+
+Wir kommen mit dieser Definition direkt zu den gesuchten Hilberträumen.
+
+\begin{definition}[Reproduzierender Kern Hilbertraum]
+Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodut $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ einen \ac{RKHR} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
+\begin{enumerate}
+\item $K(\cdot, x) \in \mathcal{H}$ für alle $x \in \Omega$
+\item $(f, K(\cdot,x))_\mathcal{H} = f(x)$ für alle $ x \in \Omega$, $f \in \mathcal{H}$
+\end{enumerate}
+\end{definition}
+
+Bei Interpolationsproblemen haben wir zunächst einen Kern $K$ gegeben und wollen damit eine Funktion approximieren. Also stellt sich die Frage ob zu jedem Kern $K$ ein \ac{RKHR} existiert. Diese wird durch folgenden Satz beantwortet:
+
+\begin{theorem}[Moore, Aronszajn]
+Sei $\Omega$ eine nicht leere Menge und $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein positiv definiter Kern. Dann existiert genau ein \ac{RKHR} $\mathcal{H}_K (\Omega)$ mit reproduzierendem Kern $K$.
+\end{theorem}
+\begin{proof}
+SIEHE SKRIPT!
+\end{proof}
+
+Mit diesem Wissen können wir uns erste Eigenschaften von \ac{RKHR} anschauen:
+
+\begin{theorem}
+Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f: \Omega \rightarrow \mathbb{R}$. Dann gilt:
+\begin{enumerate}
+\item $\mathcal{H}$ ist genau dann ein \ac{RKHR}, wenn die Auswertungsfunktionale stetig sind.
+\item Wenn $\mathcal{H}$ ein \ac{RKHR} mit Kern $K$ ist, dann ist $K(\cdot,x)$ der Riesz-Repräsentant des Funktionals $\delta_x \in \mathcal{H}'$.
+\item Ist $\Omega \subset \mathbb{R}^n$ offen und $K \in C^{2k}(\Omega \times \Omega)$ für $k \in \mathbb{N}$, dann ist $\mathcal{H}_K(\Omega) \subset C^k(\Omega)$ und es gilt für alle Multiindizes $a:= (a_1,\dots, a_d)$:
+\begin{align*}
+D^a f(x):= \partial_{x^{(1)}}^{a_1}\partial_{x^{(2)}}^{a_2} \dots \partial_{x^{(d)}}^{a_d} f(x) = (f, D_2^a K(\cdot,x))_{\mathcal{H}_K(\Omega)}
+\end{align*}
+\item LINEARE UNABHÄNGIGKEIT
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item Für alle $f \in \mathcal{H}$ und alle $x \in \Omega$ gilt:
+\begin{align*}
+|f(x)| &= |(f, K(\cdot,x))_\mathcal{H}| \le \|f\|_\mathcal{H}\|K(\cdot,x)\|_\mathcal{H}\\
+&= \|f\|_\mathcal{H} \sqrt{(K(\cdot,x),K(\cdot,x))_\mathcal{H}} = \|f\|_\mathcal{H} \sqrt{K(x,x)}
+\end{align*}
+, wobei für die erste und die letzte Gleichung die Reproduzierbarkeit des Kerns benutzt wurde.
+
+Sei $\mathcal{H}$ ein \ac{RKHR}. Dann gilt mit dem eben gezeigten:
+\begin{align*}
+|\delta_x(f)| &= |f(x)| \le \|f\|_\mathcal{H} \sqrt{K(x,x)}\\
+\Leftrightarrow \frac{|\delta_x(f)|}{\|f\|_\mathcal{H}} &\le \sqrt{K(x,x)}
+\end{align*}
+Also ist $\delta_x$ beschränkt und damit stetig.
+
+Für die andere Richtung nehmen wir an, dass $\delta_x  \in \mathcal{H}'$ für alle $x \in \Omega$. Also existiert ein Riesz-Repräsentant $\nu_{\delta_x} \in \mathcal{H}$. Definieren wir $K(\cdot,x):= \nu_{\delta_x}$, dann ist $K$ ein Kern. Es ist klar, dass $K(\cdot,x) \in \mathcal{H}$ und nach der Definition des Riesz-Repräsentanten gilt:
+\begin{align*}
+(f, K(\cdot,x))_\mathcal{H} = (f, \nu_{\delta_x})_\mathcal{H} = \delta_x(f) = f(x)
+\end{align*}
+\item Die Behauptung folgt sofort aus der Reproduzierbarkeit von $K$, da $(f, K(\cdot,x))_\mathcal{H}= f(x)$ für alle $x \in \Omega$ und alle $f \in \mathcal{H}$ gilt.
+\item
+Den Beweis, dass $\mathcal{H}_K(\Omega) \subset C^k(\Omega)$ werden wir hier auslassen.
+
+REST VOM BEWEIS FEHLT AUCH NOCH!!
+\item AUCH DER BEWEIS FEHLT
+\end{enumerate}
+\end{proof}
+
+Damit haben wir alle nötigen Werkzeuge um die Interpolation durchzuführen. Wir haben Ansatzfunktionen $K$, den dazugehörigen Hilbertraum $\mathcal{H}_K(\Omega)$ und die Stetigkeit und lineare Unabhängigkeit aller benötigten Operatoren. Jetzt müssen wir nur noch einen geeigneten Ansatz wählen.
+\subsection{Symmetrische Kollokation}
+\subsection{Nicht-Symmetrische Kollokation}
