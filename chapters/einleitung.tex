@@ -97,6 +97,7 @@ SIEHE SKRIPT!
 Mit diesem Wissen können wir uns erste Eigenschaften von \ac{RKHR} anschauen:
 
 \begin{theorem}
+\label{stetig}
 Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f: \Omega \rightarrow \mathbb{R}$. Dann gilt:
 \begin{enumerate}
 \item $\mathcal{H}$ ist genau dann ein \ac{RKHR}, wenn die Auswertungsfunktionale stetig sind.
@@ -105,6 +106,7 @@ Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funkti
 \begin{align*}
 D^a f(x):= \partial_{x^{(1)}}^{a_1}\partial_{x^{(2)}}^{a_2} \dots \partial_{x^{(d)}}^{a_d} f(x) = (f, D_2^a K(\cdot,x))_{\mathcal{H}_K(\Omega)}
 \end{align*}
+\label{linUn}
 \item LINEARE UNABHÄNGIGKEIT
 \end{enumerate}
 \end{theorem}
@@ -140,4 +142,54 @@ REST VOM BEWEIS FEHLT AUCH NOCH!!
 
 Damit haben wir alle nötigen Werkzeuge um die Interpolation durchzuführen. Wir haben Ansatzfunktionen $K$, den dazugehörigen Hilbertraum $\mathcal{H}_K(\Omega)$ und die Stetigkeit und lineare Unabhängigkeit aller benötigten Operatoren. Jetzt müssen wir nur noch einen geeigneten Ansatz wählen.
 \subsection{Symmetrische Kollokation}
+Sei wieder $\Omega \subset \mathbb{R}^n$ offen und beschränkt, $L,B$ lineare Differentialoperatoren, $K$ ein positiv definiter Kern und folgendes Problem gegeben:
+\begin{align*}
+L u(x) &= f(x), x \in \Omega \\
+B u(x) &= g(x), x \in \partial \Omega
+\end{align*}
+Für ein $N \in \mathbb{N}$ betrachten wir die Menge $X_N \subset \Omega$, die wir in $N_{in}$ Punkte im Inneren und $N_{bd}$ Punkte auf dem Rand aufteilen. Also haben wir die beiden Mengen
+\begin{align*}
+X_{in} &= X_N \cap \Omega\\
+X_{bd} &= X_N \cap \partial \Omega
+\end{align*}
+Wir definieren die Menge $\Lambda_N = \{\lambda_1, \dots, \lambda_N\}$ an linearen Funktionalen mit
+\begin{align*}
+\lambda_i =
+\begin{cases}
+\delta_{x_i} \circ L & x_i \in \Omega\\
+\delta_{x_i} \circ B & x_i \in \partial \Omega
+\end{cases}
+\end{align*}
+Wir wissen aus Satz \ref{stetig}, dass in $\mathcal{H}_K(\Omega)$ alle $\lambda_i$ stetig und linear unabhängig sind. Damit können wir unsere Ansatzfunktionen, also den Unterraum $V_N \subset \mathcal{H}_K(\Omega)$ wählen:
+\begin{align*}
+V_N &= \text{span} \{\lambda_1^y K(x,y), \dots , \lambda_N^y K(x,y)\}\\
+&= \text{span} \{(\delta_{x_1} \circ L)^y K(x,y), \dots, (\delta_{x_{N_in}} \circ L)^y K(x,y), (\delta_{x_{N_{in} + 1}} \circ B)^y K(x,y), \dots, (\delta_{x_{N}} \circ B)^y K(x,y)\}\\
+&=: \text{span} \{\nu_1, \dots, \nu_N\}
+\end{align*}
+, wobei der hochgesetzte Index y bedeutet, dass der Operator auf das zweite Argument angewandt wird.
+
+Damit bekommen wir folgenden Interpolanten:
+\begin{align*}
+s_u(x) &= \sum_{j=1}^N \alpha_j \lambda_j^y K(x,y)\\
+&= \sum_{j=1}^{N_{in}} \alpha_j (\delta_{x_j} \circ L)^y K(x,y) + \sum_{j=N_{in}}^{N} \alpha_j (\delta_{x_j} \circ L)^y K(x,y)
+\end{align*}
+Die $\alpha_j$ erhält man als Lösung des \ac{LGS} mit $A_{i,j} := (\nu_i,\nu_j)_{\mathcal{H}_K}$, also
+\begin{align*}
+\begin{pmatrix}
+A_{L,L} & A_{L,B} \\ 
+A_{L,B}^T & A_{B,B}
+\end{pmatrix} 
+\alpha =
+\begin{pmatrix}
+b_L \\ 
+b_B
+\end{pmatrix} 
+\end{align*}
+da mit \ref{stetig}.\ref{linUn} folgt
+\begin{align*}
+(A_{L,L})_{i,j} &= (\delta_{x_i} \circ L)^x(\delta_{x_j} \circ L) K(x,y) = \left((\delta_{x_i} \circ L)^x K(x,y), (\delta_{x_j} \circ L) K(x,y) \right)_{\mathcal{H}_K}\\
+(A_{L,B})_{i,j} &= (\delta_{x_i} \circ L)^x(\delta_{x_j} \circ B) K(x,y) = \left((\delta_{x_i} \circ L)^x K(x,y), (\delta_{x_j} \circ B) K(x,y) \right)_{\mathcal{H}_K}\\
+(A_{B,B})_{i,j} &= (\delta_{x_i} \circ B)^x(\delta_{x_j} \circ B) K(x,y) = \left((\delta_{x_i} \circ B)^x K(x,y), (\delta_{x_j} \circ B) K(x,y) \right)_{\mathcal{H}_K}
+\end{align*}
+LÖSBARKEIT + RIESZ REPRÄSENTANT MIT FUNKTIONAL
 \subsection{Nicht-Symmetrische Kollokation}
