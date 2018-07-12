@@ -273,3 +273,26 @@ Das \ac{LGS} ist lösbar, da A offensichtlich symmetrisch und positiv definit is
 \end{align*}
 Für die letzte Abschätzung benutzen wir die lineare Unabhängigkeit der Funktionale aus Satz \ref{linUn}.
 \subsection{Nicht-Symmetrische Kollokation}
+Sei die gleiche Problemstellung wie im vorherigen Kapitel gegeben. Wir wählen jedoch einen anderen Unterraum $V_N$ für die Ansatzfunktionen:
+\begin{align*}
+V_N := \text{span} \{K(x,x_1), \dots, K(x,x_N) \}
+\end{align*}
+Damit bekommen wir folgenden Interpolanten:
+\begin{align*}
+s_u(x) = \sum_{j=1}^N \alpha_j K(x,x_j)
+\end{align*}
+Die $\alpha_i$ erhält man wieder als Lösung des \ac{LGS} $A \alpha = b$ mit
+\begin{align*}
+A := \begin{pmatrix}
+A_L \\ 
+A_B
+\end{pmatrix} 
+\end{align*}
+mit
+\begin{align*}
+(A_L)_{i,j} &= (\delta_{x_i} \circ L)^x K(x,x_j), x_i \in X_{in}, x_j \in X_N\\
+(A_B)_{i,j} &= (\delta_{x_i} \circ B)^x K(x,x_j), x_i \in X_{bd}, x_j \in X_N
+\end{align*}
+und
+$b$ wie im vorherigen Abschnitt.\\
+Der Vorteil dieses Ansatzes ist, dass er wesentlich simpler ist. Er benötigt nur eine Anwendung eines Operators zum Aufstellen von $A$ und keine für den Interpolanten selbst. Ein Nachteil ist aber, dass nicht gewährleistet werden kann, dass die Matrix $A$ invertierbar ist. Es kann also durch schlechte Wahl der Stützstellen passieren, dass das \ac{LGS} nicht lösbar ist.
