@@ -295,4 +295,117 @@ mit
 \end{align*}
 und
 $b$ wie im vorherigen Abschnitt.\\
-Der Vorteil dieses Ansatzes ist, dass er wesentlich simpler ist. Er benötigt nur eine Anwendung eines Operators zum Aufstellen von $A$ und keine für den Interpolanten selbst. Ein Nachteil ist aber, dass nicht gewährleistet werden kann, dass die Matrix $A$ invertierbar ist. Es kann also durch schlechte Wahl der Stützstellen passieren, dass das \ac{LGS} nicht lösbar ist.
+Der Vorteil dieses Ansatzes ist, dass er wesentlich simpler ist. Er benötigt nur eine Anwendung eines Operators zum Aufstellen von $A$ und keine für den Interpolanten selbst. Ein großer Nachteil ist aber, dass nicht gewährleistet werden kann, dass die Matrix $A$ invertierbar ist. Es kann also durch schlechte Wahl der Stützstellen passieren, dass das \ac{LGS} nicht lösbar ist.
+\subsection{Motivation für die gewichtete Kollokation}
+Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Problem, dass wir die Punkte im Inneren und auf dem Rand unseres Definitionsgebietes benötigen. Dies macht zum einen die Implementierung etwas komplexer, da man auch da die Trennung der beiden Mengen programmieren muss, zum anderen werden die Nullrandwerte nicht zwingend genau angenommen. In Abbildung \ref{fig:rand} ist die approximierte Lösung einer \ac{PDE} über den Rand geplottet. Man erkennt deutlich, wo die Stützstellen der Ansatzfunktionen liegen und die Schwankungen zwischen den Stützstellen.
+\begin{figure}[h]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/rand.tex}
+}
+\caption{Plot eines Interpolanten über den Rand des Gebietes}
+\label{fig:rand}
+\end{figure}
+\section{Gewichtete Kollokation}
+Wir wollen nun beide Probleme mit der selben Idee lösen. Dafür führen wir Gewichtsfunktionen ein.
+\begin{definition}
+Sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt. Eine Funktion $w:\mathbb{R}^n \rightarrow \mathbb{R}$ heißt Gewichtsfunktion, wenn gilt:
+\begin{enumerate}
+\item $w(x) > 0$ für alle $x \in \Omega$
+\item $w(x) = 0$ für alle $x \in \partial \Omega$
+\item $w(x) < 0$ für alle $x \in \mathbb{R}^n \setminus \bar{\Omega}$
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Seien $\Omega_1, \Omega_2 \subset \mathbb{R}^n$ zwei offene und beschränkte Mengen und $w_{1}, w_{2}$ die dazugehörigen Gewichtsfunktionen. Dann gilt:
+\begin{enumerate}
+\item Für das Komplement $\Omega^\mathrm{C}$ gilt: $w = -w_1$
+\item Für die Vereinigung $\Omega_1 \cup \Omega_2$ gilt: $w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2}$
+\item Für den Schnitt $\Omega_1 \cap \Omega_2$ gilt: $w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2}$
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item
+\begin{itemize}
+\item
+Sei $x \in \Omega^\mathrm{C}$.
+\begin{align*}
+w(x) = - w_1(x) > 0
+\end{align*}
+\item
+Sei $x \in \partial \Omega^\mathrm{C}$
+\begin{align*}
+w(x) = -w_1(x) = 0
+\end{align*}
+\item
+Sei $x \in \Omega$
+\begin{align*}
+w(x) = -w_1(x) < 0
+\end{align*}
+\end{itemize}
+\item
+\begin{itemize}
+\item
+Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 >0, w_2>0$
+\begin{align*}
+w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} > 0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 > 0, w_2 < 0$
+\begin{align*}
+w =  w_1 + w_2 + \sqrt{w_1^2 + w_2^2} > w_1 + w_2 + \underbrace{\sqrt{w_2^2}}_{=|w_2| = -w_2} = w_1+w_2-w_2 = w_1 > 0
+\end{align*}
+\item
+Sei $x \notin \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 < 0, w_2 < 0$
+\begin{align*}
+&w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} \overset{!}{<} 0\\
+&\Leftrightarrow -w_1 - w_2 > \sqrt{w_1^2 + w_2^2}\\
+&\Leftrightarrow w_1^2 + \underbrace{2w_1 w_2}_{>0} +w_2^2 > w_1^2 + w_2^2
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 = 0, w_2 < 0$
+\begin{align*}
+w =  w_1 + w_2 + \sqrt{w_1^2 + w_2^2} = w_2 + \sqrt{w_2^2} = w_2 - w_2 = 0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 = 0, w_2 > 0$
+\begin{align*}
+w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} = w_2 + \sqrt{w_2^2} > 0
+\end{align*}
+\end{itemize}
+\item
+\begin{itemize}
+\item
+Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 >0, w_2 >0$
+\begin{align*}
+&w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} \overset{!}{>}0\\
+&\Leftrightarrow w_1 + w_2 > \sqrt{w_1^2 + w_2^2}\\
+&\Leftrightarrow (w_1 + w_2)^2 > w_1^2 + w_2^2\\
+&\Leftrightarrow w_1^2 + 2w_1 w_2 + w_2^2 > w_1^2 + w_2^2\\
+&\Leftrightarrow 2w_1 w_2 >0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 >0, w_2 <0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} < w_1 + w_2 - \sqrt{w_1^2} = w_1+w_2-w_1 = w_2 <0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \Omega_2$. $w_1 = 0, w_2 > 0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2+w_2^2} = w_2 - \sqrt{w_2^2} = 0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \Omega_2$. $w_1 = 0, w_2 < 0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} = w_2 - \sqrt{w_2^2} = 2w_2 < 0
+\end{align*}
+\item
+Sei $x \notin \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 < 0, w_2 < 0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} < 0
+\end{align*}
+\end{itemize}
+\end{enumerate}
+\end{proof}
