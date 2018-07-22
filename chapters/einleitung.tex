@@ -66,7 +66,7 @@ Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, in dem 
 \label{Kern}
 Sei $\Omega$ eine nicht leere Menge. Ein reeller Kern auf $\Omega$ ist eine symmetrische Funktion $K: \Omega \times \Omega \rightarrow \mathbb{R}$.\\
 Für alle $N \in \mathbb{N}$ und für eine Menge $X_N = \{x_i\}_{i=1}^N$ ist die Kern Matrix (oder Gram'sche Matrix) $A:= A_{K,X_N} \in \mathbb{R}^{N \times N}$  definiert als $A:=[K(x_i, x_j)]_{i,j=1}^N$.\\
-Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und alle Mengen $X_N$ mit paarweise verschiedenen Elementen $x_{i=1}^N$ gilt, dass die Kern Matrix positiv definit ist. Der Kern $K$ heißt \ac{SPD}, falls die Kern Matrix strikt positiv definit ist.
+Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und alle Mengen $X_N$ mit paarweise verschiedenen Elementen $x_{i=1}^N$ gilt, dass die Kern Matrix positiv semidefinit ist. Der Kern $K$ heißt \ac{SPD}, falls die Kern Matrix positiv definit ist.
 \end{definition}
 
 \begin{example} Sei $\Omega \subset \mathbb{R}^n$. Dann sind folgende Funktionen Kerne auf $\Omega$:\\
@@ -309,7 +309,7 @@ Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Pro
 \section{Gewichtete Kollokation}
 Wir wollen nun beide Probleme mit der selben Idee lösen. Dafür führen wir Gewichtsfunktionen ein.
 \begin{definition}
-Sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt. Eine Funktion $w:\mathbb{R}^n \rightarrow \mathbb{R}$ heißt Gewichtsfunktion, wenn gilt:
+Sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt. Eine Funktion $w:\mathbb{R}^n \rightarrow \mathbb{R}$ heißt Gewichtsfunktion auf $\Omega$, wenn gilt:
 \begin{enumerate}
 \item $w(x) > 0$ für alle $x \in \Omega$
 \item $w(x) = 0$ für alle $x \in \partial \Omega$
@@ -318,6 +318,7 @@ Sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt. Eine Funktion $w:\mathb
 \end{definition}
 
 \begin{theorem}
+\label{thm:Gewicht}
 Seien $\Omega_1, \Omega_2 \subset \mathbb{R}^n$ zwei offene und beschränkte Mengen und $w_{1}, w_{2}$ die dazugehörigen Gewichtsfunktionen. Dann gilt:
 \begin{enumerate}
 \item Für das Komplement $\Omega^\mathrm{C}$ gilt: $w = -w_1$
@@ -408,4 +409,130 @@ w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} < 0
 \end{align*}
 \end{itemize}
 \end{enumerate}
+MENGEN NOCH KORRIGIEREN
 \end{proof}
+
+\begin{example}
+Sei $\Omega = [-1,1] \times [-1,1]$. Dann können wir $\Omega$ schreiben als $\Omega = \Omega_1  \cap \Omega_2$ mit $\Omega_1 = [-1,1] \times [- \infty, \infty), \Omega_2 =   (- \infty, \infty] \times [-1,1]$.
+Dann sind 
+\begin{align*}
+w_1(x,y) &= -x^2 +1\\
+w_2(x,y) &= -y^2 +1 
+\end{align*}
+Gewichtsfunktionen auf $\Omega_1$ bzw, $\Omega_2$. Nach Satz \ref{thm:Gewicht} ist dann die Gewichtsfunktion für $\Omega$ gegeben durch:
+\begin{align*}
+w(x,y) &= w_1(x,y) + w_2(x,y) - \sqrt{w_1(x,y)^2 + w_2(x,y)^2}\\
+&= -x^2 +1 -y^2 +1 - \sqrt{(-x^2+1)^2 + (-y^2+1)^2}\\
+&= -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}
+\end{align*}
+\end{example}
+Wir möchten jetzt Kern und Gewichtsfunktion verknüpfen und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.
+
+\subsection{Symmetrische Kollokation}
+\begin{theorem}
+\label{thm:gewichtKern}
+Sei $\Omega$ eine Menge, $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein \ac{PD} Kern und $g:\Omega \rightarrow \mathbb{R} \setminus {0}$ eine Funktion. Dann ist 
+\begin{align*}
+K'(x,y) := g(x)K(x,y)g(y)
+\end{align*}
+ein Kern und es gilt für den entsprechenden \ac{RKHR}:
+\begin{align*}
+\mathcal{H}_{K'}(\Omega) = g \mathcal{H}_K(\Omega) := \left\{ gf|f \in \mathcal{H}_K(\Omega)\right\}
+\end{align*}
+\end{theorem}
+\begin{proof}
+Wir zeigen zunächst, dass $\tilde{K}(x,y):= g(x)g(y)$ ein \ac{PD} Kern ist.
+
+Die Symmetrie ist offensichtlich, da
+\begin{align*}
+\tilde{K}(x,y)= g(x)g(y) = g(y) g(x) = \tilde{K}(y,x)
+\end{align*}
+
+Zur positiven Definitheit betrachten wir eine Punktmenge $X_N := \{x_i \in \Omega| 1 \le i \le N \}\subset \Omega$. Wir erhalten für die Kernmatrix
+\begin{align*}
+A = 
+\begin{pmatrix}
+g(x_1)g(x_1) & \cdots & g(x_1)g(x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+g(x_N)g(x_1) & \cdots & g(x_N)g(x_N)
+\end{pmatrix} 
+=
+\begin{pmatrix}
+g(x_1) \\ 
+\vdots \\ 
+g(x_N)
+\end{pmatrix}
+\begin{pmatrix}
+g(x_1) & \cdots & g(x_N)
+\end{pmatrix}
+:= \bar{g}\bar{g}^T
+\end{align*}
+und damit für alle $\alpha \neq 0$
+\begin{align*}
+\alpha^T A \alpha = \alpha^T \left(\bar{f}\bar{f}^T\right)\alpha = \left(\alpha^T \bar{f}\right)\left(\bar{f}^T \alpha\right) = \left\| \bar{f}^T\alpha\right\| \geq 0
+\end{align*}
+Also ist $\tilde{K}$ ein \ac{PD} Kern.
+
+Wir müssen noch zeigen, dass $K'(x,y) = f(x) K(x,y) f(y) = K(x,y) \tilde{K}(x,y)$ ein \ac{PD} Kern ist.
+
+Die Symmetrie funktioniert ähnlich wie gerade:
+\begin{align*}
+K'(x,y) = K(x,y) \tilde{K}(x,y) = K(y,x) \tilde{K}(y,x) = K'(y,x)
+\end{align*}
+
+Für die positive Definitheit betrachten wir wieder die Kernmatrix.
+\begin{align*}
+K &= 
+\begin{pmatrix}
+K_1(x_1,x_1)K_2(x_1, x_1) & \cdots & K_1(x_1,x_N)K_2(x_1, x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+K_1(x_N,x_1)K_2(x_N, x_1) & \cdots & K_1(x_N,x_N)K_2(x_N, x_N)
+\end{pmatrix} \\
+&= 
+\begin{pmatrix}
+K_1(x_1,x_1) & \cdots & K_1(x_1,x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+K_1(x_N,x_1) & \cdots & K_1(x_N,x_N)
+\end{pmatrix}
+\circ
+\begin{pmatrix}
+K_2(x_1, x_1) & \cdots & K_2(x_1, x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+K_2(x_N, x_1) & \cdots & K_2(x_N, x_N)
+\end{pmatrix}
+\end{align*}
+,wobei $\circ$ das punktweise Produkt der beiden Matrizen bezeichnet. 
+Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von Schur auch das Produkt der beiden.
+
+Es fehlt noch der zweite Teil des Satzes. Dafür stellen wir zunächst fest, dass 
+\begin{align*}
+K'(x,y) = g(x) K(x,y) g(y) \in g \mathcal{H}_K (\Omega)
+\end{align*}
+Als nächstes zeigen wir, dass $g\mathcal{H}_K(\Omega)$ tatsächlich ein Hilbertraum ist. Sei dafür
+\begin{align*}
+s : \mathcal{H}_{K'} (\Omega) &\rightarrow \mathcal{H}_K (\Omega)\\
+f &\mapsto gf
+\end{align*}
+$s$ ist bijektiv, da $g \neq 0$ ist. Damit können wir auf $\mathcal{H}_K (\Omega)$ eine Norm definieren:
+\begin{align*}
+\| \cdot \|_{\mathcal{H}_K(\Omega)} : \mathcal{H}_K(\Omega) &\rightarrow \mathbb{R}\\
+gf &\mapsto \left\| s^{-1}(gf)\right\|_{\mathcal{H}_K'(\Omega)} = \left\|f\right\|_{\mathcal{H}_K'(\Omega)}
+\end{align*}
+Damit wird $\mathcal{H}_K(\Omega)$ zu einem Hilbertraum. Jetzt zeigen wir noch die Reproduzierbarkeit auf $\mathcal{H}_K(\Omega)$, dann folgt aus der Eindeutigkeit des Kerns aus Satz \ref{thm:EindeutigkeitKern} die Behauptung. Sei dafür $x \in \Omega$ und $h = gf \in \mathcal{H}_K (\Omega)$.
+\begin{align*}
+\left(h, K(\cdot,x) \right)_{\mathcal{H}_K(\Omega)} &= \left(gf, gK'(\cdot, x) g(x)\right)_{\mathcal{H}_K(\Omega)}\\
+&= g(x) \left( gf, gK'(\cdot, x)\right)_{\mathcal{H}_K(\Omega)}\\
+&= g(x) \left( f, K'(\cdot, x)\right)_{\mathcal{H}_K'(\Omega)}\\
+&= g(x) f(x)\\
+&= h(x)
+\end{align*}
+\end{proof}
+
+\begin{remark}
+Der Beweis von Satz \ref{thm:gewichtKern} zeigt allgemeiner, dass für zwei beliebige \ac{PD} Kerne $K_1, K_2: \Omega \times \Omega \rightarrow \mathbb{R}$ und eine Funktion $g: \Omega \rightarrow \mathbb{R}$ auch folgende Funktionen \ac{PD} Kerne sind:
+\begin{align*}
+K(x,y) &:= K_1(x,y)K_2(x,y)\\
+K(x,y) &:= g(x)g(y)
+\end{align*}
+\end{remark}
+\subsection{Nicht-Symmetrische Kollokation}
