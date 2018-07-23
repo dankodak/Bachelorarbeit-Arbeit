@@ -90,9 +90,29 @@ Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funkti
 \end{enumerate}
 \end{definition}
 
-\begin{remark}
-Die Funktion $K$ in einem \ac{RKHR} ist tatsächlich ein Kern nach Definition \ref{Kern}, welcher sogar positiv definit ist.
-\end{remark}
+\begin{theorem}
+\label{thm:EindeutigkeitKern}
+Sei $\mathcal{H}$ ein \ac{RKHR} mit Kern $K$. Dann ist K eindeutig und positiv definit.
+\end{theorem}
+
+\begin{proof}
+Wir zeigen zunächst, dass $K$ ein Kern ist.
+\begin{align*}
+K(x,y) = \left( K(\cdot,y), K(x, \cdot)\right)_\mathcal{H} = \left(K(x,\cdot), K(\cdot,y)\right)_\mathcal{H} = K(y,x)
+\end{align*}
+
+Sei $X_N \subset \Omega$ eine Menge von paarweise verschiedenen Punkten und $\alpha \in \mathbb{R}^N, \alpha \neq 0$. Dann gilt:
+\begin{align*}
+\alpha^T A \alpha &= \sum_{i,j=1}^N \alpha_i \alpha_j K(x_i, x_j)\\
+&= \left(\sum_{i=1}^N \alpha_i K(\cdot,x_i), \sum_{j=1}^N \alpha_j K(\cdot, x_j)\right)_\mathcal{H}\\
+&= \left\| \sum_{i=1}^N \alpha_i K(\cdot,x_i)\right\|_\mathcal{H}^2 \geq 0
+\end{align*}
+
+Seien jetzt $K_1, K_2$ zwei Kerne auf $\mathcal{H}$. Dann gilt für alle $x,y \in \Omega$:
+\begin{align*}
+K_1(x,y) = (K_1(\cdot,y), K_2(x, \cdot))_\mathcal{H} = K_2(x,y)
+\end{align*}
+\end{proof}
 
 Bei Interpolationsproblemen kommen wir jedoch aus der anderen Richung und haben zunächst einen Kern $K$ gegeben und wollen damit eine Funktion approximieren. Also stellt sich die Frage ob zu jedem Kern $K$ ein \ac{RKHR} existiert. Diese wird durch folgenden Satz beantwortet:
 
