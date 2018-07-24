@@ -1,0 +1,93 @@
+\chapter{Standardkollokation}
+\label{cha:Standardkollokation}
+
+\section{Symmetrische Kollokation}
+\label{sec:SymKol}
+Sei wieder $\Omega \subset \mathbb{R}^n$ offen und beschränkt, $L,B$ lineare Differentialoperatoren, $K$ ein positiv definiter Kern und folgendes Problem gegeben:
+\begin{align*}
+L u(x) &= f(x), x \in \Omega \\
+B u(x) &= g(x), x \in \partial \Omega
+\end{align*}
+Für ein $N \in \mathbb{N}$ betrachten wir die Menge $X_N \subset \Omega$, die wir in $N_{in}$ Punkte im Inneren und $N_{bd}$ Punkte auf dem Rand aufteilen. Also haben wir die beiden Mengen
+\begin{align*}
+X_{in} &= X_N \cap \Omega\\
+X_{bd} &= X_N \cap \partial \Omega
+\end{align*}
+Wir definieren die Menge $\Lambda_N = \{\lambda_1, \dots, \lambda_N\}$ an linearen Funktionalen mit
+\begin{align*}
+\lambda_i =
+\begin{cases}
+\delta_{x_i} \circ L & x_i \in \Omega\\
+\delta_{x_i} \circ B & x_i \in \partial \Omega
+\end{cases}
+\end{align*}
+Wir wissen aus Satz \ref{stetig}, dass in $\mathcal{H}_K(\Omega)$ alle $\lambda_i$ stetig und aus Satz \ref{linUn}, dass sie linear unabhängig sind. Als Ansatzfunktionen, also den Unterraum $V_N \subset \mathcal{H}_K(\Omega)$, wählen wir die Riesz Repräsentanten der $\lambda_i$:
+\begin{align*}
+V_N &= \text{span} \{\lambda_1^y K(x,y), \dots , \lambda_N^y K(x,y)\}\\
+&= \text{span} \{\{(\delta_{x_1} \circ L)^y K(x,y), \dots, (\delta_{x_{N_{in}}} \circ L)^y K(x,y)\}\\
+&\cup \{ (\delta_{x_{N_{in} + 1}} \circ B)^y K(x,y), \dots, (\delta_{x_{N}} \circ B)^y K(x,y)\}\}\\
+&=: \text{span} \{\nu_1, \dots, \nu_N\}
+\end{align*}
+, wobei der hochgesetzte Index y bedeutet, dass der Operator auf das zweite Argument angewandt wird.
+
+Damit bekommen wir folgenden Interpolanten:
+\begin{align*}
+s_u(x) &= \sum_{j=1}^N \alpha_j \lambda_j^y K(x,y)\\
+&= \sum_{j=1}^{N_{in}} \alpha_j (\delta_{x_j} \circ L)^y K(x,y) + \sum_{j=N_{in}}^{N} \alpha_j (\delta_{x_j} \circ L)^y K(x,y)
+\end{align*}
+Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A \alpha = b$ mit $A_{i,j} := (\nu_i,\nu_j)_{\mathcal{H}_K}$, da
+\begin{align*}
+\left<\lambda_i, s_u\right> = \left< \lambda_i, \sum_{j=1}^N \alpha_j \nu_j \right> = \sum_{j=1}^N \alpha_j \left< \lambda_i,\nu_j\right> \overset{\ref{Riesz}}{=} \sum_{j=1}^N \alpha_j \left(\nu_j, \nu_i\right)
+\end{align*},
+ also
+\begin{align*}
+\begin{pmatrix}
+A_{L,L} & A_{L,B} \\ 
+A_{L,B}^T & A_{B,B}
+\end{pmatrix} 
+\alpha =
+\begin{pmatrix}
+b_L \\ 
+b_B
+\end{pmatrix} 
+\end{align*}
+mit
+\begin{align*}
+(A_{L,L})_{i,j} &= (\delta_{x_i} \circ L)^x(\delta_{x_j} \circ L)^y K(x,y),x_i, x_j \in X_{in}\\
+(A_{L,B})_{i,j} &= (\delta_{x_i} \circ L)^x(\delta_{x_j} \circ B)^y K(x,y),x_i \in X_{in}, x_j \in X_{bd} \\
+(A_{B,B})_{i,j} &= (\delta_{x_i} \circ B)^x(\delta_{x_j} \circ B)^y K(x,y), x_i, x_j \in X_{bd}
+\end{align*}
+und
+\begin{align*}
+(b_L)_i &= f(x_i), x_i \in X_{in}\\
+(b_B)_i &= g(x_i), x_i \in X_{bd}
+\end{align*}
+Das \ac{LGS} ist lösbar, da A offensichtlich symmetrisch und positiv definit ist, da:
+\begin{align*}
+\alpha^T A \alpha = \sum_{i,j = 1}^N \alpha_i \alpha_j (\nu_i, \nu_j)_{\mathcal{H}_K} = \left(\sum_{i=1}^N \alpha_i \nu_i, \sum_{j=1}^N \alpha_j \nu_j \right)_{\mathcal{H}_K} = \left\| \sum_{i=1}^N \alpha_i \nu_i \right\|_{\mathcal{H}_K}^2 > 0
+\end{align*}
+Für die letzte Abschätzung benutzen wir die lineare Unabhängigkeit der Funktionale aus Satz \ref{linUn}.
+\section{Nicht-Symmetrische Kollokation}
+Sei die gleiche Problemstellung wie im vorherigen Kapitel gegeben. Wir wählen jedoch einen anderen Unterraum $V_N$ für die Ansatzfunktionen:
+\begin{align*}
+V_N := \text{span} \{K(x,x_1), \dots, K(x,x_N) \}
+\end{align*}
+Damit bekommen wir folgenden Interpolanten:
+\begin{align*}
+s_u(x) = \sum_{j=1}^N \alpha_j K(x,x_j)
+\end{align*}
+Die $\alpha_i$ erhält man wieder als Lösung des \ac{LGS} $A \alpha = b$ mit
+\begin{align*}
+A := \begin{pmatrix}
+A_L \\ 
+A_B
+\end{pmatrix} 
+\end{align*}
+mit
+\begin{align*}
+(A_L)_{i,j} &= (\delta_{x_i} \circ L)^x K(x,x_j), x_i \in X_{in}, x_j \in X_N\\
+(A_B)_{i,j} &= (\delta_{x_i} \circ B)^x K(x,x_j), x_i \in X_{bd}, x_j \in X_N
+\end{align*}
+und
+$b$ wie im vorherigen Abschnitt.\\
+Der Vorteil dieses Ansatzes ist, dass er wesentlich simpler ist. Er benötigt nur eine Anwendung eines Operators zum Aufstellen von $A$ und keine für den Interpolanten selbst. Ein großer Nachteil ist aber, dass nicht gewährleistet werden kann, dass die Matrix $A$ invertierbar ist. Es kann also durch schlechte Wahl der Stützstellen passieren, dass das \ac{LGS} nicht lösbar ist.

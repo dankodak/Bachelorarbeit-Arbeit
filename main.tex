@@ -68,8 +68,8 @@
 \maketitle
 \tableofcontents
 
-\include{front/vorwort} % Optional. Ggf. weglassen
-\include{front/kurzfassung}		
+%\include{front/vorwort} % Optional. Ggf. weglassen
+%\include{front/kurzfassung}		
 \include{front/abstract}			
 
 %%%----------------------------------------------------------
@@ -77,29 +77,32 @@
 %%%----------------------------------------------------------
 
 \include{chapters/einleitung}
-\include{chapters/abschlussarbeit}
-\include{chapters/latex}
-\include{chapters/abbildungen}
-\include{chapters/mathematik}
-\include{chapters/literatur}
-\include{chapters/drucken}
-\include{chapters/schluss}
+\include{chapters/grundlagen}
+\include{chapters/standard}
+\include{chapters/gewichtet}
+\include{chapters/implementation}
+%\include{chapters/literatur}
+%\include{chapters/drucken}
+%\include{chapters/schluss}
 
 %%%----------------------------------------------------------
 \appendix                                            % Anhang 
 %%%----------------------------------------------------------
 
-\include{back/anhang_a}	% Technische Ergänzungen
-\include{back/anhang_b}	% Inhalt der CD-ROM/DVD
-\include{back/anhang_c}	% Chronologische Liste der Änderungen
-\include{back/anhang_d}	% Quelltext dieses Dokuments
+%\include{back/anhang_a}	% Technische Ergänzungen
+%\include{back/anhang_b}	% Inhalt der CD-ROM/DVD
+%\include{back/anhang_c}	% Chronologische Liste der Änderungen
+	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\include{back/anhang_d}
 \MakeBibliography                        % Quellenverzeichnis
 %%%----------------------------------------------------------
 
 %%% Messbox zur Druckkontrolle ------------------------------
-\include{back/messbox}
+%\include{back/messbox}
 
 %%%----------------------------------------------------------
 \end{document}

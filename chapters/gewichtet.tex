@@ -1,0 +1,302 @@
+\chapter{Gewichtete Kollokation}
+\label{cha:Gewichtet}
+\section{Motivation für die gewichtete Kollokation}
+Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Problem, dass wir Punkte im Inneren und auf dem Rand unseres Definitionsgebietes benötigen. Dies macht zum einen die Implementierung etwas komplexer, da man auch da die Trennung der beiden Mengen programmieren muss, zum anderen werden die Werte auf dem Rand nicht zwingend genau angenommen. In Abbildung \ref{fig:rand} ist die approximierte Lösung einer \ac{PDE} mit Nullrandwerten über den Rand geplottet. Man erkennt deutlich, wo die Stützstellen der Ansatzfunktionen liegen und auch die Schwankungen zwischen den Stützstellen.
+\begin{figure}[ht]
+\centering
+\resizebox {.8\columnwidth} {!} {
+\input{plots/rand.tex}
+}
+\caption{Plot eines Interpolanten über den Rand des Gebietes}
+\label{fig:rand}
+\end{figure}
+
+Wir stellen zunächst fest, dass es genügt konstante Nullrandwerte in der \ac{PDE} zu betrachten. Sei dafür wieder folgende \ac{PDE} gegeben:
+\begin{align*}
+Lu(x) &= f(x), x\in \Omega\\
+Bu(x) &= g(x), x \in \partial \Omega
+\end{align*}
+Wir können annehmen, dass eine Funktion $\bar{g} \in C^2(\Omega)$ existiert mit $\bar{g}|_{\partial \Omega} = g$. Damit gilt $u = \bar{u} + \bar{g}$ für eine Funktion $\bar{u}$. Eingesetzt erhalten wir
+\begin{align*}
+L\bar{u}(x) + L\bar{g}(x) &= f , x \in \Omega\\
+B\bar{u} + B\bar{g} &= g , x \in \partial \Omega
+\end{align*}
+, was äquivalent dazu ist, dass wir folgende \ac{PDE} nach $\bar{u}$ lösen:
+\begin{align*}
+L\bar{u} &= f + L\bar{g}, x \in \Omega\\
+\bar{u} &= 0, x \in \partial \Omega
+\end{align*}
+\section{Gewichtsfunktionen}
+Wir möchten nun Ansatzfunktionen konstruieren, die auf dem Rand des Gebiets konstant Null sind. Dafür führen wir Gewichtsfunktionen ein.
+\begin{definition}
+Sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt. Eine Funktion $w:\mathbb{R}^n \rightarrow \mathbb{R}$ heißt Gewichtsfunktion auf $\Omega$, wenn gilt:
+\begin{enumerate}
+\item $w(x) > 0$ für alle $x \in \Omega$
+\item $w(x) = 0$ für alle $x \in \partial \Omega$
+\item $w(x) < 0$ für alle $x \in \mathbb{R}^n \setminus \bar{\Omega}$
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+\label{thm:Gewicht}
+Seien $\Omega_1, \Omega_2 \subset \mathbb{R}^n$ zwei offene und beschränkte Mengen und $w_{1}, w_{2}$ die dazugehörigen Gewichtsfunktionen. Dann gilt:
+\begin{enumerate}
+\item Für das Komplement $\Omega^\mathrm{C}$ gilt: $w = -w_1$
+\item Für die Vereinigung $\Omega_1 \cup \Omega_2$ gilt: $w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2}$
+\item Für den Schnitt $\Omega_1 \cap \Omega_2$ gilt: $w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2}$
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item
+\begin{itemize}
+\item
+Sei $x \in \Omega^\mathrm{C}$.
+\begin{align*}
+w(x) = - w_1(x) > 0
+\end{align*}
+\item
+Sei $x \in \partial \Omega^\mathrm{C}$
+\begin{align*}
+w(x) = -w_1(x) = 0
+\end{align*}
+\item
+Sei $x \in \Omega$
+\begin{align*}
+w(x) = -w_1(x) < 0
+\end{align*}
+\end{itemize}
+\item
+\begin{itemize}
+\item
+Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 >0, w_2>0$
+\begin{align*}
+w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} > 0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 > 0, w_2 < 0$
+\begin{align*}
+w =  w_1 + w_2 + \sqrt{w_1^2 + w_2^2} > w_1 + w_2 + \underbrace{\sqrt{w_2^2}}_{=|w_2| = -w_2} = w_1+w_2-w_2 = w_1 > 0
+\end{align*}
+\item
+Sei $x \notin \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 < 0, w_2 < 0$
+\begin{align*}
+&w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} \overset{!}{<} 0\\
+&\Leftrightarrow -w_1 - w_2 > \sqrt{w_1^2 + w_2^2}\\
+&\Leftrightarrow w_1^2 + \underbrace{2w_1 w_2}_{>0} +w_2^2 > w_1^2 + w_2^2
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 = 0, w_2 < 0$
+\begin{align*}
+w =  w_1 + w_2 + \sqrt{w_1^2 + w_2^2} = w_2 + \sqrt{w_2^2} = w_2 - w_2 = 0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 = 0, w_2 > 0$
+\begin{align*}
+w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} = w_2 + \sqrt{w_2^2} > 0
+\end{align*}
+\end{itemize}
+\item
+\begin{itemize}
+\item
+Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 >0, w_2 >0$
+\begin{align*}
+&w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} \overset{!}{>}0\\
+&\Leftrightarrow w_1 + w_2 > \sqrt{w_1^2 + w_2^2}\\
+&\Leftrightarrow (w_1 + w_2)^2 > w_1^2 + w_2^2\\
+&\Leftrightarrow w_1^2 + 2w_1 w_2 + w_2^2 > w_1^2 + w_2^2\\
+&\Leftrightarrow 2w_1 w_2 >0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 >0, w_2 <0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} < w_1 + w_2 - \sqrt{w_1^2} = w_1+w_2-w_1 = w_2 <0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \Omega_2$. $w_1 = 0, w_2 > 0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2+w_2^2} = w_2 - \sqrt{w_2^2} = 0
+\end{align*}
+\item
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \Omega_2$. $w_1 = 0, w_2 < 0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} = w_2 - \sqrt{w_2^2} = 2w_2 < 0
+\end{align*}
+\item
+Sei $x \notin \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 < 0, w_2 < 0$
+\begin{align*}
+w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} < 0
+\end{align*}
+\end{itemize}
+\end{enumerate}
+MENGEN NOCH KORRIGIEREN
+\end{proof}
+
+\begin{example}
+Sei $\Omega = [-1,1] \times [-1,1]$. Dann können wir $\Omega$ schreiben als $\Omega = \Omega_1  \cap \Omega_2$ mit $\Omega_1 = [-1,1] \times [- \infty, \infty), \Omega_2 =   (- \infty, \infty] \times [-1,1]$.
+Dann sind 
+\begin{align*}
+w_1(x,y) &= -x^2 +1\\
+w_2(x,y) &= -y^2 +1 
+\end{align*}
+Gewichtsfunktionen auf $\Omega_1$ bzw, $\Omega_2$. Nach Satz \ref{thm:Gewicht} ist dann die Gewichtsfunktion für $\Omega$ gegeben durch:
+\begin{align*}
+w(x,y) &= w_1(x,y) + w_2(x,y) - \sqrt{w_1(x,y)^2 + w_2(x,y)^2}\\
+&= -x^2 +1 -y^2 +1 - \sqrt{(-x^2+1)^2 + (-y^2+1)^2}\\
+&= -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}
+\end{align*}
+\end{example}
+Wir möchten jetzt Kern und Gewichtsfunktion verknüpfen und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.
+
+\section{Symmetrische Kollokation}
+\begin{theorem}
+\label{thm:gewichtKern}
+Sei $\Omega$ eine Menge, $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein \ac{PD} Kern und $g:\Omega \rightarrow \mathbb{R} \setminus {0}$ eine Funktion. Dann ist 
+\begin{align*}
+K'(x,y) := g(x)K(x,y)g(y)
+\end{align*}
+ein Kern und es gilt für den entsprechenden \ac{RKHR}:
+\begin{align*}
+\mathcal{H}_{K'}(\Omega) = g \mathcal{H}_K(\Omega) := \left\{ gf|f \in \mathcal{H}_K(\Omega)\right\}
+\end{align*}
+\end{theorem}
+\begin{proof}
+Wir zeigen zunächst, dass $\tilde{K}(x,y):= g(x)g(y)$ ein \ac{PD} Kern ist.
+
+Die Symmetrie ist offensichtlich, da
+\begin{align*}
+\tilde{K}(x,y)= g(x)g(y) = g(y) g(x) = \tilde{K}(y,x)
+\end{align*}
+
+Zur positiven Definitheit betrachten wir eine Punktmenge $X_N := \{x_i \in \Omega| 1 \le i \le N \}\subset \Omega$. Wir erhalten für die Kernmatrix
+\begin{align*}
+A = 
+\begin{pmatrix}
+g(x_1)g(x_1) & \cdots & g(x_1)g(x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+g(x_N)g(x_1) & \cdots & g(x_N)g(x_N)
+\end{pmatrix} 
+=
+\begin{pmatrix}
+g(x_1) \\ 
+\vdots \\ 
+g(x_N)
+\end{pmatrix}
+\begin{pmatrix}
+g(x_1) & \cdots & g(x_N)
+\end{pmatrix}
+:= \bar{g}\bar{g}^T
+\end{align*}
+und damit für alle $\alpha \neq 0$
+\begin{align*}
+\alpha^T A \alpha = \alpha^T \left(\bar{f}\bar{f}^T\right)\alpha = \left(\alpha^T \bar{f}\right)\left(\bar{f}^T \alpha\right) = \left\| \bar{f}^T\alpha\right\| \geq 0
+\end{align*}
+Also ist $\tilde{K}$ ein \ac{PD} Kern.
+
+Wir müssen noch zeigen, dass $K'(x,y) = f(x) K(x,y) f(y) = K(x,y) \tilde{K}(x,y)$ ein \ac{PD} Kern ist.
+
+Die Symmetrie funktioniert ähnlich wie gerade:
+\begin{align*}
+K'(x,y) = K(x,y) \tilde{K}(x,y) = K(y,x) \tilde{K}(y,x) = K'(y,x)
+\end{align*}
+
+Für die positive Definitheit betrachten wir wieder die Kernmatrix.
+\begin{align*}
+K &= 
+\begin{pmatrix}
+K_1(x_1,x_1)K_2(x_1, x_1) & \cdots & K_1(x_1,x_N)K_2(x_1, x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+K_1(x_N,x_1)K_2(x_N, x_1) & \cdots & K_1(x_N,x_N)K_2(x_N, x_N)
+\end{pmatrix} \\
+&= 
+\begin{pmatrix}
+K_1(x_1,x_1) & \cdots & K_1(x_1,x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+K_1(x_N,x_1) & \cdots & K_1(x_N,x_N)
+\end{pmatrix}
+\circ
+\begin{pmatrix}
+K_2(x_1, x_1) & \cdots & K_2(x_1, x_N) \\ 
+\vdots & \ddots & \vdots \\ 
+K_2(x_N, x_1) & \cdots & K_2(x_N, x_N)
+\end{pmatrix}
+\end{align*}
+,wobei $\circ$ das punktweise Produkt der beiden Matrizen bezeichnet. 
+Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von Schur auch das Produkt der beiden.
+
+Es fehlt noch der zweite Teil des Satzes. Dafür stellen wir zunächst fest, dass 
+\begin{align*}
+K'(x,y) = g(x) K(x,y) g(y) \in g \mathcal{H}_K (\Omega)
+\end{align*}
+Als nächstes zeigen wir, dass $g\mathcal{H}_K(\Omega)$ tatsächlich ein Hilbertraum ist. Sei dafür
+\begin{align*}
+s : \mathcal{H}_{K'} (\Omega) &\rightarrow \mathcal{H}_K (\Omega)\\
+f &\mapsto gf
+\end{align*}
+$s$ ist bijektiv, da $g \neq 0$ ist. Damit können wir auf $\mathcal{H}_K (\Omega)$ eine Norm definieren:
+\begin{align*}
+\| \cdot \|_{\mathcal{H}_K(\Omega)} : \mathcal{H}_K(\Omega) &\rightarrow \mathbb{R}\\
+gf &\mapsto \left\| s^{-1}(gf)\right\|_{\mathcal{H}_K'(\Omega)} = \left\|f\right\|_{\mathcal{H}_K'(\Omega)}
+\end{align*}
+Damit wird $\mathcal{H}_K(\Omega)$ zu einem Hilbertraum. Jetzt zeigen wir noch die Reproduzierbarkeit auf $\mathcal{H}_K(\Omega)$, dann folgt aus der Eindeutigkeit des Kerns aus Satz \ref{thm:EindeutigkeitKern} die Behauptung. Sei dafür $x \in \Omega$ und $h = gf \in \mathcal{H}_K (\Omega)$.
+\begin{align*}
+\left(h, K(\cdot,x) \right)_{\mathcal{H}_K(\Omega)} &= \left(gf, gK'(\cdot, x) g(x)\right)_{\mathcal{H}_K(\Omega)}\\
+&= g(x) \left( gf, gK'(\cdot, x)\right)_{\mathcal{H}_K(\Omega)}\\
+&= g(x) \left( f, K'(\cdot, x)\right)_{\mathcal{H}_K'(\Omega)}\\
+&= g(x) f(x)\\
+&= h(x)
+\end{align*}
+\end{proof}
+
+\begin{remark}
+Der Beweis von Satz \ref{thm:gewichtKern} zeigt allgemeiner, dass für zwei beliebige \ac{PD} Kerne $K_1, K_2: \Omega \times \Omega \rightarrow \mathbb{R}$ und eine Funktion $g: \Omega \rightarrow \mathbb{R}$ auch folgende Funktionen \ac{PD} Kerne sind:
+\begin{align*}
+K(x,y) &:= K_1(x,y)K_2(x,y)\\
+K(x,y) &:= g(x)g(y)
+\end{align*}
+\end{remark}
+Wir haben jetzt einen neuen Kern konstruiert, der auf dem Rand unseres Definitionsgebiets konstant Null ist. Wenn wir jetzt noch zusätzlich annehmen, dass auch die Ableitung der Gewichtsfunktion wieder ein Gewichtsfunktion ist, können wir die Konstruktion aus Kapitel \ref{sec:SymKol} verwenden. 
+
+Sei also $\Omega \subset \mathbb{R}^n$ offen und beschränkt $K'$ ein \ac{PD} Kern, $g$ eine Gewichtsfunktion auf $\Omega$, für die auch dere Ableitung eine Gewichtsfunktion auf $\Omega$ ist, und folgende \ac{PDE} gegeben:
+\begin{align*}
+Lu(x) &= f(x), x \in \Omega\\
+u(x) &= 0 , x \in \partial \Omega
+\end{align*}
+Für ein $N \in \mathbb{N}$ betrachten wir die Menge $X_N \subset \Omega^\circ$.
+
+Wir definieren die Menge $\Lambda_N = \left\{ \lambda_1, \dots, \lambda_N\right\}$ mit $\lambda_i =  \delta_{x_i} \circ L$. Diese Funktionale sind im von $K(x,y) := g(x) K'(x,y) g(y)$ erzeugten \ac{RKHR} stetig. Also wählen wir 
+\begin{align*}
+V_N &= \text{span} \left\{\lambda_1^y ,K(x,y), \dots, \lambda_N^y, K(x,y)\right\}\\
+&= \text{span} \left\{(\delta_{x_1} \circ L)^y g(x) K'(x,y) g(y), \dots, (\delta_{x_N} \circ L)^y g(x) K'(x,y) g(y)\right\}
+\end{align*}
+als Ansatzfunktionen.
+
+Damit bekommen wir folgenden Interpolanten:
+\begin{align*}
+s_u(x) &= \sum_{j=1}^N \alpha_j \lambda_j^y K(x,y)\\
+&= \sum_{j=1}^N \alpha_j (\delta_{x_j} \circ L)^y( g(x)K'(x,y)g(y))
+\end{align*}
+
+Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A\alpha = b$ mit 
+\begin{align*}
+A_{i,j} &= (\delta_{x_i} \circ L)^x (\delta_{x_j} \circ L)^y (g(x)K'(x,y)g(y))\\
+b_i &= f(x_i)
+\end{align*}
+
+Die Matrix $A$ ist wieder symmetrisch und positiv definit und das \ac{LGS} ist damit lösbar.
+\section{Nicht-Symmetrische Kollokation}
+Wie bei der Standardkollokation können wir einen wesentlich simpleren Ansatz wählen. Es sei die gleiche Problemstellung wie gerade gegeben, allerdings haben dieses Mal keine zusätzliche Anforderung an die Ableitung der Gewichtsfunktion. Wir wählen 
+\begin{align*}
+V_N:= \text{span} \left\{g(x)K'(x,x_1), \dots, g(x)K'(x,x_N)\right\}
+\end{align*}
+als Ansatzfunktionen und bekommen damit folgenden Interpolanten:
+\begin{align*}
+s_u (x) = \sum_{j=1}^N \alpha_j g(x)K'(x,x_j)
+\end{align*}
+Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A\alpha = b$ mit 
+\begin{align*}
+A_{i,j} &= (\delta_{x_i} \circ L)^x (g(x) K(x,x_j))\\
+b_i &= f(x_i)
+\end{align*}
+
+Erneut kann man keine Aussage über die Lösbarkeit des \ac{LGS} treffen.
