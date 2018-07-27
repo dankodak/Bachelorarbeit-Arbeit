@@ -1,3 +1,21 @@
 \chapter{Implementation}
 \label{cha:Implementation}
 
+\begin{algorithm}
+\caption{Grundlegender Algorithmus}
+\begin{algorithmic}[1]
+\Function{SolvePDE}{$X, Xte,f$}
+\State $b \gets f(X)$
+\State $gamma \gets \text{list of parameters}$
+\State $minError \gets \infty$
+\For{$i$ in $gamma$}
+	\State $A \gets$ \Call{collocationMatrix}{$X, gamma$}
+	\State $error \gets \Call{calculateError}{X, Xte, f, gamma}$
+	\If{$error < minError$}
+		$retVal \gets b$
+	\EndIf
+\EndFor
+\State \Return{b}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
