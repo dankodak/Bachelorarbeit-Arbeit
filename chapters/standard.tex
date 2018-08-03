@@ -28,7 +28,6 @@ V_N &= \text{span} \{\lambda_1^y K(x,y), \dots , \lambda_N^y K(x,y)\}\\
 &\cup \{ (\delta_{x_{N_{in} + 1}} \circ B)^y K(x,y), \dots, (\delta_{x_{N}} \circ B)^y K(x,y)\}\}\\
 &=: \text{span} \{\nu_1, \dots, \nu_N\}
 \end{align*}
-, wobei der hochgesetzte Index y bedeutet, dass der Operator auf das zweite Argument angewandt wird.
 
 Damit bekommen wir folgenden Interpolanten:
 \begin{align*}
@@ -37,7 +36,7 @@ s_u(x) &= \sum_{j=1}^N \alpha_j \lambda_j^y K(x,y)\\
 \end{align*}
 Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A \alpha = b$ mit $A_{i,j} := (\nu_i,\nu_j)_{\mathcal{H}_K}$, da
 \begin{align*}
-\left<\lambda_i, s_u\right> = \left< \lambda_i, \sum_{j=1}^N \alpha_j \nu_j \right> = \sum_{j=1}^N \alpha_j \left< \lambda_i,\nu_j\right> \overset{\ref{Riesz}}{=} \sum_{j=1}^N \alpha_j \left(\nu_j, \nu_i\right)
+\langle \lambda_i, s_u\rangle = \langle \lambda_i, \sum_{j=1}^N \alpha_j \nu_j \rangle = \sum_{j=1}^N \alpha_j \langle \lambda_i,\nu_j\rangle \overset{\ref{Riesz}}{=} \sum_{j=1}^N \alpha_j \left(\nu_j, \nu_i\right)
 \end{align*},
  also
 \begin{align*}
@@ -89,5 +88,6 @@ mit
 (A_B)_{i,j} &= (\delta_{x_i} \circ B)^x K(x,x_j), x_i \in X_{bd}, x_j \in X_N
 \end{align*}
 und
-$b$ wie im vorherigen Abschnitt.\\
-Der Vorteil dieses Ansatzes ist, dass er wesentlich simpler ist. Er benötigt nur eine Anwendung eines Operators zum Aufstellen von $A$ und keine für den Interpolanten selbst. Ein großer Nachteil ist aber, dass nicht gewährleistet werden kann, dass die Matrix $A$ invertierbar ist. Es kann also durch schlechte Wahl der Stützstellen passieren, dass das \ac{LGS} nicht lösbar ist.
+$b$ wie im vorherigen Abschnitt.
+
+Bei diesem Ansatz kann jedoch nicht garantiert werden, dass die Matrix $A$ invertierbar ist und damit, dass das \ac{LGS} auch lösbar ist. Allerdings ist die Konstruktion eines Gegenbeispiels aufwendig und es ist in der Praxis unwahrscheinlich, dass man auf einen solchen Fall trifft. Man findet ein Beispiel in \textcite{Hon.2001}.

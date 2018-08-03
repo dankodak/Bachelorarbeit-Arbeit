@@ -1,21 +1,54 @@
 \chapter{Implementation}
 \label{cha:Implementation}
 
-\begin{algorithm}
-\caption{Grundlegender Algorithmus}
-\begin{algorithmic}[1]
-\Function{SolvePDE}{$X, Xte,f$}
-\State $b \gets f(X)$
-\State $gamma \gets \text{list of parameters}$
-\State $minError \gets \infty$
-\For{$i$ in $gamma$}
-	\State $A \gets$ \Call{collocationMatrix}{$X, gamma$}
-	\State $error \gets \Call{calculateError}{X, Xte, f, gamma}$
-	\If{$error < minError$}
-		$retVal \gets b$
-	\EndIf
-\EndFor
-\State \Return{b}
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
+In diesem Kapitel möchten wir uns die Implementation der bisher theoretisch hergeleiteten Verfahren anschauen.
+
+Dazu müssen wir zunächst einen geeigneten Kern wählen. Wir erinnern uns an Beispiel \ref{ex:Kern}, dass die Kerne einen Parameter $\gamma$ besitzen. In Abbildung \ref{fig:Kerne} ist der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet. So können wir eine ganze Familie an Kernen wählen, über die wir leicht iterieren können.
+\begin{figure}[h]
+\centering
+\resizebox {.65\columnwidth} {!} {
+\input{plots/KernVergleich.tex}
+}
+\caption{Plots verschiedener Kerne}
+\label{fig:Kerne}
+\end{figure}
+
+So erhält man nach Wahl von Kollokations- und Testpunkten den Algorithmus \ref{alg:Grund}.
+\input{code/grundlegend.tex}
+
+Einige Anmerkungen zu dem Algorithmus:
+\begin{itemize}
+\item
+Kollokationspunkte sind die Punkte, die wir bereits aus der theoretischen Herleitung kennen. Also die Punkte, an denen wir die Interpolation durchführen.\\
+Testpunkte sind die Punkte, an denen wir den Fehler unserer Lösung bestimmen.
+\item
+$f$ und $g$ bezeichnen die rechte Seite der zu lösenden \gls{PDE}.
+\item
+Der Algorithmus funktioniert so für die Standard und für die gewichtete Kollokation. Angepasst werden müssen nur die Unterfunktionen zum Aufstellen der rechten Seite und der Kollokationsmatrix.
+\end{itemize}
+Es ist noch offen wie wir die Kollokations- und Testpunkte und den Fehler in jeder Iteration bestimmen. Zuerst betrachten wir Letzteres. Dafür möchten wir zwei Möglichkeiten vorstellen:
+\begin{itemize}
+\item
+Falls wir eine analytisch bestimmte Lösung der \gls{PDE} haben sollten, können wir diese mit der approximierten vergleichen. Sei dazu $u$ die analytische Lösung und $s_u$ die approximierte. Den Fehler bekommen wir dann mit
+\begin{align*}
+e = \max_{x \in Xte} \left(\left\| u(x) - s_u(x) \right\| \right)
+\end{align*}
+\item
+Eine analytische Lösung werden wir jedoch meist nicht besitzen und können die erste Methode somit nicht anwenden. Wir haben aber noch die Möglichkeit den Fehler in der Ableitung zu betrachten. Sei dafür $L$ der Differentialoperator aus der \gls{PDE}, $f$ die rechte Seite in der \gls{PDE} und $s_u$ die approximierte Lösung. Den Fehler bekommen wir dann mit
+\begin{align*}
+e = \max_{x \in Xte} \left(\left\| f(x) - L s_u(x) \right\| \right)
+\end{align*}
+$Ls_u$ lässt sich aufgrund der Linearität des Differentialoperators leicht berechnen. So kann man ausnutzen, dass $s_u$ eine Linearkombination aus den einzelnen Basisfunktionen ist und kann $L$ auf die einzelnen Summanden anwenden.
+\end{itemize}
+
+Kommen wir zur Bestimmung der Kollokationspunkte. Auch hier möchten wir mehrere Möglichkeiten vorstellen.
+\begin{itemize}
+\item
+Eine einfache Möglichkeit ist die Kollokationspunkte zufällig zu wählen.
+\item
+Man kann die Kollokationspunkte auch als Gitter über das Definitionsgebiet legen.
+\item
+Etwas komplizierter ist eine Greedy-Punktwahl. Man berechnet eine Lösung und bestimmt mit einem geeigneten Fehlerschätzer den Punkt mit dem größten Fehler. Dort setzt man einen neuen Kollokationspunkt und wiederholt das Verfahren.
+\end{itemize}
+
+Die Wahl der Testpunkte spielt keine all zu große Rolle, man sollte nur beachten, dass die möglichst disjunkt von den Kollokationszentren ist. NÄCHSTES KAPITEL OVERFITTING

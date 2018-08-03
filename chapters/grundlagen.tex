@@ -1,19 +1,20 @@
-\chapter{Kernfunktionen und reproduzierbare Kern Hilberträume}
+\chapter{Kernfunktionen und reproduzierende Kern Hilberträume}
 \label{cha:Grundlagen}
 
 Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Diese ist zunächst aber nur für die Punktauswertung bekannt. Das genügt uns hier nicht mehr, da wir auch Ableitungen betrachten müssen und benötigen daher eine verallgemeinerte Form.
 
 \begin{definition}
-Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ der gesuchte Interpolant von $u$, wenn gilt, dass
+Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein Interpolant von $u$, wenn gilt, dass
 \begin{align*}
 \langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle , 1\le i \le N
 \end{align*}
+, wobei wir $\langle \lambda_i, u \rangle := \lambda_i(u)$ für die Anwendung des Funktionals schreiben.
 \end{definition}
 
 \begin{example}
 \begin{itemize}
 \item
-Sei $\Omega \subset \mathbb{R}^d$ ,$X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum mit Funktionen , in dem die Punktauswertungfunktionale $\delta_{x_i}(f) = f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$.
+Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum mit Funktionen , in dem die Punktauswertungfunktionale $\delta_{x_i}(f) = f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$.
 \begin{align*}
 s(x_i) = \langle \delta_{x_i},s \rangle = \langle \delta_{x_i},s_u \rangle = s_u(x_i), 1\le i \le N
 \end{align*}
@@ -25,6 +26,7 @@ Sei eine \ac{PDE} gegeben:
 L u(x) &= f(x), x \in \Omega \\
 B u(x) &= g(x), x \in \partial \Omega
 \end{align*}
+, wobei $L$ ein linearer Differentialoperator und $B$ ein linearer Auswertungsoperator ist.
 Sei $X_N \subset \Omega$ eine Menge an Kollokationspunkten. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
 \begin{align*}
 L s_u(x_i) &= L u(x_i) = f(x_i), x_i \in \Omega \\
@@ -55,6 +57,7 @@ Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und 
 \end{definition}
 
 \begin{theorem}
+\label{thm:Kombi}
 Sei $\Omega$ eine nicht leere Menge, $K_1, K_2:\Omega \rightarrow \mathbb{R}$ zwei \ac{PD} Kerne auf $\Omega$ und $a \geq 0$. Dann sind folgende Funktionen wieder \ac{PD} Kerne auf $\Omega$:
 \begin{enumerate}
 \item
@@ -137,10 +140,13 @@ Mit dem bisher gezeigten wissen wir, dass die endliche Summe $\sum_{i=0}^n a_i K
 , da das Argument des Grenzwerts immer größer als Null ist und die Reihe für $\|K_1(x,y)\|_\infty \leq \rho $ konvergiert.
 \end{enumerate}
 \end{proof}
-\begin{example} Sei $\Omega \subset \mathbb{R}^n$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
+
+\begin{example}
+\label{ex:Kern}
+Sei $\Omega \subset \mathbb{R}^n$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
 \begin{itemize}
-\item $K(x,y) := (x,y)$
-\item $K(x,y) := \exp(-\gamma \|x-y\|),\gamma > 0$ ist sogar \ac{SPD}
+\item $K(x,y) := \gamma^{-1} (x,y), \gamma > 0$
+\item $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right),\gamma > 0$ ist sogar \ac{SPD}
 \end{itemize}
 \end{example}
 
@@ -149,10 +155,10 @@ Mit dem bisher gezeigten wissen wir, dass die endliche Summe $\sum_{i=0}^n a_i K
 \item
 Die Kern Matrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
 \item
-QUELLE SUCHEN
+Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
 \end{itemize}
 \end{proof}
-Wir kommen mit der Definition von Kernen direkt zu den gesuchten Hilberträumen.
+Wir kommen mit der Definition von Kernen direkt zu den gesuchten Hilberträumen. Diese sind zunächst ohne Bezug zu Kernen definiert, wir werden aber feststellen, dass sie eng miteinander verknüpft sind.
 
 \begin{definition}[Reproduzierender Kern Hilbertraum]
 Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodut $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ \ac{RKHR} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
@@ -170,7 +176,9 @@ Sei $\mathcal{H}$ ein \ac{RKHR} mit Funktion $K$. Dann ist $K$ ein Kern, eindeut
 \begin{proof}
 Wir zeigen zunächst, dass $K$ tatsächlich ein Kern ist.
 \begin{align*}
-K(x,y) = \left( K(\cdot,y), K(x, \cdot)\right)_\mathcal{H} = \left(K(x,\cdot), K(\cdot,y)\right)_\mathcal{H} = K(y,x)
+K(x,y) &= \left( K(\cdot,y), K(x, \cdot)\right)_\mathcal{H} &&\text{(Reproduzierbarkeit)}\\
+&= \left(K(x,\cdot), K(\cdot,y)\right)_\mathcal{H}\\
+&= K(y,x) &&\text{(Reproduzierbarkeit)}
 \end{align*}
 
 Sei $X_N \subset \Omega$ eine Menge von paarweise verschiedenen Punkten und $\alpha \in \mathbb{R}^N, \alpha \neq 0$. Dann gilt:
@@ -180,22 +188,25 @@ Sei $X_N \subset \Omega$ eine Menge von paarweise verschiedenen Punkten und $\al
 &= \left(\sum_{i=1}^N \alpha_i K(\cdot,x_i), \sum_{j=1}^N \alpha_j K(\cdot, x_j)\right)_\mathcal{H}\\
 &= \left\| \sum_{i=1}^N \alpha_i K(\cdot,x_i)\right\|_\mathcal{H}^2 \geq 0
 \end{align*}
-, wobei in der zweiten Gleichheit die Reproduzierbarkeit des Kerns benutzt wurde. $K$ ist somit \ac{PD}.
+$K$ ist somit \ac{PD}.
 
 Seien jetzt $K_1, K_2$ zwei Kerne auf $\mathcal{H}$. Dann gilt für alle $x,y \in \Omega$:
 \begin{align*}
-K_1(x,y) = (K_1(\cdot,y), K_2(x, \cdot))_\mathcal{H} = K_2(x,y)
+K_1(x,y) &= (K_1(\cdot,y), K_2(x, \cdot))_\mathcal{H} &&\text{(Reproduzierbarkeit von }K_1\text{)}\\
+&= K_2(x,y) &&\text{(Reproduzierbarkeit von }K_2\text{)}
 \end{align*}
 Also ist $K$ eindeutig.
 \end{proof}
 
 Bei Interpolationsproblemen kommen wir jedoch aus der anderen Richtung und haben Ansatzfunktionen, also einen Kern $K$, gegeben und wollen damit eine Funktion approximieren. Also stellt sich die Frage ob zu jedem Kern $K$ ein \ac{RKHR} existiert. Diese wird durch folgenden Satz beantwortet:
 
-\begin{theorem}[Moore, Aronszajn]
+\begin{theorem}
 Sei $\Omega$ eine nicht leere Menge und $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein positiv definiter Kern. Dann existiert genau ein \ac{RKHR} $\mathcal{H}_K (\Omega)$ mit reproduzierendem Kern $K$.
 \end{theorem}
 \begin{proof}
-SIEHE SKRIPT!
+Einen Beweis findet man in \textcite[Kap. 10.2]{Wendland.2005}. 
+
+Man betrachtet dort zunächst den $\text{span} \{K(\cdot,y), y \in \Omega \}$ und stellt fest, dass dieser mit einem geeigneten Innenprodukt ein Prähilbertraum ist. Der Abschluss dessen ist der gesuchte \ac{RKHR}.
 \end{proof}
 
 Wir wollen an einen Satz aus der Funktionalanalysis erinnern, den wir oft brauchen werden.
@@ -208,7 +219,7 @@ Sei $\mathcal{H}$ ein Hilbertraum und $\lambda \in \mathcal{H}'$ ein beschränkt
 Wir nennen $\nu_\lambda$ den Riesz-Repräsentanten von $\lambda$.
 \end{theorem}
 
-Wir betrachten nun die Stetigkeit der benötigten Funktionale. Zunächst die Punktauswertung.
+Zur Wohldefiniertheit unserer Interpolation benötigen wir die Stetigkeit aller benutzten Funktionale. Zunächst betrachten wir die Punktauswertungsfunktionale.
 
 \begin{theorem}
 \label{stetig}
@@ -255,9 +266,7 @@ und damit dass $\lambda := \delta_x \circ D^a$ stetig ist.
 \end{theorem}
 
 \begin{proof}
-BEWEIS IST LANG
-
-Der Beweis der Stetigkeit von $\lambda := \delta_x \circ D^a$ verläuft komplett analog zum Beweis von \ref{stetig}.\ref{stetig1}.
+Einen Beweis des ersten Teils findet man in \textcite[Theorem 10.44]{Wendland.2005} und eine Beweis des zweiten Teils in \textcite[Proposition 3.14]{Santin.2017}. Der Beweis der Stetigkeit von $\lambda := \delta_x \circ D^a$ verläuft komplett analog zum Beweis von \ref{stetig}.\ref{stetig1}.
 \end{proof}
 
 In Satz \ref{stetig} haben wir gesehen, wie der Riesz-Repräsentant des Auswertungsfunktionals aussieht. Dies wollen wir jetzt auf alle Funktionale verallgemeinern.
@@ -270,9 +279,12 @@ Sei $K$ ein \ac{PD} Kern auf $\Omega \neq \emptyset$. Sei $\lambda \in \mathcal{
 \begin{proof}
 Da $\lambda \in \mathcal{H}_K(\Omega)$, existiert ein Riesz-Repräsentant $\nu_\lambda \in \mathcal{H}_K(\Omega)$ mit $\langle \lambda ,f \rangle = \left(f, \nu_\lambda\right)_{\mathcal{H}_K(\Omega)}$. Außerdem ist $f_x(y) := K(x,y)$ für alle $x \in \Omega$ eine Funktion in $\mathcal{H}_K (\Omega)$. Damit bekommen wir:
 \begin{align*}
-\langle \lambda^y, K(x,y) \rangle = \langle \lambda,f_x \rangle = \left(f_x, \nu_\lambda\right)_{\mathcal{H}_K (\Omega)} = \left(K(\cdot,x), \nu_\lambda\right)_{\mathcal{H}_K (\Omega)} = \nu_\lambda(x)
+\langle \lambda^y, K(x,y) \rangle &= \langle \lambda,f_x \rangle\\ 
+&= \left(f_x, \nu_\lambda\right)_{\mathcal{H}_K (\Omega)} &&\text{(Riesz-Repräsentant)}\\ 
+&= \left(K(\cdot,x), \nu_\lambda\right)_{\mathcal{H}_K (\Omega)}\\ 
+&= \nu_\lambda(x) &&\text{(Reproduzierbarkeit)}
 \end{align*}
-Damit gilt $\nu_\lambda(\cdot) = \lambda^y K(\cdot,y)$ und auch $\lambda^y K(\cdot,y) \in \mathcal{H}_K (\Omega)$.
+Damit gilt $\nu_\lambda(\cdot) = \lambda^y K(\cdot,y)$ und damit ist $\lambda^yK(\cdot,y)$ der Riesz-Repräsentant von $\nu_\lambda$. Da $\nu_\lambda \in \mathcal{H}_K (\Omega)$ gilt auch $\lambda^y K(\cdot,y) \in \mathcal{H}_K (\Omega)$.
 \end{proof}
 
 Jetzt fehlt nur noch die lineare Unabhängigkeit aller verwendeten Funktionale. Zunächst die der Auswertungsfunktionale:
@@ -308,7 +320,7 @@ Sei $K$ ein translationsinvarianter Kern auf $\mathbb{R}^d$, also $K(x,y) = \Phi
 \end{theorem}
 
 \begin{proof}
-BUCH ODER SKRIPT
+Den Beweis findet man in \textcite[Theorem 16.4]{Wendland.2005}.
 \end{proof}
 
 

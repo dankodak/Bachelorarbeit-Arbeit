@@ -1,0 +1,22 @@
+\begin{algorithm}
+\caption{Grundlegender Algorithmus}
+\label{alg:Grund}
+\begin{algorithmic}[1]
+
+\Function{SolvePDE}{$X, Xte,f, g$}
+\State $b \gets \Call{RightSide}{X,f,g}$
+\State $gamma \gets \text{list of parameters}$
+\State $minError \gets \infty$
+\For{$i$ in $gamma$}
+	\State $A \gets \Call{CollocationMatrix}{X, i}$
+	\State $alpha \gets A\backslash b$
+	\State $error \gets \Call{CalculateError}{X, Xte, f, i}$
+	\If{$error < minError$}
+		\State $retVal \gets alpha$
+		\State $minError \gets error$
+	\EndIf
+\EndFor
+\State \Return{b}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
