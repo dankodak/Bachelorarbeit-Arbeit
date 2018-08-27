@@ -1,6 +1,6 @@
 ;; This logfile was generated automatically by `xindy'
-;; at 03.08.2018  17:03:09
-;; Indexstyle: "C:\\Users\\Dani\\Documents\\Bachelorarbeit\\lMrkuGr18G", Rawindex: "C:\\Users\\Dani\\Documents\\Bachelorarbeit\\ejlKthqxnB", Output: "iswstud.acr"
+;; at 05.08.2018  21:15:23
+;; Indexstyle: "C:\\Users\\Dani\\Documents\\Bachelorarbeit\\TQMHmEg0JK", Rawindex: "C:\\Users\\Dani\\Documents\\Bachelorarbeit\\9W5amHE1FN", Output: "iswstud.acr"
 
 
 Building indexentry-tree:

@@ -4,14 +4,15 @@
 Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Diese ist zunächst aber nur für die Punktauswertung bekannt. Das genügt uns hier nicht mehr, da wir auch Ableitungen betrachten müssen und benötigen daher eine verallgemeinerte Form.
 
 \begin{definition}
-Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein Interpolant von $u$, wenn gilt, dass
+Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
 \begin{align*}
-\langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle , 1\le i \le N
+\langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle , 1\le i \le N,
 \end{align*}
-, wobei wir $\langle \lambda_i, u \rangle := \lambda_i(u)$ für die Anwendung des Funktionals schreiben.
+wobei wir $\langle \lambda_i, u \rangle := \lambda_i(u)$ für die Anwendung des Funktionals schreiben.
 \end{definition}
 
 \begin{example}
+$\mbox{}$
 \begin{itemize}
 \item
 Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum mit Funktionen , in dem die Punktauswertungfunktionale $\delta_{x_i}(f) = f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$.
@@ -24,9 +25,9 @@ Mit $\lambda_i := \delta_{x_i} \circ D^a$ für einen Multiindex $a \in \mathbb{N
 Sei eine \ac{PDE} gegeben:
 \begin{align*}
 L u(x) &= f(x), x \in \Omega \\
-B u(x) &= g(x), x \in \partial \Omega
+B u(x) &= g(x), x \in \partial \Omega,
 \end{align*}
-, wobei $L$ ein linearer Differentialoperator und $B$ ein linearer Auswertungsoperator ist.
+wobei $L$ ein linearer Differentialoperator und $B$ ein linearer Randwertoperator ist.
 Sei $X_N \subset \Omega$ eine Menge an Kollokationspunkten. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
 \begin{align*}
 L s_u(x_i) &= L u(x_i) = f(x_i), x_i \in \Omega \\
@@ -35,9 +36,9 @@ B s_u(x_i) &= B u(x_i) = g(x_i), x_i \in \partial \Omega
 \end{itemize}
 \end{example}
 
-Wir müssen einen geeigneten Ansatz wählen um das Interpolationsproblem zu lösen, also einen $N$-dimensionalen Unterraum $V_N := \text{span}\{\nu_1, \dots, \nu_N\} \subset \mathcal{H}$ und fordern, dass $s_u \in V_N$, also 
+Wir müssen einen geeigneten diskreten Ansatz wählen um das Interpolationsproblem numerisch zu lösen, also einen $N$-dimensionalen Unterraum $V_N := \text{span}\{\nu_1, \dots, \nu_N\} \subset \mathcal{H}$ und fordern, dass $s_u \in V_N$, also 
 \begin{align*}
-s_u(x) := \sum_{j=1}^N \alpha_j \nu_j(x), x \in \Omega, \alpha \in \mathbb{R}^N
+s_u(x) := \sum_{j=1}^N \alpha_j \nu_j(x), x \in \Omega, \alpha \in \mathbb{R}^N.
 \end{align*}
 Also lassen sich die Interpolationsbedingungen schreiben als:
 \begin{align*}
@@ -51,9 +52,9 @@ Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, in dem 
 \label{Kern}
 Sei $\Omega$ eine nicht leere Menge. Ein reeller Kern auf $\Omega$ ist eine symmetrische Funktion $K: \Omega \times \Omega \rightarrow \mathbb{R}$.
 
-Für alle $N \in \mathbb{N}$ und für eine Menge $X_N = \{x_i\}_{i=1}^N$ ist die Kern Matrix (oder Gram'sche Matrix) $A:= A_{K,X_N} \in \mathbb{R}^{N \times N}$  definiert als $A:=[K(x_i, x_j)]_{i,j=1}^N$.
+Für alle $N \in \mathbb{N}$ und für eine Menge $X_N = \{x_i\}_{i=1}^N \subset \Omega$ ist die Kern Matrix (oder Gram'sche Matrix) $A:= A_{K,X_N} \in \mathbb{R}^{N \times N}$  definiert als $A:=[K(x_i, x_j)]_{i,j=1}^N$.
 
-Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und alle Mengen $X_N$ mit paarweise verschiedenen Elementen $\left\{x_i\right\}_{i=1}^N$ gilt, dass die Kern Matrix positiv semidefinit ist. Der Kern $K$ heißt \ac{SPD}, falls die Kern Matrix positiv definit ist.
+Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und alle Mengen $X_N$ mit paarweise verschiedenen Elementen $\left\{x_i\right\}_{i=1}^N$ gilt, dass die Kern Matrix positiv semidefinit ist. Der Kern $K$ heißt \ac{SPD}, falls die Kern Matrix für alle solche $N$ und $X_N$ positiv definit ist.
 \end{definition}
 
 \begin{theorem}
@@ -67,7 +68,7 @@ $K(x,y) := aK_1 (x,y)$
 \item
 $K(x,y) := K_1(x,y)K_2(x,y)$
 \item
-$K(x,y) := \sum_{i=0}^\infty a_i K_1(x,y)^i, a_i \geq 0$ mit Konvergenzradius $\rho > 0$ und $ \| K_1 (x,y) \|_\infty \leq \rho$
+$K(x,y) := \sum_{i=0}^\infty a_i K_1(x,y)^i, a_i \geq 0$ mit Konvergenzradius $\rho > 0$ unter der Bedingung $ \| K_1 (x,y) \|_\infty \leq \rho$
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -128,49 +129,52 @@ K_1(x_N,x_1) & \cdots & K_1(x_N,x_N)
 K_2(x_1, x_1) & \cdots & K_2(x_1, x_N) \\ 
 \vdots & \ddots & \vdots \\ 
 K_2(x_N, x_1) & \cdots & K_2(x_N, x_N)
-\end{pmatrix}
+\end{pmatrix},
 \end{align*}
-,wobei $\circ$ das punktweise Produkt der beiden Matrizen bezeichnet. 
+wobei $\circ$ das Hadamard-Produkt der beiden Matrizen bezeichnet. 
 Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von Schur auch das Produkt der beiden.
 \item
 Mit dem bisher gezeigten wissen wir, dass die endliche Summe $\sum_{i=0}^n a_i K_1(x,y)^i$ positiv definit ist. Sei $A_n$ die dazugehörige Kern Matrix. Dann gilt für beliebiges $\alpha \neq 0$
 \begin{align*}
-\alpha^T A \alpha = \lim_{n \rightarrow \infty} \alpha^T A_n \alpha \geq 0
+\alpha^T A \alpha = \lim_{n \rightarrow \infty} \alpha^T A_n \alpha \geq 0,
 \end{align*}
-, da das Argument des Grenzwerts immer größer als Null ist und die Reihe für $\|K_1(x,y)\|_\infty \leq \rho $ konvergiert.
+da das Argument des Grenzwerts immer größer als Null ist und die Reihe für $\|K_1(x,y)\|_\infty \leq \rho $ konvergiert.
 \end{enumerate}
 \end{proof}
 
 \begin{example}
 \label{ex:Kern}
-Sei $\Omega \subset \mathbb{R}^n$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
-\begin{itemize}
-\item $K(x,y) := \gamma^{-1} (x,y), \gamma > 0$
-\item $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right),\gamma > 0$ ist sogar \ac{SPD}
-\end{itemize}
+Sei $\Omega \subset \mathbb{R}^n$ und $\gamma \in \mathbb{R}^+$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
+\begin{enumerate}
+\item $K(x,y) := \gamma^{-1} (x,y)$
+\item $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}
+\end{enumerate}
 \end{example}
 
 \begin{proof}
-\begin{itemize}
+$\mbox{}$
+\begin{enumerate}
 \item
 Die Kern Matrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
 \item
 Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
-\end{itemize}
+\end{enumerate}
 \end{proof}
 Wir kommen mit der Definition von Kernen direkt zu den gesuchten Hilberträumen. Diese sind zunächst ohne Bezug zu Kernen definiert, wir werden aber feststellen, dass sie eng miteinander verknüpft sind.
 
 \begin{definition}[Reproduzierender Kern Hilbertraum]
-Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodut $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ \ac{RKHR} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
+Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodut $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ einen \glslink{RKHR}{Reproduzierenden Kern Hilbert Raum} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
 \begin{enumerate}
 \item $K(\cdot, x) \in \mathcal{H}$ für alle $x \in \Omega$
-\item $(f, K(\cdot,x))_\mathcal{H} = f(x)$ für alle $ x \in \Omega$, $f \in \mathcal{H}$
+\item $(f, K(\cdot,x))_\mathcal{H} = f(x)$ für alle $ x \in \Omega$, $f \in \mathcal{H}$ (Reproduzierbarkeit)
 \end{enumerate}
+Man nennt $K$ den reproduzierenden Kern von $\mathcal{H}$.
 \end{definition}
 
+Dass $K$ tatsächlich ein Kern nach Definition \ref{Kern} ist, zeigt folgender Satz.
 \begin{theorem}
 \label{thm:EindeutigkeitKern}
-Sei $\mathcal{H}$ ein \ac{RKHR} mit Funktion $K$. Dann ist $K$ ein Kern, eindeutig und positiv definit.
+Sei $\mathcal{H}$ ein \gls{RKHR} mit reproduzierendem Kern $K$. Dann ist $K$ ein Kern, eindeutig und positiv definit.
 \end{theorem}
 
 \begin{proof}
@@ -226,7 +230,7 @@ Zur Wohldefiniertheit unserer Interpolation benötigen wir die Stetigkeit aller 
 Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f: \Omega \rightarrow \mathbb{R}$. Dann gilt:
 \begin{enumerate}
 \item \label{stetig1} $\mathcal{H}$ ist genau dann ein \ac{RKHR}, wenn die Auswertungsfunktionale stetig sind.
-\item \label{stetig2} Wenn $\mathcal{H}$ ein \ac{RKHR} mit Kern $K$ ist, dann ist $K(\cdot,x)$ der Riesz-Repräsentant des Funktionals $\delta_x \in \mathcal{H}'$.
+\item \label{stetig2} Wenn $\mathcal{H}$ ein \ac{RKHR} mit reproduzierendem Kern $K$ ist, dann ist $K(\cdot,x)$ der Riesz-Repräsentant des Funktionals $\delta_x \in \mathcal{H}'$.
 \end{enumerate}
 \end{theorem}
 
@@ -245,7 +249,7 @@ Sei $\mathcal{H}$ ein \ac{RKHR}. Für alle $f \in \mathcal{H}$ und alle $x \in \
 
 Also ist $\delta_x$ beschränkt und damit stetig.
 
-Für die andere Richtung nehmen wir an, dass $\delta_x  \in \mathcal{H}'$ für alle $x \in \Omega$. Also existiert ein Riesz-Repräsentant $\nu_{\delta_x} \in \mathcal{H}$. Definieren wir $K(\cdot,x):= \nu_{\delta_x}$, dann ist $K$ ein Kern. Es ist klar, dass $K(\cdot,x) \in \mathcal{H}$ und nach der Definition des Riesz-Repräsentanten gilt:
+Für die andere Richtung nehmen wir an, dass $\delta_x  \in \mathcal{H}'$ für alle $x \in \Omega$. Also existiert ein Riesz-Repräsentant $\nu_{\delta_x} \in \mathcal{H}$. Definieren wir $K(\cdot,x):= \nu_{\delta_x}$, dann ist $K$ ein reproduzierender Kern. Es ist klar, dass $K(\cdot,x) \in \mathcal{H}$ und nach der Definition des Riesz-Repräsentanten gilt:
 \begin{align*}
 (f, K(\cdot,x))_\mathcal{H} = (f, \nu_{\delta_x})_\mathcal{H} = \langle \delta_x,f \rangle = f(x)
 \end{align*}
@@ -256,7 +260,7 @@ Für die andere Richtung nehmen wir an, dass $\delta_x  \in \mathcal{H}'$ für a
 Wir haben also gesehen, dass in einem \ac{RKHR} $\mathcal{H}_K$ die Auswertungsfunktionale stetig sind. Da wir uns mit Differentialgleichungen beschäftigen, wollen wir auch Ableitungen auswerten. Dafür benötigen wir, dass diese ebenfalls in $\mathcal{H}_K$ liegen.
 
 \begin{theorem}
-Sei $k \in \mathbb{N}$. Angenommen $\Omega \subset \mathbb{R}^n$ ist offen, K ist \ac{SPD} auf $\Omega$ und $K \in C^{2k}(\Omega \times \Omega)$. Dann gilt für alle Multiindizes $a \in \mathbb{N}_0^d$ mit $|a| \le k$ und alle $x \in \Omega$, dass $D_2^a K(\cdot , x) \in \mathcal{H}_K(\Omega)$.
+Sei $k \in \mathbb{N}$. Angenommen $\Omega \subset \mathbb{R}^n$ ist offen, K ist \ac{SPD} auf $\Omega$ und $K \in C^{2k}(\Omega \times \Omega)$. Dann gilt für alle Multiindizes $a \in \mathbb{N}_0^d$ mit $|a| \le k$ und alle $x \in \Omega$, dass $D_2^a K(\cdot , x) \in \mathcal{H}_K(\Omega)$, wobei der tiefgestellte Index bedeutet, dass der Operator auf das zweite Argument angewandt wird.
 
 Außerdem gilt für alle $f \in \mathcal{H}_K(\Omega)$:
 \begin{align*}
@@ -266,7 +270,7 @@ und damit dass $\lambda := \delta_x \circ D^a$ stetig ist.
 \end{theorem}
 
 \begin{proof}
-Einen Beweis des ersten Teils findet man in \textcite[Theorem 10.44]{Wendland.2005} und eine Beweis des zweiten Teils im Vorlesungsskript von \textcite[Proposition 3.14]{Santin.2017}. Der Beweis der Stetigkeit von $\lambda := \delta_x \circ D^a$ verläuft komplett analog zum Beweis von \ref{stetig}.\ref{stetig1}.
+Einen Beweis des ersten Teils findet man im Vorlesungsskript von \textcite[Proposition 7.13]{Santin.2017} und einen Beweis des zweiten Teils in \textcite[Proposition 3.14]{Santin.2017}. Der Beweis der Stetigkeit von $\lambda := \delta_x \circ D^a$ verläuft komplett analog zum Beweis von \ref{stetig}.\ref{stetig1}.
 \end{proof}
 
 In Satz \ref{stetig} haben wir gesehen, wie der Riesz-Repräsentant des Auswertungsfunktionals aussieht. Dies wollen wir jetzt auf alle Funktionale verallgemeinern.
@@ -279,7 +283,7 @@ Sei $K$ ein \ac{PD} Kern auf $\Omega \neq \emptyset$. Sei $\lambda \in \mathcal{
 \begin{proof}
 Da $\lambda \in \mathcal{H}_K(\Omega)$, existiert ein Riesz-Repräsentant $\nu_\lambda \in \mathcal{H}_K(\Omega)$ mit $\langle \lambda ,f \rangle = \left(f, \nu_\lambda\right)_{\mathcal{H}_K(\Omega)}$. Außerdem ist $f_x(y) := K(x,y)$ für alle $x \in \Omega$ eine Funktion in $\mathcal{H}_K (\Omega)$. Damit bekommen wir:
 \begin{align*}
-\langle \lambda^y, K(x,y) \rangle &= \langle \lambda,f_x \rangle\\ 
+\lambda^y K(x,y) &= \langle \lambda,f_x \rangle\\ 
 &= \left(f_x, \nu_\lambda\right)_{\mathcal{H}_K (\Omega)} &&\text{(Riesz-Repräsentant)}\\ 
 &= \left(K(\cdot,x), \nu_\lambda\right)_{\mathcal{H}_K (\Omega)}\\ 
 &= \nu_\lambda(x) &&\text{(Reproduzierbarkeit)}
@@ -287,7 +291,7 @@ Da $\lambda \in \mathcal{H}_K(\Omega)$, existiert ein Riesz-Repräsentant $\nu_\
 Damit gilt $\nu_\lambda(\cdot) = \lambda^y K(\cdot,y)$ und damit ist $\lambda^yK(\cdot,y)$ der Riesz-Repräsentant von $\nu_\lambda$. Da $\nu_\lambda \in \mathcal{H}_K (\Omega)$ gilt auch $\lambda^y K(\cdot,y) \in \mathcal{H}_K (\Omega)$.
 \end{proof}
 
-Jetzt fehlt nur noch die lineare Unabhängigkeit aller verwendeten Funktionale. Zunächst die der Auswertungsfunktionale:
+Jetzt fehlt nur noch die lineare Unabhängigkeit aller verwendeten Funktionale. Zunächst betrachten wir die der Auswertungsfunktionale:
 \begin{theorem}
 Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein \ac{RKHR} mit Kern $K$. Dann sind $\{\delta_x,x\in \Omega\}$ genau dann linear unabhängig, wenn $K$ \ac{SPD} ist.
 \end{theorem}
@@ -312,11 +316,11 @@ Für die letzte strikte Ungleichung benötigen wir die lineare Unabhängigkeit. 
 Die andere Richtung folgt genauso aus der letzten Ungleichung.
 \end{proof}
 
-Und jetzt die der Auswertungen der Ableitungen:
+Jetzt betrachten wir die lineare Unabhängigkeit der Auswertungen der Ableitungen:
 
 \begin{theorem}
 \label{linUn}
-Sei $K$ ein translationsinvarianter Kern auf $\mathbb{R}^d$, also $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Sei $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)$.
+Sei $K$ ein translationsinvarianter Kern auf $\mathbb{R}^d$, also $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Sei $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)'$.
 \end{theorem}
 
 \begin{proof}
@@ -324,4 +328,4 @@ Den Beweis findet man in \textcite[Theorem 16.4]{Wendland.2005}.
 \end{proof}
 
 
-Damit haben wir alle nötigen Werkzeuge um die Interpolation durchzuführen. Wir haben Ansatzfunktionen $K$, den dazugehörigen Hilbertraum $\mathcal{H}_K(\Omega)$, die Stetigkeit und lineare Unabhängigkeit aller benötigten Operatoren. Jetzt müssen wir nur noch einen geeigneten Ansatz wählen.
+Damit haben wir alle nötigen Werkzeuge, um die Interpolation durchzuführen. Wir haben einen Kern $K$, den dazugehörigen Hilbertraum $\mathcal{H}_K(\Omega)$ und die Stetigkeit und lineare Unabhängigkeit aller benötigten Operatoren. Jetzt müssen wir nur noch einen geeigneten Ansatz wählen.

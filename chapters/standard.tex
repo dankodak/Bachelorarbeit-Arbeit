@@ -3,12 +3,12 @@
 
 \section{Symmetrische Kollokation}
 \label{sec:SymKol}
-Sei wieder $\Omega \subset \mathbb{R}^n$ offen und beschränkt, $L,B$ lineare Differentialoperatoren, $K$ ein positiv definiter Kern und folgendes Problem gegeben:
+Sei wieder $\Omega \subset \mathbb{R}^n$ offen und beschränkt, $L,B$ lineare Differentialoperatoren, $K$ ein \gls{SPD} Kern und folgendes Problem gegeben:
 \begin{align*}
 L u(x) &= f(x), x \in \Omega \\
 B u(x) &= g(x), x \in \partial \Omega
 \end{align*}
-Für ein $N \in \mathbb{N}$ betrachten wir die Menge $X_N \subset \Omega$, die wir in $N_{in}$ Punkte im Inneren und $N_{bd}$ Punkte auf dem Rand aufteilen. Also haben wir die beiden Mengen
+Für ein $N \in \mathbb{N}$ betrachten wir die Menge $X_N = \left\{ x_i \right\}_{i=1}^N \subset \Omega$, die wir in $N_{in} > 0$ Punkte im Inneren und $N_{bd} > 0$ Punkte auf dem Rand aufteilen. Also haben wir die beiden Mengen
 \begin{align*}
 X_{in} &= X_N \cap \Omega\\
 X_{bd} &= X_N \cap \partial \Omega
@@ -17,8 +17,8 @@ Wir definieren die Menge $\Lambda_N = \{\lambda_1, \dots, \lambda_N\}$ an linear
 \begin{align*}
 \lambda_i =
 \begin{cases}
-\delta_{x_i} \circ L & x_i \in \Omega\\
-\delta_{x_i} \circ B & x_i \in \partial \Omega
+\delta_{x_i} \circ L & x_i \in X_{in}\\
+\delta_{x_i} \circ B & x_i \in X_{bd}
 \end{cases}
 \end{align*}
 Wir wissen aus Satz \ref{stetig}, dass in $\mathcal{H}_K(\Omega)$ alle $\lambda_i$ stetig und aus Satz \ref{linUn}, dass sie linear unabhängig sind. Als Ansatzfunktionen, also den Unterraum $V_N \subset \mathcal{H}_K(\Omega)$, wählen wir die Riesz Repräsentanten der $\lambda_i$:
@@ -32,13 +32,13 @@ V_N &= \text{span} \{\lambda_1^y K(x,y), \dots , \lambda_N^y K(x,y)\}\\
 Damit bekommen wir folgenden Interpolanten:
 \begin{align*}
 s_u(x) &= \sum_{j=1}^N \alpha_j \lambda_j^y K(x,y)\\
-&= \sum_{j=1}^{N_{in}} \alpha_j (\delta_{x_j} \circ L)^y K(x,y) + \sum_{j=N_{in}}^{N} \alpha_j (\delta_{x_j} \circ L)^y K(x,y)
+&= \sum_{j=1}^{N_{in}} \alpha_j (\delta_{x_j} \circ L)^y K(x,y) + \sum_{j=N_{in}+1}^{N} \alpha_j (\delta_{x_j} \circ B)^y K(x,y)
 \end{align*}
 Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A \alpha = b$ mit $A_{i,j} := (\nu_i,\nu_j)_{\mathcal{H}_K}$, da
 \begin{align*}
-\langle \lambda_i, s_u\rangle = \langle \lambda_i, \sum_{j=1}^N \alpha_j \nu_j \rangle = \sum_{j=1}^N \alpha_j \langle \lambda_i,\nu_j\rangle \overset{\ref{Riesz}}{=} \sum_{j=1}^N \alpha_j \left(\nu_j, \nu_i\right)
-\end{align*},
- also
+\langle \lambda_i, s_u\rangle = \langle \lambda_i, \sum_{j=1}^N \alpha_j \nu_j \rangle = \sum_{j=1}^N \alpha_j \langle \lambda_i,\nu_j\rangle \overset{\ref{Riesz}}{=} \sum_{j=1}^N \alpha_j \left(\nu_j, \nu_i\right),
+\end{align*}
+also
 \begin{align*}
 \begin{pmatrix}
 A_{L,L} & A_{L,B} \\ 
