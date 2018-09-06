@@ -4,19 +4,19 @@
 \begin{algorithmic}[1]
 
 \Function{SolvePDE}{$X, Xte,f, g$}
-\State $b \gets \Call{RightSide}{X,f,g}$
-\State $gamma \gets \text{list of parameters}$
-\State $minError \gets \infty$
+\State $\mathrm{b} \gets \Call{RightHandSide}{X,f,g}$
+\State $\mathrm{gamma} \gets \text{list of parameters}$
+\State $\mathrm{minError} \gets \infty$
 \For{$i$ in $gamma$}
-	\State $A \gets \Call{CollocationMatrix}{X, i}$
-	\State $alpha \gets A\backslash b$
-	\State $error \gets \Call{CalculateError}{X, Xte, f, i}$
-	\If{$error < minError$}
-		\State $retVal \gets alpha$
-		\State $minError \gets error$
+	\State $\mathrm{A} \gets \Call{CollocationMatrix}{X, i}$
+	\State $\mathrm{alpha} \gets A\backslash b$
+	\State $\mathrm{error} \gets \Call{CalculateError}{X, Xte, f, i}$
+	\If{$\mathrm{error} < \mathrm{minError}$}
+		\State $\mathrm{retVal} \gets alpha$
+		\State $\mathrm{minError} \gets error$
 	\EndIf
 \EndFor
-\State \Return{b}
+\State \Return{retVal}
 \EndFunction
 \end{algorithmic}
 \end{algorithm}

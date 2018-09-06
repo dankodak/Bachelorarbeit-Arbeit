@@ -11,15 +11,10 @@ Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Pro
 \label{fig:rand}
 \end{figure}
 
-Wir stellen zur Vereinfachung zunächst fest, dass es genügt, konstante Nullrandwerte in der \ac{PDE} zu betrachten. Sei dafür wieder folgende \ac{PDE} gegeben:
-\begin{align*}
-Lu(x) &= f(x), x\in \Omega\\
-Bu(x) &= g(x), x \in \partial \Omega
-\end{align*}
-Wir können annehmen, dass eine Funktion $\bar{g} \in C^2(\Omega)$ existiert mit $\bar{g}|_{\partial \Omega} = g$. Damit gilt $u = \bar{u} + \bar{g}$ für eine Funktion $\bar{u}$. Eingesetzt erhalten wir
+Wir stellen zur Vereinfachung zunächst fest, dass es bei einer \ac{PDE} mit Dirichlet-Randwerten genügt, konstante Nullrandwerte  zu betrachten. Dafür sei eine \gls{PDE} wie in \eqref{eq:PDE} mit $B=I$, wobei $I$ die Identität bezeichnet, gegeben. Wir nehmen an, dass eine Funktion $\bar{g} \in C^k(\Omega) \cap C^0 (\widebar \Omega)$ existiert mit $\bar{g}|_{\partial \Omega} = g$. Damit gilt $u = \bar{u} + \bar{g}$ für eine Funktion $\bar{u}$. Eingesetzt erhalten wir
 \begin{align*}
 L\bar{u}(x) + L\bar{g}(x) &= f(x) , x \in \Omega\\
-B\bar{u} + B\bar{g} &= g(x) , x \in \partial \Omega,
+\bar{u} + \bar{g} &= g(x) , x \in \partial \Omega,
 \end{align*}
 was äquivalent dazu ist, dass wir folgende \ac{PDE} nach $\bar{u}$ lösen:
 \begin{align*}
@@ -34,99 +29,119 @@ Sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt. Eine Funktion $w:\mathb
 \begin{enumerate}
 \item $w(x) > 0$ für alle $x \in \Omega$
 \item $w(x) = 0$ für alle $x \in \partial \Omega$
-\item $w(x) < 0$ für alle $x \in \mathbb{R}^n \setminus \bar{\Omega}$
+\item $w(x) < 0$ für alle $x \in \mathbb{R}^n \setminus \widebar{\Omega}$
 \end{enumerate}
 \end{definition}
 
 \begin{theorem}
 \label{thm:Gewicht}
-Seien $\Omega_1, \Omega_2 \subset \mathbb{R}^n$ zwei offene und beschränkte Mengen und $w_{1}, w_{2}$ die dazugehörigen Gewichtsfunktionen. Dann gilt:
+Seien $\Omega_1, \Omega_2 \subset \mathbb{R}^n$ zwei offene und beschränkte Mengen und $w_{1}, w_{2}$ dazugehörige Gewichtsfunktionen. Dann gilt:
 \begin{enumerate}
-\item Für das Komplement $\Omega^\mathrm{C}$: $w = -w_1$
-\item Für die Vereinigung $\Omega_1 \cup \Omega_2$: $w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2}$
-\item Für den Schnitt $\Omega_1 \cap \Omega_2$: $w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2}$
+\item Für das Komplement $\Omega = \mathbb{R}^n \setminus \widebar \Omega_1$ ist $w = -w_1$ eine Gewichtsfunktion.
+\item Für die Vereinigung $\Omega = \Omega_1 \cup \Omega_2$ ist $w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2}$ eine Gewichtsfunktion.
+\item Für den Schnitt $\Omega = \Omega_1 \cap \Omega_2$ ist $w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2}$ eine Gewichtsfunktion.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
 \begin{enumerate}
+
 \item
 \begin{itemize}
 \item
-Sei $x \in \Omega^\mathrm{C}$.
+Sei $x \in \Omega =  \mathbb{R}^n \setminus \widebar \Omega_1$.
 \begin{align*}
 w(x) = - w_1(x) > 0
 \end{align*}
 \item
-Sei $x \in \partial \Omega^\mathrm{C}$
+Sei $x \in \partial \Omega = \partial(\mathbb{R}^n \setminus \widebar \Omega_1) = \partial \Omega_1$
 \begin{align*}
 w(x) = -w_1(x) = 0
 \end{align*}
 \item
-Sei $x \in \Omega$
+Sei $x \in \mathbb{R}^n \setminus \widebar{\Omega} = \Omega_1$
 \begin{align*}
 w(x) = -w_1(x) < 0
 \end{align*}
 \end{itemize}
+
 \item
 \begin{itemize}
 \item
-Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 >0, w_2>0$
+Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1(x) >0, w_2(x)>0$
 \begin{align*}
-w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} > 0
+w(x) = w_1(x) + w_2(x) + \sqrt{w_1(x)^2 + w_2(x)^2} > 0
 \end{align*}
+
 \item
-Sei \ac{oBdA} $x \in \Omega_1, x \notin \bar{\Omega_2}$. $\Rightarrow w_1 > 0, w_2  0$
+Sei \ac{oBdA} $x \in \Omega_1, x \notin \widebar{\Omega_2}$. $\Rightarrow w_1(x) > 0, w_2(x) <  0$
 \begin{align*}
-w =  w_1 + w_2 + \sqrt{w_1^2 + w_2^2} > w_1 + w_2 + \underbrace{\sqrt{w_2^2}}_{=|w_2| = -w_2} = w_1+w_2-w_2 = w_1 > 0
+w(x) &=  w_1(x) + w_2(x) + \sqrt{w_1(x)^2 + w_2(x)^2} \\
+&> w_1(x) + w_2(x) + \underbrace{\sqrt{w_2(x)^2}}_{=|w_2(x)| = -w_2(x)} \\
+&= w_1(x) + w_2(x) - w_2(x)\\
+& = w_1(x) > 0
 \end{align*}
+
 \item
-Sei $x \notin \bar{\Omega_1}, x \notin \bar{\Omega_2}$. $\Rightarrow w_1 < 0, w_2 < 0$
+Sei $x \notin \widebar{\Omega_1}, x \notin \widebar{\Omega_2}$. $\Rightarrow w_1(x) < 0, w_2(x) < 0$
 \begin{align*}
-&w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} \overset{!}{<} 0\\
-&\Leftrightarrow -w_1 - w_2 > \sqrt{w_1^2 + w_2^2}\\
-&\Leftrightarrow w_1^2 + \underbrace{2w_1 w_2}_{>0} +w_2^2 > w_1^2 + w_2^2
+&w(x) = w_1(x) + w_2(x) + \sqrt{w_1(x)^2 + w_2(x)^2} \overset{!}{<} 0\\
+&\Leftrightarrow -w_1(x) - w_2(x) > \sqrt{w_1(x)^2 + w_2(x)^2}\\
+&\Leftrightarrow w_1(x)^2 + \underbrace{2w_1(x) w_2(x)}_{>0} +w_2(x)^2 > w_1(x)^2 + w_2(x)^2
 \end{align*}
+
 \item
-Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 = 0, w_2 \leq 0$
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1(x) = 0, w_2(x) \leq 0$
 \begin{align*}
-w =  w_1 + w_2 + \sqrt{w_1^2 + w_2^2} = w_2 + \sqrt{w_2^2} = w_2 - w_2 = 0
+w(x) &=  w_1(x) + w_2(x) + \sqrt{w_1(x)^2 + w_2(x)^2}\\
+&= w_2(x) + \sqrt{w_2(x)^2} \\
+&= w_2(x) - w_2(x) = 0
 \end{align*}
+
 \item
-Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 = 0, w_2 > 0$
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \Omega_2$. $\Rightarrow w_1(x) = 0, w_2(x) > 0$
 \begin{align*}
-w = w_1 + w_2 + \sqrt{w_1^2 + w_2^2} = w_2 + \sqrt{w_2^2} > 0
+w(x) &= w_1(x) + w_2(x) + \sqrt{w_1(x)^2 + w_2(x)^2} \\
+&= w_2(x) + \sqrt{w_2(x)^2} > 0
 \end{align*}
 \end{itemize}
+
 \item
 \begin{itemize}
 \item
-Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1 >0, w_2 >0$
+Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1(x) >0, w_2(x) >0$
 \begin{align*}
-&w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} \overset{!}{>}0\\
-&\Leftrightarrow w_1 + w_2 > \sqrt{w_1^2 + w_2^2}\\
-&\Leftrightarrow (w_1 + w_2)^2 > w_1^2 + w_2^2\\
-&\Leftrightarrow w_1^2 + 2w_1 w_2 + w_2^2 > w_1^2 + w_2^2\\
-&\Leftrightarrow 2w_1 w_2 >0
+&w(x) = w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} \overset{!}{>}0\\
+&\Leftrightarrow w_1(x) + w_2(x) > \sqrt{w_1(x)^2 + w_2(x)^2}\\
+&\Leftrightarrow (w_1(x) + w_2(x))^2 > w_1(x)^2 + w_2(x)^2\\
+&\Leftrightarrow w_1(x)^2 + 2w_1(x) w_2(x) + w_2(x)^2 > w_1(x)^2 + w_2(x)^2\\
+&\Leftrightarrow 2w_1(x) w_2(x) >0
+\end{align*}
+
+\item
+Sei \ac{oBdA} $x \in \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1(x) >0, w_2(x) <0$
+\begin{align*}
+w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} \\
+&< w_1(x) + w_2(x) - \sqrt{w_1(x)^2} \\
+&= w_1(x)+w_2(x)-w_1(x) \\
+&= w_2(x) <0
 \end{align*}
 \item
-Sei \ac{oBdA} $x \in \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1 >0, w_2 <0$
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \widebar{\Omega_2}$. $w_1(x) = 0, w_2(x) > 0$
 \begin{align*}
-w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} < w_1 + w_2 - \sqrt{w_1^2} = w_1+w_2-w_1 = w_2 <0
+w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2+w_2(x)^2} \\
+&= w_2(x) - \sqrt{w_2(x)^2} = 0
 \end{align*}
 \item
-Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \bar{\Omega_2}$. $w_1 = 0, w_2 > 0$
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \widebar{\Omega_2}$. $w_1(x) = 0, w_2(x) < 0$
 \begin{align*}
-w = w_1 + w_2 - \sqrt{w_1^2+w_2^2} = w_2 - \sqrt{w_2^2} = 0
+w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} \\
+&= w_2(x) - \sqrt{w_2(x)^2} \\
+&= 2w_2(x) < 0
 \end{align*}
 \item
-Sei \ac{oBdA} $x \in \partial \Omega_1, x \notin \bar{\Omega_2}$. $w_1 = 0, w_2 < 0$
+Sei $x \notin \widebar{\Omega_1}, x \notin \widebar{\Omega_2}$. $\Rightarrow w_1(x) < 0, w_2(x) < 0$
 \begin{align*}
-w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} = w_2 - \sqrt{w_2^2} = 2w_2 < 0
-\end{align*}
-\item
-Sei $x \notin \bar{\Omega_1}, x \notin \bar{\Omega_2}$. $\Rightarrow w_1 < 0, w_2 < 0$
-\begin{align*}
-w = w_1 + w_2 - \sqrt{w_1^2 + w_2^2} < 0
+w(x) = w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} < 0
 \end{align*}
 \end{itemize}
 \end{enumerate}
@@ -161,11 +176,13 @@ ein \gls{PD} Kern und es gilt für den entsprechenden \ac{RKHR}:
 \end{align*}
 \end{theorem}
 \begin{proof}
+Den ersten Teil des Beweises findet man auch in \textcite[Proposition 2.7]{Santin.2017}.
+
 Wir zeigen zunächst, dass $\tilde{K}(x,y):= g(x)g(y)$ ein \ac{PD} Kern ist.
 
 Die Symmetrie ist offensichtlich, da
 \begin{align*}
-\tilde{K}(x,y)= g(x)g(y) = g(y) g(x) = \tilde{K}(y,x)
+\tilde{K}(x,y)= g(x)g(y) = g(y) g(x) = \tilde{K}(y,x).
 \end{align*}
 
 Zur positiven Definitheit betrachten wir eine Punktmenge $X_N := \{x_i \in \Omega| 1 \le i \le N \}\subset \Omega$. Wir erhalten für die Kernmatrix
@@ -189,7 +206,7 @@ g(x_1) & \cdots & g(x_N)
 \end{align*}
 und damit für alle $\alpha \neq 0$
 \begin{align*}
-\alpha^T A \alpha = \alpha^T \left(\bar{g}\bar{g}^T\right)\alpha = \left(\alpha^T \bar{g}\right)\left(\bar{g}^T \alpha\right) = \left\| \bar{g}^T\alpha\right\| \geq 0
+\alpha^T A \alpha = \alpha^T \left(\bar{g}\bar{g}^T\right)\alpha = \left(\alpha^T \bar{g}\right)\left(\bar{g}^T \alpha\right) = \left\| \bar{g}^T\alpha\right\| \geq 0.
 \end{align*}
 Also ist $\tilde{K}$ ein \ac{PD} Kern.
 
@@ -197,7 +214,7 @@ Nach Satz \ref{thm:Kombi} ist $K(x,y) = \tilde{K}(x,y) K'(x,y) = g(x) K'(x,y) g(
 
 Es fehlt noch der zweite Teil des Satzes. Dafür stellen wir zunächst fest, dass für alle $y \in \Omega$
 \begin{align*}
-K(\cdot,y) = g(\cdot) K'(\cdot,y) g(y) \in g \mathcal{H}_K' (\Omega)
+K(\cdot,y) = g(\cdot) K'(\cdot,y) g(y) \in g \mathcal{H}_K' (\Omega).
 \end{align*}
 Als nächstes zeigen wir, dass $\mathcal{H}_K(\Omega)$ tatsächlich ein Hilbertraum ist. Sei dafür
 \begin{align*}
@@ -221,7 +238,7 @@ Wir zeigen noch die Reproduzierbarkeit auf $\mathcal{H}_K(\Omega)$, dann folgt a
 \end{align*}
 \end{proof}
 
-Wir haben jetzt einen neuen Kern konstruiert, der auf dem Rand unseres Definitionsgebiets konstant Null ist. Wenn wir jetzt noch zusätzlich annehmen, dass auch die Ableitung der Gewichtsfunktion wieder ein Gewichtsfunktion ist, können wir die Konstruktion aus Kapitel \ref{sec:SymKol} verwenden. 
+Wir haben damit einen neuen Kern konstruiert, der auf dem Rand unseres Definitionsgebiets konstant Null ist. Wenn wir noch zusätzlich annehmen, dass auch die Ableitung der Gewichtsfunktion wieder eine Gewichtsfunktion ist, können wir die Konstruktion aus Kapitel \ref{sec:SymKol} verwenden. 
 
 Sei also $\Omega \subset \mathbb{R}^n$ offen und beschränkt $K'$ ein \ac{PD} Kern, $g$ eine Gewichtsfunktion auf $\Omega$, für die auch dere Ableitung eine Gewichtsfunktion auf $\Omega$ ist, und folgende \ac{PDE} gegeben:
 \begin{align*}
@@ -251,7 +268,7 @@ b_i &= f(x_i)
 
 Die Matrix $A$ ist wieder symmetrisch und positiv definit und das \ac{LGS} ist damit lösbar.
 \section{Nicht-Symmetrische Kollokation}
-Wie bei der Standardkollokation können wir einen wesentlich simpleren Ansatz wählen. Es sei die gleiche Problemstellung wie gerade gegeben, allerdings haben dieses Mal keine zusätzliche Anforderung an die Ableitung der Gewichtsfunktion. Wir wählen 
+Wie bei der Standardkollokation können wir einen wesentlich simpleren Ansatz wählen. Es sei die gleiche Problemstellung wie gerade gegeben, allerdings haben wir dieses Mal keine zusätzliche Anforderung an die Ableitung der Gewichtsfunktion. Wir wählen 
 \begin{align*}
 V_N:= \text{span} \left\{g(x)K'(x,x_1), \dots, g(x)K'(x,x_N)\right\}
 \end{align*}
@@ -265,4 +282,4 @@ A_{i,j} &= (\delta_{x_i} \circ L)^x (g(x) K(x,x_j))\\
 b_i &= f(x_i)
 \end{align*}
 
-Erneut kann man keine Aussage über die Lösbarkeit des \ac{LGS} treffen.
+Erneut kann man keine Aussage über die Lösbarkeit des \ac{LGS} oder über die numerische Stabilität des Verfahrens treffen.

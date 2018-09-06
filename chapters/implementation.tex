@@ -13,7 +13,7 @@ Dazu müssen wir zunächst einen geeigneten Kern wählen. Wir erinnern uns an Be
 \label{fig:Kerne}
 \end{figure}
 
-So erhält man nach Wahl von Kollokations- und Testpunkten den Algorithmus \ref{alg:Grund}.
+So erhält man nach Wahl von Kollokationspunkten $X$ und Testpunkten $Xte$ den Algorithmus \ref{alg:Grund}.
 \input{code/grundlegend.tex}
 
 Einige Anmerkungen zu dem Algorithmus:
@@ -31,14 +31,14 @@ Es ist noch offen wie wir die Kollokations- und Testpunkte und den Fehler in jed
 \item
 Falls wir eine analytisch bestimmte Lösung der \gls{PDE} haben sollten, können wir diese mit der approximierten vergleichen. Sei dazu $u$ die analytische Lösung und $s_u$ die approximierte. Den Fehler bekommen wir dann mit
 \begin{align*}
-e = \max_{x \in Xte} \left(\left\| u(x) - s_u(x) \right\| \right)
+\mathrm{error} = \max_{x \in Xte} \left(\left| u(x) - s_u(x) \right| \right)
 \end{align*}
 \item
 Eine analytische Lösung werden wir jedoch meist nicht besitzen und können die erste Methode somit nicht anwenden. Wir haben aber noch die Möglichkeit den Fehler in der Ableitung zu betrachten. Sei dafür $L$ der Differentialoperator aus der \gls{PDE}, $f$ die rechte Seite in der \gls{PDE} und $s_u$ die approximierte Lösung. Den Fehler bekommen wir dann mit
 \begin{align*}
-e = \max_{x \in Xte} \left(\left\| f(x) - L s_u(x) \right\| \right)
+\mathrm{error} = \max_{x \in Xte} \left(\left| f(x) - L s_u(x) \right| \right)
 \end{align*}
-$Ls_u$ lässt sich aufgrund der Linearität des Differentialoperators leicht berechnen. So kann man ausnutzen, dass $s_u$ eine Linearkombination aus den einzelnen Basisfunktionen ist und kann $L$ auf die einzelnen Summanden anwenden.
+$Ls_u$ lässt sich aufgrund der Linearität des Differentialoperators leicht berechnen. So kann man ausnutzen, dass $s_u$ eine Linearkombination aus den einzelnen Basisfunktionen ist, und $L$ auf die einzelnen Summanden anwenden.
 \end{itemize}
 
 Kommen wir zur Bestimmung der Kollokationspunkte. Auch hier möchten wir mehrere Möglichkeiten vorstellen.
