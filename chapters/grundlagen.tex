@@ -15,7 +15,7 @@ wobei wir $\langle \lambda_i, u \rangle := \lambda_i(u)$ für die Anwendung des 
 $\mbox{}$
 \begin{itemize}
 \item
-Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum mit Funktionen , in dem die Punktauswertungfunktionale $\delta_{x_i}(f) = f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$.
+Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum mit Funktionen, in dem die Punktauswertungfunktionale $\delta_{x_i}(f) := f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$:
 \begin{align*}
 s(x_i) = \langle \delta_{x_i},s \rangle = \langle \delta_{x_i},s_u \rangle = s_u(x_i), 1\le i \le N
 \end{align*}
@@ -54,9 +54,9 @@ Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, in dem 
 \label{Kern}
 Sei $\Omega$ eine nicht leere Menge. Ein reeller Kern auf $\Omega$ ist eine symmetrische Funktion $K: \Omega \times \Omega \rightarrow \mathbb{R}$.
 
-Für alle $N \in \mathbb{N}$ und für eine Menge $X_N = \{x_i\}_{i=1}^N \subset \Omega$ ist die Kern Matrix (oder Gram'sche Matrix) $A:= A_{K,X_N} \in \mathbb{R}^{N \times N}$  definiert als $A:=[K(x_i, x_j)]_{i,j=1}^N$.
+Für alle $N \in \mathbb{N}$ und für eine Menge $X_N = \{x_i\}_{i=1}^N \subset \Omega$ ist die Kernmatrix (oder Gram'sche Matrix) $A:= A_{K,X_N} \in \mathbb{R}^{N \times N}$  definiert als $A:=[K(x_i, x_j)]_{i,j=1}^N$.
 
-Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und alle Mengen $X_N$ mit paarweise verschiedenen Elementen $\left\{x_i\right\}_{i=1}^N$ gilt, dass die Kern Matrix positiv semidefinit ist. Der Kern $K$ heißt \ac{SPD}, falls die Kern Matrix für alle solche $N$ und $X_N$ positiv definit ist.
+Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und alle Mengen $X_N$ mit paarweise verschiedenen Elementen $\left\{x_i\right\}_{i=1}^N \subset \Omega$ gilt, dass die Kernmatrix positiv semidefinit ist. Der Kern $K$ heißt \ac{SPD}, falls die Kernmatrix für alle solche $N$ und $X_N$ positiv definit ist.
 \end{definition}
 
 \begin{theorem}
@@ -77,7 +77,7 @@ Die Symmetrie ist in allen Fällen offensichtlich. Wir betrachten daher nur die 
 Sei $X_N \subset \Omega$ eine Menge mit paarweise verschiedenen Punkten $\left\{x_i\right\}_{i=1}^N$.
 \begin{enumerate}
 \item
-Für die Kern Matrix von $K$ gilt:
+Für die Kernmatrix von $K$ gilt:
 \begin{align*}
 A_K &= 
 \begin{pmatrix}
@@ -149,7 +149,7 @@ Sei $\Omega \subset \mathbb{R}^n$ und $\gamma \in \mathbb{R}^+$. Dann sind folge
 $\mbox{}$
 \begin{enumerate}
 \item
-Die Kern Matrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
+Die Kernmatrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
 \item
 Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
 \end{enumerate}
@@ -157,7 +157,7 @@ Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
 Wir kommen mit der Definition von Kernen direkt zu den gesuchten Hilberträumen. Diese sind zunächst ohne Bezug zu Kernen definiert, wir werden aber feststellen, dass sie eng miteinander verknüpft sind.
 
 \begin{definition}[Reproduzierender Kern Hilbertraum]
-Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodut $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ einen \glslink{RKHR}{Reproduzierenden Kern Hilbert Raum} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
+Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodukt $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ einen \glslink{RKHR}{Reproduzierenden Kern Hilbert Raum} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
 \begin{enumerate}
 \item $K(\cdot, x) \in \mathcal{H}$ für alle $x \in \Omega$
 \item $(f, K(\cdot,x))_\mathcal{H} = f(x)$ für alle $ x \in \Omega$, $f \in \mathcal{H}$ (Reproduzierbarkeit)
