@@ -238,21 +238,19 @@ Wir zeigen noch die Reproduzierbarkeit auf $\mathcal{H}_K(\Omega)$, dann folgt a
 \end{align*}
 \end{proof}
 
-Wir haben damit einen neuen Kern konstruiert, der auf dem Rand unseres Definitionsgebiets konstant Null ist. Wenn wir noch zusätzlich annehmen, dass auch die Ableitung der Gewichtsfunktion wieder eine Gewichtsfunktion ist, können wir die Konstruktion aus Kapitel \ref{sec:SymKol} verwenden. 
+Damit haben wir einen neuen Kern konstruiert, der auf dem Rand unseres Definitionsgebiets konstant Null ist, auf den wir eine analoge Konstruktion zu der aus Kapitel \ref{sec:SymKol} anwenden können.
 
-Sei also $\Omega \subset \mathbb{R}^n$ offen und beschränkt $K'$ ein \ac{PD} Kern, $g$ eine Gewichtsfunktion auf $\Omega$, für die auch dere Ableitung eine Gewichtsfunktion auf $\Omega$ ist, und folgende \ac{PDE} gegeben:
+Dafür sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt $K'$ ein \ac{PD} Kern, $g$ eine Gewichtsfunktion auf $\Omega$ und folgende \ac{PDE} gegeben:
 \begin{align*}
 Lu(x) &= f(x), x \in \Omega\\
 u(x) &= 0 , x \in \partial \Omega
 \end{align*}
-Für ein $N \in \mathbb{N}$ betrachten wir eine Menge $X_N \subset \Omega^\circ$.
-
-Wir definieren die Menge $\Lambda_N = \left\{ \lambda_1, \dots, \lambda_N\right\}$ mit $\lambda_i =  \delta_{x_i} \circ L$. Diese Funktionale sind im von $K(x,y) := g(x) K'(x,y) g(y)$ erzeugten \ac{RKHR} stetig. Also wählen wir 
+Für ein $N \in \mathbb{N}$ betrachten wir eine Menge $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega^\circ$. Wir definieren die Menge $\Lambda_N = \left\{ \lambda_1, \dots, \lambda_N\right\}$ mit $\lambda_i =  \delta_{x_i} \circ L$. Diese Funktionale sind im von $K(x,y) := g(x) K'(x,y) g(y)$ erzeugten \ac{RKHR} stetig. Also wählen wir 
 \begin{align*}
 V_N &= \text{span} \left\{\lambda_1^y K(x,y), \dots, \lambda_N^y K(x,y)\right\}\\
 &= \text{span} \left\{(\delta_{x_1} \circ L)^y (g(x) K'(x,y) g(y)), \dots, (\delta_{x_N} \circ L)^y (g(x) K'(x,y) g(y))\right\}
 \end{align*}
-als Ansatzfunktionen.
+als Ansatzfunktionen. Diese sind auf dem Rand von $\Omega$ gleich Null, die Randbedingung der \gls{PDE} ist also erfüllt.
 
 Damit erhalten wir folgenden Interpolanten:
 \begin{align*}

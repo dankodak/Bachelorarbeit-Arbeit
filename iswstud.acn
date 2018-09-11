@@ -47,6 +47,7 @@
 (indexentry :tkey (("PD" "\\glossentry{PD}") ) :locref "{}{24}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("PDE" "\\glossentry{PDE}") ) :locref "{}{24}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("RKHS" "\\glossentry{RKHR}") ) :locref "{}{24}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("PDE" "\\glossentry{PDE}") ) :locref "{}{24}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("LGS" "\\glossentry{LGS}") ) :locref "{}{25}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("LGS" "\\glossentry{LGS}") ) :locref "{}{25}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("LGS" "\\glossentry{LGS}") ) :locref "{}{25}" :attr "pageglsnumberformat" ) 
@@ -55,3 +56,4 @@
 (indexentry :tkey (("PDE" "\\glossentry{PDE}") ) :locref "{}{28}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("PDE" "\\glossentry{PDE}") ) :locref "{}{29}" :attr "pageglsnumberformat" ) 
 (indexentry :tkey (("PDE" "\\glossentry{PDE}") ) :locref "{}{29}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("FEM" "\\glossentry{FEM}") ) :locref "{}{31}" :attr "pageglsnumberformat" ) 

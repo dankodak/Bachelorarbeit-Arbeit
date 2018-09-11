@@ -1,2 +1,54 @@
 \chapter{Numerische Tests}
 \label{cha:NumerischeTests}
+
+In diesem Kapitel möchten wir die vorgestellten Verfahren verschiedenen numerischen Tests unterziehen. Dabei wollen wir hauptsächlich den Fehler der numerischen Lösung zur analytischen untersuchen, aber auch die Kondition der Kollokationsmatrizen, die Parameterwahl und die Laufzeit betrachten. Zusätzlich werden wir die Verfahren mit der finiten Elemente Methode (\acs{FEM}) vergleichen.
+
+Dafür betrachten wir die Poisson-Gleichung mit Dirichlet-Randbedingung auf $\Omega = [-1,1] \times [-1,1] \subset \mathbb{R}^n$:
+\begin{align*}
+- \Delta u &= 2\pi^2 \sin(\pi x)\sin(\pi y)&&, (x,y) \in \Omega\\
+u &= 0&&, (x,y) \in \partial \Omega
+\end{align*}
+mit analytischer Lösung $u(x,y) = \sin(\pi x)\sin(\pi y)$.
+
+Diese werden wir numerisch lösen.
+
+\section{Fehler}
+Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbildung \ref{fig:Kollok} gezeigt, in einem Gitter anordnen.
+\begin{figure}[h]
+\centering
+\resizebox {.8\columnwidth} {!} {
+\input{plots/Kollokationspunkte.tex}
+}
+\caption{Kollokationspunkte}
+\label{fig:Kollok}
+\end{figure}
+Als Maß des Fehlers unserer numerischen Lösung wollen wir zunächst den maximalen absoluten Fehler zur analytischen Lösung berechnen, also
+\begin{align*}
+error = \max_{x \in \Omega} |u(x) - s_u (x)|,
+\end{align*}
+wobei $s_u$ die numerische Lösung bezeichnet.
+
+Damit können wir uns anschauen, wie sich der Fehler bei Veränderung der Anzahl der Kollokationspunkte verhält.
+\begin{figure}[h]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/standard-error-abs-n-sym.tex}
+}
+\caption{Standardkollokation Nicht-Symmetrisch}
+\label{fig:standard error abs n-sym}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/weighted-error-abs-n-sym.tex}
+}
+\caption{Gewichtete Kollokation Nicht-Symmetrisch}
+\label{fig:weighted error abs n-sym}
+\end{figure}
+
+
+
+
+\section{Kondition}
+\section{Laufzeit}
