@@ -140,8 +140,8 @@ Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von
 \label{ex:Kern}
 Sei $\Omega \subset \mathbb{R}^n$ und $\gamma \in \mathbb{R}^+$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
 \begin{enumerate}
-\item $K(x,y) := \gamma^{-1} (x,y)$
-\item $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}
+\item Skalarprodukt: $K(x,y) := \gamma^{-1} (x,y)$
+\item Gauß Kern: $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}
 \end{enumerate}
 \end{example}
 
@@ -149,7 +149,7 @@ Sei $\Omega \subset \mathbb{R}^n$ und $\gamma \in \mathbb{R}^+$. Dann sind folge
 $\mbox{}$
 \begin{enumerate}
 \item
-Die Kernmatrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
+Die Symmetrie folgt aus der Symmetrie des Skalarprodukts. Die Kernmatrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
 \item
 Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
 \end{enumerate}

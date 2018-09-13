@@ -10,7 +10,7 @@ u &= 0&&, (x,y) \in \partial \Omega
 \end{align*}
 mit analytischer Lösung $u(x,y) = \sin(\pi x)\sin(\pi y)$.
 
-Diese werden wir numerisch lösen.
+Diese werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}.
 
 \section{Fehler}
 Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbildung \ref{fig:Kollok} gezeigt, in einem Gitter anordnen.
@@ -24,31 +24,90 @@ Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbi
 \end{figure}
 Als Maß des Fehlers unserer numerischen Lösung wollen wir zunächst den maximalen absoluten Fehler zur analytischen Lösung berechnen, also
 \begin{align*}
-error = \max_{x \in \Omega} |u(x) - s_u (x)|,
+\text{error} = \max_{x \in \Omega} |u(x) - s_u (x)|,
 \end{align*}
 wobei $s_u$ die numerische Lösung bezeichnet.
 
 Damit können wir uns anschauen, wie sich der Fehler bei Veränderung der Anzahl der Kollokationspunkte verhält.
-\begin{figure}[h]
+
+In den folgenden vier Abbildungen \ref{fig:standard error abs n-sym}, \ref{fig:standard error abs sym}, \ref{fig:weighted error abs n-sym}, \ref{fig:weighted error abs sym} ist der Fehler der vier verschiedenen Verfahren dargestellt.
+\begin{figure}[H]
 \centering
-\resizebox {\columnwidth} {!} {
+\resizebox {.8\columnwidth} {!} {
 \input{plots/standard-error-abs-n-sym.tex}
 }
 \caption{Standardkollokation Nicht-Symmetrisch}
 \label{fig:standard error abs n-sym}
 \end{figure}
-
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\resizebox {\columnwidth} {!} {
+\resizebox {.8\columnwidth} {!} {
+\input{plots/standard-error-abs-sym.tex}
+}
+\caption{Standardkollokation Symmetrisch}
+\label{fig:standard error abs sym}
+\end{figure}
+\begin{figure}[H]
+\centering
+\resizebox {.8\columnwidth} {!} {
 \input{plots/weighted-error-abs-n-sym.tex}
 }
 \caption{Gewichtete Kollokation Nicht-Symmetrisch}
 \label{fig:weighted error abs n-sym}
 \end{figure}
+\begin{figure}[H]
+\centering
+\resizebox {.8\columnwidth} {!} {
+\input{plots/weighted-error-abs-sym.tex}
+}
+\caption{Gewichtete Kollokation Symmetrisch}
+\label{fig:weighted error abs sym}
+\end{figure}
 
+Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll.
 
+Zum besseren Vergleich der Verfahren stellen wir in Tabelle \ref{tab:Vergleich Fehler} die Fehler nochmal in einer Tabelle dar.
 
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c|c|c}
+%\hline 
+ & $n = 9$ & $n = 100$ & $n = 1024$ & $n = 6084$ \\ 
+\hline 
+Standard N-Sym & \num{0.99974} & \num{2.18205e-04} & \num{2.61592e-06} & \num{9.07630e-06} \\ 
+%\hline 
+Standard Sym & \num{0.99974} & \num{2.48216e-05} & \num{1.08639e-07} & \num{1.31851e-07} \\ 
+%\hline 
+Gewichtet N-Sym & \num{0.37643} & \num{8.20819e-03} & \num{1.87889e-03} & \num{3.09914e-04} \\ 
+%\hline 
+Gewichtet Sym & \num{0.27994} & \num{6.40403e-03} & \num{1.04064e-03} & • \\ 
+%\hline 
+\end{tabular} 
+\caption{Vergleich der Verfahren}
+\label{tab:Vergleich Fehler}
+\end{table}
 
-\section{Kondition}
-\section{Laufzeit}
+Wir erkennen, dass alle Verfahren sehr schnell gute Ergebnisse liefern. Die beiden Standardverfahren liefern bereits mit nahezu $100$ Kollokationspunkten ihre besten Ergebnisse und verbessern sich danach nur noch wenig. Im Gegensatz dazu stehen die gewichteten Verfahren, die zwar auch schon am Anfang gute Ergebnisse liefern, sich dann aber auch mit mehr Kollokationspunkten weiter verbessern, wenn auch ziemlich langsam. Gesamt erreichen die gewichteten Verfahren aber selbst mit $6000$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneiden beide Male die symmetrischen Verfahren leicht besser ab.
+
+Wir möchten nun überprüfen, ob die gewichtete Kollokation ihren Sinn erfüllt, d.h. ob die Lösung auf dem Rand auch wirklich Null ist. Dafür plotten wir eine mit dem Standardverfahren erstellte Lösung (Abbildung \ref{fig:rand standard}) und eine mit dem gewichteten Verfahren erstellte Lösung (Abbildung \ref{fig:rand weighted}) über einen Teil des Randes.
+
+\begin{figure}[H]
+\centering
+\resizebox {.75\columnwidth} {!} {
+\input{plots/Rand-Standard.tex}
+}
+\caption{Rand bei Standardkollokation}
+\label{fig:rand standard}
+\end{figure}
+\begin{figure}[H]
+\centering
+\resizebox {.75\columnwidth} {!} {
+\input{plots/Rand-Weighted.tex}
+}
+\caption{Rand bei gewichteter Kollokation}
+\label{fig:rand weighted}
+\end{figure}
+
+Bei der Standardkollokation sind deutlich Schwankungen über den Rand erkennbar, wohingegen der Rand bei der gewichteten Kollokation bis auf kleine numerische Ungenauigkeiten tatsächlich Null ist. Das Ziel der gewichteten Kollokation wurde also erreicht.
+%\section{Kondition}
+%\section{Laufzeit}
