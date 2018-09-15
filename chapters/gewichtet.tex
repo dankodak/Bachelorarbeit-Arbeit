@@ -1,6 +1,7 @@
 \chapter{Gewichtete Kollokation}
 \label{cha:Gewichtet}
 \section{Motivation für die gewichtete Kollokation}
+\label{sec:motivation}
 Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Problem, dass wir Punkte im Inneren und auf dem Rand unseres Definitionsbereichs benötigen. Dies macht zum einen die Implementierung etwas komplexer, da man dabei beide Mengen beachten muss, zum anderen werden die Werte auf dem Rand nicht zwingend genau angenommen. In Abbildung \ref{fig:rand} ist die approximierte Lösung einer \ac{PDE} mit Nullrandwerten über den Rand geplottet. Man erkennt deutlich, wo die Stützstellen der Ansatzfunktionen liegen und auch die Schwankungen zwischen den Stützstellen.
 \begin{figure}[h]
 \centering
@@ -24,6 +25,7 @@ L\bar{u}(x) &= f(x) + L\bar{g}(x), x \in \Omega\\
 
 Die Idee ist jetzt, einen Kern, beziehungsweise Ansatzfunktionen zu konstruieren, der auf dem Rand von $\Omega$ Null ist. Der Interpolant ist eine Linearkombination aus diesen Funktionen und wird demnach auf dem Rand auch Null sein. Dafür führen wir Gewichtsfunktionen ein, die dann in Verbindung mit einem gegebenen Kern das Geforderte erfüllen werden.
 \section{Gewichtsfunktionen}
+\label{sec:gewicht}
 \begin{definition}
 Sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt. Eine Funktion $w:\mathbb{R}^n \rightarrow \mathbb{R}$ heißt Gewichtsfunktion auf $\Omega$, wenn sie folgende Eigenschaften erfüllt:
 \begin{enumerate}
@@ -148,6 +150,7 @@ w(x) = w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} < 0
 \end{proof}
 
 \begin{example}
+\label{ex:Gewicht}
 Sei $\Omega = (-1,1) \times (-1,1)$. Dann können wir $\Omega$ schreiben als $\Omega = \Omega_1  \cap \Omega_2$ mit $\Omega_1 = (-1,1) \times (- \infty, \infty), \Omega_2 =   (- \infty, \infty) \times (-1,1)$.
 Dann sind 
 \begin{align*}

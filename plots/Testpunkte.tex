@@ -1,0 +1,65 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=800,
+xlabel style={font=\color{white!15!black}},
+xlabel={Anzahl der Testpunkte},
+ymode=log,
+ymin=1e-07,
+ymax=0.1,
+yminorticks=true,
+ylabel style={font=\color{white!15!black}},
+ylabel={Maximaler absoluter Fehler},
+axis background/.style={fill=white},
+%title style={font=\bfseries},
+%title={error plot},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+1	0.00760991427227309\\
+4	2.97143941410671e-07\\
+9	0.00812231198249842\\
+16	2.97143941410671e-07\\
+25	2.97143941410671e-07\\
+36	2.97143941410671e-07\\
+49	0.0162268723810862\\
+64	2.97143941410671e-07\\
+81	2.97143941410671e-07\\
+100	2.97143941410671e-07\\
+121	2.97143941410671e-07\\
+144	2.97143941410671e-07\\
+169	2.97143941410671e-07\\
+196	2.97143941410671e-07\\
+225	0.0162268723810862\\
+256	2.97143941410671e-07\\
+289	2.97143941410671e-07\\
+324	2.97143941410671e-07\\
+361	2.97143941410671e-07\\
+400	2.97143941410671e-07\\
+441	2.97143941410671e-07\\
+484	2.97143941410671e-07\\
+529	2.97143941410671e-07\\
+576	2.97143941410671e-07\\
+625	2.97143941410671e-07\\
+676	2.97143941410671e-07\\
+729	2.97143941410671e-07\\
+784	2.97143941410671e-07\\
+};
+%\addlegendentry{data1}
+
+\end{axis}
+\end{tikzpicture}%

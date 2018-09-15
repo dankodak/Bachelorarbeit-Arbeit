@@ -13,11 +13,15 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Plots verschiedener Kerne\relax }}{27}{figure.caption.10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Kollokationspunkte\relax }}{32}{figure.caption.11}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Standardkollokation Nicht-Symmetrisch\relax }}{33}{figure.caption.12}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Standardkollokation Symmetrisch\relax }}{33}{figure.caption.13}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Gewichtete Kollokation Nicht-Symmetrisch\relax }}{34}{figure.caption.14}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Gewichtete Kollokation Symmetrisch\relax }}{34}{figure.caption.15}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Rand bei Standardkollokation\relax }}{36}{figure.caption.17}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Rand bei gewichteter Kollokation\relax }}{36}{figure.caption.18}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Lösung der \ac {PDE}\relax }}{32}{figure.caption.11}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Kollokationspunkte\relax }}{33}{figure.caption.12}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Standardkollokation Nicht-Symmetrisch\relax }}{34}{figure.caption.13}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Standardkollokation Symmetrisch\relax }}{34}{figure.caption.14}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Gewichtete Kollokation Nicht-Symmetrisch\relax }}{35}{figure.caption.15}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Gewichtete Kollokation Symmetrisch\relax }}{35}{figure.caption.16}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Rand bei Standardkollokation\relax }}{37}{figure.caption.18}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Rand bei gewichteter Kollokation\relax }}{37}{figure.caption.19}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Fehler bei unterschiedlicher Anzahl an Testpunkten\relax }}{38}{figure.caption.20}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Gammawerte bei unterschiedlicher Anzahl an Testpunkten\relax }}{39}{figure.caption.21}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Gammawerte bei unterschiedlicher Anzahl an Testpunkten\relax }}{40}{figure.caption.22}
 \addvspace {10\p@ }

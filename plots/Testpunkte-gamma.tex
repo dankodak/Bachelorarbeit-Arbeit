@@ -1,0 +1,65 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.605in,
+at={(0.758in,0.487in)},
+scale only axis,
+xmin=0,
+xmax=800,
+xlabel style={font=\color{white!15!black}},
+xlabel={Anzahl der Testpunkte},
+ymode=log,
+ymin=0.1,
+ymax=100,
+yminorticks=true,
+ylabel style={font=\color{white!15!black}},
+ylabel={gamma},
+axis background/.style={fill=white},
+%title style={font=\bfseries},
+%title={gamma plot},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+1	0.316227766016838\\
+4	3.16227766016838\\
+9	56.2341325190349\\
+16	3.16227766016838\\
+25	3.16227766016838\\
+36	3.16227766016838\\
+49	100\\
+64	3.16227766016838\\
+81	3.16227766016838\\
+100	3.16227766016838\\
+121	3.16227766016838\\
+144	3.16227766016838\\
+169	3.16227766016838\\
+196	3.16227766016838\\
+225	100\\
+256	3.16227766016838\\
+289	3.16227766016838\\
+324	3.16227766016838\\
+361	3.16227766016838\\
+400	3.16227766016838\\
+441	3.16227766016838\\
+484	3.16227766016838\\
+529	3.16227766016838\\
+576	3.16227766016838\\
+625	3.16227766016838\\
+676	3.16227766016838\\
+729	3.16227766016838\\
+784	3.16227766016838\\
+};
+%\addlegendentry{data1}
+
+\end{axis}
+\end{tikzpicture}%

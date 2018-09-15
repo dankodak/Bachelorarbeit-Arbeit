@@ -8,11 +8,24 @@ Dafür betrachten wir die Poisson-Gleichung mit Dirichlet-Randbedingung auf $\Om
 - \Delta u &= 2\pi^2 \sin(\pi x)\sin(\pi y)&&, (x,y) \in \Omega\\
 u &= 0&&, (x,y) \in \partial \Omega
 \end{align*}
-mit analytischer Lösung $u(x,y) = \sin(\pi x)\sin(\pi y)$.
+mit analytischer Lösung $u(x,y) = \sin(\pi x)\sin(\pi y)$, dargestellt in Abbildung \ref{fig:plot}. Wir wählen als Gewichtsfunktion $w$ für $\Omega$ die Funktion aus Beispiel \ref{ex:Gewicht}:
+\begin{align*}
+w = -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}.
+\end{align*}
+\begin{figure}[h]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/plot.tex}
+}
+\caption{Lösung der \ac{PDE}}
+\label{fig:plot}
+\end{figure}
 
 Diese werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}.
 
 \section{Fehler}
+\subsection{Absoluter Fehler}
+
 Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbildung \ref{fig:Kollok} gezeigt, in einem Gitter anordnen.
 \begin{figure}[h]
 \centering
@@ -31,6 +44,9 @@ wobei $s_u$ die numerische Lösung bezeichnet.
 Damit können wir uns anschauen, wie sich der Fehler bei Veränderung der Anzahl der Kollokationspunkte verhält.
 
 In den folgenden vier Abbildungen \ref{fig:standard error abs n-sym}, \ref{fig:standard error abs sym}, \ref{fig:weighted error abs n-sym}, \ref{fig:weighted error abs sym} ist der Fehler der vier verschiedenen Verfahren dargestellt.
+
+Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll.
+
 \begin{figure}[H]
 \centering
 \resizebox {.8\columnwidth} {!} {
@@ -64,8 +80,6 @@ In den folgenden vier Abbildungen \ref{fig:standard error abs n-sym}, \ref{fig:s
 \label{fig:weighted error abs sym}
 \end{figure}
 
-Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll.
-
 Zum besseren Vergleich der Verfahren stellen wir in Tabelle \ref{tab:Vergleich Fehler} die Fehler nochmal in einer Tabelle dar.
 
 \begin{table}[H]
@@ -89,6 +103,8 @@ Gewichtet Sym & \num{0.27994} & \num{6.40403e-03} & \num{1.04064e-03} & • \\
 
 Wir erkennen, dass alle Verfahren sehr schnell gute Ergebnisse liefern. Die beiden Standardverfahren liefern bereits mit nahezu $100$ Kollokationspunkten ihre besten Ergebnisse und verbessern sich danach nur noch wenig. Im Gegensatz dazu stehen die gewichteten Verfahren, die zwar auch schon am Anfang gute Ergebnisse liefern, sich dann aber auch mit mehr Kollokationspunkten weiter verbessern, wenn auch ziemlich langsam. Gesamt erreichen die gewichteten Verfahren aber selbst mit $6000$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneiden beide Male die symmetrischen Verfahren leicht besser ab.
 
+\subsection{Fehler auf dem Rand}
+
 Wir möchten nun überprüfen, ob die gewichtete Kollokation ihren Sinn erfüllt, d.h. ob die Lösung auf dem Rand auch wirklich Null ist. Dafür plotten wir eine mit dem Standardverfahren erstellte Lösung (Abbildung \ref{fig:rand standard}) und eine mit dem gewichteten Verfahren erstellte Lösung (Abbildung \ref{fig:rand weighted}) über einen Teil des Randes.
 
 \begin{figure}[H]
@@ -109,5 +125,39 @@ Wir möchten nun überprüfen, ob die gewichtete Kollokation ihren Sinn erfüllt
 \end{figure}
 
 Bei der Standardkollokation sind deutlich Schwankungen über den Rand erkennbar, wohingegen der Rand bei der gewichteten Kollokation bis auf kleine numerische Ungenauigkeiten tatsächlich Null ist. Das Ziel der gewichteten Kollokation wurde also erreicht.
+
+\subsection{Testpunkte}
+
+Wir sind bisher nur auf die Wahl der Kollokationspunkte eingegangen, aber noch nicht auf die der Testpunkte. Dafür stellen wir den Fehler unserer numerischen Lösung in Abbildung \ref{fig:testpunkte} bei gleichbleibenden Kollokationspunkten, aber bei unterschiedlichen Anzahlen von Testpunkten dar. Diese sind auch hier wieder in einem Gitter angeordnet.
+\begin{figure}[H]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/Testpunkte.tex}
+}
+\caption{Fehler bei unterschiedlicher Anzahl an Testpunkten}
+\label{fig:testpunkte}
+\end{figure}
+Wir erkennen, dass der Fehler bis auf wenige Ausreißer konstant bleibt. Damit ist die Wahl der Testpunkte beinahe egal. Die großen Fehler entstehen genau dann, wenn alle Testpunkte mit den Kollokationspunkten zusammenfallen. Den hier auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Testdaten angepasst und verliert dabei an Genauigkeit, wenn man das ganze Gebiet $\Omega$ betrachtet. 
+
+In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter gamma bei unterschiedlichen Testpunktanzahlen dargestellt.
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/Testpunkte-gamma.tex}
+}
+\caption{Gammawerte bei unterschiedlicher Anzahl an Testpunkten}
+\label{fig:testpunkte-gamma}
+\end{figure}
+Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes gamma gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes gamma einem schmalen "Hütchen"  der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Test- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur Einfluss auf einen Testpunkt, nämlich den, an dem sie angesetzt werden, nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}.
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/overfitting.pdf_tex}
+}
+\caption{Gammawerte bei unterschiedlicher Anzahl an Testpunkten}
+\label{fig:overfitting}
+\end{figure}
+
+So entsteht eine Lösung, die an den Testpunkten extrem gut angepasst ist, ansonsten der echten Lösung aber kaum ähnlich sieht.
 %\section{Kondition}
 %\section{Laufzeit}

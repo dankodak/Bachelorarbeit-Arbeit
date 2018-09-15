@@ -1,8 +1,15 @@
 \chapter{Einleitung}
 \label{cha:Einleitung}
-Unser Ziel ist es Lösungen von \acp{PDE} zu approximieren. Diese sind allgemein gegeben durch:
-\begin{align*}
-L u(x) &= f(x), x \in \Omega \\
-B u(x) &= g(x), x \in \partial \Omega
-\end{align*}
-, wobei $\Omega \subset \mathbb{R}^n$, $L$ ein linearer, beschränkter Differentialoperator und $B$ ein linearer, beschränkter Auswertungsoperator ist.
+In dieser Bachelorarbeit stellen wir ein Verfahren zur numerischen Lösung von \acp{PDE} vor, die gewichtete Kernkollokation. Dazu schauen wir uns zunächst die gewöhnliche Kernkollokation an und erweitern diese dann auf die gewichtete.
+
+Ziel dieser Arbeit ist es somit ein neues numerisches Verfahren zur Lösung von \acp{PDE} zu entwickeln und dieses am Ende zu testen und mit anderen Verfahren zu vergleichen.
+
+Dafür benötigen wir zunächst die zugrunde liegende Theorie. Diese stellen wir in Kapitel \ref{cha:Grundlagen} vor. Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Deswegen werden wir diese zunächst verallgemeinern und geeignete Ansatzfunktionen suchen, die sogenannten Kerne. Außerdem benötigen wir noch einen Funktionenraum, in dem unser Verfahren "funktionieren" wird, einen sogenannten \ac{RKHR}. Dann werden wir verschiedene Eigenschaften der Kerne und der \ac{RKHR} herleiten.
+
+In Kapitel \ref{cha:Standardkollokation} werden wir die Theorie aus Kapitel \ref{cha:Grundlagen} anwenden und das Standardverfahren der Kernkollokation herleiten. Dafür verfolgen wir zwei verschiedene Wege, zum einen die symmetrische Kollokation in Kapitel \ref{sec:SymKol}, die theoretisch gut motiviert ist, aber komplexer als die wesentlich simplere nicht-symmetrische Kollokation in Kapitel \ref{sec:NSymKol}, welche aber theoretisch nicht so schön motiviert ist.
+
+In Kapitel \ref{cha:Gewichtet} kommen wir zur gewichteten Kollokation. Wir machen uns in Kapitel \ref{sec:motivation} zunächst die Motivation dafür klar. Wir stellen bei der Standardkollokation fest, dass die numerische Lösung auf dem Rand des Gebietes nicht genau ist. Dieses Problem wollen wir mit der gewichteten Kollokation beheben. Dafür führen wir in Kapitel \ref{sec:gewicht} die namensgebenden Gewichtsfunktionen ein. Daraus bauen wir Ansatzfunktionen, die auf dem Rand des Gebietes eine genaue Lösung liefern. Damit leiten wir wie in Kapitel \ref{cha:Standardkollokation} ein symmetrisches und ein nicht-symmetrisches Verfahren her.
+
+In Kapitel \ref{cha:Implementierung} gehen wir auf die Implementierung aller Verfahren ein. Dabei stellen wir den grundlegenden Algorithmus vor und gehen auf die Parameterwahl und die Wahl der Kollokationspunkte ein.
+
+In Kapitel \ref{cha:NumerischeTests} testen wir alle vorgestellten Verfahren. Dafür lösen wir eine \ac{PDE} mithilfe unserer Verfahren und vergleichen die Ergebnisse bezüglich dem entstandenen Fehler, Laufzeit und Kondition.
