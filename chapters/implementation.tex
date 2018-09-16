@@ -44,11 +44,11 @@ $Ls_u$ lässt sich aufgrund der Linearität des Differentialoperators leicht ber
 Kommen wir zur Bestimmung der Kollokationspunkte. Auch hier möchten wir mehrere Möglichkeiten vorstellen.
 \begin{itemize}
 \item
-Eine einfache Möglichkeit ist die Kollokationspunkte zufällig zu wählen.
+Die Kollokationspunkte können als Gitter über das Definitionsgebiet gelegt werden.
 \item
-Man kann die Kollokationspunkte auch als Gitter über das Definitionsgebiet legen.
+Die Kollokationspunkte können zufällig gewählt werden.
 \item
-Etwas komplizierter ist eine Greedy-Punktwahl. Man berechnet eine Lösung und bestimmt mit einem geeigneten Fehlerschätzer den Punkt mit dem größten Fehler. Dort setzt man einen neuen Kollokationspunkt und wiederholt das Verfahren.
+Eine Greedy-Punktwahl ist auch möglich. Dafür berechnet man zunächst eine Lösung aus den aktuell gegebenen Punkten. Auf diese Lösung kann man dann den Differentialoperator aus der \ac{PDE} anwenden. Zwischen dieser Funktion und der rechten Seite der \ac{PDE} kann man dann den maximalen Fehler in dem Definitionsgebiet bestimmen. An die Stelle, an der der maximale Fehler angenommen wird, wird der neue Kollokationspunkt gesetzt. Dieses Verfahren kann dann wiederholt werden.
 \end{itemize}
 
-Die Wahl der Testpunkte spielt keine all zu große Rolle, man sollte nur beachten, dass die möglichst disjunkt von den Kollokationszentren ist. NÄCHSTES KAPITEL OVERFITTING
+Die Testpunkte können, wie die Kollokationspunkte, zufällig gewählt werden, oder in einem Gitter über das Definitionsgebiet gelegt werden.

@@ -19,17 +19,18 @@ scale only axis,
 xmin=0,
 xmax=250,
 xlabel style={font=\color{white!15!black}},
-xlabel={amount of collocation points},
+xlabel={Anzahl Kollokationspunkte},
 ymode=log,
 ymin=1e-08,
 ymax=1.08072077358145,
 yminorticks=true,
 ylabel style={font=\color{white!15!black}},
-ylabel={max. error in derivative/absolute},
+ylabel={Maximaler absoluter Fehler},
 axis background/.style={fill=white},
-title style={font=\bfseries},
-title={error plot},
-legend style={legend cell align=left, align=left, draw=white!15!black}
+%title style={font=\bfseries},
+%title={error plot},
+legend style={legend cell align=left, align=left, draw=white!15!black},
+legend pos = {south west}
 ]
 \addplot [color=mycolor1]
   table[row sep=crcr]{%

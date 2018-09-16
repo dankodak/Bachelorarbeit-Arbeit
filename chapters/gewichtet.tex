@@ -45,6 +45,7 @@ Seien $\Omega_1, \Omega_2 \subset \mathbb{R}^n$ zwei offene und beschränkte Men
 \end{enumerate}
 \end{theorem}
 \begin{proof}
+$\mbox{}$
 \begin{enumerate}
 
 \item
@@ -120,7 +121,7 @@ Sei $x \in \Omega_1, x \in \Omega_2$. $\Rightarrow w_1(x) >0, w_2(x) >0$
 \end{align*}
 
 \item
-Sei \ac{oBdA} $x \in \Omega_1, x \notin \Omega_2$. $\Rightarrow w_1(x) >0, w_2(x) <0$
+Sei \ac{oBdA} $x \in \Omega_1, x \notin \widebar{\Omega_2}$. $\Rightarrow w_1(x) >0, w_2(x) <0$
 \begin{align*}
 w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} \\
 &< w_1(x) + w_2(x) - \sqrt{w_1(x)^2} \\
@@ -128,7 +129,7 @@ w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} \\
 &= w_2(x) <0
 \end{align*}
 \item
-Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \widebar{\Omega_2}$. $w_1(x) = 0, w_2(x) > 0$
+Sei \ac{oBdA} $x \in \partial \Omega_1, x \in \Omega_2$. $w_1(x) = 0, w_2(x) > 0$
 \begin{align*}
 w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2+w_2(x)^2} \\
 &= w_2(x) - \sqrt{w_2(x)^2} = 0
@@ -144,6 +145,12 @@ w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} \\
 Sei $x \notin \widebar{\Omega_1}, x \notin \widebar{\Omega_2}$. $\Rightarrow w_1(x) < 0, w_2(x) < 0$
 \begin{align*}
 w(x) = w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} < 0
+\end{align*}
+
+\item
+Sei $x \in \partial \Omega_1, x \in \partial \Omega_2$. $\Rightarrow w_1(x) = 0, w_2(x) = 0$
+\begin{align*}
+w(x) = w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} = 0
 \end{align*}
 \end{itemize}
 \end{enumerate}

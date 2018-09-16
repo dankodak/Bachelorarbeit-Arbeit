@@ -4,7 +4,7 @@
 Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Diese ist zunächst aber nur für die Punktauswertung bekannt. Das genügt uns hier nicht mehr, da wir auch Ableitungen betrachten müssen und benötigen daher eine verallgemeinerte Form.
 
 \begin{definition}
-Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
+Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
 \begin{align*}
 \langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle , 1\le i \le N,
 \end{align*}
@@ -15,7 +15,7 @@ wobei wir $\langle \lambda_i, u \rangle := \lambda_i(u)$ für die Anwendung des 
 $\mbox{}$
 \begin{itemize}
 \item
-Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum mit Funktionen, in dem die Punktauswertungfunktionale $\delta_{x_i}(f) := f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$:
+Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, in dem die Punktauswertungfunktionale $\delta_{x_i}(f) := f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$:
 \begin{align*}
 s(x_i) = \langle \delta_{x_i},s \rangle = \langle \delta_{x_i},s_u \rangle = s_u(x_i), 1\le i \le N
 \end{align*}

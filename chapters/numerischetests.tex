@@ -1,7 +1,7 @@
 \chapter{Numerische Tests}
 \label{cha:NumerischeTests}
 
-In diesem Kapitel möchten wir die vorgestellten Verfahren verschiedenen numerischen Tests unterziehen. Dabei wollen wir hauptsächlich den Fehler der numerischen Lösung zur analytischen untersuchen, aber auch die Kondition der Kollokationsmatrizen, die Parameterwahl und die Laufzeit betrachten. Zusätzlich werden wir die Verfahren mit der finiten Elemente Methode (\acs{FEM}) vergleichen.
+In diesem Kapitel möchten wir die vorgestellten Verfahren verschiedenen numerischen Tests unterziehen. Dabei wollen wir hauptsächlich den Fehler der numerischen Lösung zur analytischen untersuchen, aber auch die Kondition der Kollokationsmatrizen, die Parameterwahl und die Laufzeit betrachten.
 
 Dafür betrachten wir die Poisson-Gleichung mit Dirichlet-Randbedingung auf $\Omega = [-1,1] \times [-1,1] \subset \mathbb{R}^n$:
 \begin{align*}
@@ -12,7 +12,7 @@ mit analytischer Lösung $u(x,y) = \sin(\pi x)\sin(\pi y)$, dargestellt in Abbil
 \begin{align*}
 w = -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}.
 \end{align*}
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{plots/plot.tex}
@@ -21,7 +21,7 @@ w = -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}.
 \label{fig:plot}
 \end{figure}
 
-Diese werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}.
+Diese werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}. Aufgrund der fehlenden Praxisrelevanz werden wir die erste in Kapitel \ref{cha:Implementierung} vorgestellte Methode zur Fehlerberechnung in jeder Iteration nicht betrachten, sondern nur die in der Ableitung.
 
 \section{Fehler}
 \subsection{Absoluter Fehler}
@@ -31,8 +31,11 @@ Als Maß des Fehlers unserer numerischen Lösung wollen wir zunächst den maxima
 \text{error} = \max_{x \in \Omega} |u(x) - s_u (x)|,
 \end{align*}
 wobei $s_u$ die numerische Lösung bezeichnet.
+
+Wir werden die drei in Kapitel \ref{cha:Implementierung} vorgestellten Methoden zur Kollokationspunktwahl testen und miteinander vergleichen. 
+\subsubsection{Kollokationspunkte als Gitter}
 Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbildung \ref{fig:Kollok} gezeigt, in einem Gitter anordnen.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{plots/Kollokationspunkte.tex}
@@ -41,7 +44,7 @@ Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbi
 \label{fig:Kollok}
 \end{figure}
 
-Damit können wir uns anschauen, wie sich der Fehler bei Veränderung der Anzahl der Kollokationspunkte verhält. In Abbildung \ref{fig:error} und Tabelle \ref{tab:Vergleich Fehler} ist der Fehler der vier verschiedenen Verfahren dargestellt. 
+Damit können wir uns anschauen, wie sich der Fehler bei Verfeinerung des Gitters verhält. In Abbildung \ref{fig:error} ist der Fehler der vier verschiedenen Verfahren dargestellt. 
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -50,29 +53,30 @@ Damit können wir uns anschauen, wie sich der Fehler bei Veränderung der Anzahl
 \caption{Fehler bei Kollokationspunkten auf Gitter}
 \label{fig:error}
 \end{figure}
-\begin{table}[H]
-\centering
-\begin{tabular}{c|c|c|c|c}
+%\begin{table}[H]
+%\centering
+%\begin{tabular}{c|c|c|c|c}
+%%\hline 
+% & $n = 9$ & $n = 100$ & $n = 1024$ & $n = 6084$ \\ 
 %\hline 
- & $n = 9$ & $n = 100$ & $n = 1024$ & $n = 6084$ \\ 
-\hline 
-Standard N-Sym & \num{0.99974} & \num{2.18205e-04} & \num{2.61592e-06} & \num{9.07630e-06} \\ 
-%\hline 
-Standard Sym & \num{0.99974} & \num{2.48216e-05} & \num{1.08639e-07} & \num{1.31851e-07} \\ 
-%\hline 
-Gewichtet N-Sym & \num{0.37643} & \num{8.20819e-03} & \num{1.87889e-03} & \num{3.09914e-04} \\ 
-%\hline 
-Gewichtet Sym & \num{0.27994} & \num{6.40403e-03} & \num{1.04064e-03} & • \\ 
-%\hline 
-\end{tabular} 
-\caption{Vergleich der Verfahren}
-\label{tab:Vergleich Fehler}
-\end{table}
+%Standard N-Sym & \num{0.99974} & \num{2.18205e-04} & \num{2.61592e-06} & \num{9.07630e-06} \\ 
+%%\hline 
+%Standard Sym & \num{0.99974} & \num{2.48216e-05} & \num{1.08639e-07} & \num{1.31851e-07} \\ 
+%%\hline 
+%Gewichtet N-Sym & \num{0.37643} & \num{8.20819e-03} & \num{1.87889e-03} & \num{3.09914e-04} \\ 
+%%\hline 
+%Gewichtet Sym & \num{0.27994} & \num{6.40403e-03} & \num{1.04064e-03} & • \\ 
+%%\hline 
+%\end{tabular} 
+%\caption{Vergleich der Verfahren}
+%\label{tab:Vergleich Fehler}
+%\end{table}
 
-Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll. 
+Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und gegen die analytische Lösung konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll. 
 
-Wir erkennen, dass alle Verfahren sehr schnell gute Ergebnisse liefern. Die beiden Standardverfahren liefern bereits mit nahezu $100$ Kollokationspunkten ihre besten Ergebnisse und verbessern sich danach nur noch wenig. Im Gegensatz dazu stehen die gewichteten Verfahren, die zwar auch schon am Anfang gute Ergebnisse liefern, sich dann aber auch mit mehr Kollokationspunkten weiter verbessern, wenn auch ziemlich langsam. Gesamt erreichen die gewichteten Verfahren aber selbst mit $6000$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneiden beide Male die symmetrischen Verfahren leicht besser ab.
+Wir erkennen, dass alle Verfahren sehr schnell gute Ergebnisse liefern. Die beiden Standardverfahren liefern bereits mit nahezu $200$ Kollokationspunkten ihre besten Ergebnisse in der Größenordnung von $10^{-6}$ für das nicht-symmetrische Verfahren und $10^{-7}$ für das symmetrische und verbessern sich danach nicht mehr. Im Gegensatz dazu stehen die gewichteten Verfahren, die am Anfang bei weitem nicht so gute Ergebnisse von rund $10^{-2}$ liefern, sich dann aber mit mehr Kollokationspunkten weiter verbessern, wenn auch ziemlich langsam. Gesamt erreichen die gewichteten Verfahren aber selbst mit $6000$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneidet beim Standardverfahren das symmetrische leicht besser ab, beim gewichteten ist kein Unterschied erkennbar.
 
+\subsubsection{Zufällige Kollokationspunkte}
 Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbildung \ref{fig:error-random} ist der Fehler bei unterschiedlich vielen zufällig verteilten Kollokationspunkten dargestellt.
 \begin{figure}[ht]
 \centering
@@ -83,16 +87,44 @@ Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbi
 \label{fig:error-random}
 \end{figure}
 
-Vergleicht man die Werte mit denen der auf einem Gitter verteilten Kollokationspunkte, stellt man keinen großen Unterschied fest. Die Größenordnung der Fehler ist in beiden Fällen gleich, allerdings weisen die zufälligen Punkte, vor allem bei den gewichteten Verfahren, größere Schwankungen auf. Demnach ist hinsichtlich des Fehlers kein Vorteil für die zufällig gewählten Punkte erkennbar.
+Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. Die Standardverfahren erreichen mit $200$ Kollokationspunkten ihre besten Ergebnisse von rund $10^{-7}$ für die nicht-symmetrische Variante und $10^{-6}$ für die symmetrische und verbessern sich dann nicht mehr weiter. Die gewichteten Verfahren erreichen mit $200$ Kollokationspunkten nur einen Fehler von rund $10^{-2}$, verbessern sich aber mit mehr Kollokationspunkten noch leicht.
 
+Vergleicht man die Fehler mit denen der Gitterpunktwahl, stellt man fest, dass diese sich in der gleichen Größenordnung bewegen. Allerdings weißt die Kurve der zufällig gewählten Punkte mehrere Ausreißer nach oben auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte, von daher lässt sich bezüglich des Fehlers kein Vorteil für zufällig gewählte Kollokationspunkte feststellen.
+
+\subsubsection{Greedy-Punktwahl}
+Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} mit einer Greedy-Punktwahl gesetzte Kollokationspunkte an.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{plots/error-greedy.tex}
 }
-\caption{Fehler bei zufällig verteilten Kollokationspunkten}
-\label{fig:error-random}
+\caption{Fehler beim Greedy-Verfahren}
+\label{fig:error-greedy}
 \end{figure}
+
+Wir erkennen, dass nur die Standardverfahren vernünftige Ergebnisse liefern. Diese pendeln sich nach ungefähr $110$ Iterationen für das nicht-symmetrische Verfahren bei einem Fehler von rund $10^{-5}$ und nach ungefähr $160$ Iterationen für das symmetrische bei einem Fehler von rund $10^{-7}$ ein. Damit benötigt die greedy-Punktwahl jeweils $80$ und $320$ Kollokationspunkte weniger, um das gleiche Ergebnis wie Gitterpunktwahl zu erzielen.
+
+Die gewichteten Verfahren hingegen geben uns beide keine vernünftigen Ergebnisse. Ein Grund dafür wird erkennbar, wenn man sich anschaut, wo die Kollokationspunkte hingelegt werden. Dies ist in Abbildung \ref{fig:greedy-points} dargestellt.
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/greedy-points.tex}
+}
+\caption{Kollokationspunkte beim Greedy-Verfahren}
+\label{fig:greedy-points}
+\end{figure}
+
+Man erkennt, dass die Kollokationspunkte im Standard Fall gleichmäßig über das Einheitsquadrat verteilt sind, sich im gewichteten Fall allerdings in den Ecken drängen. Dies führt zu einer in Abbildung \ref{fig:greedy-verrauscht} erkennbaren numerisch verrauschten Lösung. Das gewichtete Greedy Verfahren ist demnach unbrauchbar.
+
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/plot-weighted-verrauscht.pdf_tex}
+}
+\caption{Lösung bei gewichtetem Greedy Verfahren}
+\label{fig:greedy-verrauscht}
+\end{figure}
+
 \subsection{Fehler auf dem Rand}
 
 Wir möchten nun überprüfen, ob die gewichtete Kollokation ihren Sinn erfüllt, d.h. ob die Lösung auf dem Rand auch wirklich Null ist. Dafür plotten wir eine mit dem Standardverfahren erstellte Lösung und eine mit dem gewichteten Verfahren erstellte Lösung in Abbildung \ref{fig:rand-vergleich} über einen Teil des Randes.
@@ -136,7 +168,7 @@ Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ei
 \resizebox {\columnwidth} {!} {
 \input{plots/overfitting.pdf_tex}
 }
-\caption{Gammawerte bei unterschiedlicher Anzahl an Testpunkten}
+\caption{Lösung bei Überanpassung}
 \label{fig:overfitting}
 \end{figure}
 
