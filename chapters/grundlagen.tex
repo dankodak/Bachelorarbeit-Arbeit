@@ -1,10 +1,10 @@
 \chapter{Kerne und reproduzierende Kern Hilberträume}
 \label{cha:Grundlagen}
 
-Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Diese ist zunächst aber nur für die Punktauswertung bekannt. Das genügt uns hier nicht mehr, da wir auch Ableitungen betrachten müssen und benötigen daher eine verallgemeinerte Form.
+Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Da wir bei \acp{PDE} auch Ableitungen betrachten müssen, reicht die einfache Punktauswertung für unsere Problemstellung nicht mehr aus, weswegen wir eine verallgemeinerte Form der Interpolation benötigen.
 
 \begin{definition}
-Sei $\Omega \subset \mathbb{R}^n$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
+Sei $\Omega \subset \mathbb{R}^d$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
 \begin{align*}
 \langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle , 1\le i \le N,
 \end{align*}
@@ -15,44 +15,44 @@ wobei wir $\langle \lambda_i, u \rangle := \lambda_i(u)$ für die Anwendung des 
 $\mbox{}$
 \begin{itemize}
 \item
-Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten und $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, in dem die Punktauswertungfunktionale $\delta_{x_i}(f) := f(x_i), 1\le i \le N$  stetig sind. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$:
+Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, in dem die Punktauswertungfunktionale $\delta_{x_i}(f) := f(x_i), 1\le i \le N$  stetig sind und $u \in \mathcal{H}$. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$:
 \begin{align*}
-s(x_i) = \langle \delta_{x_i},s \rangle = \langle \delta_{x_i},s_u \rangle = s_u(x_i), 1\le i \le N
+s(x_i) = \langle \delta_{x_i},u \rangle = \langle \delta_{x_i},s_u \rangle = s_u(x_i), 1\le i \le N
 \end{align*}
 \item
-Für einen Multiindex $a \in \mathbb{N}_0^d$ sei $D^a$ ein linearer partieller Differentialoperator. Dann erhält man mit $\lambda_i := \delta_{x_i} \circ D^a$ noch zusätzliche Informationen über die Ableitung der Funktion.
+Für einen Multiindex $a \in \mathbb{N}_0^d$ sei $D^a$ ein linearer partieller Differentialoperator. Dann erhält man mit $\lambda_i := \delta_{x_i} \circ D^a$ die Auswertungsfunktionale der Ableitung, mit welchen wir interpolieren können.
 \item
 Sei eine \ac{PDE} mit Lösung $u \in C^k(\Omega) \cap C^0(\widebar \Omega)$ gegeben:
-\begin{align*}
+\begin{align}\label{eq:PDE}
+\begin{split}
 L u(x) &= f(x), x \in \Omega \\
 B u(x) &= g(x), x \in \partial \Omega,
-\end{align*}
-wobei $L$ ein linearer Differentialoperator und $B$ ein linearer Randwertoperator ist.
-Sei $X_N \subset \Omega$ eine Menge an Kollokationspunkten. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
-\begin{align} \label{eq:PDE}
-\begin{split}
-L s_u(x_i) &= L u(x_i) = f(x_i), x_i \in \Omega\\
-B s_u(x_i) &= B u(x_i) = g(x_i), x_i \in \partial \Omega
 \end{split}
 \end{align}
+wobei $L$ ein linearer Differentialoperator und $B$ ein linearer Randwertoperator ist.
+Sei $X_N \subset \Omega$ eine Menge an Punkten, genant Kollokationspunkte. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
+\begin{align*}
+L s_u(x_i) &= L u(x_i) = f(x_i), x_i \in \Omega\\
+B s_u(x_i) &= B u(x_i) = g(x_i), x_i \in \partial \Omega
+\end{align*}
 \end{itemize}
 \end{example}
 
-Wir müssen einen geeigneten diskreten Ansatz wählen um das Interpolationsproblem numerisch zu lösen, also einen $N$-dimensionalen Unterraum $V_N := \text{span}\{\nu_1, \dots, \nu_N\} \subset \mathcal{H}$ und fordern, dass $s_u \in V_N$, also 
+Wir müssen einen geeigneten diskreten Ansatz wählen um das Interpolationsproblem numerisch zu lösen. Hierfür wählen wir einen $N$-dimensionalen Unterraum $V_N := \text{span}\{\nu_1, \dots, \nu_N\} \subset \mathcal{H}$ und fordern, dass $s_u \in V_N$, also 
 \begin{align*}
 s_u(x) := \sum_{j=1}^N \alpha_j \nu_j(x), x \in \Omega, \alpha \in \mathbb{R}^N.
 \end{align*}
-Also lassen sich die Interpolationsbedingungen schreiben als:
+Damit können wir die Interpolationsbedingungen schreiben als:
 \begin{align*}
 \langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle = \sum_{j=1}^N \alpha_j \langle \lambda_i,\nu_j \rangle
 \end{align*}
 Diese lassen sich auch als lineares Gleichungssystem $A_\Lambda \alpha = b$ schreiben  mit $(A_\Lambda)_{i,j} := \langle \lambda_i,\nu_j \rangle, b_i := \langle \lambda_i,u \rangle$.
 
-Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, in dem die Auswertungs- und Differentialfunktionale stetig sind. Dies führt uns zur Definition von Kern Funktionen, mit denen wir einen Hilbertraum konstruieren werden, der uns das Geforderte liefern wird.
+Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, in dem die Auswertungs- und Differentialfunktionale stetig sind. Dies führt uns zur Definition von Kern Funktionen, mit denen wir einen Hilbertraum konstruieren werden, der das Geforderte liefern wird.
 
 \begin{definition}
 \label{Kern}
-Sei $\Omega$ eine nicht leere Menge. Ein reeller Kern auf $\Omega$ ist eine symmetrische Funktion $K: \Omega \times \Omega \rightarrow \mathbb{R}$.
+Sei $\Omega$ eine beliebige nicht leere Menge. Ein reeller Kern auf $\Omega$ ist eine symmetrische Funktion $K: \Omega \times \Omega \rightarrow \mathbb{R}$.
 
 Für alle $N \in \mathbb{N}$ und für eine Menge $X_N = \{x_i\}_{i=1}^N \subset \Omega$ ist die Kernmatrix (oder Gram'sche Matrix) $A:= A_{K,X_N} \in \mathbb{R}^{N \times N}$  definiert als $A:=[K(x_i, x_j)]_{i,j=1}^N$.
 
@@ -61,7 +61,7 @@ Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und 
 
 \begin{theorem}
 \label{thm:Kombi}
-Sei $\Omega$ eine nicht leere Menge, $K_1, K_2:\Omega \rightarrow \mathbb{R}$ zwei \ac{PD} Kerne auf $\Omega$ und $a \geq 0$. Dann sind folgende Funktionen wieder \ac{PD} Kerne auf $\Omega$:
+Sei $\Omega$ eine beliebige nicht leere Menge, $K_1, K_2:\Omega \rightarrow \mathbb{R}$ zwei \ac{PD} Kerne auf $\Omega$ und $a \geq 0$. Dann sind folgende Funktionen wieder \ac{PD} Kerne auf $\Omega$:
 \begin{enumerate}
 \item
 $K(x,y) := K_1(x,y) + K_2(x,y)$
@@ -112,7 +112,7 @@ Für ein beliebiges $\alpha \neq 0$ gilt
 \item
 Wir betrachten wieder die Kernmatrix.
 \begin{align*}
-K &= 
+A_K &= 
 \begin{pmatrix}
 K_1(x_1,x_1)K_2(x_1, x_1) & \cdots & K_1(x_1,x_N)K_2(x_1, x_N) \\ 
 \vdots & \ddots & \vdots \\ 
@@ -154,10 +154,11 @@ Die Symmetrie folgt aus der Symmetrie des Skalarprodukts. Die Kernmatrix entspri
 Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
 \end{enumerate}
 \end{proof}
-Wir kommen mit der Definition von Kernen direkt zu den gesuchten Hilberträumen. Diese sind zunächst ohne Bezug zu Kernen definiert, wir werden aber feststellen, dass sie eng miteinander verknüpft sind.
+
+Die Definition der Kerneführt uns direkt zu den gesuchten Hilberträumen. Diese sind zunächst ohne Bezug zu Kernen definiert, wir werden aber feststellen, dass sie eng miteinander verknüpft sind.
 
 \begin{definition}[Reproduzierender Kern Hilbertraum]
-Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodukt $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ einen \glslink{RKHR}{Reproduzierenden Kern Hilbert Raum} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
+Sei $\Omega$ eine beliebige nicht leere Menge und $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodukt $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ einen reproduzierenden Kern Hilbertraum (\acs{RKHR})\glsunset{RKHR} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
 \begin{enumerate}
 \item $K(\cdot, x) \in \mathcal{H}$ für alle $x \in \Omega$
 \item $(f, K(\cdot,x))_\mathcal{H} = f(x)$ für alle $ x \in \Omega$, $f \in \mathcal{H}$ (Reproduzierbarkeit)
@@ -168,7 +169,7 @@ Man nennt $K$ den reproduzierenden Kern von $\mathcal{H}$.
 Dass $K$ tatsächlich ein Kern nach Definition \ref{Kern} ist, zeigt folgender Satz.
 \begin{theorem}
 \label{thm:EindeutigkeitKern}
-Sei $\mathcal{H}$ ein \gls{RKHR} mit reproduzierendem Kern $K$. Dann ist $K$ ein Kern, eindeutig und positiv definit.
+Sei $\mathcal{H}$ ein \gls{RKHR} mit reproduzierendem Kern $K$. Dann ist $K$ ein Kern, eindeutig und \ac{PD}.
 \end{theorem}
 
 \begin{proof}
@@ -181,7 +182,7 @@ K(x,y) &= \left( K(\cdot,y), K(x, \cdot)\right)_\mathcal{H} &&\text{(Reproduzier
 &= K(y,x) &&\text{(Reproduzierbarkeit)}
 \end{align*}
 
-Sei $X_N \subset \Omega$ eine Menge von paarweise verschiedenen Punkten und $\alpha \in \mathbb{R}^N, \alpha \neq 0$. Dann gilt:
+Sei $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega$ eine Menge von $N$ paarweise verschiedenen Punkten und $\alpha \in \mathbb{R}^N, \alpha \neq 0$. Dann gilt:
 \begin{align*}
 \alpha^T A \alpha &= \sum_{i,j=1}^N \alpha_i \alpha_j K(x_i, x_j)\\
 &= \sum_{i,j=1}^N \alpha_i \alpha_j \left(K(\cdot, x_i), K(\cdot,x_j)\right)_\mathcal{H}\\
@@ -198,10 +199,10 @@ K_1(x,y) &= (K_1(\cdot,y), K_2(x, \cdot))_\mathcal{H} &&\text{(Reproduzierbarkei
 Also ist $K$ eindeutig.
 \end{proof}
 
-Bei Interpolationsproblemen kommen wir jedoch aus der anderen Richtung und haben Ansatzfunktionen, also einen Kern $K$, gegeben und wollen damit eine Funktion approximieren. Also stellt sich die Frage ob zu jedem Kern $K$ ein \ac{RKHR} existiert. Diese wird durch folgenden Satz beantwortet:
+Bei Interpolationsproblemen kommen wir jedoch aus der anderen Richtung und haben Ansatzfunktionen, also einen Kern $K$, gegeben und wollen damit eine Funktion approximieren. Demnach stellt sich die Frage ob zu jedem Kern $K$ ein \ac{RKHR} existiert. Diese wird durch folgenden Satz beantwortet:
 
 \begin{theorem}
-Sei $\Omega$ eine nicht leere Menge und $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein positiv definiter Kern. Dann existiert genau ein \ac{RKHR} $\mathcal{H}_K (\Omega)$ mit reproduzierendem Kern $K$.
+Sei $\Omega$ eine beliebige nicht leere Menge und $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein positiv definiter Kern. Dann existiert genau ein \ac{RKHR} $\mathcal{H}_K (\Omega)$ mit reproduzierendem Kern $K$.
 \end{theorem}
 \begin{proof}
 Einen Beweis findet man in \textcite[Kap. 10.2]{Wendland.2005}. 
@@ -209,21 +210,21 @@ Einen Beweis findet man in \textcite[Kap. 10.2]{Wendland.2005}.
 Man betrachtet dort zunächst den $\text{span} \{K(\cdot,y), y \in \Omega \}$ und stellt fest, dass dieser mit einem geeigneten Innenprodukt ein Prähilbertraum ist. Der Abschluss dessen ist der gesuchte \ac{RKHR}.
 \end{proof}
 
-Wir wollen an einen Satz aus der Funktionalanalysis erinnern, den wir oft brauchen werden.
+Wir wollen an einen Satz aus der Funktionalanalysis erinnern, den wir noch oft benötigen werden.
 
 \begin{theorem}[Fréchet-Riesz]
 Sei $\mathcal{H}$ ein Hilbertraum und $\lambda \in \mathcal{H}'$ ein beschränktes lineares Funktional. Dann existiert ein eindeutig bestimmtes Element $\nu_\lambda \in \mathcal{H}$, so dass für alle $x \in \mathcal{H}$ gilt:
 \begin{align*}
-\langle \lambda, x \rangle = \left( x, \nu_\lambda \right)
+\langle \lambda, x \rangle = \left( x, \nu_\lambda \right)_\mathcal{H}
 \end{align*}
 Wir nennen $\nu_\lambda$ den Riesz-Repräsentanten von $\lambda$.
 \end{theorem}
 
-Zur Wohldefiniertheit unserer Interpolation benötigen wir die Stetigkeit aller benutzten Funktionale. Zunächst betrachten wir die Punktauswertungsfunktionale.
+Zur Wohldefiniertheit unserer Interpolation benötigen wir die Stetigkeit aller verwendeten Funktionale. Zunächst betrachten wir die Punktauswertungsfunktionale.
 
 \begin{theorem}
 \label{stetig}
-Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein Hilbertraum mit Funktionen $f: \Omega \rightarrow \mathbb{R}$. Dann gilt:
+Sei $\Omega$ eine beliebige nicht leere Menge und $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f: \Omega \rightarrow \mathbb{R}$. Dann gilt:
 \begin{enumerate}
 \item \label{stetig1} $\mathcal{H}$ ist genau dann ein \ac{RKHR}, wenn die Auswertungsfunktionale stetig sind.
 \item \label{stetig2} Wenn $\mathcal{H}$ ein \ac{RKHR} mit reproduzierendem Kern $K$ ist, dann ist $K(\cdot,x)$ der Riesz-Repräsentant des Funktionals $\delta_x \in \mathcal{H}'$.
@@ -254,10 +255,10 @@ Für die andere Richtung nehmen wir an, dass $\delta_x  \in \mathcal{H}'$ für a
 \end{enumerate}
 \end{proof}
 
-Wir haben also gesehen, dass in einem \ac{RKHR} $\mathcal{H}_K$ die Auswertungsfunktionale stetig sind. Da wir uns mit Differentialgleichungen beschäftigen, wollen wir auch Ableitungen auswerten. Dafür benötigen wir, dass diese ebenfalls in $\mathcal{H}_K$ liegen.
+Wir haben gesehen, dass in einem \ac{RKHR} $\mathcal{H}_K$ die Auswertungsfunktionale stetig sind. Da wir uns mit Differentialgleichungen beschäftigen, wollen wir auch Ableitungen auswerten. Dafür ist es nötig, dass diese ebenfalls in $\mathcal{H}_K$ liegen.
 
 \begin{theorem}
-Sei $k \in \mathbb{N}$. Angenommen $\Omega \subset \mathbb{R}^n$ ist offen, K ist \ac{SPD} auf $\Omega$ und $K \in C^{2k}(\Omega \times \Omega)$. Dann gilt für alle Multiindizes $a \in \mathbb{N}_0^d$ mit $|a| \le k$ und alle $x \in \Omega$, dass $D_2^a K(\cdot , x) \in \mathcal{H}_K(\Omega)$, wobei der tiefgestellte Index bedeutet, dass der Operator auf das zweite Argument angewandt wird.
+Sei $k \in \mathbb{N}$. Angenommen $\Omega \subset \mathbb{R}^d$ ist offen, K ist \ac{SPD} auf $\Omega$ und $K \in C^{2k}(\Omega \times \Omega)$. Dann gilt für alle Multiindizes $a \in \mathbb{N}_0^d$ mit $|a| \le k$ und alle $x \in \Omega$, dass $D_2^a K(\cdot , x) \in \mathcal{H}_K(\Omega)$, wobei der tiefgestellte Index bedeutet, dass der Operator auf das zweite Argument angewandt wird.
 
 Außerdem gilt für alle $f \in \mathcal{H}_K(\Omega)$:
 \begin{align*}
@@ -274,7 +275,7 @@ In Satz \ref{stetig} haben wir gesehen, wie der Riesz-Repräsentant des Auswertu
 
 \begin{theorem}
 \label{Riesz}
-Sei $K$ ein \ac{PD} Kern auf $\Omega \neq \emptyset$. Sei $\lambda \in \mathcal{H}_K (\Omega)'$. Dann ist $\lambda^y K(\cdot,y) \in \mathcal{H}_k(\Omega)$ und es gilt $\langle \lambda,f \rangle = \left(f,\lambda^y K(\cdot,y)\right)_{\mathcal{H}_K(\Omega)}$ für alle $f \in \mathcal{H}_K(\Omega)$, wobei der hochgestellte Index bedeutet, dass das Funktional auf die zweite Komponente angewandt wird. Es ist also $\lambda^y K(\cdot,y)$ der Riesz-Repräsentant von $\lambda$.
+Sei $K$ ein \ac{PD} Kern auf $\Omega \neq \emptyset$ und $\lambda \in \mathcal{H}_K (\Omega)'$. Dann ist $\lambda^y K(\cdot,y) \in \mathcal{H}_k(\Omega)$ und es gilt $\langle \lambda,f \rangle = \left(f,\lambda^y K(\cdot,y)\right)_{\mathcal{H}_K(\Omega)}$ für alle $f \in \mathcal{H}_K(\Omega)$, wobei der hochgestellte Index bedeutet, dass das Funktional auf die zweite Komponente angewandt wird. Es ist also $\lambda^y K(\cdot,y)$ der Riesz-Repräsentant von $\lambda$.
 \end{theorem}
 
 \begin{proof}
@@ -292,13 +293,13 @@ Damit gilt $\nu_\lambda(\cdot) = \lambda^y K(\cdot,y)$ und damit ist $\lambda^yK
 
 Jetzt fehlt nur noch die lineare Unabhängigkeit aller verwendeten Funktionale. Zunächst betrachten wir die der Auswertungsfunktionale:
 \begin{theorem}
-Sei $\Omega$ eine nicht leere Menge und $\mathcal{H}$ ein \ac{RKHR} mit Kern $K$. Dann sind $\{\delta_x,x\in \Omega\}$ genau dann linear unabhängig, wenn $K$ \ac{SPD} ist.
+Sei $\Omega$ eine beliebige nicht leere Menge und $\mathcal{H}$ ein \ac{RKHR} mit Kern $K$. Dann sind $\{\delta_x,x\in \Omega\}$ genau dann linear unabhängig, wenn $K$ \ac{SPD} ist.
 \end{theorem}
 
 \begin{proof}
 Wir folgen dem Beweis in \textcite[Proposition 3.8]{Santin.2017}.
 
-Seien $\lambda_1, \dots, \lambda_n \in \mathcal{H}'$ und $\nu_{\lambda_1},\dots, \nu_{\lambda_n} \in \mathcal{H}$ die dazugehörigen Riesz Repräsentanten. Diese sind linear abhängig, wenn ein $\alpha \in \mathbb{R}^n$ existiert mit $\lambda := \sum_{i=1}^n \alpha_i \lambda_i = 0$, also dass $\langle \lambda,f \rangle = 0$ für alle $f \in \mathcal{H}$. Das gilt genau dann, wenn die Riesz Repräsentanten linear abhängig sind, da
+Seien $\lambda_1, \dots, \lambda_n \in \mathcal{H}'$ und $\nu_{\lambda_1},\dots, \nu_{\lambda_n} \in \mathcal{H}$ die dazugehörigen Riesz Repräsentanten. Diese sind linear abhängig, wenn ein $\alpha \in \mathbb{R}^n$ und $\alpha \neq 0$ existiert mit $\lambda := \sum_{i=1}^n \alpha_i \lambda_i = 0$, also dass $\langle \lambda,f \rangle = 0$ für alle $f \in \mathcal{H}$. Das gilt genau dann, wenn die Riesz Repräsentanten linear abhängig sind, da
 \begin{align*}
 0 = \langle \lambda,f \rangle = \sum_{i=1}^n \alpha_i \langle \lambda_i,f \rangle = \sum_{i=1}^n \alpha_i \left( \nu_{\lambda_i},f\right)_\mathcal{H} = \left( \sum_{i=1}^n \alpha_i \nu_{\lambda_i}, f \right)_\mathcal{H}
 \end{align*}
@@ -312,9 +313,9 @@ Um die strikte positive Definitheit nachzuweisen, betrachten wir die Matrix $A=[
 &= \left( \sum_{i=1}^n \beta_i K(\cdot,x_i),\sum_{j=1}^n \beta_j K(\cdot, x_j) \right)_\mathcal{H}\\
 &= \left\| \sum_{i=1}^n \beta_i K(\cdot, x_i) \right\|_\mathcal{H}^2 > 0
 \end{align*}
-Für die letzte strikte Ungleichung benötigen wir die lineare Unabhängigkeit. Also gilt, dass K \ac{SPD} ist, wenn $\{\delta_x,x\in \Omega\}$ linear unabhängig sind.
+Für die strikte Ungleichung benötigen wir die lineare Unabhängigkeit. Also gilt, dass K \ac{SPD} ist, wenn $\{\delta_x,x\in \Omega\}$ linear unabhängig sind.
 
-Die andere Richtung folgt genauso aus der letzten Ungleichung.
+Die andere Richtung folgt genauso aus der strikten Ungleichung.
 \end{proof}
 
 Jetzt betrachten wir die lineare Unabhängigkeit der Auswertungen der Ableitungen:
@@ -329,4 +330,4 @@ Den Beweis findet man in \textcite[Theorem 16.4]{Wendland.2005}.
 \end{proof}
 
 
-Damit haben wir alle nötigen Werkzeuge, um die Interpolation durchzuführen. Wir haben einen Kern $K$, den dazugehörigen Hilbertraum $\mathcal{H}_K(\Omega)$ und die Stetigkeit und lineare Unabhängigkeit aller benötigten Operatoren. Jetzt müssen wir nur noch einen geeigneten Ansatz wählen.
+Damit haben wir alle nötigen Werkzeuge, um die Interpolation durchzuführen zu können. Wir haben einen Kern $K$, den dazugehörigen Hilbertraum $\mathcal{H}_K(\Omega)$, sowie die Stetigkeit und lineare Unabhängigkeit aller benötigten Operatoren. Jetzt müssen wir nur noch einen geeigneten Ansatz wählen.

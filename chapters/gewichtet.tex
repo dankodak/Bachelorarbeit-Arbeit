@@ -3,7 +3,7 @@
 \section{Motivation für die gewichtete Kollokation}
 \label{sec:motivation}
 Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Problem, dass wir Punkte im Inneren und auf dem Rand unseres Definitionsbereichs benötigen. Dies macht zum einen die Implementierung etwas komplexer, da man dabei beide Mengen beachten muss, zum anderen werden die Werte auf dem Rand nicht zwingend genau angenommen. In Abbildung \ref{fig:rand} ist die approximierte Lösung einer \ac{PDE} mit Nullrandwerten über den Rand geplottet. Man erkennt deutlich, wo die Stützstellen der Ansatzfunktionen liegen und auch die Schwankungen zwischen den Stützstellen.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{plots/rand.tex}
@@ -23,7 +23,7 @@ L\bar{u}(x) &= f(x) + L\bar{g}(x), x \in \Omega\\
 \bar{u}(x) &= 0, x \in \partial \Omega.
 \end{align*}
 
-Die Idee ist jetzt, einen Kern, beziehungsweise Ansatzfunktionen zu konstruieren, der auf dem Rand von $\Omega$ Null ist. Der Interpolant ist eine Linearkombination aus diesen Funktionen und wird demnach auf dem Rand auch Null sein. Dafür führen wir Gewichtsfunktionen ein, die dann in Verbindung mit einem gegebenen Kern das Geforderte erfüllen werden.
+Die Idee ist jetzt, einen Kern, beziehungsweise Ansatzfunktionen zu konstruieren, welcher auf dem Rand von $\Omega$ Null ist. Der Interpolant ist eine Linearkombination aus diesen Funktionen und wird demnach auf dem Rand auch Null sein. Dafür führen wir Gewichtsfunktionen ein, die dann in Verbindung mit einem gegebenen Kern das Geforderte erfüllen werden.
 \section{Gewichtsfunktionen}
 \label{sec:gewicht}
 \begin{definition}
@@ -171,7 +171,7 @@ w(x,y) &= w_1(x,y) + w_2(x,y) - \sqrt{w_1(x,y)^2 + w_2(x,y)^2}\\
 &= -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}
 \end{align*}
 \end{example}
-Wir möchten jetzt einen Kern und Gewichtsfunktion verknüpfen und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.
+Wir wollen jetzt einen Kern und eine Gewichtsfunktion verknüpfen und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.
 
 \section{Symmetrische Kollokation}
 \begin{theorem}
@@ -190,12 +190,12 @@ Den ersten Teil des Beweises findet man auch in \textcite[Proposition 2.7]{Santi
 
 Wir zeigen zunächst, dass $\tilde{K}(x,y):= g(x)g(y)$ ein \ac{PD} Kern ist.
 
-Die Symmetrie ist offensichtlich, da
+Die Symmetrie erhalten wir mit
 \begin{align*}
 \tilde{K}(x,y)= g(x)g(y) = g(y) g(x) = \tilde{K}(y,x).
 \end{align*}
 
-Zur positiven Definitheit betrachten wir eine Punktmenge $X_N := \{x_i \in \Omega| 1 \le i \le N \}\subset \Omega$. Wir erhalten für die Kernmatrix
+Für die positive Definitheit betrachten wir eine Punktmenge $X_N := \{x_i \in \Omega| 1 \le i \le N \}\subset \Omega$. Wir erhalten für die Kernmatrix
 \begin{align*}
 A = 
 \begin{pmatrix}
@@ -248,14 +248,14 @@ Wir zeigen noch die Reproduzierbarkeit auf $\mathcal{H}_K(\Omega)$, dann folgt a
 \end{align*}
 \end{proof}
 
-Damit haben wir einen neuen Kern konstruiert, der auf dem Rand unseres Definitionsgebiets konstant Null ist, auf den wir eine analoge Konstruktion zu der aus Kapitel \ref{sec:SymKol} anwenden können.
+Hiermit haben wir einen neuen Kern konstruiert, der auf dem Rand unseres Definitionsgebiets konstant Null ist, auf den wir eine analoge Konstruktion zu der aus Kapitel \ref{sec:SymKol} anwenden können.
 
 Dafür sei $\Omega \subset \mathbb{R}^n$ offen und beschränkt $K'$ ein \ac{PD} Kern, $g$ eine Gewichtsfunktion auf $\Omega$ und folgende \ac{PDE} gegeben:
 \begin{align*}
 Lu(x) &= f(x), x \in \Omega\\
 u(x) &= 0 , x \in \partial \Omega
 \end{align*}
-Für ein $N \in \mathbb{N}$ betrachten wir eine Menge $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega^\circ$. Wir definieren die Menge $\Lambda_N = \left\{ \lambda_1, \dots, \lambda_N\right\}$ mit $\lambda_i =  \delta_{x_i} \circ L$. Diese Funktionale sind im von $K(x,y) := g(x) K'(x,y) g(y)$ erzeugten \ac{RKHR} stetig. Also wählen wir 
+Für ein $N \in \mathbb{N}$ betrachten wir eine Menge $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega$. Wir definieren die Menge $\Lambda_N = \left\{ \lambda_1, \dots, \lambda_N\right\}$ mit $\lambda_i =  \delta_{x_i} \circ L$. Diese Funktionale sind im von $K(x,y) := g(x) K'(x,y) g(y)$ erzeugten \ac{RKHR} stetig. Also wählen wir 
 \begin{align*}
 V_N &= \text{span} \left\{\lambda_1^y K(x,y), \dots, \lambda_N^y K(x,y)\right\}\\
 &= \text{span} \left\{(\delta_{x_1} \circ L)^y (g(x) K'(x,y) g(y)), \dots, (\delta_{x_N} \circ L)^y (g(x) K'(x,y) g(y))\right\}

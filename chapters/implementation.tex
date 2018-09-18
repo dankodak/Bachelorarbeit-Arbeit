@@ -1,12 +1,12 @@
 \chapter{Implementierung}
 \label{cha:Implementierung}
 
-In diesem Kapitel möchten wir uns die Implementation der bisher theoretisch hergeleiteten Verfahren anschauen.
+In diesem Kapitel möchten wir uns die Implementierung der bisher theoretisch hergeleiteten Verfahren anschauen.
 
-Dazu müssen wir zunächst einen geeigneten Kern wählen. Wir erinnern uns an Beispiel \ref{ex:Kern}, dass die Kerne einen Parameter $\gamma$ besitzen. In Abbildung \ref{fig:Kerne} ist der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet. So können wir eine ganze Familie an Kernen wählen, über die wir leicht iterieren können.
-\begin{figure}[h]
+Dazu müssen wir zunächst einen geeigneten Kern wählen. Wir erinnern uns an Beispiel \ref{ex:Kern}, dass die Kerne einen Parameter $\gamma$ besitzen. In Abbildung \ref{fig:Kerne} ist der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet. So können wir zur Parameterwahl eine ganze Familie an Kernen wählen, über die wir leicht iterieren können.
+\begin{figure}[ht]
 \centering
-\resizebox {.65\columnwidth} {!} {
+\resizebox {.8\columnwidth} {!} {
 \input{plots/KernVergleich.tex}
 }
 \caption{Plots verschiedener Kerne}
@@ -29,12 +29,12 @@ Der Algorithmus funktioniert so für die Standard und für die gewichtete Kollok
 Es ist noch offen wie wir die Kollokations- und Testpunkte und den Fehler in jeder Iteration bestimmen. Zuerst betrachten wir Letzteres. Dafür möchten wir zwei Möglichkeiten vorstellen:
 \begin{itemize}
 \item
-Falls wir eine analytisch bestimmte Lösung der \gls{PDE} haben sollten, können wir diese mit der approximierten vergleichen. Sei dazu $u$ die analytische Lösung und $s_u$ die approximierte. Den Fehler bekommen wir dann mit
+Falls wir eine analytisch bestimmte Lösung der \gls{PDE} haben sollten, können wir diese mit der approximierten vergleichen. Sei dazu $u$ die analytische Lösung und $s_u$ die approximierte. Den Fehler erhalten wir dann mit
 \begin{align*}
 \mathrm{error} = \max_{x \in Xte} \left(\left| u(x) - s_u(x) \right| \right)
 \end{align*}
 \item
-Eine analytische Lösung werden wir jedoch meist nicht besitzen und können die erste Methode somit nicht anwenden. Wir haben aber noch die Möglichkeit den Fehler in der Ableitung zu betrachten. Sei dafür $L$ der Differentialoperator aus der \gls{PDE}, $f$ die rechte Seite in der \gls{PDE} und $s_u$ die approximierte Lösung. Den Fehler bekommen wir dann mit
+Eine analytische Lösung werden wir jedoch meist nicht besitzen und können die erste Methode somit nicht anwenden. Wir haben aber noch die Möglichkeit den Fehler in der Ableitung zu betrachten. Sei dafür $L$ der Differentialoperator aus der \gls{PDE}, $f$ die rechte Seite in \gls{PDE} und $s_u$ die approximierte Lösung. Den Fehler erhalten wir dann mit
 \begin{align*}
 \mathrm{error} = \max_{x \in Xte} \left(\left| f(x) - L s_u(x) \right| \right)
 \end{align*}

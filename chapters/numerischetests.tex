@@ -17,7 +17,7 @@ w = -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}.
 \resizebox {\columnwidth} {!} {
 \input{plots/plot.tex}
 }
-\caption{Lösung der \ac{PDE}}
+\caption{Lösung der \acs{PDE}}
 \label{fig:plot}
 \end{figure}
 
@@ -37,7 +37,7 @@ Wir werden die drei in Kapitel \ref{cha:Implementierung} vorgestellten Methoden 
 Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbildung \ref{fig:Kollok} gezeigt, in einem Gitter anordnen.
 \begin{figure}[ht]
 \centering
-\resizebox {\columnwidth} {!} {
+\resizebox {.8\columnwidth} {!} {
 \input{plots/Kollokationspunkte.tex}
 }
 \caption{Kollokationspunkte}
@@ -92,7 +92,7 @@ Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. 
 Vergleicht man die Fehler mit denen der Gitterpunktwahl, stellt man fest, dass diese sich in der gleichen Größenordnung bewegen. Allerdings weißt die Kurve der zufällig gewählten Punkte mehrere Ausreißer nach oben auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte, von daher lässt sich bezüglich des Fehlers kein Vorteil für zufällig gewählte Kollokationspunkte feststellen.
 
 \subsubsection{Greedy-Punktwahl}
-Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} mit einer Greedy-Punktwahl gesetzte Kollokationspunkte an.
+Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} mit einer Greedy-Punktwahl gesetzte Kollokationspunkte an. Es ist zu beachten, dass bei der benutzten Implementierung bei den Standardverfahren auf dem Rand festgesetzte Kollokationspunkte benutzt werden. Deswegen beginnen die Graphen der beiden Standardverfahren erst bei $37$.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -102,7 +102,7 @@ Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} mit einer Greedy-Pun
 \label{fig:error-greedy}
 \end{figure}
 
-Wir erkennen, dass nur die Standardverfahren vernünftige Ergebnisse liefern. Diese pendeln sich nach ungefähr $110$ Iterationen für das nicht-symmetrische Verfahren bei einem Fehler von rund $10^{-5}$ und nach ungefähr $160$ Iterationen für das symmetrische bei einem Fehler von rund $10^{-7}$ ein. Damit benötigt die greedy-Punktwahl jeweils $80$ und $320$ Kollokationspunkte weniger, um das gleiche Ergebnis wie Gitterpunktwahl zu erzielen.
+Wir erkennen, dass nur die Standardverfahren vernünftige Ergebnisse liefern. Diese pendeln sich nach ungefähr $110$ Kollokationspunkten für das nicht-symmetrische Verfahren bei einem Fehler von rund $10^{-5}$ und nach ungefähr $160$ Iterationen für das symmetrische bei einem Fehler von rund $10^{-7}$ ein. Damit benötigt die Greedy-Punktwahl jeweils $80$ und $320$ Kollokationspunkte weniger, um das gleiche Ergebnis wie Gitterpunktwahl zu erzielen.
 
 Die gewichteten Verfahren hingegen geben uns beide keine vernünftigen Ergebnisse. Ein Grund dafür wird erkennbar, wenn man sich anschaut, wo die Kollokationspunkte hingelegt werden. Dies ist in Abbildung \ref{fig:greedy-points} dargestellt.
 \begin{figure}[ht]
@@ -114,14 +114,14 @@ Die gewichteten Verfahren hingegen geben uns beide keine vernünftigen Ergebniss
 \label{fig:greedy-points}
 \end{figure}
 
-Man erkennt, dass die Kollokationspunkte im Standard Fall gleichmäßig über das Einheitsquadrat verteilt sind, sich im gewichteten Fall allerdings in den Ecken drängen. Dies führt zu einer in Abbildung \ref{fig:greedy-verrauscht} erkennbaren numerisch verrauschten Lösung. Das gewichtete Greedy Verfahren ist demnach unbrauchbar.
+Man erkennt, dass die Kollokationspunkte im Standard Fall gleichmäßig über das Einheitsquadrat verteilt sind, sich im gewichteten Fall allerdings in den Ecken drängen. Dies führt zu einer in Abbildung \ref{fig:greedy-verrauscht} erkennbaren numerisch verrauschten Lösung. Das gewichtete Greedy-Verfahren ist demnach unbrauchbar.
 
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{plots/plot-weighted-verrauscht.pdf_tex}
 }
-\caption{Lösung bei gewichtetem Greedy Verfahren}
+\caption{Lösung bei gewichtetem Greedy-Verfahren}
 \label{fig:greedy-verrauscht}
 \end{figure}
 
@@ -153,7 +153,7 @@ Wir sind bisher nur auf die Wahl der Kollokationspunkte eingegangen, aber noch n
 \end{figure}
 Wir erkennen, dass der Fehler bis auf wenige Ausreißer konstant bleibt. Damit ist die Wahl der Testpunkte beinahe egal. Die großen Fehler entstehen genau dann, wenn alle Testpunkte mit den Kollokationspunkten zusammenfallen. Den hier auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Testdaten angepasst und verliert dabei an Genauigkeit, wenn man das ganze Gebiet $\Omega$ betrachtet. 
 
-In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter gamma bei unterschiedlichen Testpunktanzahlen dargestellt.
+In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter $\gamma$ bei unterschiedlichen Testpunktanzahlen dargestellt.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -162,7 +162,7 @@ In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter gamma bei un
 \caption{Gammawerte bei unterschiedlicher Anzahl an Testpunkten}
 \label{fig:testpunkte-gamma}
 \end{figure}
-Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes gamma gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes gamma einem schmalen "Hütchen"  der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Test- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur Einfluss auf einen Testpunkt, nämlich den, an dem sie angesetzt werden, nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}.
+Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes $\gamma$ gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes $\gamma$ einem schmalen "Hütchen"  der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Test- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur Einfluss auf einen Testpunkt, nämlich den, an dem sie angesetzt werden, nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -173,5 +173,31 @@ Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ei
 \end{figure}
 
 So entsteht eine Lösung, die an den Testpunkten extrem gut angepasst ist, ansonsten der echten Lösung aber kaum ähnlich sieht.
-%\section{Kondition}
-%\section{Laufzeit}
+\section{Parameterwahl und Kondition}
+Wir werden zunächst betrachten, wie sich der Parameter $\gamma$ bei unterschiedlich vielen Kollokationspunkten verhält. Dafür wollen wir diese nur auf einem Gitter betrachten.
+\section{Laufzeit}
+Als letztes werden wir die verschiedenen Verfahren bezüglich ihrer Laufzeit vergleichen. Die Zeitmessungen unterliegen verschiedenen Umgebungsbedingungen wie Prozessortakt, Betriebssystem und Zimmertemperatur. Deswegen wurden alle Messungen mehrfach unter ähnlichen Bedingungen durchgeführt und wir haben konsistente Ergebnisse bekommen. Dargestellt werden keine Mittelwerte über mehrere Durchläufe, sondern nur ein einzelner. Diese etwas ungenaue Arbeitsweise können wir damit rechtfertigen, dass wir weniger an den absoluten Zeitwerten interessiert sind, als an den relativen Vergleichswerten der einzelnen Verfahren.
+
+In Abbildung \ref{fig:Laufzeit} ist die Laufzeit bei unterschiedlich vielen auf einem Gitter verteilten Kollokationspunkte dargestellt.
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/Laufzeit.tex}
+}
+\caption{Laufzeit der unterschiedlichen Verfahren}
+\label{fig:Laufzeit}
+\end{figure}
+
+Wir sehen deutliche Unterschiede zwischen den verschiedenen Verfahren. Das Nicht-symmetrische Verfahren ist durchgehend das schnellste. Danach kommt das gewichtete symmetrische Verfahren. Der Mehraufwand entsteht hier durch den komplizierteren Kern und damit durch längere Auswertungszeiten. Mit der selben Begründung lässt sich auch die längere Laufzeit des symmetrischen Standardverfahrens erklären. Hier entstehen die komplizierteren Funktionen allerdings nicht durch das Anhängen der Gewichtsfunktion, sondern durch die zweimalige Anwendung des Differentialoperators. Beim symmetrischen gewichteten Verfahren kommen beide Effekte zusammen, was die längste Laufzeit erklärt.
+
+In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Verfahren bei einer greedy-Punktwahl dargestellt. Wieder gilt es zu beachten, dass die Graphen der Standardverfahren erst bei $37$ Kollokationspunkten beginnen.
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/Laufzeit-greedy.tex}
+}
+\caption{Laufzeit bei Greedy-Punktwahl}
+\label{fig:Laufzeit-greedy}
+\end{figure}
+
+Wir erhalten wieder eine ähnliche Reihenfolge der Verfahren, die wir genauso begründen können, wie schon im Fall der auf einem Gitter verteilten Punkte. Allerdings benötigt das greedy-Verfahren wesentlich mehr Zeit für gleich viele Punkte. Das liegt daran, dass beim greedy-Verfahren alle vorhergegangenen Iterationen zur Punktwahl mitberechnet werden müssen, was im Falle des Gitters wegfällt.
