@@ -5,7 +5,7 @@ In diesem Kapitel möchten wir die vorgestellten Verfahren verschiedenen numeris
 
 Dafür betrachten wir die Poisson-Gleichung mit Dirichlet-Randbedingung auf $\Omega = [-1,1] \times [-1,1] \subset \mathbb{R}^n$:
 \begin{align*}
-- \Delta u &= 2\pi^2 \sin(\pi x)\sin(\pi y)&&, (x,y) \in \Omega\\
+- \Delta u &= 2\pi^2 \sin(\pi x)\sin(\pi y)&&, (x,y) \in \Omega^\circ\\
 u &= 0&&, (x,y) \in \partial \Omega
 \end{align*}
 mit analytischer Lösung $u(x,y) = \sin(\pi x)\sin(\pi y)$, dargestellt in Abbildung \ref{fig:plot}. Wir wählen als Gewichtsfunktion $w$ für $\Omega$ die Funktion aus Beispiel \ref{ex:Gewicht}:
@@ -162,7 +162,7 @@ In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter $\gamma$ bei
 \caption{Gammawerte bei unterschiedlicher Anzahl an Testpunkten}
 \label{fig:testpunkte-gamma}
 \end{figure}
-Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes $\gamma$ gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes $\gamma$ einem schmalen "Hütchen"  der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Test- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur Einfluss auf einen Testpunkt, nämlich den, an dem sie angesetzt werden, nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}.
+Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes $\gamma$ gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes $\gamma$ einem schmalen "Hütchen" der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Test- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur Einfluss auf einen Testpunkt, nämlich den, an dem sie angesetzt werden, nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -173,8 +173,45 @@ Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ei
 \end{figure}
 
 So entsteht eine Lösung, die an den Testpunkten extrem gut angepasst ist, ansonsten der echten Lösung aber kaum ähnlich sieht.
+
 \section{Parameterwahl und Kondition}
-Wir werden zunächst betrachten, wie sich der Parameter $\gamma$ bei unterschiedlich vielen Kollokationspunkten verhält. Dafür wollen wir diese nur auf einem Gitter betrachten.
+Wir werden zunächst betrachten, wie sich der Parameter $\gamma$ bei unterschiedlich vielen Kollokationspunkten verhält. Dafür betrachten wir diese aufgrund der gleichmäßigen Verringerung der Abstände auf einem Gitter verteilt. 
+
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/gamma-grid.tex}
+}
+\caption{Gewählter Parameter $\gamma$}
+\label{fig:gamma}
+\end{figure}
+
+Die gewichteten Verfahren zeigen das Verhalten, welches wir erwarten würden. Mit steigender Anzahl an Kollokationspunkten vergrößert sich der verwendete Parameter $\gamma$. Dies resulitiert in einem engeren "Hütchen" des Kerns. Dies passt zu den enger liegenden Kollokationspunkten. Die Standardverfahren zeigen am Anfang das gleiche Verhalten, haben aber schon früh, wie wir aus dem vorherigen Kapitel wissen, ihren besten Fehler erreicht und verändern dann auch ihren Parameter nicht mehr.
+
+In Abbildung \ref{fig:gamma-fehler} ist bei gleichbleibenden Kollokationspunkten der Fehler bei unterschiedlichen Parametern $\gamma$ dargestellt.
+
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/gamma.tex}
+}
+\caption{Fehler bei verschiedenen Parametern $\gamma$}
+\label{fig:gamma-fehler}
+\end{figure}
+
+Daraus erkennt man, dass der Fehler groß ist, wenn $\gamma$ entweder zu klein oder zu groß ist. Ist $\gamma$ zu groß, haben wir zu kleine "Hütchen", so können diese die \ac{PDE} nur sehr lokal lösen. Der große Fehler für zu kleines $\gamma$ lässt sich besser erklären, wenn man noch die Kondition hinzunimmt. Diese ist in Abbildung \ref{fig:kondition} dargestellt.
+
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/kondition.tex}
+}
+\caption{Kondition bei verschiedenen Parametern $\gamma$}
+\label{fig:kondition}
+\end{figure}
+
+Die Kondition ist für kleine $\gamma$ groß. Das kommt daher, dass jede Ansatzfunktion "Einfluss" auf viele Kollokationspunkte hat. Mitunter das erklärt den großen Fehler für zu kleine $\gamma$. Für große $\gamma$ ist die Kondition wesentlich besser, da jede Ansatzfunktion auf weniger Kollokationspunkte deutlichen "Einfluss" hat. Es lässt sich schließlich erkennen, dass der Fehler ungefähr dann am niedrigsten ist, wenn die Kondition anfängt besser zu werden. 
+
 \section{Laufzeit}
 Als letztes werden wir die verschiedenen Verfahren bezüglich ihrer Laufzeit vergleichen. Die Zeitmessungen unterliegen verschiedenen Umgebungsbedingungen wie Prozessortakt, Betriebssystem und Zimmertemperatur. Deswegen wurden alle Messungen mehrfach unter ähnlichen Bedingungen durchgeführt und wir haben konsistente Ergebnisse bekommen. Dargestellt werden keine Mittelwerte über mehrere Durchläufe, sondern nur ein einzelner. Diese etwas ungenaue Arbeitsweise können wir damit rechtfertigen, dass wir weniger an den absoluten Zeitwerten interessiert sind, als an den relativen Vergleichswerten der einzelnen Verfahren.
 
@@ -200,4 +237,4 @@ In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Ve
 \label{fig:Laufzeit-greedy}
 \end{figure}
 
-Wir erhalten wieder eine ähnliche Reihenfolge der Verfahren, die wir genauso begründen können, wie schon im Fall der auf einem Gitter verteilten Punkte. Allerdings benötigt das greedy-Verfahren wesentlich mehr Zeit für gleich viele Punkte. Das liegt daran, dass beim greedy-Verfahren alle vorhergegangenen Iterationen zur Punktwahl mitberechnet werden müssen, was im Falle des Gitters wegfällt.
+Wir erhalten wieder die gleiche Reihenfolge der Verfahren, die wir genauso begründen können, wie schon im Fall der auf einem Gitter verteilten Punkte. Allerdings benötigt das Greedy-Verfahren wesentlich mehr Zeit für gleich viele Punkte. Das liegt daran, dass beim Greedy-Verfahren alle vorhergegangenen Iterationen zur Punktwahl mitberechnet werden müssen, was im Falle des Gitters wegfällt.

@@ -24,6 +24,9 @@
 \contentsline {figure}{\numberline {6.9}{\ignorespaces Fehler bei unterschiedlicher Anzahl an Testpunkten\relax }}{39}{figure.caption.19}
 \contentsline {figure}{\numberline {6.10}{\ignorespaces Gammawerte bei unterschiedlicher Anzahl an Testpunkten\relax }}{40}{figure.caption.20}
 \contentsline {figure}{\numberline {6.11}{\ignorespaces Lösung bei Überanpassung\relax }}{41}{figure.caption.21}
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Laufzeit der unterschiedlichen Verfahren\relax }}{42}{figure.caption.22}
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Laufzeit bei Greedy-Punktwahl\relax }}{43}{figure.caption.23}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Gewählter Parameter $\gamma $\relax }}{42}{figure.caption.22}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Fehler bei verschiedenen Parametern $\gamma $\relax }}{43}{figure.caption.23}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Kondition bei verschiedenen Parametern $\gamma $\relax }}{44}{figure.caption.24}
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Laufzeit der unterschiedlichen Verfahren\relax }}{45}{figure.caption.25}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Laufzeit bei Greedy-Punktwahl\relax }}{46}{figure.caption.26}
 \addvspace {10\p@ }
