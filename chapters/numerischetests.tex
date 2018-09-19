@@ -26,7 +26,7 @@ Diese werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen w
 \section{Fehler}
 \subsection{Absoluter Fehler}
 
-Als Maß des Fehlers unserer numerischen Lösung wollen wir zunächst den maximalen absoluten Fehler zur analytischen Lösung berechnen, also
+Als Maß des Fehlers unserer numerischen Lösung wollen wir den maximalen absoluten Fehler zur analytischen Lösung berechnen, also
 \begin{align*}
 \text{error} = \max_{x \in \Omega} |u(x) - s_u (x)|,
 \end{align*}
@@ -44,7 +44,7 @@ Wir werden die Kollokationspunkte, so wie die Testpunkte, zunächst, wie in Abbi
 \label{fig:Kollok}
 \end{figure}
 
-Damit können wir uns anschauen, wie sich der Fehler bei Verfeinerung des Gitters verhält. In Abbildung \ref{fig:error} ist der Fehler der vier verschiedenen Verfahren dargestellt. 
+Damit können wir uns anschauen, wie sich der Fehler bei Verfeinerung des Gitters verhält. Dieser ist in Abbildung \ref{fig:error} für die vier verschiedenen Verfahren dargestellt. 
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -74,7 +74,7 @@ Damit können wir uns anschauen, wie sich der Fehler bei Verfeinerung des Gitter
 
 Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und gegen die analytische Lösung konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll. 
 
-Wir erkennen, dass alle Verfahren sehr schnell gute Ergebnisse liefern. Die beiden Standardverfahren liefern bereits mit nahezu $200$ Kollokationspunkten ihre besten Ergebnisse in der Größenordnung von $10^{-6}$ für das nicht-symmetrische Verfahren und $10^{-7}$ für das symmetrische und verbessern sich danach nicht mehr. Im Gegensatz dazu stehen die gewichteten Verfahren, die am Anfang bei weitem nicht so gute Ergebnisse von rund $10^{-2}$ liefern, sich dann aber mit mehr Kollokationspunkten weiter verbessern, wenn auch ziemlich langsam. Gesamt erreichen die gewichteten Verfahren aber selbst mit $6000$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneidet beim Standardverfahren das symmetrische leicht besser ab, beim gewichteten ist kein Unterschied erkennbar.
+Wir erkennen, dass alle Verfahren sehr schnell gute Ergebnisse liefern. Die beiden Standardverfahren liefern bereits mit nahezu $200$ Kollokationspunkten ihre besten Ergebnisse in der Größenordnung von $10^{-6}$ für das nicht-symmetrische Verfahren und $10^{-7}$ für das symmetrische und verbessern sich danach nicht mehr. Im Gegensatz dazu stehen die gewichteten Verfahren, die am Anfang bei weitem nicht so gute Ergebnisse von rund $10^{-2}$ liefern, sich dann aber mit mehr Kollokationspunkten weiter verbessern, wenn auch ziemlich langsam. Gesamt erreichen die gewichteten Verfahren aber selbst mit $4500$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneidet beim Standardverfahren das symmetrische leicht besser ab, beim gewichteten ist kein Unterschied erkennbar.
 
 \subsubsection{Zufällige Kollokationspunkte}
 Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbildung \ref{fig:error-random} ist der Fehler bei unterschiedlich vielen zufällig verteilten Kollokationspunkten dargestellt.
@@ -89,10 +89,10 @@ Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbi
 
 Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. Die Standardverfahren erreichen mit $200$ Kollokationspunkten ihre besten Ergebnisse von rund $10^{-7}$ für die nicht-symmetrische Variante und $10^{-6}$ für die symmetrische und verbessern sich dann nicht mehr weiter. Die gewichteten Verfahren erreichen mit $200$ Kollokationspunkten nur einen Fehler von rund $10^{-2}$, verbessern sich aber mit mehr Kollokationspunkten noch leicht.
 
-Vergleicht man die Fehler mit denen der Gitterpunktwahl, stellt man fest, dass diese sich in der gleichen Größenordnung bewegen. Allerdings weißt die Kurve der zufällig gewählten Punkte mehrere Ausreißer nach oben auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte, von daher lässt sich bezüglich des Fehlers kein Vorteil für zufällig gewählte Kollokationspunkte feststellen.
+Vergleicht man die Fehler mit denen der Gitterpunktwahl, sieht man, dass diese sich in der gleichen Größenordnung bewegen. Allerdings weist die Kurve der zufällig gewählten Punkte mehrere Ausreißer nach oben auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte. Von daher lässt sich bezüglich des Fehlers kein Vorteil für zufällig gewählte Kollokationspunkte feststellen.
 
 \subsubsection{Greedy-Punktwahl}
-Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} mit einer Greedy-Punktwahl gesetzte Kollokationspunkte an. Es ist zu beachten, dass bei der benutzten Implementierung bei den Standardverfahren auf dem Rand festgesetzte Kollokationspunkte benutzt werden. Deswegen beginnen die Graphen der beiden Standardverfahren erst bei $37$.
+Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} mit einer Greedy-Punktwahl gesetzte Kollokationspunkte an. Es ist zu beachten, dass bei der benutzten Implementierung bei den Standardverfahren auf dem Rand festgesetzte Kollokationspunkte benutzt werden. Deswegen beginnen die Graphen der beiden Standardverfahren erst mit $37$ Kollokationspunkten.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -127,7 +127,7 @@ Man erkennt, dass die Kollokationspunkte im Standard Fall gleichmäßig über da
 
 \subsection{Fehler auf dem Rand}
 
-Wir möchten nun überprüfen, ob die gewichtete Kollokation ihren Sinn erfüllt, d.h. ob die Lösung auf dem Rand auch wirklich Null ist. Dafür plotten wir eine mit dem Standardverfahren erstellte Lösung und eine mit dem gewichteten Verfahren erstellte Lösung in Abbildung \ref{fig:rand-vergleich} über einen Teil des Randes.
+Wir werden nun überprüfen, ob die gewichtete Kollokation ihren Sinn erfüllt, d.h. ob die Lösung auf dem Rand auch wirklich Null ist. Dafür plotten wir eine mit dem Standardverfahren erstellte Lösung und eine mit dem gewichteten Verfahren erstellte Lösung in Abbildung \ref{fig:rand-vergleich} über einen Teil des Randes.
 
 \begin{figure}[ht]
 \centering
@@ -151,7 +151,7 @@ Wir sind bisher nur auf die Wahl der Kollokationspunkte eingegangen, aber noch n
 \caption{Fehler bei unterschiedlicher Anzahl an Testpunkten}
 \label{fig:testpunkte}
 \end{figure}
-Wir erkennen, dass der Fehler bis auf wenige Ausreißer konstant bleibt. Damit ist die Wahl der Testpunkte beinahe egal. Die großen Fehler entstehen genau dann, wenn alle Testpunkte mit den Kollokationspunkten zusammenfallen. Den hier auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Testdaten angepasst und verliert dabei an Genauigkeit, wenn man das ganze Gebiet $\Omega$ betrachtet. 
+Wir erkennen, dass der Fehler bis auf wenige Ausreißer konstant bleibt. Demnach spielt die Wahl der Testpunkte keine zu große Rolle. Die großen Fehler entstehen genau dann, wenn alle Testpunkte mit den Kollokationspunkten zusammenfallen. Den hier auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Testdaten angepasst und verliert dabei an Genauigkeit, wenn man das ganze Gebiet $\Omega$ betrachtet. 
 
 In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter $\gamma$ bei unterschiedlichen Testpunktanzahlen dargestellt.
 \begin{figure}[ht]
@@ -162,7 +162,7 @@ In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter $\gamma$ bei
 \caption{Gammawerte bei unterschiedlicher Anzahl an Testpunkten}
 \label{fig:testpunkte-gamma}
 \end{figure}
-Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes $\gamma$ gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes $\gamma$ einem schmalen "Hütchen" der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Test- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur Einfluss auf einen Testpunkt, nämlich den, an dem sie angesetzt werden, nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}.
+Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes $\gamma$ gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes $\gamma$ einem schmalen \glqq Hütchen\grqq  der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Test- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur Einfluss auf einen Testpunkt nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -175,7 +175,7 @@ Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ei
 So entsteht eine Lösung, die an den Testpunkten extrem gut angepasst ist, ansonsten der echten Lösung aber kaum ähnlich sieht.
 
 \section{Parameterwahl und Kondition}
-Wir werden zunächst betrachten, wie sich der Parameter $\gamma$ bei unterschiedlich vielen Kollokationspunkten verhält. Dafür betrachten wir diese aufgrund der gleichmäßigen Verringerung der Abstände auf einem Gitter verteilt. 
+Wir werden in Abbildung \ref{fig:gamma} zunächst betrachten, wie sich der Parameter $\gamma$ bei unterschiedlich vielen Kollokationspunkten verhält. Dafür betrachten wir diese aufgrund der gleichmäßigen Verringerung der Abstände auf einem Gitter verteilt. 
 
 \begin{figure}[ht]
 \centering
@@ -186,7 +186,7 @@ Wir werden zunächst betrachten, wie sich der Parameter $\gamma$ bei unterschied
 \label{fig:gamma}
 \end{figure}
 
-Die gewichteten Verfahren zeigen das Verhalten, welches wir erwarten würden. Mit steigender Anzahl an Kollokationspunkten vergrößert sich der verwendete Parameter $\gamma$. Dies resulitiert in einem engeren "Hütchen" des Kerns. Dies passt zu den enger liegenden Kollokationspunkten. Die Standardverfahren zeigen am Anfang das gleiche Verhalten, haben aber schon früh, wie wir aus dem vorherigen Kapitel wissen, ihren besten Fehler erreicht und verändern dann auch ihren Parameter nicht mehr.
+Die gewichteten Verfahren zeigen das Verhalten, welches wir erwarten würden. Mit steigender Anzahl an Kollokationspunkten vergrößert sich der verwendete Parameter $\gamma$, da dies in einem engeren \glqq Hütchen\grqq  des Kerns resulitiert und dies zu den enger liegenden Kollokationspunkten passt. Die Standardverfahren zeigen am Anfang das gleiche Verhalten, haben aber schon früh, wie wir aus dem vorherigen Kapitel wissen, ihren besten Fehler erreicht und verändern dann auch ihren Parameter nicht mehr.
 
 In Abbildung \ref{fig:gamma-fehler} ist bei gleichbleibenden Kollokationspunkten der Fehler bei unterschiedlichen Parametern $\gamma$ dargestellt.
 
@@ -199,7 +199,7 @@ In Abbildung \ref{fig:gamma-fehler} ist bei gleichbleibenden Kollokationspunkten
 \label{fig:gamma-fehler}
 \end{figure}
 
-Daraus erkennt man, dass der Fehler groß ist, wenn $\gamma$ entweder zu klein oder zu groß ist. Ist $\gamma$ zu groß, haben wir zu kleine "Hütchen", so können diese die \ac{PDE} nur sehr lokal lösen. Der große Fehler für zu kleines $\gamma$ lässt sich besser erklären, wenn man noch die Kondition hinzunimmt. Diese ist in Abbildung \ref{fig:kondition} dargestellt.
+Daraus erkennt man, dass der Fehler groß ist, wenn $\gamma$ entweder zu klein oder zu groß ist. Ist $\gamma$ zu groß, haben wir zu kleine \glqq Hütchen\grqq , so können diese die \ac{PDE} nur sehr lokal lösen. Der große Fehler für zu kleines $\gamma$ lässt sich besser erklären, wenn man noch die Kondition hinzunimmt. Diese ist in Abbildung \ref{fig:kondition} dargestellt.
 
 \begin{figure}[ht]
 \centering
@@ -210,7 +210,7 @@ Daraus erkennt man, dass der Fehler groß ist, wenn $\gamma$ entweder zu klein o
 \label{fig:kondition}
 \end{figure}
 
-Die Kondition ist für kleine $\gamma$ groß. Das kommt daher, dass jede Ansatzfunktion "Einfluss" auf viele Kollokationspunkte hat. Mitunter das erklärt den großen Fehler für zu kleine $\gamma$. Für große $\gamma$ ist die Kondition wesentlich besser, da jede Ansatzfunktion auf weniger Kollokationspunkte deutlichen "Einfluss" hat. Es lässt sich schließlich erkennen, dass der Fehler ungefähr dann am niedrigsten ist, wenn die Kondition anfängt besser zu werden. 
+Die Kondition ist für kleine $\gamma$ groß. Das kommt daher, dass jede Ansatzfunktion \glqq Einfluss\grqq  auf viele Kollokationspunkte hat. Mitunter das erklärt den großen Fehler für zu kleine $\gamma$. Für große $\gamma$ ist die Kondition wesentlich besser, da jede Ansatzfunktion auf weniger Kollokationspunkte deutlichen \glqq Einfluss\grqq  hat. Es lässt sich schließlich erkennen, dass der Fehler ungefähr dann am niedrigsten ist, wenn die Kondition anfängt besser zu werden. 
 
 \section{Laufzeit}
 Als letztes werden wir die verschiedenen Verfahren bezüglich ihrer Laufzeit vergleichen. Die Zeitmessungen unterliegen verschiedenen Umgebungsbedingungen wie Prozessortakt, Betriebssystem und Zimmertemperatur. Deswegen wurden alle Messungen mehrfach unter ähnlichen Bedingungen durchgeführt und wir haben konsistente Ergebnisse bekommen. Dargestellt werden keine Mittelwerte über mehrere Durchläufe, sondern nur ein einzelner. Diese etwas ungenaue Arbeitsweise können wir damit rechtfertigen, dass wir weniger an den absoluten Zeitwerten interessiert sind, als an den relativen Vergleichswerten der einzelnen Verfahren.
@@ -227,7 +227,7 @@ In Abbildung \ref{fig:Laufzeit} ist die Laufzeit bei unterschiedlich vielen auf 
 
 Wir sehen deutliche Unterschiede zwischen den verschiedenen Verfahren. Das Nicht-symmetrische Verfahren ist durchgehend das schnellste. Danach kommt das gewichtete symmetrische Verfahren. Der Mehraufwand entsteht hier durch den komplizierteren Kern und damit durch längere Auswertungszeiten. Mit der selben Begründung lässt sich auch die längere Laufzeit des symmetrischen Standardverfahrens erklären. Hier entstehen die komplizierteren Funktionen allerdings nicht durch das Anhängen der Gewichtsfunktion, sondern durch die zweimalige Anwendung des Differentialoperators. Beim symmetrischen gewichteten Verfahren kommen beide Effekte zusammen, was die längste Laufzeit erklärt.
 
-In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Verfahren bei einer greedy-Punktwahl dargestellt. Wieder gilt es zu beachten, dass die Graphen der Standardverfahren erst bei $37$ Kollokationspunkten beginnen.
+In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Verfahren bei einer Greedy-Punktwahl dargestellt. Wieder gilt es zu beachten, dass die Graphen der Standardverfahren erst bei $37$ Kollokationspunkten beginnen.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
