@@ -3,14 +3,14 @@
 \label{alg:Grund}
 \begin{algorithmic}[1]
 
-\Function{SolvePDE}{$X, Xte,f, g$}
+\Function{SolvePDE}{$X, XVal,f, g$}
 \State $\mathrm{b} \gets \Call{RightHandSide}{X,f,g}$
 \State $\mathrm{gamma} \gets \text{list of parameters}$
 \State $\mathrm{minError} \gets \infty$
 \For{$i$ in $gamma$}
 	\State $\mathrm{A} \gets \Call{CollocationMatrix}{X, i}$
 	\State $\mathrm{alpha} \gets A\backslash b$
-	\State $\mathrm{error} \gets \Call{CalculateError}{X, Xte, f, i}$
+	\State $\mathrm{error} \gets \Call{CalculateError}{X, XVal, f, i}$
 	\If{$\mathrm{error} < \mathrm{minError}$}
 		\State $\mathrm{retVal} \gets alpha$
 		\State $\mathrm{minError} \gets error$

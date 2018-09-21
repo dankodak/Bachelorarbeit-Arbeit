@@ -1,27 +1,57 @@
 \chapter{Numerische Tests}
 \label{cha:NumerischeTests}
 
-In diesem Kapitel möchten wir die vorgestellten Verfahren verschiedenen numerischen Tests unterziehen. Dabei wollen wir hauptsächlich den Fehler der numerischen Lösung zur analytischen untersuchen, aber auch die Kondition der Kollokationsmatrizen, die Parameterwahl und die Laufzeit betrachten.
+In diesem Kapitel möchten wir die vorgestellten Verfahren verschiedenen numerischen Tests unterziehen. Dabei wollen wir hauptsächlich den Fehler der numerischen Lösung zur analytischen untersuchen, aber auch die Kondition der Kollokationsmatrizen, die Parameterwahl und die Laufzeit betrachten. Außerdem wollen wir die Verfahren mit der finiten Elemente Methode (\acs{FEM}) vergleichen. \glsunset{FEM}
 
-Dafür betrachten wir die Poisson-Gleichung mit Dirichlet-Randbedingung auf $\Omega = [-1,1] \times [-1,1] \subset \mathbb{R}^n$:
+Dafür betrachten wir die Poisson Gleichung auf zwei verschiedenen Gebieten und mit zwei verschiedenen rechten Seiten.
+\begin{enumerate}
+\item
+Sei $\Omega := [-1,1] \times [-1,1] \subset \mathbb{R}^2$ und folgende \ac{PDE} gegeben:
 \begin{align*}
-- \Delta u &= 2\pi^2 \sin(\pi x)\sin(\pi y)&&, (x,y) \in \Omega^\circ\\
-u &= 0&&, (x,y) \in \partial \Omega
+- \Delta u &= 2\pi^2 \sin(\pi x)\sin(\pi y)&& (x,y) \in \Omega^\circ\\
+u &= 0&& (x,y) \in \partial \Omega
 \end{align*}
-mit analytischer Lösung $u(x,y) = \sin(\pi x)\sin(\pi y)$, dargestellt in Abbildung \ref{fig:plot}. Wir wählen als Gewichtsfunktion $w$ für $\Omega$ die Funktion aus Beispiel \ref{ex:Gewicht}:
+Sie hat die analytische Lösung 
 \begin{align*}
-w = -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}.
+u(x,y) = \sin(\pi x)\sin(\pi y),
+\end{align*}
+dargestellt in Abbildung \ref{fig:pde1sol}. Wir wählen als Gewichtsfunktion $w$ für $\Omega$ die Funktion aus Beispiel \ref{ex:Gewicht}:
+\begin{align*}
+w(x,y) = -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}.
 \end{align*}
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{plots/plot.tex}
 }
-\caption{Lösung der \acs{PDE}}
-\label{fig:plot}
+\caption{Lösung der ersten \acs{PDE}}
+\label{fig:pde1sol}
 \end{figure}
+\item
+Sei $\Omega := B_1(0) = \{x \in \mathbb{R}^2 |\; \|x\|_2 < 1\} \subset \mathbb{R}^2$ und folgende \ac{PDE} gegeben:
+\begin{align*}
+- \Delta u &= -\exp(-x^2 -y^2)(-4+4(x^2+y^2)) && (x,y)  \in \Omega\\
+u &= 0&& (x,y) \in \partial \Omega
+\end{align*}
+Sie hat die analytische Lösung 
+\begin{align*}
+u(x,y) = \exp(-x^2-y^2) - \frac{1}{e},
+\end{align*}  dargestellt in Abbildung \ref{fig:pde2sol}. Wir wählen als Gewichtsfunktion:
+\begin{align*}
+w(x,y) = 1 -x^2 -y^2
+\end{align*}
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/pde2sol.tex}
+}
+\caption{Lösung der zweiten \acs{PDE}}
+\label{fig:pde2sol}
+\end{figure}
+\end{enumerate}
 
-Diese werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}. Aufgrund der fehlenden Praxisrelevanz werden wir die erste in Kapitel \ref{cha:Implementierung} vorgestellte Methode zur Fehlerberechnung in jeder Iteration nicht betrachten, sondern nur die in der Ableitung.
+
+Die Poisson-Gleichung werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}. Aufgrund der fehlenden Praxisrelevanz werden wir die erste in Kapitel \ref{cha:Implementierung} vorgestellte Methode zur Fehlerberechnung in jeder Iteration nicht betrachten, sondern nur die im Residuum.
 
 \section{Fehler}
 \subsection{Absoluter Fehler}
@@ -30,7 +60,7 @@ Als Maß des Fehlers unserer numerischen Lösung wollen wir den maximalen absolu
 \begin{align*}
 \text{error} = \max_{x \in \Omega} |u(x) - s_u (x)|,
 \end{align*}
-wobei $s_u$ die numerische Lösung bezeichnet.
+wobei $s_u$ die numerische Lösung bezeichnet. Um den Fehler näherungsweise zu bestimmen, legen wir ein eng gewähltes Gitter an Testpunkten über $\Omega$ und bestimmen ihn an diesen Punkten.
 
 Wir werden die drei in Kapitel \ref{cha:Implementierung} vorgestellten Methoden zur Kollokationspunktwahl testen und miteinander vergleichen. 
 \subsubsection{Kollokationspunkte als Gitter}
@@ -53,29 +83,24 @@ Damit können wir uns anschauen, wie sich der Fehler bei Verfeinerung des Gitter
 \caption{Fehler bei Kollokationspunkten auf Gitter}
 \label{fig:error}
 \end{figure}
-%\begin{table}[H]
-%\centering
-%\begin{tabular}{c|c|c|c|c}
-%%\hline 
-% & $n = 9$ & $n = 100$ & $n = 1024$ & $n = 6084$ \\ 
-%\hline 
-%Standard N-Sym & \num{0.99974} & \num{2.18205e-04} & \num{2.61592e-06} & \num{9.07630e-06} \\ 
-%%\hline 
-%Standard Sym & \num{0.99974} & \num{2.48216e-05} & \num{1.08639e-07} & \num{1.31851e-07} \\ 
-%%\hline 
-%Gewichtet N-Sym & \num{0.37643} & \num{8.20819e-03} & \num{1.87889e-03} & \num{3.09914e-04} \\ 
-%%\hline 
-%Gewichtet Sym & \num{0.27994} & \num{6.40403e-03} & \num{1.04064e-03} & • \\ 
-%%\hline 
-%\end{tabular} 
-%\caption{Vergleich der Verfahren}
-%\label{tab:Vergleich Fehler}
-%\end{table}
 
 Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und gegen die analytische Lösung konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll. 
 
 Wir erkennen, dass alle Verfahren sehr schnell gute Ergebnisse liefern. Die beiden Standardverfahren liefern bereits mit nahezu $200$ Kollokationspunkten ihre besten Ergebnisse in der Größenordnung von $10^{-6}$ für das nicht-symmetrische Verfahren und $10^{-7}$ für das symmetrische und verbessern sich danach nicht mehr. Im Gegensatz dazu stehen die gewichteten Verfahren, die am Anfang bei weitem nicht so gute Ergebnisse von rund $10^{-2}$ liefern, sich dann aber mit mehr Kollokationspunkten weiter verbessern, wenn auch ziemlich langsam. Gesamt erreichen die gewichteten Verfahren aber selbst mit $4500$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneidet beim Standardverfahren das symmetrische leicht besser ab, beim gewichteten ist kein Unterschied erkennbar.
 
+Ein Grund für das schlechtere Abschneiden der gewichteten Verfahren wird erkennbar, wenn man sich anschaut, wo der große Fehler angenommen wird. In Abbildung \ref{fig:Vergleich} ist der Fehler an den Testpunkten dargestellt.
+
+HIER DAS BILD
+
+Dieser große Fehler in den Ecken kommt aus der Gewichtsfunktion. Wendet man nämlich den Differentialoperator der \ac{PDE} auf auf diese an, erhält man eine Funktion mit Singularitäten in den Ecken, wie in Abbildung \ref{fig:Gewicht} dargestellt:
+\begin{figure}[ht]
+\centering
+\resizebox {\columnwidth} {!} {
+\input{plots/Gewicht.tex}
+}
+\caption{Negativer Laplace der Gewichtsfunktion}
+\label{fig:Gewicht}
+\end{figure}
 \subsubsection{Zufällige Kollokationspunkte}
 Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbildung \ref{fig:error-random} ist der Fehler bei unterschiedlich vielen zufällig verteilten Kollokationspunkten dargestellt.
 \begin{figure}[ht]
@@ -89,7 +114,7 @@ Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbi
 
 Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. Die Standardverfahren erreichen mit $200$ Kollokationspunkten ihre besten Ergebnisse von rund $10^{-7}$ für die nicht-symmetrische Variante und $10^{-6}$ für die symmetrische und verbessern sich dann nicht mehr weiter. Die gewichteten Verfahren erreichen mit $200$ Kollokationspunkten nur einen Fehler von rund $10^{-2}$, verbessern sich aber mit mehr Kollokationspunkten noch leicht.
 
-Vergleicht man die Fehler mit denen der Gitterpunktwahl, sieht man, dass diese sich in der gleichen Größenordnung bewegen. Allerdings weist die Kurve der zufällig gewählten Punkte mehrere Ausreißer nach oben auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte. Von daher lässt sich bezüglich des Fehlers kein Vorteil für zufällig gewählte Kollokationspunkte feststellen.
+Vergleicht man die Fehler mit denen der Gitterpunktwahl, sieht man, dass diese sich in der gleichen Größenordnung bewegen. Allerdings weist die Kurve der zufällig gewählten Punkte mehrere Ausreißer nach oben auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte. Von daher lässt sich in niedrigen Dimensionen kein Vorteil für zufällig gewählte Kollokationspunkte feststellen. In höheren Dimensionen ist es aufgrund der hohen Punktanzahl allerdings nahezu unmöglich ein Gitter über das Gebiet zu legen. Dort kann man dann davon ausgehen mit den zufällig gewählten Punkten vernünftige Ergebnisse zu erhalten.
 
 \subsubsection{Greedy-Punktwahl}
 Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} mit einer Greedy-Punktwahl gesetzte Kollokationspunkte an. Es ist zu beachten, dass bei der benutzten Implementierung bei den Standardverfahren auf dem Rand festgesetzte Kollokationspunkte benutzt werden. Deswegen beginnen die Graphen der beiden Standardverfahren erst mit $37$ Kollokationspunkten.
@@ -134,15 +159,15 @@ Wir werden nun überprüfen, ob die gewichtete Kollokation ihren Sinn erfüllt, 
 \resizebox {\columnwidth} {!} {
 \input{plots/Rand-vergleich.tex}
 }
-\caption{Rand bei gewichteter Kollokation}
+\caption{Plot über den Rand}
 \label{fig:rand-vergleich}
 \end{figure}
 
 Bei der Standardkollokation sind deutlich Schwankungen über den Rand erkennbar, wohingegen der Rand bei der gewichteten Kollokation bis auf kleine numerische Ungenauigkeiten tatsächlich Null ist. Das Ziel der gewichteten Kollokation wurde also erreicht.
 
-\subsection{Testpunkte}
+\subsection{Validationspunkte}
 
-Wir sind bisher nur auf die Wahl der Kollokationspunkte eingegangen, aber noch nicht auf die der Testpunkte. Dafür stellen wir den Fehler unserer numerischen Lösung in Abbildung \ref{fig:testpunkte} bei gleichbleibenden Kollokationspunkten, aber bei unterschiedlichen Anzahlen von Testpunkten dar. Diese sind auch hier wieder in einem Gitter angeordnet.
+Wir sind bisher nur auf die Wahl der Kollokationspunkte eingegangen, aber noch nicht auf die der Validationspunkte. Dafür stellen wir den Fehler unserer numerischen Lösung in Abbildung \ref{fig:testpunkte} bei gleichbleibenden Kollokationspunkten, aber bei unterschiedlichen Anzahlen von Validationspunkten dar. Diese sind auch hier wieder in einem Gitter angeordnet.
 \begin{figure}[H]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -151,7 +176,7 @@ Wir sind bisher nur auf die Wahl der Kollokationspunkte eingegangen, aber noch n
 \caption{Fehler bei unterschiedlicher Anzahl an Testpunkten}
 \label{fig:testpunkte}
 \end{figure}
-Wir erkennen, dass der Fehler bis auf wenige Ausreißer konstant bleibt. Demnach spielt die Wahl der Testpunkte keine zu große Rolle. Die großen Fehler entstehen genau dann, wenn alle Testpunkte mit den Kollokationspunkten zusammenfallen. Den hier auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Testdaten angepasst und verliert dabei an Genauigkeit, wenn man das ganze Gebiet $\Omega$ betrachtet. 
+Wir erkennen, dass der Fehler bis auf wenige Ausreißer konstant bleibt. Demnach spielt die Wahl der Validationspunkte keine zu große Rolle. Die großen Fehler entstehen genau dann, wenn alle Validationspunkte mit den Kollokationspunkten zusammenfallen. Den hier auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Kollokationspunkte angepasst und verliert dabei an Genauigkeit, wenn alle Testpunkte betrachtet.
 
 In Abbildung \ref{fig:testpunkte-gamma} ist der gewählte Parameter $\gamma$ bei unterschiedlichen Testpunktanzahlen dargestellt.
 \begin{figure}[ht]

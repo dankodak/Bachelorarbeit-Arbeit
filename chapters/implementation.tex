@@ -3,7 +3,7 @@
 
 In diesem Kapitel möchten wir uns die Implementierung der bisher theoretisch hergeleiteten Verfahren anschauen.
 
-Dazu müssen wir zunächst einen geeigneten Kern wählen. Wir erinnern uns an Beispiel \ref{ex:Kern}, dass die Kerne einen Parameter $\gamma$ besitzen. In Abbildung \ref{fig:Kerne} ist der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet. So können wir zur Parameterwahl eine ganze Familie an Kernen wählen, über die wir leicht iterieren können.
+Dazu müssen wir zunächst einen geeigneten Kern wählen. Beispielsweise wäre der Gauß Kern aus Beispiel \ref{ex:Kern} aufgrund seiner unendlichen Differenzierbarkeit geeignet, wohingegen das Skalarprodukt für die meisten Fälle ungeeignet wäre, da bereits alle partiellen Ableitungen der Ordnung $2$ (angewandt auf $x$ oder $y$) konstant Null sind. Wir erinnern uns auch, dass die Kerne einen Parameter $\gamma$ besitzen, welchen wir zur Parameterwahl benutzen können. In Abbildung \ref{fig:Kerne} ist der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet.
 \begin{figure}[ht]
 \centering
 \resizebox {.8\columnwidth} {!} {
@@ -12,31 +12,33 @@ Dazu müssen wir zunächst einen geeigneten Kern wählen. Wir erinnern uns an Be
 \caption{Plots verschiedener Kerne}
 \label{fig:Kerne}
 \end{figure}
+Wir wählen eine endliche Menge an möglichen $\gamma$ Werten und iterieren über diese. Für jedes $\gamma$ erstellen wir eine Lösung und suchen mit einem geeigneten Fehlerschätzer die beste heraus.
 
-So erhält man nach Wahl von Kollokationspunkten $X$ und Testpunkten $Xte$ den Algorithmus \ref{alg:Grund}.
+So erhält man nach Wahl von Kollokationspunkten $X$ und Validationspunkten $XVal$ den Algorithmus \ref{alg:Grund}.
 \input{code/grundlegend.tex}
 
 Einige Anmerkungen zu dem Algorithmus:
 \begin{itemize}
 \item
 Kollokationspunkte sind die Punkte, die wir bereits aus der theoretischen Herleitung kennen. Also die Punkte, an denen wir die Interpolation durchführen.\\
-Testpunkte sind die Punkte, an denen wir den Fehler unserer Lösung bestimmen.
+Validationspunkte sind die Punkte, an denen wir zur Parameterwahl den Fehler der aktuellen Lösung in einer Iteration bestimmen.\\
+Wir werden später zur Bestimmung der Güte unserer endgültigen Lösung noch eine Menge an Testpunkten brauchen, an denen wir dann den Fehler berechnen.
 \item
 $f$ und $g$ bezeichnen die rechte Seite der zu lösenden \gls{PDE}.
 \item
 Der Algorithmus funktioniert so für die Standard und für die gewichtete Kollokation. Angepasst werden müssen nur die Unterfunktionen zum Aufstellen der rechten Seite und der Kollokationsmatrix.
 \end{itemize}
-Es ist noch offen wie wir die Kollokations- und Testpunkte und den Fehler in jeder Iteration bestimmen. Zuerst betrachten wir Letzteres. Dafür möchten wir zwei Möglichkeiten vorstellen:
+Es ist noch offen wie wir die Kollokations-, Validations-, und Testpunkte und den Fehler in jeder Iteration bestimmen. Zuerst betrachten wir Letzteres. Dafür möchten wir zwei Möglichkeiten vorstellen:
 \begin{itemize}
 \item
 Falls wir eine analytisch bestimmte Lösung der \gls{PDE} haben sollten, können wir diese mit der approximierten vergleichen. Sei dazu $u$ die analytische Lösung und $s_u$ die approximierte. Den Fehler erhalten wir dann mit
 \begin{align*}
-\mathrm{error} = \max_{x \in Xte} \left(\left| u(x) - s_u(x) \right| \right)
+\mathrm{error} = \max_{x \in XVal} \left(\left| u(x) - s_u(x) \right| \right)
 \end{align*}
 \item
-Eine analytische Lösung werden wir jedoch meist nicht besitzen und können die erste Methode somit nicht anwenden. Wir haben aber noch die Möglichkeit den Fehler in der Ableitung zu betrachten. Sei dafür $L$ der Differentialoperator aus der \gls{PDE}, $f$ die rechte Seite in \gls{PDE} und $s_u$ die approximierte Lösung. Den Fehler erhalten wir dann mit
+Eine analytische Lösung werden wir jedoch meist nicht besitzen und können die erste Methode somit nicht anwenden. Wir haben aber noch die Möglichkeit den Fehler in einem Residuum zu betrachten. Sei dafür $L$ der Differentialoperator aus der \gls{PDE}, $f$ die rechte Seite in \gls{PDE} und $s_u$ die approximierte Lösung. Den Fehler erhalten wir dann mit
 \begin{align*}
-\mathrm{error} = \max_{x \in Xte} \left(\left| f(x) - L s_u(x) \right| \right)
+\mathrm{error} = \max_{x \in XVal} \left(\left| f(x) - L s_u(x) \right| \right)
 \end{align*}
 $Ls_u$ lässt sich aufgrund der Linearität des Differentialoperators leicht berechnen. So kann man ausnutzen, dass $s_u$ eine Linearkombination aus den einzelnen Basisfunktionen ist, und $L$ auf die einzelnen Summanden anwenden.
 \end{itemize}
@@ -48,7 +50,9 @@ Die Kollokationspunkte können als Gitter über das Definitionsgebiet gelegt wer
 \item
 Die Kollokationspunkte können zufällig gewählt werden.
 \item
-Eine Greedy-Punktwahl ist auch möglich. Dafür berechnet man zunächst eine Lösung aus den aktuell gegebenen Punkten. Auf diese Lösung kann man dann den Differentialoperator aus der \ac{PDE} anwenden. Zwischen dieser Funktion und der rechten Seite der \ac{PDE} kann man dann den maximalen Fehler in dem Definitionsgebiet bestimmen. An die Stelle, an der der maximale Fehler angenommen wird, wird der neue Kollokationspunkt gesetzt. Dieses Verfahren kann dann wiederholt werden.
+Eine Greedy-Punktwahl ist auch möglich. Dafür berechnet man zunächst eine Lösung aus den aktuell gegebenen Punkten. Auf diese Lösung kann man einen der beiden gerade vorgestellten Fehlerschätzer mit der Testpunktmenge anstatt der Validationspunktmenge anwenden. An die Stelle, an der der maximale Fehler angenommen wird, wird der neue Kollokationspunkt gesetzt. Dieses Verfahren kann dann wiederholt werden.
 \end{itemize}
 
-Die Testpunkte können, wie die Kollokationspunkte, zufällig gewählt werden, oder in einem Gitter über das Definitionsgebiet gelegt werden.
+Die Validationspunkte können, wie die Kollokationspunkte, zufällig gewählt werden, oder in einem Gitter über das Definitionsgebiet gelegt werden.
+
+Die Testpunkte legt man am einfachsten in einem engen Gitter über das Definitionsgebiet, um eine genaue Auswertung der Funktion zu gewährleisten.

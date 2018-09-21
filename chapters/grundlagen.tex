@@ -22,14 +22,14 @@ s(x_i) = \langle \delta_{x_i},u \rangle = \langle \delta_{x_i},s_u \rangle = s_u
 \item
 Für einen Multiindex $a \in \mathbb{N}_0^d$ sei $D^a$ ein linearer partieller Differentialoperator. Dann erhält man mit $\lambda_i := \delta_{x_i} \circ D^a$ die Auswertungsfunktionale der Ableitung, mit welchen wir interpolieren können.
 \item
-Sei eine \ac{PDE} mit Lösung $u \in C^k(\Omega) \cap C^0(\widebar \Omega)$ gegeben:
+Sei eine \ac{PDE} mit Lösung $u \in C^k(\Omega) \cap C^l(\widebar \Omega)$ gegeben:
 \begin{align}\label{eq:PDE}
 \begin{split}
 L u(x) &= f(x), x \in \Omega \\
 B u(x) &= g(x), x \in \partial \Omega,
 \end{split}
 \end{align}
-wobei $L$ ein linearer Differentialoperator und $B$ ein linearer Randwertoperator ist.
+wobei $L$ ein linearer Differentialoperator der Ordnung $k$ und $B$ ein linearer Randwertoperator der Ordnung $l$ ist.
 Sei $X_N \subset \Omega$ eine Menge an Punkten, genant Kollokationspunkte. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
 \begin{align*}
 L s_u(x_i) &= L u(x_i) = f(x_i), x_i \in \Omega\\
