@@ -8,17 +8,17 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Lösung der ersten \acs {PDE}\relax }}{2}{figure.caption.9}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Lösung der zweiten \acs {PDE}\relax }}{3}{figure.caption.10}
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Kollokationspunkte\relax }}{5}{figure.caption.11}
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Fehler\relax }}{6}{figure.caption.12}
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Negativer Laplace der Gewichtsfunktion\relax }}{7}{figure.caption.13}
-\contentsline {figure}{\numberline {1.6}{\ignorespaces Fehler bei zufällig verteilten Kollokationspunkten\relax }}{8}{figure.caption.14}
-\contentsline {figure}{\numberline {1.7}{\ignorespaces Fehler beim Greedy-Verfahren\relax }}{9}{figure.caption.15}
-\contentsline {figure}{\numberline {1.8}{\ignorespaces Kollokationspunkte beim Greedy-Verfahren bei \ac {PDE} 1\relax }}{10}{figure.caption.16}
-\contentsline {figure}{\numberline {1.9}{\ignorespaces Lösung bei gewichtetem Greedy-Verfahren\relax }}{11}{figure.caption.17}
-\contentsline {figure}{\numberline {1.10}{\ignorespaces Kollokationspunkte beim Greedy-Verfahren bei \ac {PDE} 2\relax }}{12}{figure.caption.18}
-\contentsline {figure}{\numberline {1.12}{\ignorespaces Fehler bei unterschiedlicher Anzahl an Testpunkten\relax }}{12}{figure.caption.20}
-\contentsline {figure}{\numberline {1.11}{\ignorespaces Plot über den Rand\relax }}{13}{figure.caption.19}
-\contentsline {figure}{\numberline {1.13}{\ignorespaces Gammawerte bei unterschiedlicher Anzahl an Testpunkten\relax }}{14}{figure.caption.21}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Kollokations- und Validationspunkte\relax }}{4}{figure.caption.11}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Testfehler bei Kollokationspunkten auf einem Gitter\relax }}{5}{figure.caption.12}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Testfehler auf $\Omega $\relax }}{6}{figure.caption.13}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Negativer Laplace der Gewichtsfunktion\relax }}{7}{figure.caption.14}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Testfehler bei zufällig verteilten Kollokationspunkten\relax }}{9}{figure.caption.15}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Fehler beim Greedy-Verfahren\relax }}{10}{figure.caption.16}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Kollokationspunkte beim Greedy-Verfahren bei \ac {PDE} 1\relax }}{11}{figure.caption.17}
+\contentsline {figure}{\numberline {1.10}{\ignorespaces Lösung der \ac {PDE} 1 bei gewichtetem Greedy-Verfahren\relax }}{11}{figure.caption.18}
+\contentsline {figure}{\numberline {1.11}{\ignorespaces Kollokationspunkte beim Greedy-Verfahren bei \ac {PDE} 2\relax }}{12}{figure.caption.19}
+\contentsline {figure}{\numberline {1.12}{\ignorespaces Plot über den Rand\relax }}{13}{figure.caption.20}
+\contentsline {figure}{\numberline {1.13}{\ignorespaces Fehler und $\gamma $-Werte bei unterschiedlicher Anzahl an Validationspunkten\relax }}{14}{figure.caption.21}
 \contentsline {figure}{\numberline {1.14}{\ignorespaces Lösung bei Überanpassung\relax }}{15}{figure.caption.22}
 \contentsline {figure}{\numberline {1.15}{\ignorespaces Gewählter Parameter $\gamma $\relax }}{16}{figure.caption.23}
 \contentsline {figure}{\numberline {1.16}{\ignorespaces Fehler bei verschiedenen Parametern $\gamma $\relax }}{17}{figure.caption.24}
