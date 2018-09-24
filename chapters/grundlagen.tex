@@ -142,6 +142,14 @@ Sei $\Omega \subset \mathbb{R}^n$ und $\gamma \in \mathbb{R}^+$. Dann sind folge
 \begin{enumerate}
 \item Skalarprodukt: $K(x,y) := \gamma^{-1} (x,y)$
 \item Gauß Kern: $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}
+\item Wendland Kern in zwei Dimensionen: $K(x,y) := (1- \|x-y\|)_+^4(4 \|x-y\| +1)$, wobei $(1-\|x-y\|)_+$ definiert ist, als
+\begin{align*}
+(1 - \|x-y\|)_+ =
+\begin{cases}
+1 - \|x-y\| & \text{,für} \|x-y\| \leq 1 \\
+0 & \text{,für} \|x-y\| > 1
+\end{cases}
+\end{align*}
 \end{enumerate}
 \end{example}
 
@@ -152,6 +160,8 @@ $\mbox{}$
 Die Symmetrie folgt aus der Symmetrie des Skalarprodukts. Die Kernmatrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
 \item
 Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
+\item
+Auch hierfür findet man einen Beweis in \textcite[Theorem 9.13]{Wendland.2005}. Außerdem findet man dort eine Verallgemeinerung auf alle Dimensionen.
 \end{enumerate}
 \end{proof}
 
@@ -218,7 +228,11 @@ Sei $\mathcal{H}$ ein Hilbertraum und $\lambda \in \mathcal{H}'$ ein beschränkt
 \langle \lambda, x \rangle = \left( x, \nu_\lambda \right)_\mathcal{H}
 \end{align*}
 Wir nennen $\nu_\lambda$ den Riesz-Repräsentanten von $\lambda$.
+
 \end{theorem}
+\begin{proof}
+	Einen Beweis findet man beispielsweise in \textcite[Satz 7.3]{Kaballo.2018}.
+\end{proof}
 
 Zur Wohldefiniertheit unserer Interpolation benötigen wir die Stetigkeit aller verwendeten Funktionale. Zunächst betrachten wir die Punktauswertungsfunktionale.
 
