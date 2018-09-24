@@ -1,0 +1,178 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+name = ax1,
+width=1.938in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=2000,
+%xlabel style={font=\color{white!15!black}},
+%xlabel={amount of collocation points},
+ymode=log,
+ymin=1e-10,
+ymax=1,
+yminorticks=true,
+ylabel style={font=\color{white!15!black}},
+ylabel={Maximaler Testfehler},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={\ac{PDE} 1},
+legend style={legend cell align=left, align=left, draw=white!15!black},
+legend pos = south east
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+3	0.999748271191593\\
+36	0.00355243728244914\\
+121	2.42937409080102e-05\\
+256	2.43333894801856e-06\\
+441	2.41148464918128e-05\\
+676	5.18289942128686e-06\\
+961	5.83879307703566e-06\\
+1296	4.41418648837455e-06\\
+1681	1.47726674488147e-05\\
+2116	1.13236318954879e-05\\
+};
+\addlegendentry{Standard N-Sym}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+3	0.999748271191593\\
+36	0.00287159725441316\\
+121	1.53681446218856e-05\\
+256	3.59086256618291e-07\\
+441	1.10766025934739e-07\\
+676	1.91874217403409e-07\\
+961	4.01987755416222e-07\\
+1296	4.576342060858e-08\\
+1681	4.09538019885414e-07\\
+2116	6.99989677332979e-08\\
+};
+\addlegendentry{Standard Sym}
+
+\addplot [color=mycolor3]
+  table[row sep=crcr]{%
+16	0.161725091230929\\
+81	0.00460085880662719\\
+196	0.00409447866225437\\
+361	0.00282895546621233\\
+576	0.0019542410364516\\
+841	0.00142159397516264\\
+1156	0.0578364180736289\\
+1521	0.00112274907748577\\
+1936	0.0829965585717012\\
+};
+\addlegendentry{Gewichtet N-Sym}
+
+\addplot [color=mycolor4]
+  table[row sep=crcr]{%
+16	0.00759313042041573\\
+81	0.00527710975604147\\
+196	0.00539018002865457\\
+361	0.0104443324095702\\
+576	0.00259793321299058\\
+841	0.00184949512788116\\
+1156	0.023401311649608\\
+1521	0.000940105637529854\\
+1936	0.000698475192690548\\
+};
+\addlegendentry{Gewichtet Sym}
+
+\end{axis}
+
+\begin{axis}[%
+name = ax2,
+width=1.938in,
+height=3.566in,
+at={(3.327in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=1700,
+%xlabel style={font=\color{white!15!black}},
+%xlabel={amount of collocation points},
+ymode=log,
+ymin=1e-10,
+ymax=1,
+yminorticks=true,
+%ylabel style={font=\color{white!15!black}},
+%ylabel={max. error in derivative/absolute},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={\ac{PDE} 2},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+2	0.631916518837427\\
+33	0.0142107045095952\\
+101	0.000886117955903543\\
+219	0.00326803978319878\\
+367	0.0029014295463889\\
+561	0.0105672254426671\\
+789	0.00928625760769197\\
+1059	0.00392617612801216\\
+1367	0.00586787410066054\\
+1713	0.00961813696679241\\
+};
+\addlegendentry{Standard N-Sym}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+2	0.631916518837427\\
+33	0.0266696211909627\\
+101	2.99036950895948e-08\\
+219	1.5509662443236e-08\\
+367	5.90936024280619e-08\\
+561	2.66029277495861e-08\\
+789	1.22966902594418e-07\\
+1059	5.03998414114193e-08\\
+1367	6.05273254850047e-08\\
+1713	1.37628051871674e-07\\
+};
+\addlegendentry{Standard Sym}
+
+\addplot [color=mycolor3]
+  table[row sep=crcr]{%
+16	0.00114367240872698\\
+69	7.71028697534037e-07\\
+172	6.84093609537584e-08\\
+305	4.60455369388768e-08\\
+484	4.16310458328795e-08\\
+697	1.20929317337648e-07\\
+952	1.49361656320846e-07\\
+1245	5.58707878850484e-08\\
+1576	9.05729282685286e-08\\
+};
+\addlegendentry{Gewichtet N-Sym}
+
+\addplot [color=mycolor4]
+  table[row sep=crcr]{%
+16	0.00196288047392809\\
+69	1.41731398284328e-07\\
+172	6.43924830123765e-10\\
+305	6.92943258329137e-10\\
+484	1.90341531425275e-09\\
+697	1.96490679282846e-09\\
+952	1.80918391379237e-09\\
+1245	3.6292091554202e-10\\
+1576	1.06007957967336e-09\\
+};
+\addlegendentry{Gewichtet Sym}
+
+\end{axis}
+\path (ax1.south east) -- (ax2.south west)
+  node[midway,below=5mm] {Anzahl der Kollokationspunkte};
+\end{tikzpicture}%

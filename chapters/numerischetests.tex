@@ -234,14 +234,14 @@ Wir werden in Abbildung \ref{fig:gamma-grid} zunächst betrachten, wie sich der 
 \caption{Gewählter Parameter $\gamma$}
 \label{fig:gamma-grid}
 \end{figure}
-Wir erkennen, dass die Verfahren, die ihren besten Testfehler in Abbildung \ref{fig:error-grid-both} bereits erreicht haben, ihren $\gamma$-Wert kaum mehr verändern. Es stechen nur die beiden gewichteten Verfahren bei der ersten \ac{PDE} heraus, da sich hier der verwendete Parameter $\gamma$ mit steigender Anzahl der Kollokationspunkte vergrößert. Dies resultiert in einem engeren \glqq Hütchen\grqq{} des Kerns, was zu den enger liegenden Kollokationspunkten passt.
+Wir erkennen, dass die Verfahren, die ihren besten Testfehler in Abbildung \ref{fig:error-grid-both} bereits erreicht haben, ihren $\gamma$-Wert kaum mehr verändern. Es stechen nur die beiden gewichteten Verfahren bei der ersten \ac{PDE} heraus, da sich hier der verwendete Parameter $\gamma$ mit steigender Anzahl der Kollokationspunkte vergrößert. Das waren genau die Verfahren, die ihren Fehler mit steigender Anzahl der Kollokationspunkte noch verbessert haben. Das größere $\gamma$ resultiert in einem engeren \glqq Hütchen\grqq{} des Kerns, was zu den enger liegenden Kollokationspunkten passt.
 
 In Abbildung \ref{fig:gamma-fehler} ist bei gleichbleibenden Kollokationspunkten der Fehler bei unterschiedlichen Parametern $\gamma$ dargestellt.
 
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
-\input{plots/gamma.tex}
+\input{plots/amount-gamma.tex}
 }
 \caption{Fehler bei verschiedenen Parametern $\gamma$}
 \label{fig:gamma-fehler}
@@ -252,18 +252,20 @@ Daraus erkennt man, dass der Fehler groß ist, wenn $\gamma$ entweder zu klein o
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
-\input{plots/kondition.tex}
+\input{plots/gamma-kondition.tex}
 }
 \caption{Kondition bei verschiedenen Parametern $\gamma$}
 \label{fig:kondition}
 \end{figure}
 
-Die Kondition ist für kleine $\gamma$ groß. Das kommt daher, dass jede Ansatzfunktion \glqq Einfluss\grqq  auf viele Kollokationspunkte hat. Mitunter das erklärt den großen Fehler für zu kleine $\gamma$. Für große $\gamma$ ist die Kondition wesentlich besser, da jede Ansatzfunktion auf weniger Kollokationspunkte deutlichen \glqq Einfluss\grqq  hat. Es lässt sich schließlich erkennen, dass der Fehler ungefähr dann am niedrigsten ist, wenn die Kondition anfängt besser zu werden. 
+Die Kondition ist für kleine $\gamma$ groß. Das kommt daher, dass jede Ansatzfunktion \glqq Einfluss\grqq{}  auf viele Kollokationspunkte hat. Mitunter das erklärt den großen Fehler für zu kleine $\gamma$. Für große $\gamma$ ist die Kondition wesentlich besser, da jede Ansatzfunktion auf weniger Kollokationspunkte deutlichen \glqq Einfluss\grqq  hat. Es lässt sich schließlich erkennen, dass der Fehler ungefähr dann am niedrigsten ist, wenn die Kondition anfängt besser zu werden. 
+
+Auffällig sind wieder die gewichteten Verfahren bei der ersten \ac{PDE}. Hier ist wieder der deutlich schlechtere Fehler erkennbar.
 
 \section{Laufzeit}
 Als letztes werden wir die verschiedenen Verfahren bezüglich ihrer Laufzeit vergleichen. Die Zeitmessungen unterliegen verschiedenen Umgebungsbedingungen wie Prozessortakt, Betriebssystem und Zimmertemperatur. Deswegen wurden alle Messungen mehrfach unter ähnlichen Bedingungen durchgeführt und wir haben konsistente Ergebnisse bekommen. Dargestellt werden keine Mittelwerte über mehrere Durchläufe, sondern nur ein einzelner. Diese etwas ungenaue Arbeitsweise können wir damit rechtfertigen, dass wir weniger an den absoluten Zeitwerten interessiert sind, als an den relativen Vergleichswerten der einzelnen Verfahren.
 
-In Abbildung \ref{fig:Laufzeit} ist die Laufzeit bei unterschiedlich vielen auf einem Gitter verteilten Kollokationspunkte dargestellt.
+In Abbildung \ref{fig:Laufzeit} ist für die erste \ac{PDE} die Laufzeit bei unterschiedlich vielen auf einem Gitter verteilten Kollokationspunkte dargestellt.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -286,3 +288,31 @@ In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Ve
 \end{figure}
 
 Wir erhalten wieder die gleiche Reihenfolge der Verfahren, die wir genauso begründen können, wie schon im Fall der auf einem Gitter verteilten Punkte. Allerdings benötigt das Greedy-Verfahren wesentlich mehr Zeit für gleich viele Punkte. Das liegt daran, dass beim Greedy-Verfahren alle vorhergegangenen Iterationen zur Punktwahl mitberechnet werden müssen, was im Falle des Gitters wegfällt.
+
+\section{Vergleich mit \ac{FEM}}
+
+Die Kernkollokation bietet eine Reihe von Vorteilen gegenüber der \ac{FEM}. Dazu gehören:
+\begin{itemize}
+\item
+Die Kernkollokation hat eine höhere Genauigkeit als die \ac{FEM}. In der folgenden Tabelle \ref{tab:FEM} ist der Fehlers der \ac{FEM} und der Kernkollokation für die erste \ac{PDE} dargestellt.
+
+\begin{table}[H]
+
+\begin{tabular}{c|ccc}
+ & $n=183$ & $n=689$ & $n=2673$ \\ 
+\hline 
+FEM & \num{3.3902e-02} & \num{1.1434e-02} & \num{3.6496e-03} \\ 
+Standard N-Sym & \num{6.3587e-03} & \num{9.1230e-05} & \num{1.6121e-05} \\ 
+Standard Sym & \num{3.9065e-03} & \num{1.0242e-05} & \num{3.2350e-07} \\ 
+Gewichtet N-Sym & \num{5.8360e-03} & \num{3.1449e-03} & \num{3.0448e-04} \\ 
+Gewichtet Sym & \num{9.9156e-03} & \num{1.0253e-03} & \num{4.0773e-04} \\ 
+\end{tabular}
+\caption{Vergleich \ac{FEM} mit Kernkollokation}
+\label{tab:FEM}
+\end{table}
+\item
+Die Kernkollokation ist im Gegensatz zur \ac{FEM}, welche nur für maximal drei Dimensionen eingesetzt wird, komplett dimensionsunabhängig. Wir können ohne weiteres \acp{PDE} von Dimension vier und höher numerisch lösen.
+\item
+Die Kernkollokation, dabei insbesondere die gewichtete Kernkollokation, kann für beliebige mit einer Gewichtsfunktion beschreibbare Gebiete eingesetzt werden.
+
+\end{itemize}
