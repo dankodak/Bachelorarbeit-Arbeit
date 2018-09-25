@@ -1,11 +1,10 @@
-% !TEX root = ../maturaarbeit.tex
-\chapter{Schluss}\label{chap:schluss}
-\begin{enumerate}
-	\item Kurze, prägnante Zusammenfassung der Ergebnisse, In-Beziehung-Stellen der Ergebnisse zur Einleitung
-	\item Anregungen zur weiteren Vertiefung
-Persönliche Bemerkungen: Schlussfolgerungen
-	\item Welche neuen Erkenntnisse? Wo zeigten
-sich besondere Schwierigkeiten? usw.
-\end{enumerate}
+\chapter{Zusammenfassung und Ausblick}
+\label{cha:schluss}
 
-\newpage
+In diesem Kapitel fassen wir die wichtigsten Erkenntnisse dieser Arbeit zusammen und zeigen Ansatzpunkte für weitere Arbeiten zu diesem Thema auf.
+
+Wir haben in Kapitel \ref{cha:Grundlagen} und \ref{cha:Standardkollokation} die bekannte Theorie der Kernkollokation vorgestellt. Diese haben wir in Kapitel \ref{cha:Gewichtet} um Gewichtsfunktionen erweitert. Diese könnte man noch weiter untersuchen, vor allem wäre es wünschenswert eine Möglichkeit zu finden, Gewichtsfunktionen für beliebige Gebiete ohne Singularitäten in ihren Ableitungen zu finden.
+
+Daraufhin haben wir eine Implementierung der theoretisch hergeleiteten Verfahren in Kapitel \ref{cha:Implementierung} vorgestellt, welche wir in Kapitel \ref{cha:NumerischeTests} ausgewertet haben. Dort haben wir sehr verschiedene Ergebnisse für unterschiedliche \acp{PDE} erhalten. Diese Beobachtung haben wir auf die Singularitäten der partiellen Ableitungen der Gewichtsfunktionen zurückgeführt. Insbesondere war es nicht möglich eine konsistente Verbesserung der gewichteten Verfahren gegenüber der Standardverfahren festzustellen.
+
+Wir haben außerdem verschiedene Möglichkeiten der Kollokationspunktwahl untersucht. Da haben wir festgestellt, dass eine Greedy-Punktwahl bezüglich des Fehlers die geschickteste der vorgestellten Wahlmöglichkeiten ist. Hier wäre es noch interessant einen anderen Fehlerschätzer zur Punktwahl zu benutzen, beispielsweise mit den $C^1, C^2, \dots$ Normen. Außerdem wäre eine Greedy-Punktwahl schön, bei der die Punkte auf dem Rand nicht festgesetzt sind, sondern auch erst nach und nach gesetzt werden. Dafür könnte man auf dem Rand einen zweiten Fehlerschätzer einführen und diesen mithilfe einer Konstante gegen den Fehler im Inneren abwägen.

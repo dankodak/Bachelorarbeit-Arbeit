@@ -15,7 +15,7 @@ wobei wir $\langle \lambda_i, u \rangle := \lambda_i(u)$ für die Anwendung des 
 $\mbox{}$
 \begin{itemize}
 \item
-Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, in dem die Punktauswertungfunktionale $\delta_{x_i}(f) := f(x_i), 1\le i \le N$  stetig sind und $u \in \mathcal{H}$. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$:
+Sei $\Omega \subset \mathbb{R}^d$, $X_N := \{x_1, \dots, x_N\} \subset \Omega$ eine Menge von Punkten, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, für den die Punktauswertungfunktionale $\delta_{x_i}(f) := f(x_i), 1\le i \le N$  stetig sind und $u \in \mathcal{H}$. Dann bekommen wir die Standardinterpolation mit $\Lambda_N := \{\delta_{x_1}, \dots,\delta_{x_N}\} \subset \mathcal{H}'$:
 \begin{align*}
 s(x_i) = \langle \delta_{x_i},u \rangle = \langle \delta_{x_i},s_u \rangle = s_u(x_i), 1\le i \le N
 \end{align*}
@@ -46,11 +46,12 @@ Damit können wir die Interpolationsbedingungen schreiben als:
 \begin{align*}
 \langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle = \sum_{j=1}^N \alpha_j \langle \lambda_i,\nu_j \rangle
 \end{align*}
-Diese lassen sich auch als lineares Gleichungssystem $A_\Lambda \alpha = b$ schreiben  mit $(A_\Lambda)_{i,j} := \langle \lambda_i,\nu_j \rangle, b_i := \langle \lambda_i,u \rangle$.
+Diese lassen sich auch als lineares Gleichungssystem $A_\Lambda \alpha = b$ schreiben  mit \\
+$(A_\Lambda)_{i,j} := \langle \lambda_i,\nu_j \rangle, b_i := \langle \lambda_i,u \rangle$.
 
-Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, in dem die Auswertungs- und Differentialfunktionale stetig sind. Dies führt uns zur Definition von Kern Funktionen, mit denen wir einen Hilbertraum konstruieren werden, der das Geforderte liefern wird.
+Wir suchen jetzt nach geeigneten Ansatzfunktionen und einem Hilbertraum, für den die Auswertungs- und Differentialfunktionale stetig sind. Dies führt uns zur Definition von Kern Funktionen, mit denen wir einen Hilbertraum konstruieren werden, der das Geforderte liefern wird.
 
-\begin{definition}
+\begin{definition}[Kern]
 \label{Kern}
 Sei $\Omega$ eine beliebige nicht leere Menge. Ein reeller Kern auf $\Omega$ ist eine symmetrische Funktion $K: \Omega \times \Omega \rightarrow \mathbb{R}$.
 
@@ -138,7 +139,7 @@ Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von
 
 \begin{example}
 \label{ex:Kern}
-Sei $\Omega \subset \mathbb{R}^n$ und $\gamma \in \mathbb{R}^+$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
+Sei $\Omega \subset \mathbb{R}^d$ und $\gamma \in \mathbb{R}^+$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
 \begin{enumerate}
 \item Skalarprodukt: $K(x,y) := \gamma^{-1} (x,y)$
 \item Gauß Kern: $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}
@@ -165,7 +166,7 @@ Auch hierfür findet man einen Beweis in \textcite[Theorem 9.13]{Wendland.2005}.
 \end{enumerate}
 \end{proof}
 
-Die Definition der Kerneführt uns direkt zu den gesuchten Hilberträumen. Diese sind zunächst ohne Bezug zu Kernen definiert, wir werden aber feststellen, dass sie eng miteinander verknüpft sind.
+Die Definition der Kerne führt uns direkt zu den gesuchten Hilberträumen. Diese sind zunächst ohne Bezug auf Kerne definiert, wir werden aber feststellen, dass sie eng miteinander verknüpft sind.
 
 \begin{definition}[Reproduzierender Kern Hilbertraum]
 Sei $\Omega$ eine beliebige nicht leere Menge und $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$ und Skalarprodukt $(\cdot, \cdot)_\mathcal{H}$. Dann nennt man $\mathcal{H}$ einen reproduzierenden Kern Hilbertraum (\acs{RKHR})\glsunset{RKHR} auf $\Omega$, wenn eine Funktion $K:\Omega \times \Omega \rightarrow \mathbb{R}$ existiert, sodass
