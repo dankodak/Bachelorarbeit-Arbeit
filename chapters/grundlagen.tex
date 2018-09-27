@@ -149,8 +149,9 @@ Sei $\Omega \subset \mathbb{R}^d$ und $\gamma \in \mathbb{R}^+$. Dann sind folge
 \begin{cases}
 1 - \|x-y\| & \text{,für} \|x-y\| \leq 1 \\
 0 & \text{,für} \|x-y\| > 1
-\end{cases}
+\end{cases},
 \end{align*}
+ist \ac{SPD}.
 \end{enumerate}
 \end{example}
 
@@ -180,7 +181,7 @@ Man nennt $K$ den reproduzierenden Kern von $\mathcal{H}$.
 Dass $K$ tatsächlich ein Kern nach Definition \ref{Kern} ist, zeigt folgender Satz.
 \begin{theorem}
 \label{thm:EindeutigkeitKern}
-Sei $\mathcal{H}$ ein \gls{RKHR} mit reproduzierendem Kern $K$. Dann ist $K$ ein Kern, eindeutig und \ac{PD}.
+Sei $\mathcal{H}$ ein \gls{RKHR} auf einer beliebigen nicht leeren Menge $\Omega$ mit reproduzierendem Kern $K$. Dann ist $K$ ein Kern, eindeutig und \ac{PD}.
 \end{theorem}
 
 \begin{proof}
@@ -196,13 +197,13 @@ K(x,y) &= \left( K(\cdot,y), K(x, \cdot)\right)_\mathcal{H} &&\text{(Reproduzier
 Sei $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega$ eine Menge von $N$ paarweise verschiedenen Punkten und $\alpha \in \mathbb{R}^N, \alpha \neq 0$. Dann gilt:
 \begin{align*}
 \alpha^T A \alpha &= \sum_{i,j=1}^N \alpha_i \alpha_j K(x_i, x_j)\\
-&= \sum_{i,j=1}^N \alpha_i \alpha_j \left(K(\cdot, x_i), K(\cdot,x_j)\right)_\mathcal{H}\\
+&= \sum_{i,j=1}^N \alpha_i \alpha_j \left(K(\cdot, x_i), K(\cdot,x_j)\right)_\mathcal{H} &&\text{(Reproduzierbarkeit)}\\
 &= \left(\sum_{i=1}^N \alpha_i K(\cdot,x_i), \sum_{j=1}^N \alpha_j K(\cdot, x_j)\right)_\mathcal{H}\\
 &= \left\| \sum_{i=1}^N \alpha_i K(\cdot,x_i)\right\|_\mathcal{H}^2 \geq 0
 \end{align*}
 $K$ ist somit \ac{PD}.
 
-Seien jetzt $K_1, K_2$ zwei Kerne auf $\mathcal{H}$. Dann gilt für alle $x,y \in \Omega$:
+Seien jetzt $K_1, K_2$ zwei reproduzierende Kerne in $\mathcal{H}$. Dann gilt für alle $x,y \in \Omega$:
 \begin{align*}
 K_1(x,y) &= (K_1(\cdot,y), K_2(x, \cdot))_\mathcal{H} &&\text{(Reproduzierbarkeit von }K_1\text{)}\\
 &= K_2(x,y) &&\text{(Reproduzierbarkeit von }K_2\text{)}
@@ -218,7 +219,7 @@ Sei $\Omega$ eine beliebige nicht leere Menge und $K:\Omega \times \Omega \right
 \begin{proof}
 Einen Beweis findet man in \textcite[Kap. 10.2]{Wendland.2005}. 
 
-Man betrachtet dort zunächst den $\text{span} \{K(\cdot,y), y \in \Omega \}$ und stellt fest, dass dieser mit einem geeigneten Innenprodukt ein Prähilbertraum ist. Der Abschluss dessen ist der gesuchte \ac{RKHR}.
+Man betrachtet dort zunächst den $\text{span} \{K(\cdot,y), y \in \Omega \}$ und stellt fest, dass dieser mit einem geeigneten Innenprodukt ein Prähilbertraum ist. Aus diesem kann man den gesuchten \ac{RKHR} konstruieren.
 \end{proof}
 
 Wir wollen an einen Satz aus der Funktionalanalysis erinnern, den wir noch oft benötigen werden.
@@ -232,7 +233,7 @@ Wir nennen $\nu_\lambda$ den Riesz-Repräsentanten von $\lambda$.
 
 \end{theorem}
 \begin{proof}
-	Einen Beweis findet man beispielsweise in \textcite[Satz 7.3]{Kaballo.2018}.
+	Einen Beweis findet man in den meisten Einführungen in die Funktionalanalysis, beispielsweise in \textcite[Satz 7.3]{Kaballo.2018}.
 \end{proof}
 
 Zur Wohldefiniertheit unserer Interpolation benötigen wir die Stetigkeit aller verwendeten Funktionale. Zunächst betrachten wir die Punktauswertungsfunktionale.
@@ -337,7 +338,7 @@ Jetzt betrachten wir die lineare Unabhängigkeit der Auswertungen der Ableitunge
 
 \begin{theorem}
 \label{linUn}
-Sei $K$ ein translationsinvarianter Kern auf $\mathbb{R}^d$, also $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Sei $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)'$.
+Sei $K$ ein translationsinvarianter Kern auf $\mathbb{R}^d$, das heißt $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Sei $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)'$.
 \end{theorem}
 
 \begin{proof}

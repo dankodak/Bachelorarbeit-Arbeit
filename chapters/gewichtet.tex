@@ -15,7 +15,7 @@ Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Pro
 Wir stellen zur Vereinfachung zunächst fest, dass es bei einer \ac{PDE} mit Dirichlet-Randwerten genügt, konstante Nullrandwerte  zu betrachten. Dafür sei eine \gls{PDE} wie in \eqref{eq:PDE} mit $B=I$, wobei $I$ die Identität bezeichnet, gegeben. Wir nehmen an, dass eine Funktion $\bar{g} \in C^k(\Omega) \cap C^0 (\widebar \Omega)$ existiert mit $\bar{g}|_{\partial \Omega} = g$. Damit gilt $u = \bar{u} + \bar{g}$ für eine Funktion $\bar{u}$. Eingesetzt erhalten wir
 \begin{align*}
 L\bar{u}(x) + L\bar{g}(x) &= f(x) , x \in \Omega\\
-\bar{u} + \bar{g} &= g(x) , x \in \partial \Omega,
+\bar{u}(x) + \bar{g}(x) &= g(x) , x \in \partial \Omega,
 \end{align*}
 was äquivalent dazu ist, dass wir folgende \ac{PDE} nach $\bar{u}$ lösen:
 \begin{align*}
@@ -23,7 +23,7 @@ L\bar{u}(x) &= f(x) + L\bar{g}(x), x \in \Omega\\
 \bar{u}(x) &= 0, x \in \partial \Omega.
 \end{align*}
 
-Die Idee ist jetzt, einen Kern, beziehungsweise Ansatzfunktionen zu konstruieren, welcher auf dem Rand von $\Omega$ Null ist. Der Interpolant ist eine Linearkombination aus diesen Funktionen und wird demnach auf dem Rand auch Null sein. Dafür führen wir Gewichtsfunktionen ein, die dann in Verbindung mit einem gegebenen Kern das Geforderte erfüllen werden. Inspiriert ist dieses Vorgehen von \textcite{Hollig.2013}. Dort findet man auch weitere Theorie der hier sehr einfach eingeführten Gewichtsfunktionen.
+Die Idee ist jetzt, einen Kern, beziehungsweise Ansatzfunktionen zu konstruieren, welche auf dem Rand von $\Omega$ Null ist. Der Interpolant ist eine Linearkombination aus diesen Funktionen und wird demnach auf dem Rand auch Null sein. Dafür führen wir Gewichtsfunktionen ein, die dann in Verbindung mit einem gegebenen Kern das Geforderte erfüllen werden. Inspiriert ist dieses Vorgehen von \textcite{Hollig.2013}. Dort findet man auch weitere Theorie der hier sehr einfach eingeführten Gewichtsfunktionen.
 \section{Gewichtsfunktionen}
 \label{sec:gewicht}
 \begin{definition}
