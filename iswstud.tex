@@ -88,7 +88,7 @@
 \newtheorem{remark}[theorem]{Bemerkung}
 
 
-\newacronym[longplural={partiellen Differentialgleichungen}]{PDE}{PDE}{partielle Differentialgleichung}
+\newacronym[longplural={partielle Differentialgleichungen}]{PDE}{PDE}{partielle Differentialgleichung}
 \newacronym{PD}{PD}{positiv definit}
 \newacronym{SPD}{SPD}{strikt positiv definit}
 \newacronym[longplural={reproduzierende Kern Hilberträume}]{RKHR}{RKHS}{reproduzierender Kern Hilbertraum}
@@ -142,8 +142,8 @@
 % START abstract in main language
 \begin{abstract}
   %\Blindtext[3]
-  
-  %\keywords{Sed \and aliquet \and tellus \and eget \and est}
+  In dieser Bachelorarbeit erweitern wir die Kernkollokation, ein Verfahren zur numerischen Lösung von partiellen Differentialgleichungen (\acs{PDE}s).\glsunset{PDE} Dafür nutzt die Kernkollokation einen interpolativen Ansatz, indem sie Ansatzfunktionen an verschiedenen Punkten im Inneren und auf dem Rand des Definitionsgebietes der \ac{PDE} ansetzt. Wir möchten diese Trennung der Punkte vermeiden. Dafür verknüpfen wir die Ansatzfunktionen mit einer Gewichtsfunktion und erreichen damit, dass die Randbedinungen der \ac{PDE} automatisch erfüllt werden und können somit die Ansatzpunkte auf dem Rand weglassen. Zusätzlich erhalten wir dadurch eine weitaus höhere Genauigkeit auf dem Rand. Experimentell zeigt sich, dass die gewichtete Kernkollokation aber nur bedingt vernünftige Ergebnisse liefert, da es bei der Konstruktion der Gewichtsfunktionen für ein beliebiges Gebiet leicht passieren kann, dass in deren Ableitung Singularitäten entstehen, die zu sehr schlechten Ergebnissen führen.
+  \keywords{partielle Differentialgleichung \and Kern \and Kernkollokation}
 \end{abstract}
 % END abstract in main language
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -155,6 +155,7 @@
 \begin{otherlanguage}{english}
   \begin{abstract}
     %\Blindtext[3]
+    In this bachelor's thesis we extend the kernel collocation, a method to solve partial differential equations numerically. The kernel collocation uses an interpolating approach, by 
 
     %\draftname
        

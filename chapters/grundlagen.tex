@@ -133,7 +133,7 @@ K_2(x_N, x_1) & \cdots & K_2(x_N, x_N)
 \end{pmatrix},
 \end{align*}
 wobei $\circ$ das Hadamard-Produkt der beiden Matrizen bezeichnet. 
-Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von Schur \cite{.30.07.2018} auch das Produkt der beiden.
+Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von Schur \cite[Theorem 7.5.3]{Horn.2013} auch das Produkt der beiden.
 \end{enumerate}
 \end{proof}
 
@@ -274,7 +274,7 @@ Für die andere Richtung nehmen wir an, dass $\delta_x  \in \mathcal{H}'$ für a
 Wir haben gesehen, dass in einem \ac{RKHR} $\mathcal{H}_K$ die Auswertungsfunktionale stetig sind. Da wir uns mit Differentialgleichungen beschäftigen, wollen wir auch Ableitungen auswerten. Dafür ist es nötig, dass diese ebenfalls in $\mathcal{H}_K$ liegen.
 
 \begin{theorem}
-Sei $k \in \mathbb{N}$. Angenommen $\Omega \subset \mathbb{R}^d$ ist offen, K ist \ac{SPD} auf $\Omega$ und $K \in C^{2k}(\Omega \times \Omega)$. Dann gilt für alle Multiindizes $a \in \mathbb{N}_0^d$ mit $|a| \le k$ und alle $x \in \Omega$, dass $D_2^a K(\cdot , x) \in \mathcal{H}_K(\Omega)$, wobei der tiefgestellte Index bedeutet, dass der Operator auf das zweite Argument angewandt wird.
+Sei $k \in \mathbb{N}$. Angenommen $\Omega \subset \mathbb{R}^d$ ist offen, K ein \ac{SPD} Kern auf $\Omega$ und $K \in C^{2k}(\Omega \times \Omega)$. Dann gilt für alle Multiindizes $a \in \mathbb{N}_0^d$ mit $|a| \le k$ und alle $x \in \Omega$, dass $D_2^a K(\cdot , x) \in \mathcal{H}_K(\Omega)$, wobei der tiefgestellte Index bedeutet, dass der Operator auf das zweite Argument angewandt wird.
 
 Außerdem gilt für alle $f \in \mathcal{H}_K(\Omega)$:
 \begin{align*}
@@ -342,7 +342,7 @@ Sei $K$ ein translationsinvarianter Kern auf $\mathbb{R}^d$, das heißt $K(x,y) 
 \end{theorem}
 
 \begin{proof}
-Den Beweis findet man in \textcite[Theorem 16.4]{Wendland.2005}.
+Den Beweis findet man in \textcite[Theorem 7.15]{Santin.2017}.
 \end{proof}
 
 

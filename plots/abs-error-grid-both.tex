@@ -30,8 +30,7 @@ ylabel={Maximaler Testfehler},
 axis background/.style={fill=white},
 title style={font=\bfseries},
 title={\ac{PDE} 1},
-legend style={legend cell align=left, align=left, draw=white!15!black},
-legend pos = south east
+legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
 \addplot [color=mycolor1]
 table[row sep=crcr]{%
@@ -194,5 +193,5 @@ table[row sep=crcr]{%
 
 \end{axis}
 \path (ax1.south east) -- (ax2.south west)
-  node[midway,below=5mm] {Anzahl der Kollokationspunkte};
+node[midway,below=5mm] {Anzahl der Kollokationspunkte};
 \end{tikzpicture}%
