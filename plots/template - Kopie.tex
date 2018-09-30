@@ -1,0 +1,110 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+name = ax1,
+width=1.938in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=2000,
+%xlabel style={font=\color{white!15!black}},
+%xlabel={amount of collocation points},
+ymode=log,
+ymin=1e-10,
+ymax=1,
+yminorticks=true,
+ylabel style={font=\color{white!15!black}},
+ylabel={Maximaler Testfehler},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={\ac{PDE} 1},
+legend style={legend cell align=left, align=left, draw=white!15!black},
+legend pos = south east
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Standard N-Sym}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Standard Sym}
+
+\addplot [color=mycolor3]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Gewichtet N-Sym}
+
+\addplot [color=mycolor4]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Gewichtet Sym}
+
+\end{axis}
+
+\begin{axis}[%
+name = ax2,
+width=1.938in,
+height=3.566in,
+at={(3.327in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=1700,
+%xlabel style={font=\color{white!15!black}},
+%xlabel={amount of collocation points},
+ymode=log,
+ymin=1e-10,
+ymax=1,
+yminorticks=true,
+%ylabel style={font=\color{white!15!black}},
+%ylabel={max. error in derivative/absolute},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={\ac{PDE} 2},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Standard N-Sym}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Standard Sym}
+
+\addplot [color=mycolor3]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Gewichtet N-Sym}
+
+\addplot [color=mycolor4]
+  table[row sep=crcr]{%
+
+};
+\addlegendentry{Gewichtet Sym}
+
+\end{axis}
+\path (ax1.south east) -- (ax2.south west)
+  node[midway,below=5mm] {Anzahl der Kollokationspunkte};
+\end{tikzpicture}%

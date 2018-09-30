@@ -4,10 +4,6 @@
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
-\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
-\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
-\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
 %
 \begin{tikzpicture}
 
@@ -28,7 +24,7 @@ axis background/.style={fill=white},
 legend style={legend cell align=left, align=left, draw=white!15!black},
 legend pos = {north west}
 ]
-\addplot [color=mycolor1]
+\addplot [color=mycolor1, dashed]
   table[row sep=crcr]{%
 3	1.08427694438754\\
 25	1.03876397044545\\
@@ -51,7 +47,7 @@ legend pos = {north west}
 };
 \addlegendentry{Standard N-Sym}
 
-\addplot [color=mycolor2]
+\addplot [color=mycolor2, dashed]
   table[row sep=crcr]{%
 3	1.72273374259525\\
 25	1.62553396938213\\
@@ -74,7 +70,7 @@ legend pos = {north west}
 };
 \addlegendentry{Standard Sym}
 
-\addplot [color=mycolor3]
+\addplot [color=mycolor1]
   table[row sep=crcr]{%
 1	2.36560557721654\\
 25	1.49217104920134\\
@@ -97,7 +93,7 @@ legend pos = {north west}
 };
 \addlegendentry{Gewichtet N-Sym}
 
-\addplot [color=mycolor4]
+\addplot [color=mycolor2]
   table[row sep=crcr]{%
 1	3.1783803623253\\
 25	3.17594293707075\\

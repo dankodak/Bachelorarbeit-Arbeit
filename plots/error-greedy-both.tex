@@ -4,10 +4,6 @@
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
-\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
-\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
-\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
 %
 \begin{tikzpicture}
 
@@ -26,14 +22,14 @@ ymin=1e-10,
 ymax=1,
 yminorticks=true,
 ylabel style={font=\color{white!15!black}},
-ylabel={Maximaler Testfehler},
+ylabel={Testfehler},
 axis background/.style={fill=white},
 title style={font=\bfseries},
 title={\ac{PDE} 1},
 legend style={legend cell align=left, align=left, draw=white!15!black},
 legend pos = south west
 ]
-\addplot [color=mycolor1]
+\addplot [color=mycolor1, dashed]
   table[row sep=crcr]{%
 37	0.998741611743565\\
 38	1.56698113662613\\
@@ -238,7 +234,7 @@ legend pos = south west
 };
 \addlegendentry{Standard N-Sym}
 
-\addplot [color=mycolor2]
+\addplot [color=mycolor2, dashed]
   table[row sep=crcr]{%
 37	1.03925796185995\\
 38	1.21925853575973\\
@@ -443,7 +439,7 @@ legend pos = south west
 };
 \addlegendentry{Standard Sym}
 
-\addplot [color=mycolor3]
+\addplot [color=mycolor1]
   table[row sep=crcr]{%
 1	0.998741609443206\\
 2	1.11782909710195\\
@@ -688,7 +684,7 @@ legend pos = south west
 };
 \addlegendentry{Gewichtet N-Sym}
 
-\addplot [color=mycolor4]
+\addplot [color=mycolor2]
   table[row sep=crcr]{%
 1	1.02484217867147\\
 2	1.02554578477296\\
@@ -956,7 +952,7 @@ title style={font=\bfseries},
 title={\ac{PDE} 2},
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
-\addplot [color=mycolor1]
+\addplot [color=mycolor1, dashed]
   table[row sep=crcr]{%
 30	0.0413683547962787\\
 31	0.0201309229210418\\
@@ -1165,7 +1161,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 };
 \addlegendentry{Standard N-Sym}
 
-\addplot [color=mycolor2]
+\addplot [color=mycolor2, dashed]
   table[row sep=crcr]{%
 30	0.0156165029602802\\
 31	0.0206211465072624\\
@@ -1374,7 +1370,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 };
 \addlegendentry{Standard Sym}
 
-\addplot [color=mycolor3]
+\addplot [color=mycolor1]
   table[row sep=crcr]{%
 1	0.0101596215796438\\
 2	0.0209537371572384\\
@@ -1619,7 +1615,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 };
 \addlegendentry{Gewichtet N-Sym}
 
-\addplot [color=mycolor4]
+\addplot [color=mycolor2]
   table[row sep=crcr]{%
 1	0.017850133296025\\
 2	0.0215223323179307\\
@@ -1866,5 +1862,5 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 
 \end{axis}
 \path (ax1.south east) -- (ax2.south west)
-  node[midway,below=5mm] {Anzahl der Kollokationspunkte};
+  node[midway,below=5mm] {Anzahl Kollokationspunkte};
 \end{tikzpicture}%

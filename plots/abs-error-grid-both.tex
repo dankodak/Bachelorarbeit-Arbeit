@@ -4,10 +4,6 @@
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
-\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
-\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
-\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
 %
 \begin{tikzpicture}
 
@@ -26,13 +22,13 @@ ymin=1e-10,
 ymax=1,
 yminorticks=true,
 ylabel style={font=\color{white!15!black}},
-ylabel={Maximaler Testfehler},
+ylabel={Testfehler},
 axis background/.style={fill=white},
 title style={font=\bfseries},
 title={\ac{PDE} 1},
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
-\addplot [color=mycolor1]
+\addplot [color=mycolor1, dashed]
 table[row sep=crcr]{%
 	3	0.999748271191593\\
 	25	0.0306339761398731\\
@@ -49,7 +45,7 @@ table[row sep=crcr]{%
 };
 \addlegendentry{Standard N-Sym}
 
-\addplot [color=mycolor2]
+\addplot [color=mycolor2, dashed]
 table[row sep=crcr]{%
 	3	0.999748271191593\\
 	25	0.0258124696186204\\
@@ -66,7 +62,7 @@ table[row sep=crcr]{%
 };
 \addlegendentry{Standard Sym}
 
-\addplot [color=mycolor3]
+\addplot [color=mycolor1]
 table[row sep=crcr]{%
 	0	0.999748271191593\\
 	9	0.053258052342733\\
@@ -83,7 +79,7 @@ table[row sep=crcr]{%
 };
 \addlegendentry{Gewichtet N-Sym}
 
-\addplot [color=mycolor4]
+\addplot [color=mycolor2]
 table[row sep=crcr]{%
 	0	0.999748271191593\\
 	9	0.0460592818154169\\
@@ -123,7 +119,7 @@ title style={font=\bfseries},
 title={\ac{PDE} 2},
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
-\addplot [color=mycolor1]
+\addplot [color=mycolor1, dashed]
 table[row sep=crcr]{%
 	2	0.631916518837427\\
 	23	0.00430857034180082\\
@@ -140,7 +136,7 @@ table[row sep=crcr]{%
 };
 \addlegendentry{Standard N-Sym}
 
-\addplot [color=mycolor2]
+\addplot [color=mycolor2, dashed]
 table[row sep=crcr]{%
 	2	0.631916518837427\\
 	23	0.00388812001538674\\
@@ -157,7 +153,7 @@ table[row sep=crcr]{%
 };
 \addlegendentry{Standard Sym}
 
-\addplot [color=mycolor3]
+\addplot [color=mycolor1]
 table[row sep=crcr]{%
 	0	0.631916518837427\\
 	9	0.00362254811444734\\
@@ -174,7 +170,7 @@ table[row sep=crcr]{%
 };
 \addlegendentry{Gewichtet N-Sym}
 
-\addplot [color=mycolor4]
+\addplot [color=mycolor2]
 table[row sep=crcr]{%
 	0	0.631916518837427\\
 	9	0.00336559573493192\\

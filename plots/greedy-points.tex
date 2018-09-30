@@ -4,7 +4,6 @@
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
 %
 \begin{tikzpicture}
 
@@ -27,7 +26,7 @@ axis x line*=bottom,
 axis y line*=left,
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
-\addplot [color=red, draw=none, mark=+, mark options={solid, red}]
+\addplot [color=mycolor1, draw=none, mark=+, mark options={solid, mycolor1}]
   table[row sep=crcr]{%
 -0.494949494949495	-0.494949494949495\\
 0.515151515151515	0.494949494949495\\
@@ -232,7 +231,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 };
 %\addlegendentry{Kollokationspunkte}
 
-\addplot [color=mycolor1, forget plot]
+\addplot [color=mycolor2, forget plot]
   table[row sep=crcr]{%
 -1	-1\\
 -1	1\\
@@ -258,7 +257,7 @@ axis x line*=bottom,
 axis y line*=left,
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
-\addplot [color=red, draw=none, mark=+, mark options={solid, red}]
+\addplot [color=mycolor1, draw=none, mark=+, mark options={solid, mycolor1}]
   table[row sep=crcr]{%
 -0.494949494949495	-0.494949494949495\\
 0.515151515151515	0.494949494949495\\
@@ -503,7 +502,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 };
 %\addlegendentry{Kollokationspunkte}
 
-\addplot [color=mycolor1, forget plot]
+\addplot [color=mycolor2, forget plot]
   table[row sep=crcr]{%
 -1	-1\\
 -1	1\\

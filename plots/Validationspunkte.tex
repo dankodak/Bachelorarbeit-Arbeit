@@ -4,7 +4,7 @@
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
 %
 \begin{tikzpicture}
 
@@ -16,7 +16,7 @@ scale only axis,
 xmin=0,
 xmax=800,
 xlabel style={font=\color{white!15!black}},
-xlabel={Anzahl der Validationspunkte},
+xlabel={Anzahl Validationspunkte},
 ymode=log,
 ymin=1e-07,
 ymax=0.1,
@@ -29,7 +29,7 @@ ylabel={Maximaler absoluter Testfehler},
 %title={error plot},
 %legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
-\addplot [color=red]
+\addplot [color=mycolor1]
   table[row sep=crcr]{%
 1	0.00760991427227309\\
 4	2.97143941410671e-07\\
@@ -87,7 +87,7 @@ ylabel near ticks,
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
 \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{Testfehler}
-\addplot [color=mycolor1]
+\addplot [color=mycolor2]
   table[row sep=crcr]{%
 1	0.316227766016838\\
 4	3.16227766016838\\
