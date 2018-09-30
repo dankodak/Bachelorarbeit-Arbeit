@@ -140,7 +140,7 @@ Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbi
 \label{fig:error-random}
 \end{figure}
 
-Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. Vergleicht man die Fehler mit denen der Gitterpunktwahl, sieht man, dass sich diese für beide \acp{PDE} in der gleichen Größenordnung bewegen. Allerdings weisen die Kurven der zufällig gewählten Punkte größere Schwankungen auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte. Von daher lässt sich in niedrigen Dimensionen kein Vorteil für zufällig gewählte Kollokationspunkte feststellen. In höheren Dimensionen ist es aufgrund der hohen Punktanzahl allerdings nahezu unmöglich ein Gitter über das Gebiet zu legen. Dort kann man dann davon ausgehen, mit den zufällig gewählten Punkten vernünftige Ergebnisse zu erhalten.
+Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. Vergleicht man die Fehler mit denen der Gitterpunktwahl, sieht man, dass sich diese für beide \acp{PDE} in der gleichen Größenordnung bewegen. Allerdings weisen die Kurven der zufällig gewählten Punkte größere Schwankungen auf. Diese sind auf eine zufällig schlechte Punktwahl zurückzuführen. Die zufälligen Punkte sind aber nie wesentlich besser als die Gitterpunkte. Von daher lässt sich in niedrigen Dimensionen kein Vorteil für zufällig gewählte Kollokationspunkte feststellen. In höheren Dimensionen ist es aufgrund der hohen Punktanzahl allerdings nahezu unmöglich ein Gitter über das Gebiet zu legen. Dort könnten die zufälligen Kollokationspunkte vernünftige Ergebnisse liefern.
 
 \subsubsection{Greedy-Punktwahl}
 Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} den Testfehler bei Kollokationspunkten, die durch eine Greedy-Punktwahl gesetzt wurden, an. Es ist zu beachten, dass bei der benutzten Implementierung bei den Standardverfahren auf dem Rand festgesetzte Kollokationspunkte benutzt werden. Deswegen beginnen die Graphen der Standardverfahren nicht bei $0$ Kollokationspunkten.
@@ -307,9 +307,6 @@ Wir erhalten wieder die gleiche Reihenfolge der Verfahren, die wir genauso begr�
 
 \section{Vergleich mit \ac{FEM}}
 
-Die Kernkollokation bietet eine Reihe von Vorteilen gegenüber der \ac{FEM}. Dazu gehören:
-\begin{itemize}
-\item
 Die Kernkollokation hat eine höhere Genauigkeit als die \ac{FEM}. In der folgenden Tabelle \ref{tab:FEM} ist der Fehler der \ac{FEM} und der Kernkollokation mit zufälligen Kollokationspunkten für die erste \ac{PDE} dargestellt. $n$ bezeichnet dabei die Knotenanzahl, beziehungsweise die Anzahl der Kollokationspunkte.
 
 \begin{table}[H]
@@ -326,10 +323,4 @@ Gewichtet Sym & \num{9.9156e-03} & \num{1.0253e-03} & \num{4.0773e-04} \\
 \caption{Vergleich \ac{FEM} mit Kernkollokation}
 \label{tab:FEM}
 \end{table}
-Wir sehen, dass selbst die schlechtesten Kollokationsverfahren einen geringeren Fehler als die \ac{FEM} haben.
-\item
-Die Kernkollokation ist im Gegensatz zur \ac{FEM}, welche praktisch nur für maximal drei Dimensionen eingesetzt wird, komplett dimensionsunabhängig. Wir können mit zufälligen Kollokationspunkten ohne Weiteres \acp{PDE} von Dimension vier und höher numerisch lösen.
-\item
-Die Kernkollokation, dabei insbesondere die gewichtete Kernkollokation, kann einfach für beliebige mit einer Gewichtsfunktion beschreibbare Gebiete eingesetzt werden.
-
-\end{itemize}
+Wir sehen, dass selbst die gewichteten Kollokationsverfahren in diesem Fall einen geringeren Fehler als die \ac{FEM} haben.
