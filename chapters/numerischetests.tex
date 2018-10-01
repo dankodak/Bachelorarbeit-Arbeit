@@ -51,7 +51,7 @@ w(x,y) = 1 -x^2 -y^2
 \end{enumerate}
 
 
-Die Poisson-Gleichung werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}. Im Anhang (Abbildung \ref{fig:wendland-error-grid-both}, \ref{fig:wendland-error-greedy-both}) findet man die den hier nachfolgenden Fehlerplots entsprechenden Plots für den Wendland Kern. Dieser hat aufgrund numerischer Ungenauigkeiten entweder schlechtere oder komplett unbrauchbare Ergebnisse geliefert, weswegen wir ihn nicht genauer betrachten werden. Ebenso werden wir den absoluten Fehlerschätzer, wie in Kapitel \ref{cha:Implementierung} vorgestellt, als Methode zur Fehlerberechnung in jeder Iteration nicht betrachten, sondern nur die im Residuum. Auch hierfür findet man im Anhang (Abbildung \ref{fig:abs-error-grid-both}, \ref{fig:abs-error-greedy-both}) die entsprechenden Plots. Diese weisen allerdings keinen nennenswerten Unterschied zu dem Fehlerschätzer im Residuum auf.
+Die Poisson-Gleichung werden wir mithilfe der Kernkollokation numerisch lösen. Dafür wählen wir den Gauß Kern aus Beispiel \ref{ex:Kern}. Im Anhang (Abbildung \ref{fig:wendland-error-grid-both}, \ref{fig:wendland-error-greedy-both}) findet man die den hier nachfolgenden Fehlerplots entsprechenden Plots für einen leicht veränderten Wendland Kern. Dabei haben wir die $\|x-y\|$ Terme quadriert, um Nullstellen im Nenner der partiellen Ableitungen zu vermeiden. Dieser Kern hat aufgrund numerischer Ungenauigkeiten entweder schlechtere oder komplett unbrauchbare Ergebnisse geliefert, weswegen wir ihn nicht genauer betrachten werden. Ebenso werden wir den absoluten Fehlerschätzer, wie in Kapitel \ref{cha:Implementierung} vorgestellt, als Methode zur Fehlerberechnung in jeder Iteration nicht betrachten, sondern nur die im Residuum. Auch hierfür findet man im Anhang (Abbildung \ref{fig:abs-error-grid-both}, \ref{fig:abs-error-greedy-both}) die entsprechenden Plots. Diese weisen allerdings keinen nennenswerten Unterschied zu dem Fehlerschätzer im Residuum auf.
 
 \section{Fehler}
 
@@ -127,7 +127,7 @@ Als weiteres Indiz für die Ursache des Fehlers betrachten wir die zweite \ac{PD
 \end{align*}
 und hat damit keine Singularitäten.
 
-Tatsächlich erhalten wir, wenn wir den Testfehler der zweiten \ac{PDE} in Abbildung \ref{fig:error-grid-both} betrachten, ein komplett anderes Bild. Alle Verfahren erreichen mit $200$ Kollokationspunkten ihre besten Ergebnisse. Die gewichteten Verfahren erreichen dieses Mal einen Testfehler von $10^{-8}$ und $10^{-9}$ für das nicht-symmetrische beziehungsweise symmetrische Verfahren und sind damit besser als die Standardverfahren, welche nur einen Testfehler von $10^{-7}$ und $10^{-8}$ für das nicht-symmetrische beziehungsweise symmetrische Verfahren erreichen. Demnach sollten wir bei der Wahl der Gewichtsfunktionen darauf achten, dass in diesen und deren partiellen Ableitungen keine Singularitäten entstehen.
+Tatsächlich erhalten wir, wenn wir den Testfehler der zweiten \ac{PDE} in Abbildung \ref{fig:error-grid-both} betrachten, ein komplett anderes Bild. Alle Verfahren erreichen mit spätestens $200$ Kollokationspunkten ihre besten Ergebnisse. Die gewichteten Verfahren erreichen dieses Mal einen Testfehler von $10^{-8}$ und $10^{-9}$ für das nicht-symmetrische beziehungsweise symmetrische Verfahren und sind damit besser als die Standardverfahren, welche nur einen Testfehler von $10^{-7}$ und $10^{-8}$ für das nicht-symmetrische beziehungsweise symmetrische Verfahren erreichen. Demnach sollten wir bei der Wahl der Gewichtsfunktionen darauf achten, dass in diesen und deren partiellen Ableitungen keine Singularitäten entstehen.
 
 \subsubsection{Zufällige Kollokationspunkte}
 Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbildung \ref{fig:error-random} ist der Fehler bei unterschiedlich vielen zufällig verteilten Kollokationspunkten für beide \acp{PDE} dargestellt.
@@ -161,7 +161,7 @@ Die gewichteten Verfahren hingegen geben uns beide keine vernünftigen Ergebniss
 \resizebox {\columnwidth} {!} {
 \input{plots/greedy-points.tex}
 }
-\caption{Kollokationspunkte beim Greedy-Verfahren bei \ac{PDE} 1}
+\caption{Kollokationspunkte beim Greedy-Verfahren bei \acs{PDE} 1}
 \label{fig:greedy-points}
 \end{figure}
 
@@ -172,7 +172,7 @@ Man erkennt, dass die Kollokationspunkte im Falle der Standardkollokation gleich
 \resizebox {\columnwidth} {!} {
 \input{plots/plot-weighted-verrauscht.pdf_tex}
 }
-\caption{Lösung der \ac{PDE} 1 bei gewichtetem Greedy-Verfahren}
+\caption{Lösung der \acs{PDE} 1 bei gewichtetem Greedy-Verfahren}
 \label{fig:greedy-verrauscht}
 \end{figure}
 
@@ -182,7 +182,7 @@ Wieder erhalten wir ein komplett anderes Bild, wenn wir die zweite \ac{PDE} betr
 \resizebox {\columnwidth} {!} {
 \input{plots/greedy-points2.tex}
 }
-\caption{Kollokationspunkte beim Greedy-Verfahren bei \ac{PDE} 2}
+\caption{Kollokationspunkte beim Greedy-Verfahren bei \acs{PDE} 2}
 \label{fig:greedy-points2}
 \end{figure}
 Alle Verfahren erreichen nach rund $100$ Kollokationspunkten ihre höchste Genauigkeit, die sich in der Größenordnung der Gitterpunkte bewegt. Allerdings werden meist deutlich weniger Kollokationspunkte für die gleiche Genauigkeit benötigt, rund $100$ bei dem symmetrischen Standardverfahren, $120$ beim gewichteten nicht-symmetrischen und $70$ beim gewichteten symmetrischen.
@@ -199,7 +199,7 @@ Dies ist keine Gewichtsfunktion im Sinne von \ref{def:gewicht}, da die Funktion 
 	\resizebox {\columnwidth} {!} {
 		\input{plots/andereGewicht.tex}
 	}
-	\caption{Testfehler der ersten \ac{PDE} bei einer anderen Gewichtsfunktion}
+	\caption{Testfehler der ersten \acs{PDE} bei einer anderen Gewichtsfunktion}
 	\label{fig:andereGewicht}
 \end{figure}
 Die Kollokationspunkte sind hier wieder auf einem Gitter gewählt. Zum Vergleich sind auch die Testfehler der Standardkollokation nochmal dargestellt. Wir erkennen, dass die gewichtete Kollokation jetzt sehr ähnliche Ergebnisse zur Standardkollokation liefert. Es kann also manchmal hilfreich sein, den theoretisch richtigen Ansatz zu ignorieren und eine eine Funktion zu wählen, die die Bedingungen an eine Gewichtsfunktion nur lokal erfüllt.
@@ -265,7 +265,7 @@ In Abbildung \ref{fig:gamma-fehler} ist bei gleichbleibenden Kollokationspunkten
 
 Daraus erkennt man, dass der Fehler groß ist, wenn $\gamma$ entweder zu klein oder zu groß ist. Ist $\gamma$ zu groß, haben wir zu kleine \glqq Hütchen\grqq , so können diese die \ac{PDE} nur sehr lokal lösen. Der große Fehler für zu kleines $\gamma$ lässt sich besser erklären, wenn man noch die Kondition hinzunimmt. Diese ist in Abbildung \ref{fig:kondition} dargestellt.
 
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
 \input{plots/gamma-kondition.tex}
@@ -305,7 +305,7 @@ In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Ve
 
 Wir erhalten wieder die gleiche Reihenfolge der Verfahren, die wir genauso begründen können, wie schon im Fall der auf einem Gitter verteilten Punkte. Allerdings benötigt das Greedy-Verfahren wesentlich mehr Zeit für gleich viele Punkte. Das liegt daran, dass beim Greedy-Verfahren alle vorhergegangenen Iterationen zur Punktwahl mitberechnet werden müssen, was im Falle des Gitters wegfällt.
 
-\section{Vergleich mit \ac{FEM}}
+\section{Vergleich mit \acs{FEM}}
 
 Die Kernkollokation hat eine höhere Genauigkeit als die \ac{FEM}. In der folgenden Tabelle \ref{tab:FEM} ist der Fehler der \ac{FEM} und der Kernkollokation mit zufälligen Kollokationspunkten für die erste \ac{PDE} dargestellt. $n$ bezeichnet dabei die Knotenanzahl, beziehungsweise die Anzahl der Kollokationspunkte.
 
@@ -320,7 +320,7 @@ Standard Sym & \num{3.9065e-03} & \num{1.0242e-05} & \num{3.2350e-07} \\
 Gewichtet N-Sym & \num{5.8360e-03} & \num{3.1449e-03} & \num{3.0448e-04} \\ 
 Gewichtet Sym & \num{9.9156e-03} & \num{1.0253e-03} & \num{4.0773e-04} \\ 
 \end{tabular}
-\caption{Vergleich \ac{FEM} mit Kernkollokation}
+\caption{Vergleich \acs{FEM} mit Kernkollokation}
 \label{tab:FEM}
 \end{table}
 Wir sehen, dass selbst die gewichteten Kollokationsverfahren in diesem Fall einen geringeren Fehler als die \ac{FEM} haben.

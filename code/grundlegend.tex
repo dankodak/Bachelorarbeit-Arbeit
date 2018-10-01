@@ -10,7 +10,7 @@
 \For{$i$ in $gamma$}
 	\State $\mathrm{A} \gets \Call{CollocationMatrix}{X, i}$
 	\State $\mathrm{alpha} \gets A\backslash b$
-	\State $\mathrm{error} \gets \Call{CalculateError}{X, XVal, f, i}$
+	\State $\mathrm{error} \gets \Call{CalculateError}{X, XVal, i}$
 	\If{$\mathrm{error} < \mathrm{minError}$}
 		\State $\mathrm{retVal} \gets alpha$
 		\State $\mathrm{minError} \gets error$

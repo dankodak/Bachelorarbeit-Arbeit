@@ -1,7 +1,7 @@
 \chapter{Kerne und reproduzierende Kern Hilberträume}
 \label{cha:Grundlagen}
 
-Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Da wir bei \acp{PDE} auch Ableitungen betrachten müssen, reicht die einfache Punktauswertung für unsere Problemstellung nicht mehr aus, weswegen wir eine verallgemeinerte Form der Interpolation benötigen.
+Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Da wir bei partiellen Differentialgleichungen (\acs{PDE}s)\glsunset{PDE} auch Ableitungen betrachten müssen, reicht die einfache Punktauswertung für unsere Problemstellung nicht mehr aus, weswegen wir eine verallgemeinerte Form der Interpolation benötigen.
 
 \begin{definition}
 Sei $\Omega \subset \mathbb{R}^d$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
@@ -22,7 +22,7 @@ s(x_i) = \langle \delta_{x_i},u \rangle = \langle \delta_{x_i},s_u \rangle = s_u
 \item
 Für einen Multiindex $a \in \mathbb{N}_0^d$ sei $D^a$ ein linearer partieller Differentialoperator. Dann erhält man mit $\lambda_i := \delta_{x_i} \circ D^a$ die Auswertungsfunktionale der Ableitung, mit welchen wir interpolieren können.
 \item
-Sei eine \ac{PDE} mit Lösung $u \in C^k(\Omega) \cap C^l(\widebar \Omega)$ gegeben:
+Sei $\Omega \subset \mathbb{R}^d$ offen und beschränkt und sei eine \ac{PDE} mit Lösung $u \in C^k(\Omega) \cap C^l(\widebar \Omega)$ gegeben:
 \begin{align}\label{eq:PDE}
 \begin{split}
 L u(x) &= f(x), x \in \Omega \\
@@ -30,7 +30,7 @@ B u(x) &= g(x), x \in \partial \Omega,
 \end{split}
 \end{align}
 wobei $L$ ein linearer Differentialoperator der Ordnung $k$ und $B$ ein linearer Randwertoperator der Ordnung $l$ ist.
-Sei $X_N \subset \Omega$ eine Menge an Punkten, genant Kollokationspunkte. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
+Sei $X_N := \{x_1, \dots, x_N\} \subset \widebar{\Omega}$ eine Menge an Punkten, genant Kollokationspunkte. Dann möchten wir, dass $s_u$ die \ac{PDE} in den Punkten $X_N$ erfüllt, also:
 \begin{align*}
 L s_u(x_i) &= L u(x_i) = f(x_i), x_i \in \Omega\\
 B s_u(x_i) &= B u(x_i) = g(x_i), x_i \in \partial \Omega
@@ -142,13 +142,14 @@ Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von
 Sei $\Omega \subset \mathbb{R}^d$ und $\gamma \in \mathbb{R}^+$. Dann sind folgende Funktionen \ac{PD} Kerne auf $\Omega$:
 \begin{enumerate}
 \item Skalarprodukt: $K(x,y) := \gamma^{-1} (x,y)$
-\item Gauß Kern: $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}
-\item Wendland Kern in zwei Dimensionen: $K(x,y) := (1- \|x-y\|)_+^4(4 \|x-y\| +1)$, wobei $(1-\|x-y\|)_+$ definiert ist, als
+\item Gauß Kern: $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}\\
+Die Abbildung auf der Titelseite dieser Arbeit zeigt den Gauß Kern in drei Dimensionen.
+\item $C^2$ Wendland Kern in drei oder weniger Dimensionen: \\$K(x,y) := (1- \gamma \|x-y\|)_+^4(4 \gamma \|x-y\| +1) (20 \gamma^2)^{-1}$, wobei $(1-\|x-y\|)_+$ definiert ist als
 \begin{align*}
 (1 - \|x-y\|)_+ =
 \begin{cases}
-1 - \|x-y\| & \text{,für} \|x-y\| \leq 1 \\
-0 & \text{,für} \|x-y\| > 1
+1 - \|x-y\| & \text{, für } \gamma \|x-y\| \leq 1 \\
+0 & \text{, für } \gamma \|x-y\| > 1
 \end{cases},
 \end{align*}
 ist \ac{SPD}.
@@ -163,7 +164,7 @@ Die Symmetrie folgt aus der Symmetrie des Skalarprodukts. Die Kernmatrix entspri
 \item
 Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
 \item
-Auch hierfür findet man einen Beweis in \textcite[Theorem 9.13]{Wendland.2005}. Außerdem findet man dort eine Verallgemeinerung auf alle Dimensionen.
+Auch hierfür findet man einen Beweis in \textcite[Theorem 9.13]{Wendland.2005}. Außerdem findet man dort eine Verallgemeinerung auf alle Dimensionen und Differenzierbarkeiten.
 \end{enumerate}
 \end{proof}
 
@@ -203,7 +204,7 @@ Sei $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega$ eine Menge von $N$ paar
 \end{align*}
 $K$ ist somit \ac{PD}.
 
-Seien jetzt $K_1, K_2$ zwei reproduzierende Kerne in $\mathcal{H}$. Dann gilt für alle $x,y \in \Omega$:
+Seien jetzt $K_1, K_2$ zwei reproduzierende Kerne von $\mathcal{H}$. Dann gilt für alle $x,y \in \Omega$:
 \begin{align*}
 K_1(x,y) &= (K_1(\cdot,y), K_2(x, \cdot))_\mathcal{H} &&\text{(Reproduzierbarkeit von }K_1\text{)}\\
 &= K_2(x,y) &&\text{(Reproduzierbarkeit von }K_2\text{)}
@@ -315,19 +316,19 @@ Sei $\Omega$ eine beliebige nicht leere Menge und $\mathcal{H}$ ein \ac{RKHR} mi
 \begin{proof}
 Wir folgen dem Beweis in \textcite[Proposition 3.8]{Santin.2017}.
 
-Seien $\lambda_1, \dots, \lambda_n \in \mathcal{H}'$ und $\nu_{\lambda_1},\dots, \nu_{\lambda_n} \in \mathcal{H}$ die dazugehörigen Riesz Repräsentanten. Diese sind linear abhängig, wenn ein $\alpha \in \mathbb{R}^n$ und $\alpha \neq 0$ existiert mit $\lambda := \sum_{i=1}^n \alpha_i \lambda_i = 0$, also dass $\langle \lambda,f \rangle = 0$ für alle $f \in \mathcal{H}$. Das gilt genau dann, wenn die Riesz Repräsentanten linear abhängig sind, da
+Seien $\lambda_1, \dots, \lambda_n \in \mathcal{H}'$ und $\nu_{\lambda_1},\dots, \nu_{\lambda_n} \in \mathcal{H}$ die dazugehörigen Riesz Repräsentanten. Diese sind linear abhängig, wenn ein $\alpha \in \mathbb{R}^d$ und $\alpha \neq 0$ existiert mit $\lambda := \sum_{i=1}^d \alpha_i \lambda_i = 0$, also dass $\langle \lambda,f \rangle = 0$ für alle $f \in \mathcal{H}$. Das gilt genau dann, wenn die Riesz Repräsentanten linear abhängig sind, da
 \begin{align*}
-0 = \langle \lambda,f \rangle = \sum_{i=1}^n \alpha_i \langle \lambda_i,f \rangle = \sum_{i=1}^n \alpha_i \left( \nu_{\lambda_i},f\right)_\mathcal{H} = \left( \sum_{i=1}^n \alpha_i \nu_{\lambda_i}, f \right)_\mathcal{H}
+0 = \langle \lambda,f \rangle = \sum_{i=1}^d \alpha_i \langle \lambda_i,f \rangle = \sum_{i=1}^d \alpha_i \left( \nu_{\lambda_i},f\right)_\mathcal{H} = \left( \sum_{i=1}^d \alpha_i \nu_{\lambda_i}, f \right)_\mathcal{H}
 \end{align*}
 
 Also gilt nach \ref{stetig}.\ref{stetig2}, dass $\{\delta_x,x\in \Omega\}$ genau dann linear unabhängig sind, wenn $\{K(\cdot,x) , x \in \Omega\}$ linear unabhängig sind.
 
-Um die strikte positive Definitheit nachzuweisen, betrachten wir die Matrix $A=[K(x_i, x_j)]_{i,j=1}^N$ für paarweise verschiedene Punkte $x_i, 1 \le i \le N$. Sei also $\beta \in \mathbb{R}^n, \beta \neq 0$. Dann gilt:
+Um die strikte positive Definitheit nachzuweisen, betrachten wir die Matrix $A=[K(x_i, x_j)]_{i,j=1}^N$ für paarweise verschiedene Punkte $x_i, 1 \le i \le N$. Sei also $\beta \in \mathbb{R}^d, \beta \neq 0$. Dann gilt:
 \begin{align*}
-\beta^T A \beta &= \sum_{i,j=1}^n \beta_i \beta_j K(x_i, x_j)\\
-&= \sum_{i,j=1}^n \beta_i  \beta_j \left(K(\cdot, x_i),K(\cdot,x_j)\right)_\mathcal{H}\\
-&= \left( \sum_{i=1}^n \beta_i K(\cdot,x_i),\sum_{j=1}^n \beta_j K(\cdot, x_j) \right)_\mathcal{H}\\
-&= \left\| \sum_{i=1}^n \beta_i K(\cdot, x_i) \right\|_\mathcal{H}^2 > 0
+\beta^T A \beta &= \sum_{i,j=1}^d \beta_i \beta_j K(x_i, x_j)\\
+&= \sum_{i,j=1}^d \beta_i  \beta_j \left(K(\cdot, x_i),K(\cdot,x_j)\right)_\mathcal{H} &&\text{(Reproduzierbarkeit)}\\
+&= \left( \sum_{i=1}^d \beta_i K(\cdot,x_i),\sum_{j=1}^d \beta_j K(\cdot, x_j) \right)_\mathcal{H}\\
+&= \left\| \sum_{i=1}^d \beta_i K(\cdot, x_i) \right\|_\mathcal{H}^2 > 0
 \end{align*}
 Für die strikte Ungleichung benötigen wir die lineare Unabhängigkeit. Also gilt, dass K \ac{SPD} ist, wenn $\{\delta_x,x\in \Omega\}$ linear unabhängig sind.
 

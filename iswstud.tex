@@ -1,10 +1,11 @@
 \documentclass[%
   bachelor,%
-  draft,%
+  %draft,%
   english,%
   ngerman,% last language set will be the main document language
-  % accepted,%
+  %accepted,%
   male,%
+  final,
 ]{iswstud}
 
 
@@ -102,7 +103,7 @@
 \definecolor{mycolor1}{HTML}{e66101}%
 \definecolor{mycolor2}{HTML}{5e3c99}%
 
-
+\coverpageimage{images/cover}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN document
 \begin{document}
@@ -113,7 +114,7 @@
 % START frontmatter
 \frontmatter
 
-%\coverpage
+\coverpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % START title page in main language
@@ -154,8 +155,8 @@ Das elektronische Exemplar stimmt mit den anderen Exemplaren überein.
 % START abstract in main language
 \begin{abstract}
   %\Blindtext[3]
-  In dieser Bachelorarbeit erweitern wir die Kernkollokation, ein Verfahren zur numerischen Lösung von partiellen Differentialgleichungen (\acs{PDE}s).\glsunset{PDE} Dafür nutzt die Kernkollokation einen interpolativen Ansatz, indem sie Ansatzfunktionen an verschiedenen Punkten im Inneren und auf dem Rand des Definitionsgebietes der \ac{PDE} ansetzt. 
-  Aufgrund des diskreten Ansatzes werden die Randwerte der der numerischen Lösung \ac{PDE} nur an manchen Stellen exakt angenommen. Um zu erreichen, dass dies über den ganzen Rand der Fall ist, multiplizieren wir die Ansatzfunktionen mit einer Gewichtsfunktion und damit werden die Randbedingungen der \ac{PDE} automatisch erfüllt. Zusätzlich können wir dadurch die Ansatzpunkte auf dem Rand weglassen. Experimentell zeigt sich, dass die gewichtete Kernkollokation aber nur bedingt vernünftige Ergebnisse liefert, da es bei der Konstruktion der Gewichtsfunktionen für ein beliebiges Gebiet leicht passieren kann, dass in deren Ableitung Singularitäten entstehen, die zu schlechten Ergebnissen führen.
+  In dieser Bachelorarbeit erweitern wir die Kernkollokation, ein Verfahren zum numerischen Lösen von partiellen Differentialgleichungen (\acs{PDE}s).\glsunset{PDE} Dafür nutzt die Kernkollokation einen interpolativen Ansatz, indem sie Ansatzfunktionen an verschiedenen Punkten im Inneren und auf dem Rand des Definitionsgebietes der \ac{PDE} ansetzt. 
+  Aufgrund des diskreten Ansatzes werden die Randwerte der numerischen Lösung der \ac{PDE} nur an manchen Stellen exakt angenommen. Um zu erreichen, dass dies über den ganzen Rand der Fall ist, multiplizieren wir die Ansatzfunktionen mit einer Gewichtsfunktion und damit werden die Randbedingungen der \ac{PDE} automatisch erfüllt. Zusätzlich können wir dadurch die Ansatzpunkte auf dem Rand weglassen. Experimentell zeigt sich, dass die gewichtete Kernkollokation aber nur bedingt vernünftige Ergebnisse liefert, da es bei der Konstruktion der Gewichtsfunktionen für ein beliebiges Gebiet leicht passieren kann, dass in deren Ableitung Singularitäten entstehen, die zu schlechten Ergebnissen führen.
   \glsresetall
   \keywords{partielle Differentialgleichung \and Kern \and gewichtete Kernkollokation \and reproduzierende Kern Hilberträume}
 \end{abstract}

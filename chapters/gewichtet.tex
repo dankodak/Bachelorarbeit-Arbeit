@@ -12,7 +12,7 @@ Die Standardkollokation hat, egal ob symmetrisch oder nicht-symmetrisch, das Pro
 \label{fig:rand}
 \end{figure}
 
-Wir stellen zur Vereinfachung zunächst fest, dass es bei einer \ac{PDE} mit Dirichlet-Randwerten genügt, konstante Nullrandwerte  zu betrachten. Dafür sei eine \gls{PDE} wie in \eqref{eq:PDE} mit $B=I$, wobei $I$ die Identität bezeichnet, gegeben. Wir nehmen an, dass eine Funktion $\bar{g} \in C^k(\Omega) \cap C^0 (\widebar \Omega)$ existiert mit $\bar{g}|_{\partial \Omega} = g$. Damit gilt $u = \bar{u} + \bar{g}$ für eine Funktion $\bar{u}$. Eingesetzt erhalten wir
+Wir stellen zur Vereinfachung zunächst fest, dass es bei einer \ac{PDE} mit Dirichlet-Randwerten genügt, konstante Nullrandwerte  zu betrachten. Dafür sei eine \gls{PDE} wie in Gleichung \eqref{eq:PDE} mit $B=I$, wobei $I$ die Identität bezeichnet, gegeben. Wir nehmen an, dass eine Funktion $\bar{g} \in C^k(\Omega) \cap C^0 (\widebar \Omega)$ existiert mit $\bar{g}|_{\partial \Omega} = g$. Damit gilt $u = \bar{u} + \bar{g}$ für eine Funktion $\bar{u}$. Eingesetzt erhalten wir
 \begin{align*}
 L\bar{u}(x) + L\bar{g}(x) &= f(x) , x \in \Omega\\
 \bar{u}(x) + \bar{g}(x) &= g(x) , x \in \partial \Omega,
@@ -28,11 +28,11 @@ Die Idee ist jetzt, einen Kern, beziehungsweise Ansatzfunktionen zu konstruieren
 \label{sec:gewicht}
 \begin{definition}
 	\label{def:gewicht}
-Sei $\Omega \subset \mathbb{R}^d$ offen und beschränkt. Eine Funktion $w:\mathbb{R}^n \rightarrow \mathbb{R}$ heißt Gewichtsfunktion auf $\Omega$, wenn sie folgende Eigenschaften erfüllt:
+Sei $\Omega \subset \mathbb{R}^d$ offen und beschränkt. Eine Funktion $w:\mathbb{R}^d \rightarrow \mathbb{R}$ heißt Gewichtsfunktion auf $\Omega$, wenn sie folgende Eigenschaften erfüllt:
 \begin{enumerate}
 \item $w(x) > 0$ für alle $x \in \Omega$
 \item $w(x) = 0$ für alle $x \in \partial \Omega$
-\item $w(x) < 0$ für alle $x \in \mathbb{R}^n \setminus \widebar{\Omega}$
+\item $w(x) < 0$ für alle $x \in \mathbb{R}^d \setminus \widebar{\Omega}$
 \end{enumerate}
 \end{definition}
 
@@ -172,7 +172,7 @@ w(x,y) &= w_1(x,y) + w_2(x,y) - \sqrt{w_1(x,y)^2 + w_2(x,y)^2}\\
 &= -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}
 \end{align*}
 \end{example}
-Wir wollen jetzt einen Kern und eine Gewichtsfunktion verknüpfen und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.
+Wir wollen jetzt einen Kern und eine Gewichtsfunktion miteinander multiplizieren und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.
 
 \section{Symmetrische Kollokation}
 \begin{theorem}
@@ -244,7 +244,7 @@ $s$ ist bijektiv, da $g \neq 0$ ist. Damit können wir auf $\mathcal{H}_K (\Omeg
 \end{align*}
 Damit wird $\mathcal{H}_K(\Omega)$ zu einem Hilbertraum. 
 
-Wir zeigen noch die Reproduzierbarkeit auf $\mathcal{H}_K(\Omega)$, dann folgt aus der Eindeutigkeit des Kerns aus Satz \ref{thm:EindeutigkeitKern} die Behauptung. Sei dafür $x \in \Omega$ und $h = gf \in \mathcal{H}_K (\Omega)$.
+Wir zeigen noch die Reproduzierbarkeit von $K$ auf $\mathcal{H}_K(\Omega)$, dann folgt aus der Eindeutigkeit des Kerns aus Satz \ref{thm:EindeutigkeitKern} die Behauptung. Sei dafür $x \in \Omega$ und $h = gf \in \mathcal{H}_K (\Omega)$.
 \begin{align*}
 \left(h, K(\cdot,x) \right)_{\mathcal{H}_K(\Omega)} &= \left(gf, gK'(\cdot, x) g(x)\right)_{\mathcal{H}_K(\Omega)}\\
 &= g(x) \left( gf, gK'(\cdot, x)\right)_{\mathcal{H}_K(\Omega)}\\
