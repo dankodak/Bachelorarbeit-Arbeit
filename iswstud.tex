@@ -75,7 +75,7 @@
 % END user defined content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{algorithm}
+\usepackage[Algorithmus]{algorithm}
 \usepackage{algpseudocode}
 \usepackage{mathtools}
 
@@ -156,7 +156,7 @@ Das elektronische Exemplar stimmt mit den anderen Exemplaren überein.
 \begin{abstract}
   %\Blindtext[3]
   In dieser Bachelorarbeit erweitern wir die Kernkollokation, ein Verfahren zum numerischen Lösen von partiellen Differentialgleichungen (\acs{PDE}s).\glsunset{PDE} Dafür nutzt die Kernkollokation einen interpolativen Ansatz, indem sie Ansatzfunktionen an verschiedenen Punkten im Inneren und auf dem Rand des Definitionsgebietes der \ac{PDE} ansetzt. 
-  Aufgrund des diskreten Ansatzes werden die Randwerte der numerischen Lösung der \ac{PDE} nur an manchen Stellen exakt angenommen. Um zu erreichen, dass dies über den ganzen Rand der Fall ist, multiplizieren wir die Ansatzfunktionen mit einer Gewichtsfunktion und damit werden die Randbedingungen der \ac{PDE} automatisch erfüllt. Zusätzlich können wir dadurch die Ansatzpunkte auf dem Rand weglassen. Experimentell zeigt sich, dass die gewichtete Kernkollokation aber nur bedingt vernünftige Ergebnisse liefert, da es bei der Konstruktion der Gewichtsfunktionen für ein beliebiges Gebiet leicht passieren kann, dass in deren Ableitung Singularitäten entstehen, die zu schlechten Ergebnissen führen.
+  Aufgrund des diskreten Ansatzes werden die Randwerte der numerischen Lösung der \ac{PDE} nur an manchen Stellen exakt angenommen. Um zu erreichen, dass dies auf dem ganzen Rand der Fall ist, multiplizieren wir die Ansatzfunktionen mit einer Gewichtsfunktion und damit werden die Randbedingungen der \ac{PDE} automatisch erfüllt. Zusätzlich können wir dadurch die Ansatzpunkte auf dem Rand weglassen. Experimentell zeigt sich, dass die gewichtete Kernkollokation aber nur bedingt vernünftige Ergebnisse liefert, da es bei der Konstruktion der Gewichtsfunktionen für ein beliebiges Gebiet leicht passieren kann, dass in deren Ableitung Singularitäten entstehen, die zu schlechten Ergebnissen führen.
   \glsresetall
   \keywords{partielle Differentialgleichung \and Kern \and gewichtete Kernkollokation \and reproduzierende Kern Hilberträume}
 \end{abstract}
@@ -170,7 +170,7 @@ Das elektronische Exemplar stimmt mit den anderen Exemplaren überein.
 \begin{otherlanguage}{english}
   \begin{abstract}
     %\Blindtext[3]
-    In this bachelor's thesis, we extend the kernel collocation, a method to solve partial differential equations (\acs{PDE}s)\glsunset{PDE} numerically. The kernel collocation uses an interpolating approach by applying functions at different points on the boundary and the interior of the domain of a \ac{PDE}. Because of this discrete approach, the boundary values of the numerical solution are only exact in some places. To achieve an exact solution on the entire boundary, we multiply the interpolating functions by a weight function, which automatically fulfills the boundary conditions given by the \ac{PDE}. Additionally, we can omit the points on the boundary and don't need to apply any functions there. Experiments show that we only get reasonable results in some cases when using the weighted kernel collocation. When constructing the weight function for an arbitrary domain, it can easily happen that we get singularities in their derivatives, which causes bad results.
+    In this bachelor's thesis, we extend the kernel collocation, a method to solve partial differential equations (\acs{PDE}s)\glsunset{PDE} numerically. The kernel collocation uses an interpolating approach by applying functions at different points on the boundary as well as the interior of the domain of a \ac{PDE}. Because of this discrete approach, the boundary values of the numerical solution are only exact in some places. To achieve an exact solution on the entire boundary, we multiply the interpolating functions by a weight function as the result automatically fulfills the boundary conditions given by the \ac{PDE}. As a consequence, we can also omit the points on the boundary and don't need to apply any functions there. Experiments show that we only get reasonable results in some cases when using the weighted kernel collocation. When constructing the weight function for an arbitrary domain, singularities occur easily in their derivatives, which causes bad results.
     \glsresetall
     %\draftname
        

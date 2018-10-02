@@ -1,0 +1,60 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=2600,
+xlabel style={font=\color{white!15!black}},
+xlabel={Anzahl Kollokationspunkte},
+ymin=1e-05,
+ymax=1,
+ymode=log,
+ylabel style={font=\color{white!15!black}},
+ylabel={Verstrichene Zeit in sek},
+axis background/.style={fill=white},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+1	0.992742646346243\\
+36	0.95719159493803\\
+121	0.199182045140936\\
+256	0.0504075982767586\\
+441	0.0153331073518537\\
+676	0.00112474393531347\\
+961	0.000359925454297583\\
+1296	5.27499034438383e-05\\
+1681	2.9566939451886e-05\\
+2116	1.58778041508822e-05\\
+2601	1.30041670055453e-05\\
+};
+\addlegendentry{Gewichtet N-Sym}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+1	0.960083066620001\\
+36	1.32241122108346\\
+121	0.4347893064322\\
+256	0.0793297977437181\\
+441	0.0137708927849018\\
+676	0.00114090177907714\\
+961	0.000354362614317261\\
+1296	0.000125752362927722\\
+1681	3.308936362445e-05\\
+2116	4.19288442625176e-05\\
+2601	9.31282409229528e-05\\
+};
+\addlegendentry{Gewichtet Sym}
+
+\end{axis}
+\end{tikzpicture}%

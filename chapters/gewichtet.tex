@@ -162,14 +162,14 @@ w(x) = w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2} = 0
 Sei $\Omega = (-1,1) \times (-1,1)$. Dann können wir $\Omega$ schreiben als $\Omega = \Omega_1  \cap \Omega_2$ mit $\Omega_1 = (-1,1) \times (- \infty, \infty), \Omega_2 =   (- \infty, \infty) \times (-1,1)$.
 Dann sind 
 \begin{align*}
-w_1(x,y) &= -x^2 +1\\
-w_2(x,y) &= -y^2 +1 
+w_1(x) &= -x_1^2 +1\\
+w_2(x) &= -x_2^2 +1 
 \end{align*}
 Gewichtsfunktionen auf $\Omega_1$ bzw, $\Omega_2$. Nach Satz \ref{thm:Gewicht} ist dann die Gewichtsfunktion für $\Omega$ gegeben durch:
 \begin{align*}
-w(x,y) &= w_1(x,y) + w_2(x,y) - \sqrt{w_1(x,y)^2 + w_2(x,y)^2}\\
-&= -x^2 +1 -y^2 +1 - \sqrt{(-x^2+1)^2 + (-y^2+1)^2}\\
-&= -x^2-y^2+2 - \sqrt{x^4 -2x^2 + y^4 -2y^2+2}
+w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2}\\
+&= -x_1^2 +1 -x_2^2 +1 - \sqrt{(-x_1^2+1)^2 + (-x_2^2+1)^2}\\
+&= -x_1^2-x_2^2+2 - \sqrt{x_1^4 -2x_1^2 + x_2^4 -2x_2-^2+2}
 \end{align*}
 \end{example}
 Wir wollen jetzt einen Kern und eine Gewichtsfunktion miteinander multiplizieren und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.

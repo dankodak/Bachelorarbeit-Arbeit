@@ -20,23 +20,24 @@
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Testfehler auf $\Omega $\relax }}{39}{figure.caption.15}
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Negativer Laplace der Gewichtsfunktion\relax }}{40}{figure.caption.16}
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Testfehler bei zufällig verteilten Kollokationspunkten\relax }}{41}{figure.caption.17}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Fehler beim Greedy-Verfahren\relax }}{42}{figure.caption.18}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Testfehler beim Greedy-Verfahren\relax }}{42}{figure.caption.18}
 \contentsline {figure}{\numberline {6.9}{\ignorespaces Kollokationspunkte beim Greedy-Verfahren bei \acs {PDE} 1\relax }}{43}{figure.caption.19}
 \contentsline {figure}{\numberline {6.10}{\ignorespaces Lösung der \acs {PDE} 1 bei gewichtetem Greedy-Verfahren\relax }}{44}{figure.caption.20}
 \contentsline {figure}{\numberline {6.11}{\ignorespaces Kollokationspunkte beim Greedy-Verfahren bei \acs {PDE} 2\relax }}{45}{figure.caption.21}
 \contentsline {figure}{\numberline {6.12}{\ignorespaces Testfehler der ersten \acs {PDE} bei einer anderen Gewichtsfunktion\relax }}{45}{figure.caption.22}
 \contentsline {figure}{\numberline {6.13}{\ignorespaces Plot über den Rand\relax }}{46}{figure.caption.23}
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Fehler und $\gamma $-Werte bei unterschiedlicher Anzahl an Validationspunkten\relax }}{47}{figure.caption.24}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Testfehler und $\gamma $-Werte bei unterschiedlicher Anzahl an Validationspunkten\relax }}{47}{figure.caption.24}
 \contentsline {figure}{\numberline {6.15}{\ignorespaces Lösung bei Überanpassung\relax }}{48}{figure.caption.25}
-\contentsline {figure}{\numberline {6.16}{\ignorespaces Gewählter Parameter $\gamma $\relax }}{49}{figure.caption.26}
-\contentsline {figure}{\numberline {6.17}{\ignorespaces Fehler bei verschiedenen Parametern $\gamma $\relax }}{50}{figure.caption.27}
-\contentsline {figure}{\numberline {6.18}{\ignorespaces Kondition bei verschiedenen Parametern $\gamma $\relax }}{51}{figure.caption.28}
-\contentsline {figure}{\numberline {6.19}{\ignorespaces Laufzeit der unterschiedlichen Verfahren\relax }}{52}{figure.caption.29}
-\contentsline {figure}{\numberline {6.20}{\ignorespaces Laufzeit bei Greedy-Punktwahl\relax }}{53}{figure.caption.30}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Fehlerplot einer \acs {PDE} in vier Dimensionen\relax }}{50}{figure.caption.26}
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Gewählter Parameter $\gamma $\relax }}{51}{figure.caption.27}
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Fehler bei verschiedenen Parametern $\gamma $\relax }}{52}{figure.caption.28}
+\contentsline {figure}{\numberline {6.19}{\ignorespaces Kondition bei verschiedenen Parametern $\gamma $\relax }}{53}{figure.caption.29}
+\contentsline {figure}{\numberline {6.20}{\ignorespaces Laufzeit der unterschiedlichen Verfahren\relax }}{54}{figure.caption.30}
+\contentsline {figure}{\numberline {6.21}{\ignorespaces Laufzeit bei Greedy-Punktwahl\relax }}{55}{figure.caption.31}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Testfehler bei Kollokationspunkten auf einem Gitter beim Wendland Kern\relax }}{57}{figure.caption.32}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Testfehler bei Kollokationspunkten mit einer Greedy-Punktwahl beim Wendland Kern\relax }}{58}{figure.caption.33}
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Testfehler bei Kollokationspunkten auf einem Gitter bei absolutem Fehlerschätzer\relax }}{58}{figure.caption.34}
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Testfehler bei Kollokationspunkten mit einer Greedy-Punktwahl bei absolutem Fehlerschätzer\relax }}{59}{figure.caption.35}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Testfehler bei Kollokationspunkten auf einem Gitter beim Wendland Kern\relax }}{59}{figure.caption.33}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Testfehler bei Kollokationspunkten mit einer Greedy-Punktwahl beim Wendland Kern\relax }}{60}{figure.caption.34}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Testfehler bei Kollokationspunkten auf einem Gitter bei absolutem Fehlerschätzer\relax }}{60}{figure.caption.35}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Testfehler bei Kollokationspunkten mit einer Greedy-Punktwahl bei absolutem Fehlerschätzer\relax }}{61}{figure.caption.36}
 \addvspace {10\p@ }
