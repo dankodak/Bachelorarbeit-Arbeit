@@ -3,7 +3,7 @@
 
 In diesem Kapitel möchten wir uns die Implementierung der bisher theoretisch hergeleiteten Verfahren anschauen.
 
-Dazu müssen wir zunächst einen geeigneten Kern wählen. Beispielsweise wäre der Gauß Kern aus Beispiel \ref{ex:Kern} aufgrund seiner unendlichen Differenzierbarkeit geeignet, wohingegen das Skalarprodukt für die meisten Fälle ungeeignet wäre, da bereits alle partiellen Ableitungen der Ordnung $2$ (angewandt auf $x$ oder $y$) konstant Null sind. Wir erinnern uns auch, dass die Kerne einen Parameter $\gamma$ besitzen, welchen wir zur Parameterwahl benutzen können. In Abbildung \ref{fig:Kerne} ist der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet.
+Dazu müssen wir zunächst einen geeigneten Kern wählen. Beispielsweise wäre der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ aus Beispiel \ref{ex:Kern} aufgrund seiner unendlichen Differenzierbarkeit und seiner strikten positiven Definitheit geeignet. Wir erinnern uns auch, dass die Kerne einen Parameter $\gamma$ besitzen, welchen wir zur Parameterwahl benutzen können. In Abbildung \ref{fig:Kerne} ist der Gauß Kern mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet.
 \begin{figure}[ht]
 \centering
 \resizebox {.8\columnwidth} {!} {
@@ -46,13 +46,13 @@ $Ls_u$ lässt sich aufgrund der Linearität des Differentialoperators leicht ber
 Kommen wir zur Bestimmung der Kollokationspunkte. Auch hier möchten wir mehrere Möglichkeiten vorstellen.
 \begin{itemize}
 \item
-Die Kollokationspunkte können als Gitter über das Definitionsgebiet gelegt werden.
+Die Kollokationspunkte können als Gitter über das Definitionsgebiet gelegt werden. Dies ist theoretisch immer möglich, allerdings werden dafür in höheren Dimensionen sehr viele Punkte benötigt, weswegen es praktisch nicht umsetzbar ist. 
 \item
 Die Kollokationspunkte können zufällig gewählt werden.
 \item
 Eine Greedy-Punktwahl ist auch möglich. Dafür berechnet man zunächst eine Lösung aus den aktuell gegebenen Punkten. Auf diese Lösung kann man einen der beiden gerade vorgestellten Fehlerschätzer mit der Testpunktmenge anstatt der Validationspunktmenge anwenden. An die Stelle, an der der maximale Fehler angenommen wird, wird der neue Kollokationspunkt gesetzt. Dieses Verfahren kann dann wiederholt werden.
 \end{itemize}
 
-Die Validationspunkte können, wie die Kollokationspunkte, zufällig gewählt werden, oder in einem Gitter über das Definitionsgebiet gelegt werden.
+Die Validationspunkte können, wie die Kollokationspunkte, zufällig gewählt werden, oder in niedrigen Dimensionen in einem Gitter über das Definitionsgebiet gelegt werden.
 
-Die Testpunkte legt man am einfachsten in einem engen Gitter über das Definitionsgebiet, um eine genaue Auswertung der Funktion zu gewährleisten.
+Die Testpunkte legt man wenn möglich am einfachsten in einem engen Gitter über das Definitionsgebiet, um eine genaue Auswertung der Funktion zu gewährleisten. Ansonsten kann man auch hier auf zufällig gewählte Punkte zurückgreifen.
