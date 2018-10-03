@@ -252,7 +252,7 @@ Sei $\Omega$ eine beliebige nicht leere Menge und $\mathcal{H}$ ein Hilbertraum 
 Wir folgen dem Beweis in \textcite[Proposition 3.8]{Santin.2017}.
 \begin{enumerate}
 \item 
-Sei $\mathcal{H}$ ein \ac{RKHR}. Für alle $f \in \mathcal{H}$ und alle $x \in \Omega$ gilt:
+Sei $\mathcal{H}$ ein \ac{RKHR} mit reproduzierendem Kern $K$. Für alle $f \in \mathcal{H}$ und alle $x \in \Omega$ gilt:
 \begin{align*}
 |\langle \delta_x,f \rangle | &= |f(x)|\\ 
 &= |(f, K(\cdot,x))_\mathcal{H}| &&\text{(Reproduzierbarkeit)}\\
@@ -277,7 +277,7 @@ Wir haben gesehen, dass in einem \ac{RKHR} $\mathcal{H}_K$ die Auswertungsfunkti
 \begin{theorem}
 Sei $k \in \mathbb{N}$. Angenommen $\Omega \subset \mathbb{R}^d$ ist offen, K ein \ac{SPD} Kern auf $\Omega$ und $K \in C^{2k}(\Omega \times \Omega)$. Dann gilt für alle Multiindizes $a \in \mathbb{N}_0^d$ mit $|a| \le k$ und alle $x \in \Omega$, dass $D_2^a K(\cdot , x) \in \mathcal{H}_K(\Omega)$, wobei der tiefgestellte Index bedeutet, dass der Operator auf das zweite Argument angewandt wird.
 
-Außerdem gilt für alle $f \in \mathcal{H}_K(\Omega)$:
+Außerdem gilt für alle $f \in \mathcal{H}_K(\Omega)$
 \begin{align*}
 D^a f(x) = \left(f,D_2^a K(\cdot,x)\right)_{\mathcal{H}_K(\Omega)}
 \end{align*}
@@ -285,14 +285,14 @@ und damit dass $\lambda := \delta_x \circ D^a$ stetig ist.
 \end{theorem}
 
 \begin{proof}
-Einen Beweis des ersten Teils findet man im Vorlesungsskript von \textcite[Proposition 7.13]{Santin.2017} und einen Beweis des zweiten Teils in \textcite[Proposition 3.14]{Santin.2017}. Der Beweis der Stetigkeit von $\lambda := \delta_x \circ D^a$ verläuft komplett analog zum Beweis von \ref{stetig}.\ref{stetig1}.
+Einen Beweis des ersten Teils findet man in \textcite[Proposition 7.13]{Santin.2017} und einen Beweis des zweiten Teils in \textcite[Proposition 3.14]{Santin.2017}. Der Beweis der Stetigkeit von $\lambda := \delta_x \circ D^a$ verläuft komplett analog zum Beweis von \ref{stetig}.\ref{stetig1}.
 \end{proof}
 
 In Satz \ref{stetig} haben wir gesehen, wie der Riesz-Repräsentant des Auswertungsfunktionals aussieht. Dies wollen wir jetzt auf alle Funktionale verallgemeinern.
 
 \begin{theorem}
 \label{Riesz}
-Sei $K$ ein \ac{PD} Kern auf $\Omega \neq \emptyset$ und $\lambda \in \mathcal{H}_K (\Omega)'$. Dann ist $\lambda^y K(\cdot,y) \in \mathcal{H}_k(\Omega)$ und es gilt $\langle \lambda,f \rangle = \left(f,\lambda^y K(\cdot,y)\right)_{\mathcal{H}_K(\Omega)}$ für alle $f \in \mathcal{H}_K(\Omega)$, wobei der hochgestellte Index bedeutet, dass das Funktional auf die zweite Komponente angewandt wird. Es ist also $\lambda^y K(\cdot,y)$ der Riesz-Repräsentant von $\lambda$.
+Sei $K$ ein \ac{SPD} Kern auf $\Omega \neq \emptyset$ und $\lambda \in \mathcal{H}_K (\Omega)'$. Dann ist $\lambda^y K(\cdot,y) \in \mathcal{H}_k(\Omega)$ und es gilt $\langle \lambda,f \rangle = \left(f,\lambda^y K(\cdot,y)\right)_{\mathcal{H}_K(\Omega)}$ für alle $f \in \mathcal{H}_K(\Omega)$, wobei der hochgestellte Index bedeutet, dass das Funktional auf die zweite Komponente angewandt wird. Es ist also $\lambda^y K(\cdot,y)$ der Riesz-Repräsentant von $\lambda$.
 \end{theorem}
 
 \begin{proof}
@@ -339,7 +339,7 @@ Jetzt betrachten wir die lineare Unabhängigkeit der Auswertungen der Ableitunge
 
 \begin{theorem}
 \label{linUn}
-Sei $K$ ein translationsinvarianter Kern auf $\mathbb{R}^d$, das heißt $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Sei $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)'$.
+Sei $K$ \ac{SPD} und ein translationsinvarianter Kern auf $\mathbb{R}^d$, das heißt $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Sei $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N := \{x_i\}_{i=1}^N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)'$.
 \end{theorem}
 
 \begin{proof}

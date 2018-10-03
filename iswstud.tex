@@ -39,7 +39,7 @@
 
 % Set the date this document is printed/published
 % Avoid typing in manually, either use `\today` or `\printdate{yyyy-mm-dd}`
-\date{\today}
+\date{\printdate{2018-10-05}}
 
 
 % Title of document
@@ -146,11 +146,14 @@
 
 \chapter*{Eigenständigkeitserklärung}
 Hiermit erkläre ich, dass ich die vorliegende Bachelorarbeit selbstständig und nur unter Verwendung der angegebenen Literatur und Hilfsmittel angefertigt habe. Die aus
-fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich
-gemacht.
-Die Arbeit ist weder in vollständig noch in wesentlichen Teilen Gegenstand
+fremden Quellen wörtlich oder sinngemäß übernommenen Aussagen sind als solche kenntlich gemacht.
+Diese Arbeit ist weder vollständig noch in wesentlichen Teilen Gegenstand
 eines anderen Prüfungsverfahrens gewesen.
 Das elektronische Exemplar stimmt mit den anderen Exemplaren überein.
+
+\vspace{50pt} 
+\noindent\rule{5cm}{.4pt}\hfill\rule{5cm}{.4pt}\par 
+\noindent Datum, Ort \hfill Unterschrift 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % START abstract in main language
 \begin{abstract}
@@ -219,7 +222,7 @@ Das elektronische Exemplar stimmt mit den anderen Exemplaren überein.
 \include{chapters/implementation}
 \include{chapters/numerischetests}
 \include{chapters/schluss}
-\include{chapters/anhang}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % START blind document
@@ -237,7 +240,7 @@ Das elektronische Exemplar stimmt mit den anderen Exemplaren überein.
 %\nocite{*}
 
 \printbibliography
-
+\include{chapters/anhang}
 
 \end{document}
 % END document
