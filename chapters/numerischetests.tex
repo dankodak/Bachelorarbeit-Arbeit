@@ -330,7 +330,7 @@ In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Ve
 Wir erhalten wieder die gleiche Reihenfolge der Verfahren, die wir genauso begründen können, wie schon im Fall der auf einem Gitter verteilten Punkte. Allerdings benötigt das Greedy-Verfahren wesentlich mehr Zeit für gleich viele Punkte. Das liegt daran, dass beim Greedy-Verfahren alle vorhergegangenen Iterationen zur Punktwahl mitberechnet werden müssen, was im Falle des Gitters wegfällt.
 
 \section{Vergleich mit der finiten Elemente Methode}
-Die Kernkollokation bietet einige Vorteile gegenüber der \ac{FEM}. Zunächst kann jene auch für höhere Dimensionen eingesetzt werden, wie wir in Kapitel \ref{sec:4D} beispielhaft in vier Dimensionen gesehen haben, wobei die \ac{FEM} praktisch nur für bis zu drei Dimensionen eingesetzt wird.
+Die Kernkollokation bietet einige Vorteile gegenüber der \gls{FEM}. Zunächst kann jene auch für höhere Dimensionen eingesetzt werden, wie wir in Kapitel \ref{sec:4D} beispielhaft in vier Dimensionen gesehen haben, wobei die \ac{FEM} praktisch nur für bis zu drei Dimensionen eingesetzt wird.
 
 Außerdem hat die Kernkollokation eine höhere Genauigkeit als die \ac{FEM}. In der folgenden Tabelle \ref{tab:FEM} ist der Fehler der \ac{FEM} und der Kernkollokation mit zufälligen Kollokationspunkten für die erste \ac{PDE} dargestellt. $n$ bezeichnet dabei die Knotenanzahl, beziehungsweise die Anzahl der Kollokationspunkte. Wir sehen, dass selbst die gewichteten Kollokationsverfahren, die in diesem Fall vergleichsweise schlecht abgeschnitten haben, einen geringeren Fehler als die \ac{FEM} haben.
 \begin{table}[ht]
