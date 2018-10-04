@@ -6,7 +6,7 @@
 Sei wieder $\Omega \subset \mathbb{R}^d$ offen und beschränkt, $L$ und $B$ lineare Differentialoperatoren der Ordnungen $l$ und $k$, $K \in C^{2\max\{l,k\}}(\Omega \times \Omega)$  ein translationsinvarianter \gls{SPD} Kern und eine \gls{PDE} wie in \eqref{eq:PDE} gegeben. Für ein $N \in \mathbb{N}$ betrachten wir die Menge $X_N :=\left\{ x_i \right\}_{i=1}^N \subset \widebar{\Omega}$ mit paarweise verschiedenen Punkten, die wir in $N_{in} > 0$ Punkte im Inneren und $N_{bd} > 0$ Punkte auf dem Rand aufteilen. Also haben wir die beiden Mengen
 \begin{align*}
 X_{in} &= X_N \cap \Omega\\
-X_{bd} &= X_N \cap \partial \Omega
+X_{bd} &= X_N \cap \partial \Omega.
 \end{align*}
 Wir definieren die Menge $\Lambda_N = \{\lambda_1, \dots, \lambda_N\}$ an linearen Funktionalen mit
 \begin{align*}
@@ -14,7 +14,7 @@ Wir definieren die Menge $\Lambda_N = \{\lambda_1, \dots, \lambda_N\}$ an linear
 \begin{cases}
 \delta_{x_i} \circ L & x_i \in X_{in}\\
 \delta_{x_i} \circ B & x_i \in X_{bd}
-\end{cases}
+\end{cases}.
 \end{align*}
 Wir wissen aus Satz \ref{stetig}, dass in $\mathcal{H}_K(\Omega)$ alle $\lambda_i$ stetig und aus Satz \ref{linUn}, dass sie linear unabhängig sind. Als Ansatzfunktionen, also den Unterraum $V_N \subset \mathcal{H}_K(\Omega)$, wählen wir die Riesz Repräsentanten der $\lambda_i$:
 \begin{align*}
@@ -27,7 +27,7 @@ V_N &= \text{span} \{\lambda_1^y K(x,y), \dots , \lambda_N^y K(x,y)\}\\
 Damit bekommen wir folgenden Interpolanten:
 \begin{align*}
 s_u(x) &= \sum_{j=1}^N \alpha_j \lambda_j^y K(x,y)\\
-&= \sum_{j=1}^{N_{in}} \alpha_j (\delta_{x_j} \circ L)^y K(x,y) + \sum_{j=N_{in}+1}^{N} \alpha_j (\delta_{x_j} \circ B)^y K(x,y)
+&= \sum_{j=1}^{N_{in}} \alpha_j (\delta_{x_j} \circ L)^y K(x,y) + \sum_{j=N_{in}+1}^{N} \alpha_j (\delta_{x_j} \circ B)^y K(x,y).
 \end{align*}
 Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A \alpha = b$ mit $A_{i,j} := (\nu_i,\nu_j)_{\mathcal{H}_K}$, da
 \begin{align*}
@@ -54,7 +54,7 @@ mit
 und
 \begin{align*}
 (b_L)_i &= f(x_i), x_i \in X_{in}\\
-(b_B)_i &= g(x_i), x_i \in X_{bd}
+(b_B)_i &= g(x_i), x_i \in X_{bd}.
 \end{align*}
 Das \ac{LGS} ist lösbar, da A offensichtlich symmetrisch und positiv definit ist, da:
 \begin{align*}

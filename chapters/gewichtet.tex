@@ -183,7 +183,7 @@ K(x,y) := g(x)K'(x,y)g(y)
 \end{align*}
 ein \gls{SPD} Kern und es gilt für den entsprechenden \ac{RKHR}:
 \begin{align*}
-\mathcal{H}_{K}(\Omega) = g \mathcal{H}_{K'}(\Omega) := \left\{ gf|f \in \mathcal{H}_K'(\Omega)\right\}
+\mathcal{H}_{K}(\Omega) = g \mathcal{H}_{K'}(\Omega) := \left\{ gf|f \in \mathcal{H}_K'(\Omega)\right\}.
 \end{align*}
 \end{theorem}
 \begin{proof}
@@ -277,7 +277,7 @@ s_u(x) &= \sum_{j=1}^N \alpha_j \lambda_j^y K(x,y)\\
 Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A\alpha = b$ mit 
 \begin{align*}
 A_{i,j} &= (\delta_{x_i} \circ L)^x (\delta_{x_j} \circ L)^y (g(x)K'(x,y)g(y))\\
-b_i &= f(x_i)
+b_i &= f(x_i).
 \end{align*}
 
 Wir können dieses Mal allerdings ohne Weiteres keine Aussage über die Lösbarkeit des \ac{LGS} treffen. Selbst wenn der ursprüngliche Kern $K'$ translationsinvariant ist, ist es der Kern $K$ durch die Multiplikation mit einer Gewichtsfunktion im Allgemeinen nicht mehr. Das bedeutet, dass wir Satz \ref{linUn} nicht anwenden können und somit keine Aussage über die lineare Unabhängigkeit der verwendeten Funktionale haben. Damit verlieren wir die positive Definitheit der Matrix $A$ und damit auch ihre gesicherte Invertierbarkeit.
@@ -293,7 +293,7 @@ s_u (x) = \sum_{j=1}^N \alpha_j g(x)K'(x,x_j)
 Die $\alpha_j$ erhält man als Lösung des \ac{LGS} $A\alpha = b$ mit 
 \begin{align*}
 A_{i,j} &= (\delta_{x_i} \circ L)^x (g(x) K(x,x_j))\\
-b_i &= f(x_i)
+b_i &= f(x_i).
 \end{align*}
 
 Erneut kann man keine Aussage über die Lösbarkeit des \ac{LGS} oder über die numerische Stabilität des Verfahrens treffen.
