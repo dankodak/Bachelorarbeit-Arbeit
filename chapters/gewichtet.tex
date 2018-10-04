@@ -169,7 +169,7 @@ Gewichtsfunktionen auf $\Omega_1$ bzw, $\Omega_2$. Nach Satz \ref{thm:Gewicht} i
 \begin{align*}
 w(x) &= w_1(x) + w_2(x) - \sqrt{w_1(x)^2 + w_2(x)^2}\\
 &= -x_1^2 +1 -x_2^2 +1 - \sqrt{(-x_1^2+1)^2 + (-x_2^2+1)^2}\\
-&= -x_1^2-x_2^2+2 - \sqrt{x_1^4 -2x_1^2 + x_2^4 -2x_2-^2+2}
+&= -x_1^2-x_2^2+2 - \sqrt{x_1^4 -2x_1^2 + x_2^4 -2x_2^2+2}
 \end{align*}
 \end{example}
 Wir wollen jetzt einen Kern und eine Gewichtsfunktion miteinander multiplizieren und bekommen damit eine neue Funktion, die auf dem Rand unseres Definitionsgebiets konstant Null ist. Dazu betrachten wir wieder zwei verschiedene Ansätze.
@@ -261,7 +261,7 @@ Dafür sei $\Omega \subset \mathbb{R}^d$ offen und beschränkt, $L$ ein Differen
 Lu(x) &= f(x), x \in \Omega\\
 u(x) &= 0 , x \in \partial \Omega
 \end{align*}
-Für ein $N \in \mathbb{N}$ betrachten wir eine Menge $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega$. Wir definieren die Menge $\Lambda_N := \left\{ \lambda_1, \dots, \lambda_N\right\}$ mit $\lambda_i :=  \delta_{x_i} \circ L$. Diese Funktionale sind im von \\$K(x,y) := g(x) K'(x,y) g(y)$ erzeugten \ac{RKHR} stetig. Dieser Kern ist nach Satz \ref{thm:gewichtKern} \ac{SPD}, da $g(x) > 0$ für $x \in \Omega$. Also wählen wir 
+Für ein $N \in \mathbb{N}$ betrachten wir eine Menge $X_N := \left\{ x_i \right\}_{i=1}^N \subset \Omega$ mit paarweise verschiedenen Punkten. Wir definieren die Menge $\Lambda_N := \left\{ \lambda_1, \dots, \lambda_N\right\}$ mit $\lambda_i :=  \delta_{x_i} \circ L$. Diese Funktionale sind im von \\$K(x,y) := g(x) K'(x,y) g(y)$ erzeugten \ac{RKHR} stetig. Dieser Kern ist nach Satz \ref{thm:gewichtKern} \ac{SPD}, da $g(x) > 0$ für $x \in \Omega$. Also wählen wir 
 \begin{align*}
 V_N :&= \text{span} \left\{\lambda_1^y K(x,y), \dots, \lambda_N^y K(x,y)\right\}\\
 &= \text{span} \left\{(\delta_{x_1} \circ L)^y (g(x) K'(x,y) g(y)), \dots, (\delta_{x_N} \circ L)^y (g(x) K'(x,y) g(y))\right\}
@@ -280,7 +280,7 @@ A_{i,j} &= (\delta_{x_i} \circ L)^x (\delta_{x_j} \circ L)^y (g(x)K'(x,y)g(y))\\
 b_i &= f(x_i)
 \end{align*}
 
-Die Matrix $A$ ist wieder symmetrisch und positiv definit und das \ac{LGS} ist damit lösbar.
+Wir können dieses Mal allerdings ohne Weiteres keine Aussage über die Lösbarkeit des \ac{LGS} treffen. Selbst wenn der ursprüngliche Kern $K'$ translationsinvariant ist, ist es der Kern $K$ durch die Multiplikation mit einer Gewichtsfunktion im Allgemeinen nicht mehr. Das bedeutet, dass wir Satz \ref{linUn} nicht anwenden können und somit keine Aussage über die lineare Unabhängigkeit der verwendeten Funktionale haben. Damit verlieren wir die positive Definitheit der Matrix $A$ und damit auch die gesicherte Invertierbarkeit.
 \section{Nicht-Symmetrische Kollokation}
 Wie bei der Standardkollokation können wir einen wesentlich simpleren Ansatz wählen. Es sei die gleiche Problemstellung wie gerade gegeben. Wir wählen 
 \begin{align*}

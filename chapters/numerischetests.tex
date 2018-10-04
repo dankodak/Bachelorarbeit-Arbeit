@@ -93,9 +93,9 @@ Damit können wir uns anschauen, wie sich der Fehler bei Verfeinerung des Gitter
 \label{fig:error-grid-both}
 \end{figure}
 
-Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und gegen die analytische Lösung konvergieren. Unsere theoretische Herleitung war demnach also sinnvoll. Wir sehen aber deutliche Unterschiede zwischen den beiden \acp{PDE}.
+Wir stellen als erstes fest, dass alle Verfahren vernünftige Ergebnisse liefern und gegen die analytische Lösung konvergieren. Unsere theoretische Herleitung war demnach sinnvoll. Wir sehen aber deutliche Unterschiede zwischen den beiden \acp{PDE}.
 
-Für die erste \ac{PDE} liefern die Standardverfahren bereits mit nahezu $200$ Kollokationspunkten ihre besten Ergebnisse mit einem Testfehler in der Größenordnung von $10^{-6}$ für das nicht-symmetrische Verfahren und $10^{-7}$ für das symmetrische und verbessern sich danach nicht mehr. Im Gegensatz dazu stehen die gewichteten Verfahren, die am Anfang bei weitem nicht so gute Ergebnisse von rund einem Testfehler von $10^{-2}$ liefern, sich dann aber mit mehr Kollokationspunkten noch leicht verbessern. Gesamt erreichen die gewichteten Verfahren aber selbst mit $4500$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneidet beim Standardverfahren das symmetrische leicht besser ab, beim gewichteten ist kein Unterschied erkennbar.
+Für die erste \ac{PDE} liefern die Standardverfahren bereits mit nahezu $200$ Kollokationspunkten ihre besten Ergebnisse mit einem Testfehler in der Größenordnung von $10^{-6}$ für das nicht-symmetrische Verfahren und $10^{-7}$ für das symmetrische und verbessern sich danach nicht mehr. Im Gegensatz dazu stehen die gewichteten Verfahren, die am Anfang bei weitem nicht so gute Ergebnisse mit rund einem Testfehler von $10^{-2}$ liefern, sich dann aber mit mehr Kollokationspunkten noch leicht verbessern. Insgesamt erreichen die gewichteten Verfahren aber selbst mit $4500$ Kollokationspunkten nicht die Genauigkeit der Standardverfahren. Im Vergleich der symmetrischen und nicht-symmetrischen Verfahren schneidet beim Standardverfahren das symmetrische leicht besser ab, beim gewichteten ist kein Unterschied erkennbar.
 
 Ein Grund für das schlechtere Abschneiden der gewichteten Verfahren wird erkennbar, wenn man sich anschaut, wo der große Fehler angenommen wird. Der Testfehler des gewichteten nicht-symmetrischen Verfahrens mit $529$ Kollokationspunkten auf dem Gebiet $\Omega$ ist in Abbildung \ref{fig:Vergleich} dargestellt.
 
@@ -121,16 +121,16 @@ Diese Funktion, dargestellt in Abbildung \ref{fig:Gewicht}, hat Singularitäten 
 \caption{Negativer Laplace der Gewichtsfunktion}
 \label{fig:Gewicht}
 \end{figure}
-Als weiteres Indiz für die Ursache des Fehlers betrachten wir die zweite \ac{PDE}. In dem Fall ist der negative Laplace der Gewichtsfunktion gegeben durch
+Als weiteres Indiz für die Ursache des Fehlers betrachten wir die zweite \ac{PDE}. In dem Fall erhält man, wenn man den negativen Laplace Operator auf die Gewichtsfunktion anwendet,
 \begin{align*}
-- \Delta w(x) = 4
+- \Delta w(x) = 4,
 \end{align*}
-und hat damit keine Singularitäten.
+was keine Singularitäten aufweist.
 
 Tatsächlich erhalten wir, wenn wir den Testfehler der zweiten \ac{PDE} in Abbildung \ref{fig:error-grid-both} betrachten, ein komplett anderes Bild. Alle Verfahren erreichen mit spätestens $200$ Kollokationspunkten ihre besten Ergebnisse. Die gewichteten Verfahren erreichen dieses Mal einen Testfehler von $10^{-8}$ und $10^{-9}$ für das nicht-symmetrische beziehungsweise symmetrische Verfahren und sind damit besser als die Standardverfahren, welche nur einen Testfehler von $10^{-7}$ und $10^{-8}$ für das nicht-symmetrische beziehungsweise symmetrische Verfahren erreichen. Demnach sollten wir bei der Wahl der Gewichtsfunktionen darauf achten, dass in diesen und deren partiellen Ableitungen keine Singularitäten entstehen.
 
 \subsubsection{Zufällige Kollokationspunkte}
-Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbildung \ref{fig:error-random} ist der Fehler bei unterschiedlich vielen zufällig verteilten Kollokationspunkten für beide \acp{PDE} dargestellt.
+Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbildung \ref{fig:error-random} ist der Testfehler bei unterschiedlich vielen zufällig verteilten Kollokationspunkten für beide \acp{PDE} dargestellt.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -140,11 +140,11 @@ Als nächstes schauen wir uns zufällig verteilte Kollokationspunkte an. In Abbi
 \label{fig:error-random}
 \end{figure}
 
-Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. Vergleicht man die Fehler mit denen der Gitterpunktwahl, sieht man, dass sich diese für beide \acp{PDE} in der gleichen Größenordnung bewegen. Allerdings weisen die Kurven der zufällig gewählten Punkte größere Schwankungen auf. Von daher lässt sich in niedrigen Dimensionen kein Vorteil für zufällig gewählte Kollokationspunkte feststellen. Wie schon in Kapitel \ref{cha:Implementierung} erwähnt, ist es in höheren Dimensionen allerdings aufgrund der hohen Punktanzahl praktisch unmöglich ein Gitter über das Gebiet zu legen. Dort können die zufälligen Kollokationspunkte vernünftige Ergebnisse liefern.
+Auch hier stellt man fest, dass alle Verfahren vernünftige Ergebnisse liefern. Vergleicht man die Fehler mit denen der Gitterpunktwahl, sieht man, dass sich diese für beide \acp{PDE} in der gleichen Größenordnung bewegen. Allerdings weisen die Kurven der zufällig gewählten Punkte größere Schwankungen auf. Es lässt sich in niedrigen Dimensionen also kein Vorteil bezüglich des Fehlers für zufällig gewählte Kollokationspunkte feststellen. Wie schon in Kapitel \ref{cha:Implementierung} erwähnt ist es in höheren Dimensionen allerdings aufgrund der hohen Punktanzahl praktisch unmöglich ein Gitter über das Gebiet zu legen. Dort können die zufälligen Kollokationspunkte vernünftige Ergebnisse liefern.
 \pagebreak
 
 \subsubsection{Greedy-Punktwahl}
-Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} den Testfehler bei Kollokationspunkten, die durch eine Greedy-Punktwahl gesetzt wurden, an. Es ist zu beachten, dass bei der benutzten Implementierung bei den Standardverfahren auf dem Rand festgesetzte Kollokationspunkte benutzt werden. Deswegen beginnen die Graphen der Standardverfahren nicht bei $0$ Kollokationspunkten.
+Zuletzt schauen wir uns in Abbildung \ref{fig:error-greedy} den Testfehler bei Kollokationspunkten, die durch eine Greedy-Punktwahl gesetzt wurden, an. Als Kriterium für die Punktwahl benutzen wir einen Fehlerschätzer im Residuum auf einer von den Validations- und Testpunkten disjunkten Punktmenge. Es ist zu beachten, dass bei der benutzten Implementierung bei den Standardverfahren auf dem Rand festgesetzte Kollokationspunkte benutzt werden. Deswegen beginnen die Graphen der Standardverfahren nicht bei $0$ Kollokationspunkten.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -202,7 +202,7 @@ Dies ist keine Gewichtsfunktion im Sinne von \ref{def:gewicht}, da die Funktion 
 	\caption{Testfehler der ersten \acs{PDE} bei einer anderen Gewichtsfunktion}
 	\label{fig:andereGewicht}
 \end{figure}
-Die Kollokationspunkte sind hier wieder auf einem Gitter gewählt. Zum Vergleich sind auch die Testfehler der Standardkollokation nochmal dargestellt. Wir erkennen, dass die gewichtete Kollokation jetzt sehr ähnliche Ergebnisse zur Standardkollokation liefert. Es kann also manchmal hilfreich sein, den theoretisch richtigen Ansatz zu ignorieren und eine eine Funktion zu wählen, die die Bedingungen an eine Gewichtsfunktion nur lokal erfüllt.
+Die Kollokationspunkte sind hier wieder auf einem Gitter gewählt. Zum Vergleich sind auch die Testfehler der Standardkollokation nochmal dargestellt. Wir erkennen, dass die gewichtete Kollokation jetzt sehr ähnliche Ergebnisse zur Standardkollokation liefert. Es kann also manchmal hilfreich sein, den theoretisch richtigen Ansatz zu ignorieren und eine Funktion zu wählen, die die Bedingungen an eine Gewichtsfunktion nur lokal erfüllt.
 
 \subsection{Fehler auf dem Rand}
 Wir werden nun überprüfen, ob die gewichtete Kollokation auch ihren Sinn erfüllt, das heißt ob die Lösung auf dem Rand auch wirklich Null ist. Dafür plotten wir eine mit dem Standardverfahren und eine mit dem gewichteten Verfahren erstellte Lösung der ersten \ac{PDE} in Abbildung \ref{fig:rand-vergleich} über einen Teil des Randes.
@@ -228,7 +228,7 @@ Wir sind bisher nur auf die Wahl der Kollokationspunkte eingegangen, aber noch n
 \caption{Testfehler und $\gamma$-Werte bei unterschiedlichen Anzahlen von Validationspunkten}
 \label{fig:testpunkte}
 \end{figure}
-Wir erkennen, dass der Testfehler bis auf wenige Ausreißer konstant bleibt. Demnach spielt die Wahl der Validationspunkte keine zu große Rolle. Die großen Testfehler entstehen genau dann, wenn alle Validationspunkte mit den Kollokationspunkten zusammenfallen. Den dann auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Kollokationspunkte angepasst und verliert dabei an Genauigkeit, wenn alle Testpunkte betrachtet werden. Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes $\gamma$ gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes $\gamma$ einem schmalen \glqq Hütchen\grqq{}  der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Validations- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur \glqq Einfluss \grqq{} auf einen Validationspunkt nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}. So entsteht eine Lösung, die an den Testpunkten extrem gut angepasst ist, ansonsten der echten Lösung aber kaum ähnlich sieht.
+Wir erkennen, dass der Testfehler bis auf wenige Ausreißer konstant bleibt. Demnach spielt die Wahl der Validationspunkte keine zu große Rolle, solange sie einigermaßen gleichmäßig über das Gebiet verteilt sind. Die großen Testfehler entstehen genau dann, wenn alle Validationspunkte mit den Kollokationspunkten zusammenfallen. Den dann auftretenden Effekt nennt man Überanpassung. Die Lösung wird dabei zu gut an die Kollokationspunkte angepasst und verliert dabei an Genauigkeit, wenn alle Testpunkte betrachtet werden. Dabei stellt man fest, dass genau dann, wenn ein großer Fehler auftritt auch ein großes $\gamma$ gewählt wird. Wir erinnern uns an Abbildung \ref{fig:Kerne}, dass ein großes $\gamma$ einem schmalen \glqq Hütchen\grqq{}  der Kernfunktion entspricht. Das kann man so interpretieren, dass, wenn Validations- und Kollokationspunkte zusammenfallen, die Ansatzfunktionen so gewählt werden, dass sie, wenn möglich, nur \glqq Einfluss\grqq{} auf einen Validationspunkt nehmen. Erkennbar ist dies in Abbildung \ref{fig:overfitting}. So entsteht eine Lösung, die an den Testpunkten extrem gut angepasst ist, ansonsten der echten Lösung aber kaum ähnlich sieht.
 \begin{figure}[ht]
 \centering
 \resizebox {\columnwidth} {!} {
@@ -330,7 +330,7 @@ In Abbildung \ref{fig:Laufzeit-greedy} ist die Laufzeit der unterschiedlichen Ve
 Wir erhalten wieder die gleiche Reihenfolge der Verfahren, die wir genauso begründen können, wie schon im Fall der auf einem Gitter verteilten Punkte. Allerdings benötigt das Greedy-Verfahren wesentlich mehr Zeit für gleich viele Punkte. Das liegt daran, dass beim Greedy-Verfahren alle vorhergegangenen Iterationen zur Punktwahl mitberechnet werden müssen, was im Falle des Gitters wegfällt.
 
 \section{Vergleich mit der finiten Elemente Methode}
-Die Kernkollokation bietet einige Vorteile gegenüber der \ac{FEM}. Zunächst kann jene auch für höhere Dimensionen eingesetzt werden, wie wir in Kapitel \ref{sec:4D} beispielhaft in vier Dimensionen gesehen haben, wobei die \ac{FEM} nur für bis zu drei Dimensionen eingesetzt wird.
+Die Kernkollokation bietet einige Vorteile gegenüber der \ac{FEM}. Zunächst kann jene auch für höhere Dimensionen eingesetzt werden, wie wir in Kapitel \ref{sec:4D} beispielhaft in vier Dimensionen gesehen haben, wobei die \ac{FEM} praktisch nur für bis zu drei Dimensionen eingesetzt wird.
 
 Außerdem hat die Kernkollokation eine höhere Genauigkeit als die \ac{FEM}. In der folgenden Tabelle \ref{tab:FEM} ist der Fehler der \ac{FEM} und der Kernkollokation mit zufälligen Kollokationspunkten für die erste \ac{PDE} dargestellt. $n$ bezeichnet dabei die Knotenanzahl, beziehungsweise die Anzahl der Kollokationspunkte. Wir sehen, dass selbst die gewichteten Kollokationsverfahren, die in diesem Fall vergleichsweise schlecht abgeschnitten haben, einen geringeren Fehler als die \ac{FEM} haben.
 \begin{table}[ht]

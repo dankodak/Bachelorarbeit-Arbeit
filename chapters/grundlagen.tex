@@ -4,7 +4,7 @@
 Die Kernkollokation ist ein Verfahren, welches auf der Idee der Interpolation beruht. Da wir bei partiellen Differentialgleichungen (\acs{PDE}s)\glsunset{PDE} auch Ableitungen betrachten müssen, reicht die einfache Punktauswertung für unsere Problemstellung nicht mehr aus, weswegen wir eine verallgemeinerte Form der Interpolation benötigen.
 
 \begin{definition}
-Sei $\Omega \subset \mathbb{R}^d$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$  und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
+Sei $\Omega \subset \mathbb{R}^d$ eine nicht leere Menge, $\mathcal{H}$ ein Hilbertraum bestehend aus Funktionen $f:\Omega \rightarrow \mathbb{R}$, $\mathcal{H}'$ der dazugehörige Dualraum, $u \in \mathcal{H}$ und $\Lambda_N := \{\lambda_1, \dots, \lambda_N\} \subset \mathcal{H}'$ eine Menge von linearen, stetigen und linear unabhängigen Funktionalen. Dann ist eine Funktion $s_u \in \mathcal{H}$ ein verallgemeinerter Interpolant von $u$, wenn gilt, dass
 \begin{align*}
 \langle \lambda_i,u \rangle = \langle \lambda_i,s_u \rangle , 1\le i \le N,
 \end{align*}
@@ -62,10 +62,12 @@ Ein Kern $K$ heißt \ac{PD} auf $\Omega$, wenn für alle $N \in \mathbb{N}$ und 
 
 \begin{theorem}
 \label{thm:Kombi}
-Sei $\Omega$ eine beliebige nicht leere Menge, $K_1, K_2:\Omega \rightarrow \mathbb{R}$ zwei \ac{PD} Kerne auf $\Omega$ und $a \geq 0$. Dann sind folgende Funktionen wieder \ac{PD} Kerne auf $\Omega$:
+Sei $\Omega$ eine beliebige nicht leere Menge, $K_1, K_2:\Omega \rightarrow \mathbb{R}$ zwei \ac{SPD} Kerne auf $\Omega$ und $a > 0$. Dann sind folgende Funktionen wieder \ac{SPD} Kerne auf $\Omega$:
 \begin{enumerate}
 \item
 $K(x,y) := K_1(x,y) + K_2(x,y)$
+
+Hier genügt es sogar, wenn nur einer der beiden Kerne \ac{SPD} ist.
 \item
 $K(x,y) := aK_1 (x,y)$
 \item
@@ -73,7 +75,7 @@ $K(x,y) := K_1(x,y)K_2(x,y)$
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-Die Symmetrie ist in allen Fällen offensichtlich. Wir betrachten daher nur die positive Definitheit.
+Die Symmetrie ist in allen Fällen offensichtlich. Wir betrachten daher nur die strikte positive Definitheit.
 
 Sei $X_N \subset \Omega$ eine Menge mit paarweise verschiedenen Punkten $\left\{x_i\right\}_{i=1}^N$.
 \begin{enumerate}
@@ -103,12 +105,13 @@ K_2(x_N, x_1) & \cdots & K_2(x_N, x_N)
 Wir erhalten also für ein beliebiges $\alpha \neq 0$
 \begin{align*}
 \alpha^T A_K \alpha &= \alpha^T \left( A_{K_1} + A_{K_2} \right) \alpha \\
-&=\underbrace{\alpha^T A_{K_1} \alpha}_{\geq 0} + \underbrace{\alpha^T A_{K_2} \alpha}_{\geq 0} \geq 0
+&=\underbrace{\alpha^T A_{K_1} \alpha}_{> 0} + \underbrace{\alpha^T A_{K_2} \alpha}_{> 0} > 0
 \end{align*}
+An dieser Stelle sehen wir, dass es genügen würde, wenn nur einer der beiden Kerne \ac{SPD} ist.
 \item
 Für ein beliebiges $\alpha \neq 0$ gilt
 \begin{align*}
-\alpha^T A_K \alpha = \alpha^T a A_{K_1} \alpha = a \alpha^T A_{K_1} \alpha \geq 0
+\alpha^T A_K \alpha = \alpha^T a A_{K_1} \alpha = a \alpha^T A_{K_1} \alpha > 0
 \end{align*}
 \item
 Wir betrachten wieder die Kernmatrix.
@@ -133,7 +136,7 @@ K_2(x_N, x_1) & \cdots & K_2(x_N, x_N)
 \end{pmatrix},
 \end{align*}
 wobei $\circ$ das Hadamard-Produkt der beiden Matrizen bezeichnet. 
-Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von Schur \cite[Theorem 7.5.3]{Horn.2013} auch das Produkt der beiden.
+Die beiden letzten Matrizen sind positiv definit und damit nach dem Satz von Schur \cite[Theorem 7.5.3]{Horn.2013} auch das Produkt der beiden.
 \end{enumerate}
 \end{proof}
 
@@ -142,9 +145,9 @@ Die beiden letzten Matrizen sind positiv semidefinit und damit nach dem Satz von
 Sei $\Omega \subset \mathbb{R}^d$ und $\gamma \in \mathbb{R}^+$. Dann sind folgende Funktionen Kerne auf $\Omega$:
 \begin{enumerate}
 \item Skalarprodukt: $K(x,y) := \gamma^{-1} (x,y)$ ist \ac{PD}.
-\item Gauß Kern: $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist sogar \ac{SPD}.\\
+\item Gauß Kern: $K(x,y) := \exp\left(-\gamma \|x-y\|^2\right)$ ist \ac{SPD}.\\
 Die Abbildung auf der Titelseite dieser Arbeit zeigt den Gauß Kern in zwei Dimensionen.
-\item $C^2$ Wendland Kern in drei oder weniger Dimensionen: \\$K(x,y) := (1- \gamma \|x-y\|)_+^4(4 \gamma \|x-y\| +1) (20 \gamma^2)^{-1}$, wobei $(1-\|x-y\|)_+$ definiert ist als
+\item $C^2$ Wendland Kern in drei oder weniger Dimensionen: \\$K(x,y) := (1- \gamma \|x-y\|)_+^4(4 \gamma \|x-y\| +1) (20 \gamma^2)^{-1}$, wobei $(1-\gamma \|x-y\|)_+$ definiert ist als
 \begin{align*}
 (1 - \|x-y\|)_+ =
 \begin{cases}
@@ -160,7 +163,7 @@ ist \ac{SPD}.
 $\mbox{}$
 \begin{enumerate}
 \item
-Die Symmetrie folgt aus der Symmetrie des Skalarprodukts. Die Kernmatrix entspricht der Gram Matrix des Skalarprodukts. Diese ist aufgrund der positiven Definitheit des Skalarprodukt positiv definit. 
+Einen Beweis findet man in \textcite[Proposition 2.10]{Santin.2017}.
 \item
 Einen Beweis dafür findet man in \textcite[Theorem 6.10]{Wendland.2005}.
 \item
@@ -215,10 +218,10 @@ Also ist $K$ eindeutig.
 Bei Interpolationsproblemen kommen wir jedoch aus der anderen Richtung und haben Ansatzfunktionen, also einen Kern $K$, gegeben und wollen damit eine Funktion approximieren. Demnach stellt sich die Frage ob zu jedem Kern $K$ ein \ac{RKHR} existiert. Diese wird durch folgenden Satz beantwortet:
 
 \begin{theorem}
-Sei $\Omega$ eine beliebige nicht leere Menge und $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein positiv definiter Kern. Dann existiert genau ein \ac{RKHR} $\mathcal{H}_K (\Omega)$ mit reproduzierendem Kern $K$.
+Sei $\Omega$ eine beliebige nicht leere Menge und $K:\Omega \times \Omega \rightarrow \mathbb{R}$ ein \ac{PD} Kern. Dann existiert genau ein \ac{RKHR} $\mathcal{H}_K (\Omega)$ mit reproduzierendem Kern $K$.
 \end{theorem}
 \begin{proof}
-Einen Beweis findet man in \textcite[Kap. 10.2]{Wendland.2005}. 
+Einen Beweis findet man in \textcite[Theorem 3.10]{Santin.2017}. 
 
 Man betrachtet dort zunächst den $\text{span} \{K(\cdot,y), y \in \Omega \}$ und stellt fest, dass dieser mit einem geeigneten Innenprodukt ein Prähilbertraum ist. Aus diesem kann man den gesuchten \ac{RKHR} konstruieren.
 \end{proof}
@@ -308,7 +311,7 @@ Da $\lambda \in \mathcal{H}_K(\Omega)$, existiert ein Riesz-Repräsentant $\nu_\
 Damit gilt $\nu_\lambda(\cdot) = \lambda^y K(\cdot,y)$ und damit ist $\lambda^yK(\cdot,y)$ der Riesz-Repräsentant von $\lambda$. Da $\nu_\lambda \in \mathcal{H}_K (\Omega)$ gilt auch $\lambda^y K(\cdot,y) \in \mathcal{H}_K (\Omega)$.
 \end{proof}
 
-Jetzt fehlt nur noch die lineare Unabhängigkeit aller verwendeten Funktionale. Zunächst betrachten wir die der Auswertungsfunktionale:
+Jetzt fehlt nur noch die lineare Unabhängigkeit aller verwendeten Funktionale. Zunächst betrachten wir die der Auswertungsfunktionale.
 \begin{theorem}
 Sei $\Omega$ eine beliebige nicht leere Menge und $\mathcal{H}$ ein \ac{RKHR} mit Kern $K$. Dann sind $\{\delta_x,x\in \Omega\}$ genau dann linear unabhängig, wenn $K$ \ac{SPD} ist.
 \end{theorem}
@@ -339,7 +342,7 @@ Jetzt betrachten wir die lineare Unabhängigkeit der Auswertungen der Ableitunge
 
 \begin{theorem}
 \label{linUn}
-Sei $K$ \ac{SPD} und ein translationsinvarianter Kern auf $\mathbb{R}^d$, das heißt $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Sei $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N := \{x_i\}_{i=1}^N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)'$.
+Sei $K$ \ac{SPD} und ein translationsinvarianter Kern auf $\mathbb{R}^d$, das heißt $K(x,y) = \Phi (x-y)$ für alle $x,y \in \mathbb{R}^d$ und eine Funktion $\Phi: \mathbb{R}^d \rightarrow \mathbb{R}$. Sei $k \in \mathbb{N}$ und angenommen, dass $\Phi \in L_1(\mathbb{R}^d) \cap C^{2k}(\mathbb{R}^d)$. Seien $a_1, \dots, a_N \in \mathbb{N}_0^d$ mit $|a_i| \le k$ und sei $X_N := \{x_i\}_{i=1}^N \subset \mathbb{R}^d$. Angenommen, dass $a_i \neq a_j$, wenn $x_i = x_j$, dann sind die Funktionale $\Lambda_N := \{\lambda_1, \dots, \lambda_N\}, \lambda_i := \delta_{x_i} \circ D^{a_i}$ linear unabhängig in $\mathcal{H}_K(\mathbb{R}^d)'$.
 \end{theorem}
 
 \begin{proof}

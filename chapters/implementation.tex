@@ -3,7 +3,7 @@
 
 In diesem Kapitel möchten wir uns die Implementierung der bisher theoretisch hergeleiteten Verfahren anschauen.
 
-Dazu müssen wir zunächst einen geeigneten Kern wählen. Beispielsweise wäre der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ aus Beispiel \ref{ex:Kern} aufgrund seiner unendlichen Differenzierbarkeit und seiner strikten positiven Definitheit geeignet. Wir erinnern uns auch, dass die Kerne einen Parameter $\gamma$ besitzen, welchen wir zur Parameterwahl benutzen können. In Abbildung \ref{fig:Kerne} ist der Gauß Kern mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet.
+Dazu müssen wir zunächst einen geeigneten Kern wählen. Beispielsweise wäre der Gauß Kern $K(x,y) = \exp\left(-\gamma \|x-y\|^2\right)$ aus Beispiel \ref{ex:Kern} aufgrund seiner unendlichen Differenzierbarkeit, seiner Translationsinvarianz und seiner strikten positiven Definitheit geeignet. Wir erinnern uns auch, dass die Kerne einen Parameter $\gamma$ besitzen, welchen wir zur Parameterwahl benutzen können. In Abbildung \ref{fig:Kerne} ist der Gauß Kern mit $y= 0$ und verschiedenen $\gamma$ Werten geplottet.
 \begin{figure}[ht]
 \centering
 \resizebox {.8\columnwidth} {!} {
@@ -26,19 +26,19 @@ Wir werden später zur Bestimmung der Güte unserer endgültigen Lösung noch ei
 \item
 $f$ und $g$ bezeichnen die rechte Seite der zu lösenden \gls{PDE}.
 \item
-Der Algorithmus funktioniert so für die Standard und für die gewichtete Kollokation. Angepasst werden müssen nur die Unterfunktionen zum Aufstellen der rechten Seite und der Kollokationsmatrix.
+Der Algorithmus funktioniert so für die Standard sowie die gewichtete Kollokation. Angepasst werden müssen nur die Unterfunktionen zum Aufstellen der rechten Seite und der Kollokationsmatrix.
 \end{itemize}
 Es ist noch offen wie wir die Kollokations-, Validations-, und Testpunkte und den Fehler in jeder Iteration bestimmen. Zuerst betrachten wir Letzteres. Dafür möchten wir zwei Möglichkeiten vorstellen:
 \begin{itemize}
 \item
 Falls wir eine analytisch bestimmte Lösung der \gls{PDE} haben sollten, können wir diese mit der approximierten vergleichen. Sei dazu $u$ die analytische Lösung und $s_u$ die approximierte. Den Fehler erhalten wir dann mit
 \begin{align*}
-\mathrm{error} = \max_{x \in XVal} \left(\left| u(x) - s_u(x) \right| \right)
+\mathrm{error} = \max_{x \in XVal} \left(\left| u(x) - s_u(x) \right| \right).
 \end{align*}
 \item
 Eine analytische Lösung werden wir jedoch meist nicht besitzen und können die erste Methode somit nicht anwenden. Wir haben aber noch die Möglichkeit den Fehler in einem Residuum zu betrachten. Sei dafür $L$ der Differentialoperator aus der \gls{PDE}, $f$ die rechte Seite der \gls{PDE} und $s_u$ die approximierte Lösung. Den Fehler erhalten wir dann mit
 \begin{align*}
-\mathrm{error} = \max_{x \in XVal} \left(\left| f(x) - L s_u(x) \right| \right)
+\mathrm{error} = \max_{x \in XVal} \left(\left| f(x) - L s_u(x) \right| \right).
 \end{align*}
 $Ls_u$ lässt sich aufgrund der Linearität des Differentialoperators leicht berechnen. So kann man ausnutzen, dass $s_u$ eine Linearkombination aus den einzelnen Basisfunktionen ist, und $L$ auf die einzelnen Summanden anwenden.
 \end{itemize}
@@ -50,9 +50,9 @@ Die Kollokationspunkte können als Gitter über das Definitionsgebiet gelegt wer
 \item
 Die Kollokationspunkte können zufällig gewählt werden.
 \item
-Eine Greedy-Punktwahl ist auch möglich. Dafür berechnet man zunächst eine Lösung aus den aktuell gegebenen Punkten. Auf diese Lösung kann man einen der beiden gerade vorgestellten Fehlerschätzer mit der Testpunktmenge anstatt der Validationspunktmenge anwenden. An die Stelle, an der der maximale Fehler angenommen wird, wird der neue Kollokationspunkt gesetzt. Dieses Verfahren kann dann wiederholt werden.
+Eine Greedy-Punktwahl ist auch möglich. Dafür berechnet man zunächst eine Lösung aus den aktuell gegebenen Punkten. Auf diese Lösung kann man einen der beiden gerade vorgestellten Fehlerschätzer mit einer neuen Punktmenge anstatt der Validationspunktmenge anwenden. An die Stelle, an der der maximale Fehler angenommen wird, wird der neue Kollokationspunkt gesetzt. Dieses Verfahren kann dann wiederholt werden.
 \end{itemize}
 
 Die Validationspunkte können, wie die Kollokationspunkte, zufällig gewählt werden, oder in niedrigen Dimensionen in einem Gitter über das Definitionsgebiet gelegt werden.
 
-Die Testpunkte legt man wenn möglich am einfachsten in einem engen Gitter über das Definitionsgebiet, um eine genaue Auswertung der Funktion zu gewährleisten. Ansonsten kann man auch hier auf zufällig gewählte Punkte zurückgreifen.
+Die Testpunkte legt man, wenn möglich, am einfachsten in einem engen Gitter über das Definitionsgebiet, um eine genaue Auswertung der Funktion zu gewährleisten. Ansonsten kann man auch hier auf zufällig gewählte Punkte zurückgreifen.
