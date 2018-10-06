@@ -1,0 +1,19 @@
+1. Analytische Einführung
+2. Standardkollokation
+	2.1 Verfahren
+	2.2 Probleme und Motivation für Gewichtsfunktion
+		- Randwerte nicht Null
+		- Kollokationspunkte auf dem Rand
+3. Kollokation mit Gewichtsfunktion
+	3.1 Verfahren
+		- Gewichtsfunktion hinzufügen
+			- Beweis Vereinigung/Schnitt/Komplement
+		- Verschiedene Fehlerschätzer
+	3.2 Kondition Matrix und Fehler in Abhängigkeit der Kernweite
+	3.3 Verschiedene Kerne
+	3.4 Overfitting Demonstration
+4. Vergleiche Verfahren (Normal, Gewichtet, FEM)
+	- FEM vs. Kollokation (Punkte, Fehler)
+	- Kollokation kann höher Dimensional
+	- Implementierung einfacher ohne Gewichtsfunktion
+5. Analytische Fehlerabschätzungen
